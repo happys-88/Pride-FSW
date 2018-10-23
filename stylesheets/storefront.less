@@ -1,6 +1,6 @@
 ﻿/*!
  * Core Theme v0.4
- * 
+ *
  * Copyright 2013 Volusion, Inc
  * All rights are reserved.
  */
@@ -12,6 +12,9 @@
 // Base
 @import "/stylesheets/base/normalize.less";
 @import "/stylesheets/base/global.less";
+
+//Vendor
+@import "/stylesheets/vendor/jquery.bxslider/jquery.bxslider.less";
 
 // Layouts
 @import "/stylesheets/layouts/l-container.less";
@@ -55,6 +58,10 @@
 @import "/stylesheets/modules/common/signup-popover.less";
 @import "/stylesheets/modules/common/table.less";
 @import "/stylesheets/modules/common/validation-message.less";
+@import "/stylesheets/modules/common/modal.less";
+@import "/stylesheets/vendor/owl.carousel.less";
+@import "/stylesheets/vendor/owl-theme.less";
+
 // Locations
 @import "/stylesheets/modules/location/location-list.less";
 // Page Header
@@ -70,6 +77,7 @@
 @import "/stylesheets/modules/product/product-detail.less";
 @import "/stylesheets/modules/product/product-options.less";
 @import "/stylesheets/modules/product/volume-pricing.less";
+@import "/stylesheets/modules/product/related-products-tiles.less";
 // Cart
 @import "/stylesheets/modules/cart/cart-table.less";
 // Checkout
@@ -109,14 +117,49 @@
 @import "/stylesheets/pages/myaccount.less";
 @import "/stylesheets/pages/location.less";
 @import "/stylesheets/pages/login.less";
+@import "/stylesheets/pages/parent-category.less";
 
 // Widgets
 @import "/stylesheets/widgets/instock-request.less";
 @import "/stylesheets/widgets/video.less";
 @import "/stylesheets/widgets/category-navigation.less";
 @import "/stylesheets/widgets/image.less";
+@import "/stylesheets/widgets/employee-picks.less";
+@import "/stylesheets/widgets/global-header-include.less";
+@import "/stylesheets/widgets/cms/image-video-slider.less";
+@import "/stylesheets/widgets/homepage/home-page-instagram-slider.less";
+@import "/stylesheets/widgets/homepage/home-page-video.less";
 
 // Future Date Preview Header
 @import "/stylesheets/modules/theme-utility-bar/variables.less";
 @import "/stylesheets/modules/theme-utility-bar/header.less";
+
+
+//ML classes
+@import "/stylesheets/ml/ml-variables.less";
+@import "/stylesheets/ml/misc.less";
+@import "/stylesheets/ml/sm-styles.less";
+@import "/stylesheets/ml/md-styles.less";
+@import "/stylesheets/ml/global-cart.less";
+
+//Print order
+@import "/stylesheets/print-order.less";
+
+// Custom Files for Pride FSW   
+@import "/stylesheets/harmon-discount/site.less";
+@import "/stylesheets/harmon-discount/home-slider.less";
+@import "/stylesheets/harmon-discount/shop-by-category.less";
+@import "/stylesheets/harmon-discount/shop-widget-now.less";
+@import "/stylesheets/harmon-discount/shop-by-brand.less";
+@import "/stylesheets/harmon-discount/global-cart-flyout.less";
+@import "/stylesheets/harmon-discount/directory-page.less";
+@import "/stylesheets/harmon-discount/product-detail.less";
+@import "/stylesheets/harmon-discount/myaccount.less";
+@import "/stylesheets/harmon-discount/checkout.less";
+@import "/stylesheets/pages/brand-gateway.less";
+@import "/stylesheets/modules/customer-service.less";
+@import "/stylesheets/pages/credit-card-gateway-page.less";
+
+// Responsive Changes
+@import "/stylesheets/harmon-discount/responsive/root.less"; 
 

@@ -74,8 +74,8 @@
                                 {{ attributeVal|date("F j, Y") }}
                             {% else %}
                                 {% if attDef.dataType === "Bool" %}
-                                    
-                                    {% if attributeVal == "True" %}
+
+                                    {% if attributeVal == "true" || attributeVal == "True" %}
                                     Yes
                                     {% else %}
                                     No
@@ -92,7 +92,7 @@
         {% endfor %}
 
         {% endblock attributes %}
-
+         <a href="/print-order#{{ model.id }}" target="_blank">Print Order</a>
     {% endblock order-details %}
     </div>
 

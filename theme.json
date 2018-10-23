@@ -4,18 +4,21 @@
     "defaultLanguage": "en-US",
     "extends": null,
     "isDesktop": true,
-    "isMobile": false,
-    "isTablet": false,
-    "name": "MySetupTheme",
+    "isMobile": true,
+    "isTablet": true,
+    "name": "PrideTheme_Happy",
     "allowProduction": true,
-    "baseTheme": "https://github.com/mozu/core-theme.git",
+    "baseTheme": "https://github.com/singh-vsc/PrideFSW",
     "baseThemeVersion": {
-      "commit": "e96f883b177bf948d09bdd608837d0f9fcba2438",
-      "version": "9.6.0"
+      "commit": "6498fbf65e610bd74dc66045e2cfb145482a9683"
     },
     "baseThemeChannel": "stable"
   },
   "editors": [
+    {
+      "id": "rti-rec-editor",
+      "path": "rti-rec-editor.js"
+    },
     {
       "id": "layout",
       "path": "layout.js"
@@ -87,6 +90,13 @@
       "properties": {},
       "template": "email/order-shipped",
       "title": "Your Order Has Shipped"
+    },
+    {
+      "id": "checkout.changed",
+      "customEditor": "email-orderconfirmation-v2",
+      "properties": {},
+      "template": "email/order-confirmation-v2",
+      "title": "Order Confirmation V2"
     },
     {
       "id": "order.changed",
@@ -252,6 +262,31 @@
       "userCreatable": true
     },
     {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "catalog-request",
+      "template": "catalog-request",
+      "title": "Catalog Request",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "store-detail",
+      "template": "store-detail",
+      "title": "Store Locator Detail",
+      "userCreatable": true
+    },
+    {
+      "id": "print-order",
+      "title": "Print Order",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "pages/print-order",
+      "customEditor": "back-office@mozu",
+      "userCreatable": true
+    },
+    {
       "entityType": "category",
       "id": "category",
       "template": "category",
@@ -318,6 +353,20 @@
       "userCreatable": false
     },
     {
+      "entityType": "checkout",
+      "id": "confirmationv2",
+      "template": "confirmationv2",
+      "title": "ConfirmationV2",
+      "userCreatable": false
+    },
+    {
+      "entityType": "checkout",
+      "id": "checkoutv2",
+      "template": "checkoutv2",
+      "title": "Checkout V2",
+      "userCreatable": false
+    },
+    {
       "entityType": "customer",
       "id": "my_account",
       "template": "my-account",
@@ -365,9 +414,341 @@
       "template": "order-status",
       "title": "Order Status",
       "userCreatable": false
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "site-map",
+      "template": "site-map",
+      "title": "Site Map",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "email-signup",
+      "template": "email-signup",
+      "title": "Email Signup",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "customer-service",
+      "template": "customer-service",
+      "title": "Customer Service",
+      "userCreatable": true
     }
   ],
   "settings": {
+    "oneSizeAttributeName": "tenant~ONESIZE",
+    "oneSizeProductType": "Single Variant",
+    "maxRecentlyViewedItems": 5,
+    "allProductsCategoryId": 0,
+    "pdpMainImageNameSwatch": "{0}_{1}_v{2}.jpg",
+    "pdpMainImageNameAlt": "{0}_{1}_v{2}.jpg",
+    "pdpMainImageMaxWidth": "320",
+    "pdpAltImageName": "{0}_{1}_v{2}.jpg",
+    "pdpAltImageMaxWidth": "90",
+    "pdpSwatchImageName": "{1}.gif",
+    "pdpSwatchImageMaxWidth": "30",
+    "colorSwatchesChangeMain": true,
+    "familyProductType": "Family Products",
+    "familyProductAttribute": "tenant~family-members",
+    "colorSwatchesChangeAlternate": false,
+    "customCountries": [
+      {
+        "value": "US",
+        "key": "United States"
+      }
+    ],
+    "customStates": [
+      {
+        "key": "AL",
+        "value": "Alabama"
+      },
+      {
+        "key": "AK",
+        "value": "Alaska"
+      },
+      {
+        "key": "AS",
+        "value": "American Samoa"
+      },
+      {
+        "key": "AZ",
+        "value": "Arizona"
+      },
+      {
+        "key": "AR",
+        "value": "Arkansas"
+      },
+      {
+        "key": "AA",
+        "value": "Armed Forces Americas"
+      },
+      {
+        "key": "AE",
+        "value": "Armed Forces Europe"
+      },
+      {
+        "key": "AP",
+        "value": "Armed Forces Pacific"
+      },
+      {
+        "key": "CA",
+        "value": "California"
+      },
+      {
+        "key": "CO",
+        "value": "Colorado"
+      },
+      {
+        "key": "CT",
+        "value": "Connecticut"
+      },
+      {
+        "key": "DE",
+        "value": "Delaware"
+      },
+      {
+        "key": "DC",
+        "value": "District Of Columbia"
+      },
+      {
+        "key": "FM",
+        "value": "Federated States Of Micronesia"
+      },
+      {
+        "key": "FL",
+        "value": "Florida"
+      },
+      {
+        "key": "GA",
+        "value": "Georgia"
+      },
+      {
+        "key": "GU",
+        "value": "Guam"
+      },
+      {
+        "key": "HI",
+        "value": "Hawaii"
+      },
+      {
+        "key": "ID",
+        "value": "Idaho"
+      },
+      {
+        "key": "IL",
+        "value": "Illinois"
+      },
+      {
+        "key": "IN",
+        "value": "Indiana"
+      },
+      {
+        "key": "IA",
+        "value": "Iowa"
+      },
+      {
+        "key": "KS",
+        "value": "Kansas"
+      },
+      {
+        "key": "KY",
+        "value": "Kentucky"
+      },
+      {
+        "key": "LA",
+        "value": "Louisiana"
+      },
+      {
+        "key": "ME",
+        "value": "Maine"
+      },
+      {
+        "key": "MH",
+        "value": "Marshall Islands"
+      },
+      {
+        "key": "MD",
+        "value": "Maryland"
+      },
+      {
+        "key": "MA",
+        "value": "Massachusetts"
+      },
+      {
+        "key": "MI",
+        "value": "Michigan"
+      },
+      {
+        "key": "MN",
+        "value": "Minnesota"
+      },
+      {
+        "key": "MS",
+        "value": "Mississippi"
+      },
+      {
+        "key": "MO",
+        "value": "Missouri"
+      },
+      {
+        "key": "MT",
+        "value": "Montana"
+      },
+      {
+        "key": "NE",
+        "value": "Nebraska"
+      },
+      {
+        "key": "NV",
+        "value": "Nevada"
+      },
+      {
+        "key": "NH",
+        "value": "New Hampshire"
+      },
+      {
+        "key": "NJ",
+        "value": "New Jersey"
+      },
+      {
+        "key": "NM",
+        "value": "New Mexico"
+      },
+      {
+        "key": "NY",
+        "value": "New York"
+      },
+      {
+        "key": "NC",
+        "value": "North Carolina"
+      },
+      {
+        "key": "ND",
+        "value": "North Dakota"
+      },
+      {
+        "key": "MP",
+        "value": "Northern Mariana Islands"
+      },
+      {
+        "key": "OH",
+        "value": "Ohio"
+      },
+      {
+        "key": "OK",
+        "value": "Oklahoma"
+      },
+      {
+        "key": "OR",
+        "value": "Oregon"
+      },
+      {
+        "key": "PW",
+        "value": "Palau"
+      },
+      {
+        "key": "PA",
+        "value": "Pennsylvania"
+      },
+      {
+        "key": "PR",
+        "value": "Puerto Rico"
+      },
+      {
+        "key": "RI",
+        "value": "Rhode Island"
+      },
+      {
+        "key": "SC",
+        "value": "South Carolina"
+      },
+      {
+        "key": "SD",
+        "value": "South Dakota"
+      },
+      {
+        "key": "TN",
+        "value": "Tennessee"
+      },
+      {
+        "key": "TX",
+        "value": "Texas"
+      },
+      {
+        "key": "UT",
+        "value": "Utah"
+      },
+      {
+        "key": "VT",
+        "value": "Vermont"
+      },
+      {
+        "key": "VI",
+        "value": "Virgin Islands"
+      },
+      {
+        "key": "VA",
+        "value": "Virginia"
+      },
+      {
+        "key": "WA",
+        "value": "Washington"
+      },
+      {
+        "key": "WV",
+        "value": "West Virginia"
+      },
+      {
+        "key": "WI",
+        "value": "Wisconsin"
+      },
+      {
+        "key": "WY",
+        "value": "Wyoming"
+      }
+    ],
+    "fullNameLength": 80,
+    "firstNameLength": 40,
+    "middleNameInitialsLength": 1,
+    "lastNameLength": 40,
+    "emailLength": 80,
+    "passwordMinLength": 8,
+    "passwordMaxLength": 80,
+    "phoneNumberLength": 10,
+    "addressLength": 80,
+    "cityNameLength": 40,
+    "stateNameLength": 40,
+    "zipcodeLength": 10,
+    "creditCardNumberLength": 16,
+    "paymentSecurityCodeLength": 4,
+    "giftCardLength": 20,
+    "couponCodeLength": 20,
+    "checkoutCommentsLength": 200,
+    "checkoutGiftMessageLength": 60,
+    "orderNumberLength": 80,
+    "orderVerificationCodeLength": 80,
+    "productQuantityLength": 5,
+    "productImagePdpMaxWidth": 350,
+    "familyProductImageMaxWidth": 160,
+    "productImageDirectoryMaxWidth": 265,
+    "productThumbImageMaxWidth": 84,
+    "productZoomImageMaxWidth": 700,
+    "productCarouselImageWidth": 84,
+    "globalCartEmptyBasketFooter": "",
+    "globalCartEmptyBasketKickerLink": "",
+    "globalCartRelatedProducts": "true",
+    "globalCartRelatedProductsSize": 5,
+    "globalCartMaxItemCount": 3,
+    "globalCartEnableSaveCart": "true",
+    "globalCartHidePopover": "",
+    "globalCartShowSubtotal": false,
+    "globalCartItemImageMaxWidth": 105,
+    "footerEnableMini": false,
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,
     "extendedPropertyParameters": "",
@@ -379,6 +760,7 @@
     "bannerImageEnabled": false,
     "bannerImageRepeat": "repeat-x",
     "bodyBackgroundColor": "#FFFFFF",
+    "minimumQuantityForInStockQuantityMessage": 5,
     "cmsTextStyles": [
       {
         "className": "mz-style-1",
@@ -394,7 +776,9 @@
         "tagName": "p"
       }
     ],
-    "defaultPageSize": 15,
+    "defaultPageSize": 36,
+    "columnBreaker": "~",
+    "productInfinitySize": 54,
     "defaultSort": "createDate asc",
     "enablePartialCaching": true,
     "loadGoogleFonts": [
@@ -407,25 +791,37 @@
     "itemListingThumbSize": 80,
     "listProductCode": true,
     "listProductShortDesc": true,
-    "listVolumePricing": false,
-    "listProductThumbSize": 160,
-    "maxProductImageThumbnailSize": 50,
+    "listProductThumbSize": 265,
+    "maxProductImageThumbnailSize": 90,
     "maxProductSummaryWords": 40,
     "maxTopLevelNavItems": 8,
     "maxTopLevelNavLabelLength": 20,
+    "productCarouselSize": 8,
     "pageSizeOptions": [
-      15,
-      25,
-      50,
-      100
+      36,
+      72
     ],
+    "productInfoTabs": "",
+    "viewAllPageSize": 54,
+    "viewAllPageSizeOrderHistory": 10,
+    "defaultPageSizeOrderHistory": 5,
+    "filterConfiguration": "[{\"name\": \"Color\",\"enable\": true,\"key\": \"tenant~COLOR\",\"showCount\": false,\"definition\": {\"showMoreCount\": 0,\"type\": \"swatch\"}},{\"name\": \"Size\",\"enable\": true,\"key\": \"tenant~SIZE\",\"showCount\": false,\"definition\": {\"showMoreCount\": 0,\"type\": \"Text\"}},{\"name\": \"Styles\",\"enable\": true,\"key\": \"tenant~STYLES\",\"showCount\": false,\"definition\": {\"showMoreCount\": 0,\"type\": \"Text\"}},{\"name\": \"ProductType\",\"enable\": false,\"key\": \"tenant~PRODUCTTYPE\",\"showCount\": false,\"definition\": {\"showMoreCount\": 3,\"type\": \"text\"}},{\"name\": \"Materials\",\"enable\": true,\"key\": \"tenant~MATERIALS\",\"showCount\": false,\"definition\": {\"showMoreCount\": 0,\"type\": \"Text\"}},{\"name\": \"Ratings\",\"enable\": true,\"key\": \"tenant~RATINGS\",\"showCount\": true,\"definition\": {\"showMoreCount\": 0,\"type\": \"Stars\"},\"values\": [5,4,3,2,1]},{\"name\": \"Price\",\"enable\": true,\"key\": \"price\",\"showCount\": true,\"definition\": {\"showMoreCount\": 0,\"type\": \"PriceBreak\"},\"values\": [{\"lo\": 0,\"hi\": 29.99,\"Format\": \"$HI and under\"},{\"lo\": 30,\"hi\": 49.99,\"Format\": \"$LO - $HI\"},{\"lo\": 50,\"hi\": 99.99,\"Format\": \"$LO - $HI\"},{\"lo\": 100,\"hi\": 199.99,\"Format\": \"$LO - $HI\"},{\"lo\": 200,\"hi\": 999999.99,\"Format\": \"$LO +\"}]}]",
+    "googleMapAPIKey": "",
+    "googleMapLatitude": 41.652491,
+    "googleMapLongitude": -70.288112,
+    "googleMapZoom": 8,
+    "storesPageSize": 5,
+    "facebookShareLink": "https://www.facebook.com/MozuCommerce",
+    "googleMapPinIcon": "",
+    "searchStorePlaceHolder": "Enter City, State or ZIP",
+    "googleMapMaxNearbyDistance": 10000000,
     "preselectCountryCode": "US",
     "productImagesContainerWidth": 350,
     "requireCheckoutAgreeToTerms": true,
     "suggestPriorSearchTerms": true,
     "searchExpandOnFocus": true,
     "showAddressTypeDropdown": true,
-    "showBreadcrumbs": true,
+    "showBreadcrumbs": false,
     "showCartItemDimensions": true,
     "showCartItemImage": true,
     "showCartItemOptions": true,
@@ -436,10 +832,18 @@
     "showMSRP": true,
     "showProductDetailMeasurements": true,
     "showProductDetailMfgPartNumber": true,
-    "showProductDetailProperties": true,
+    "showProductDetailProperties": false,
     "showProductDetailShortDesc": true,
     "showProductDetailUPC": true,
     "textColor": "#444444",
+    "companyLogo": "/resources/images/logo-sm.png",
+    "facetMoreColorCount": 3,
+    "enableQuickView": true,
+    "categoryEntityName": "categoryAttributes@ng",
+    "globalPageHeaderLogoSM": null,
+    "globalPageHeaderLogoXS": null,
+    "enableProductCarousel": true,
+    "homePageCategoryWidgetAltText": "home_cat_widget_img",
     "usStates": [
       {
         "abbreviation": "AL",
@@ -681,7 +1085,10 @@
     "useDebugScripts": false,
     "useSearchAutocomplete": true,
     "allowCustomerInitiatedReturns": true,
-    "visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js"
+    "visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",
+    "returnsInfo": "Return Item",
+    "paymentsMethodInfo": "Payment Methods",
+    "giftCardsInfo": "Gift Card"
   },
   "layoutWidgets": [
     {
@@ -790,6 +1197,59 @@
     }
   ],
   "widgets": [
+    {
+      "displayName": "RTI Recommended Products",
+      "displayTemplate": "RTI/rti-rec-template",
+      "customEditor": "rti-rec-editor",
+      "icon": "/resources/admin/widgets/rti-recommend.png",
+      "id": "rti-rec-display",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "RTI Observation Tag",
+      "displayTemplate": "RTI/rti-observation.hypr",
+      "icon": "/resources/admin/widgets/rti-observation.png",
+      "id": "rti-observation-tag",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "defaultConfig": {},
+      "displayName": "Product carousel",
+      "displayTemplate": "misc/product-carousel",
+      "editViewFields": [
+        {
+          "fieldLabel": "Select Products",
+          "name": "products",
+          "xtype": "mz-input-productmulti"
+        }
+      ],
+      "icon": "/resources/admin/widgets/city-carousel-icon.png",
+      "id": "product-carousel-widget",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Bronto Conversion Tracking",
+      "displayTemplate": "bronto/bronto",
+      "icon": "/resources/admin/widgets/bronto_logo_thin.png",
+      "id": "socialcontent-widget",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Tag Manager Script",
+          "name": "tagManagerScript",
+          "xtype": "textareafield"
+        }
+      ],
+      "validPageTypes": [
+        "*"
+      ]
+    },
     {
       "defaultConfig": {
         "template": "modules/product/product-list"
@@ -1120,6 +1580,48 @@
     },
     {
       "defaultConfig": {
+        "template": "modules/product/recent-product-list-gorsuch",
+        "title": "Recently Viewed Items"
+      },
+      "displayName": "Recently Viewed Items",
+      "displayTemplate": "catalog/recently-viewed-products",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Template",
+          "name": "template",
+          "store": [
+            [
+              "modules/product/product-list-tiled",
+              "tiled"
+            ],
+            [
+              "modules/product/product-list",
+              "list"
+            ],
+            [
+              "modules/product/recent-product-list-gorsuch",
+              "carousel"
+            ]
+          ],
+          "xtype": "mz-input-dropdown"
+        }
+      ],
+      "icon": "/resources/admin/widgets/26_related_products.png",
+      "id": "recentlyViewedProducts",
+      "validPageTypes": [
+        "product",
+        "cart"
+      ]
+    },
+    {
+      "defaultConfig": {
         "body": "<h2>Insert Markup</h2>"
       },
       "displayName": "HTML",
@@ -1196,6 +1698,623 @@
       "editView": "taco-dealoftheday-widgeteditor",
       "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
       "id": "deal-of-the-day",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Social Content",
+      "displayTemplate": "social/socialcontent",
+      "customEditor": "socialContentEditor",
+      "icon": "/resources/admin/widgets/widget-icon-socialcontent.png",
+      "id": "socialcontent-widget-2",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "social-icons",
+      "displayName": "Social Icons",
+      "displayTemplate": "social/social-icons",
+      "editViewFields": [
+        {
+          "name": "facebooklinks",
+          "fieldLabel": "Facebook Links",
+          "xtype": "textfield",
+          "allowBlank": true
+        },
+        {
+          "name": "twitterlinks",
+          "fieldLabel": "Twitter Link",
+          "xtype": "textfield",
+          "allowBlank": true
+        },
+        {
+          "name": "instagramlinks",
+          "fieldLabel": "Instagram Links",
+          "xtype": "textfield",
+          "allowBlank": true
+        },
+        {
+          "name": "youtubelinks",
+          "fieldLabel": "Youtube Link",
+          "xtype": "textfield",
+          "allowBlank": true
+        }
+      ],
+      "icon": "/resources/admin/widgets/social.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "Image-video-slide_widget",
+      "displayName": "Image-Video-Slider",
+      "displayTemplate": "cms/image-video-slider",
+      "editViewFields": [
+        {
+          "xtype": "fieldcontainer",
+          "anchor": "100%",
+          "fieldlabel": "Select / Upload",
+          "items": [
+            {
+              "name": "images",
+              "fieldLabel": "Select / Upload Images (Image first for first slide & last for last Slide)",
+              "xtype": "taco.imagefield"
+            }
+          ]
+        },
+        {
+          "name": "sliderHeight",
+          "style": "width: 52%",
+          "fieldLabel": "Slider Height",
+          "xtype": "textfield"
+        },
+        {
+          "name": "sliderImageHeight",
+          "style": "width: 52%",
+          "fieldLabel": "Slider Image Height",
+          "xtype": "textfield"
+        },
+        {
+          "name": "sliderDuration",
+          "style": "width: 52%",
+          "fieldLabel": "Slider Duration (In Seconds)",
+          "xtype": "textfield"
+        },
+        {
+          "name": "slide1panel",
+          "xtype": "panel",
+          "style": "background:#ccb;margin:10px; padding:20px",
+          "title": "First Slider",
+          "items": [
+            {
+              "style": "width: 52%",
+              "fieldLabel": "first slider option",
+              "name": "firstslider",
+              "xtype": "mz-input-dropdown",
+              "store": [
+                [
+                  "1",
+                  "Image Slide"
+                ],
+                [
+                  "2",
+                  "Video Slide"
+                ]
+              ]
+            },
+            {
+              "name": "viderourlfirst",
+              "style": "width: 52%",
+              "fieldLabel": "Link for first video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroStartTimefirst",
+              "style": "width: 52%",
+              "fieldLabel": "Start duration for first video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroEndTimefirst",
+              "style": "width: 52%",
+              "fieldLabel": "End duration for first video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "labelfirst",
+              "style": "width: 52%",
+              "fieldLabel": "Title for first image",
+              "xtype": "textfield"
+            },
+            {
+              "name": "firstSliderImageSizePositionForDesktop",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Desktop",
+              "xtype": "textfield"
+            },
+            {
+              "name": "firstSliderImageSizePositionForTablet",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Tablet",
+              "xtype": "textfield"
+            },
+            {
+              "name": "firstSliderImageSizePositionForMobile",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Mobile",
+              "xtype": "textfield"
+            },
+            {
+              "xtype": "displayfield",
+              "style": "margin-top: 2rem",
+              "value": "<p>Select a Category or enter an URL for Slide 1:</br><span style='font-size:smaller;'>Note: if both configured, the category will take precedent.</span></p>"
+            },
+            {
+              "fieldLabel": "Select link to category on Button click",
+              "name": "firstcategoryUrl",
+              "xtype": "mz-input-category",
+              "displayField": "name",
+              "anchor": "60%",
+              "valueField": "id",
+              "queryMode": "local",
+              "allowMultiple": false,
+              "store": {
+                "type": "Taco.store.Categories"
+              }
+            },
+            {
+              "xtype": "displayfield",
+              "value": "<b>OR</b>"
+            },
+            {
+              "name": "linkfirst",
+              "style": "width: 52%",
+              "fieldLabel": "Enter link to category on Button click",
+              "xtype": "textfield"
+            }
+          ]
+        },
+        {
+          "name": "slide2panel",
+          "xtype": "panel",
+          "style": "background:#ccc;margin:10px; padding:10px",
+          "title": "Second Slider",
+          "items": [
+            {
+              "style": "width: 52%",
+              "fieldLabel": "second slider option",
+              "name": "secondslider",
+              "xtype": "mz-input-dropdown",
+              "store": [
+                [
+                  "1",
+                  "Image Slide"
+                ],
+                [
+                  "2",
+                  "Video Slide"
+                ]
+              ]
+            },
+            {
+              "name": "viderourlsecond",
+              "style": "width: 52%",
+              "fieldLabel": "Link for second video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroStartTimesecond",
+              "style": "width: 52%",
+              "fieldLabel": "Start duration for second video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroEndTimesecond",
+              "style": "width: 52%",
+              "fieldLabel": "End duration for second video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "labelsecond",
+              "style": "width: 52%",
+              "fieldLabel": "Title for second Image",
+              "xtype": "textfield"
+            },
+            {
+              "name": "secondSliderImageSizePositionForDesktop",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Desktop",
+              "xtype": "textfield"
+            },
+            {
+              "name": "secondSliderImageSizePositionForTablet",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Tablet",
+              "xtype": "textfield"
+            },
+            {
+              "name": "secondSliderImageSizePositionForMobile",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Mobile",
+              "xtype": "textfield"
+            },
+            {
+              "xtype": "displayfield",
+              "style": "margin-top: 2rem",
+              "value": "<p>Select a Category or enter an URL for Slide 2:</br><span style='font-size:smaller;'>Note: if both configured, the category will take precedent.</span></p>"
+            },
+            {
+              "fieldLabel": "Select link to category on Button click",
+              "name": "secondcategoryUrl",
+              "xtype": "mz-input-category",
+              "displayField": "name",
+              "anchor": "60%",
+              "valueField": "id",
+              "queryMode": "local",
+              "allowMultiple": false,
+              "store": {
+                "type": "Taco.store.Categories"
+              }
+            },
+            {
+              "xtype": "displayfield",
+              "value": "<b>OR</b>"
+            },
+            {
+              "name": "linksecond",
+              "style": "width: 52%",
+              "fieldLabel": "Select link to category on Button click",
+              "xtype": "textfield"
+            }
+          ]
+        },
+        {
+          "name": "slide3panel",
+          "xtype": "panel",
+          "style": "background:#ccb;margin:10px; padding:10px",
+          "title": "Third Slider",
+          "items": [
+            {
+              "fieldLabel": "Third slider option",
+              "name": "thirdslider",
+              "xtype": "mz-input-dropdown",
+              "style": "width: 52%",
+              "store": [
+                [
+                  "1",
+                  "Image Slide"
+                ],
+                [
+                  "2",
+                  "Video Slide"
+                ]
+              ]
+            },
+            {
+              "name": "viderourlthird",
+              "style": "width: 52%",
+              "fieldLabel": "Link for third video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroStartTimethird",
+              "style": "width: 52%",
+              "fieldLabel": "Start duration for third video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "videroEndTimethird",
+              "style": "width: 52%",
+              "fieldLabel": "End duration for third video",
+              "xtype": "textfield"
+            },
+            {
+              "name": "labelthird",
+              "style": "width: 52%",
+              "fieldLabel": "Title for third Image",
+              "xtype": "textfield"
+            },
+            {
+              "name": "thirdSliderImageSizePositionForDesktop",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Desktop",
+              "xtype": "textfield"
+            },
+            {
+              "name": "thirdSliderImageSizePositionForTablet",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Tablet",
+              "xtype": "textfield"
+            },
+            {
+              "name": "thirdSliderImageSizePositionForMobile",
+              "style": "width: 52%",
+              "fieldLabel": "Slider Image Size and Position For Mobile",
+              "xtype": "textfield"
+            },
+            {
+              "xtype": "displayfield",
+              "style": "margin-top: 2rem",
+              "value": "<p>Select a Category or enter an URL for Slide 3:</br><span style='font-size:smaller;'>Note: if both configured, the category will take precedent.</span></p>"
+            },
+            {
+              "fieldLabel": "Select link to category on Button click",
+              "name": "thirdcategoryUrl",
+              "xtype": "mz-input-category",
+              "displayField": "name",
+              "anchor": "60%",
+              "valueField": "id",
+              "queryMode": "local",
+              "allowMultiple": false,
+              "store": {
+                "type": "Taco.store.Categories"
+              }
+            },
+            {
+              "xtype": "displayfield",
+              "value": "<b>OR</b>"
+            },
+            {
+              "name": "linkthird",
+              "style": "width: 52%",
+              "fieldLabel": "Select link to category on Button click",
+              "xtype": "textfield"
+            }
+          ]
+        }
+      ],
+      "icon": "/resources/admin/widgets/image_video_slider.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "home-page-video-widge",
+      "displayName": "Home Page Video Widget",
+      "displayTemplate": "homepage/home-page-video",
+      "editViewFields": [
+        {
+          "name": "homepagevideotitle",
+          "fieldLabel": "Title",
+          "xtype": "textfield",
+          "width": "60%"
+        },
+        {
+          "name": "homepagevideosubtitle",
+          "fieldLabel": "Sub Title",
+          "xtype": "textfield",
+          "width": "60%"
+        },
+        {
+          "name": "homepageviewvideo",
+          "fieldLabel": "Video Link",
+          "xtype": "textfield",
+          "width": "60%"
+        },
+        {
+          "name": "homepagevideoimageurl",
+          "fieldLabel": "Image",
+          "xtype": "taco.imagefield"
+        }
+      ],
+      "defaultConfig": {
+        "heightResizable": false
+      },
+      "icon": "/resources/admin/widgets/homepage_video.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "New Arrivals",
+      "displayTemplate": "catalog/new-arrivals",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Products",
+          "name": "productCodes",
+          "xtype": "mz-input-productmulti"
+        }
+      ],
+      "icon": "/resources/admin/widgets/new_arrival.png",
+      "id": "new_arrivals_product",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "defaultConfig": {
+        "heightResizable": false
+      },
+      "displayName": "Home Page Sub Category",
+      "displayTemplate": "homepage/home-sub-categories",
+      "editViewFields": [
+        {
+          "fieldLabel": "Categories",
+          "name": "categories",
+          "xtype": "boxselect",
+          "anchor": "100%",
+          "displayField": "name",
+          "valueField": "id",
+          "queryMode": "local",
+          "store": {
+            "type": "Taco.store.Categories"
+          }
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor1",
+          "fieldLabel": "Strip Color 1"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor2",
+          "fieldLabel": "Strip Color 2"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor3",
+          "fieldLabel": "Strip Color 3"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor4",
+          "fieldLabel": "Strip Color 4"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor5",
+          "fieldLabel": "Strip Color 5"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor6",
+          "fieldLabel": "Strip Color 6"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor7",
+          "fieldLabel": "Strip Color 7"
+        },
+        {
+          "xtype": "mz-input-color",
+          "name": "stripColor8",
+          "fieldLabel": "Strip Color 8"
+        }
+      ],
+      "icon": "/resources/admin/widgets/subcategory.png",
+      "id": "catNav",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "defaultConfig": {
+        "heightResizable": false
+      },
+      "id": "Whats-Trending-Now_widget",
+      "displayName": "Home Page Whats Trending Now",
+      "displayTemplate": "homepage/home-trend-now",
+      "editViewFields": [
+        {
+          "xtype": "fieldcontainer",
+          "anchor": "100%",
+          "fieldlabel": "Select / Upload",
+          "items": [
+            {
+              "name": "trendingimages1",
+              "fieldLabel": "Select / Upload Images",
+              "xtype": "taco.imagefield"
+            }
+          ]
+        },
+        {
+          "name": "trendName1",
+          "fieldLabel": "Title for the trending image",
+          "xtype": "textfield"
+        },
+        {
+          "name": "trendDesc1",
+          "fieldLabel": "Description for the trending image",
+          "xtype": "textfield",
+          "width": "100%"
+        },
+        {
+          "name": "linkTrend1",
+          "fieldLabel": "Embedded link for Trending Now",
+          "xtype": "textfield"
+        }
+      ],
+      "icon": "/resources/admin/widgets/trending.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "home-page-instagram-slider",
+      "displayName": "Home Page Instagram Slider Widget",
+      "displayTemplate": "homepage/home-page-instagram-slider",
+      "editViewFields": [
+        {
+          "name": "profilename",
+          "fieldLabel": "Instagram Profile Name",
+          "xtype": "textfield",
+          "width": "60%"
+        },
+        {
+          "name": "UserId",
+          "fieldLabel": "Instagram User Id",
+          "xtype": "textfield",
+          "width": "60%"
+        },
+        {
+          "name": "accessToken",
+          "fieldLabel": "Instagram Access Token",
+          "xtype": "textfield",
+          "width": "60%"
+        }
+      ],
+      "defaultConfig": {
+        "heightResizable": false
+      },
+      "icon": "/resources/admin/widgets/instragram.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Popular Products",
+      "displayTemplate": "catalog/popular-products",
+      "id": "popularProducts",
+      "defaultConfig": {
+        "title": "Popular Products"
+      },
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Slider Title",
+          "name": "title",
+          "xtype": "mz-input-category"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "configurableTitle",
+          "xtype": "mz-input-text"
+        }
+      ],
+      "icon": "/resources/admin/widgets/top_selling.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "New Arrivals",
+      "displayTemplate": "catalog/new-arrivals",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Products",
+          "name": "productCodes",
+          "xtype": "mz-input-productmulti"
+        }
+      ],
+      "icon": "/resources/admin/widgets/new_arrival.png",
+      "id": "new_arrivals_product",
       "validPageTypes": [
         "*"
       ]

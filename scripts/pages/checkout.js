@@ -1,4 +1,14 @@
-require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu", "modules/models-checkout", "modules/views-messages", "modules/cart-monitor", 'hyprlivecontext', 'modules/editable-view', 'modules/preserve-element-through-render'], function ($, _, Hypr, Backbone, CheckoutModels, messageViewFactory, CartMonitor, HyprLiveContext, EditableView, preserveElements) {
+require(["modules/jquery-mozu", 
+    "underscore", "hyprlive", 
+    "modules/backbone-mozu", 
+    "modules/models-checkout", 
+    "modules/views-messages", 
+    "modules/cart-monitor", 
+    'hyprlivecontext', 
+    'modules/editable-view', 
+    'modules/preserve-element-through-render',
+    'modules/xpress-paypal'], 
+    function ($, _, Hypr, Backbone, CheckoutModels, messageViewFactory, CartMonitor, HyprLiveContext, EditableView, preserveElements,PayPal) {
 
 
     var CheckoutStepView = EditableView.extend({
@@ -90,6 +100,12 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         ],
         beginAddContact: function () {
             this.model.set('contactId', 'new');
+        },
+        additionalEvents: {
+            "input [name='shippingphone']": "allowDigit"
+        },
+        allowDigit:function(e){
+            e.target.value= e.target.value.replace(/[^\d]/g,'');
         }
     });
 
@@ -123,7 +139,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             }
 
         return fieldDefs;
-
     };
 
     var visaCheckoutSettings = HyprLiveContext.locals.siteContext.checkoutSettings.visaCheckout;
@@ -168,17 +183,56 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             'savedPaymentMethodId'
         ],
         additionalEvents: {
+            "blur #mz-payment-credit-card-number": "changeCardType",
             "change [data-mz-digital-credit-enable]": "enableDigitalCredit",
             "change [data-mz-digital-credit-amount]": "applyDigitalCredit",
             "change [data-mz-digital-add-remainder-to-customer]": "addRemainderToCustomer",
             "change [name='paymentType']": "resetPaymentData",
+            "input  [name='security-code'],[name='credit-card-number'],[name='shippingphone']": "allowDigit",
             "change [data-mz-purchase-order-payment-term]": "updatePurchaseOrderPaymentTerm"
         },
+        changeCardType:function(e){
+            window.checkoutModel = this.model;
+            var number = e.target.value;
+            var cardType='';
+            // visa
+            var re = new RegExp("^4");
+            if (number.match(re) !== null){
+                cardType = "VISA";
+            }
 
+            // Mastercard 
+            // Updated for Mastercard 2017 BINs expansion
+             if (/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(number)) 
+                cardType = "MC";
+
+            // AMEX
+            re = new RegExp("^3[47]");
+            if (number.match(re) !== null)
+                cardType = "AMEX";
+
+            // Discover
+            re = new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)");
+            if (number.match(re) !== null)
+                cardType = "DISCOVER";
+            
+            $('.mz-card-type-images').find('span').removeClass('active');
+            if(cardType){
+                this.model.set('card.paymentOrCardType',cardType);
+                $("#mz-payment-credit-card-type").val(cardType);
+                $('.mz-card-type-images').find('span[data-mz-card-type-image="'+cardType+'"]').addClass('active');
+            }
+            else{
+                this.model.set('card.paymentOrCardType',null);    
+            }
+        },
         initialize: function () {
             // this.addPOCustomFieldAutoUpdate();
             this.listenTo(this.model, 'change:digitalCreditCode', this.onEnterDigitalCreditCode, this);
             this.listenTo(this.model, 'orderPayment', function (order, scope) {
+                    this.render();
+            }, this);
+            this.listenTo(this.model, 'billingContactUpdate', function (order, scope) {
                     this.render();
             }, this);
             this.listenTo(this.model, 'change:savedPaymentMethodId', function (order, scope) {
@@ -187,10 +241,14 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             }, this);
             this.codeEntered = !!this.model.get('digitalCreditCode');
         },
+        allowDigit:function(e){
+            e.target.value= e.target.value.replace(/[^\d]/g,'');
+        },
         resetPaymentData: function (e) {
             if (e.target !== $('[data-mz-saved-credit-card]')[0]) {
                 $("[name='savedPaymentMethods']").val('0');
             }
+            this.editing.savedCard = true;
             this.model.clear();
             this.model.resetAddressDefaults();
             if(HyprLiveContext.locals.siteContext.checkoutSettings.purchaseOrder.isEnabled) {
@@ -201,7 +259,7 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             this.model.setPurchaseOrderPaymentTerm(e.target.value);
         },
         render: function() {
-            preserveElements(this, ['.v-button'], function() {
+            preserveElements(this, ['.v-button', '.p-button'], function() {
                 CheckoutStepView.prototype.render.apply(this, arguments);
             });
             var status = this.model.stepStatus();
@@ -210,6 +268,9 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
                 require([pageContext.visaCheckoutJavaScriptSdkUrl]);
                 this.visaCheckoutInitialized = true;
             }
+
+            if (this.$(".p-button").length > 0)
+                PayPal.loadScript();
         },
         updateAcceptsMarketing: function(e) {
             this.model.getOrder().set('acceptsMarketing', $(e.currentTarget).prop('checked'));
@@ -219,15 +280,24 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             this.model.set('usingSavedCard', e.currentTarget.hasAttribute('data-mz-saved-credit-card'));
             this.model.set('paymentType', newType);
         },
+        edit: function () {
+            this.model.edit();
+            this.beginEditingCard();
+        },         
         beginEditingCard: function() {
             var me = this;
-            var isVisaCheckout = this.model.visaCheckoutFlowComplete();
-            if (!isVisaCheckout) {
+            if (!this.model.isExternalCheckoutFlowComplete()) {
                 this.editing.savedCard = true;
                 this.render();
             } else {
-                this.doModelAction('cancelVisaCheckout').then(function() {
-                    me.editing.savedCard = false;
+                this.cancelExternalCheckout();
+            }
+        },
+        beginEditingExternalPayment: function () {
+            var me = this;
+            if (this.model.isExternalCheckoutFlowComplete()) {
+                this.doModelAction('cancelExternalCheckout').then(function () {
+                    me.editing.savedCard = true;
                     me.render();
                 });
             }
@@ -243,6 +313,13 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         cancelApplyCredit: function () {
             this.model.closeApplyCredit();
             this.render();
+        },
+        cancelExternalCheckout: function () {
+            var me = this;
+            this.doModelAction('cancelExternalCheckout').then(function () {
+                me.editing.savedCard = false;
+                me.render();
+            });
         },
         finishApplyCredit: function () {
             var self = this;
@@ -284,11 +361,11 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         onEnterDigitalCreditCode: function(model, code) {
             if (code && !this.codeEntered) {
                 this.codeEntered = true;
-                this.$el.find('button').prop('disabled', false);
+                this.$el.find('input#digital-credit-code').siblings('button').prop('disabled', false);
             }
             if (!code && this.codeEntered) {
                 this.codeEntered = false;
-                this.$el.find('button').prop('disabled', true);
+                this.$el.find('input#digital-credit-code').siblings('button').prop('disabled', true);
             }
         },
         enableDigitalCredit: function(e) {
@@ -492,6 +569,8 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
       return conf;
     };
 
+
+
     $(document).ready(function () {
 
         var $checkoutView = $('#checkout-form'),
@@ -506,7 +585,7 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
                 steps: {
                     shippingAddress: new ShippingAddressView({
                         el: $('#step-shipping-address'),
-                        model: checkoutModel.get("fulfillmentInfo").get("fulfillmentContact")
+                        model: checkoutModel.get('fulfillmentInfo').get('fulfillmentContact')
                     }),
                     shippingInfo: new ShippingInfoView({
                         el: $('#step-shipping-method'),

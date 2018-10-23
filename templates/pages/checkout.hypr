@@ -1,4 +1,4 @@
-﻿{% extends "page" %}
+﻿    {% extends "page" %}
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle labels.checkout %} - {% parent %}{% endblock title-tag-content %}
 
@@ -12,6 +12,8 @@
 {% block body-tag-classes %} mz-checkout {% endblock body-tag-classes %}
 
 {% block site-nav %}{% endblock site-nav %}
+{% block secondary-nav %}{% endblock secondary-nav %}
+{% block page-footer %}{% endblock page-footer%}
 
 {% block body-content %}
 
@@ -22,22 +24,22 @@
 <div class="mz-l-container">
     <h1 class="mz-pagetitle">
         {{ labels.checkout }}
-        {% if not user.isAuthenticated %}
-        <span class="mz-pagetitle-note">
-            {{ labels.registeredCustomer }} <a data-mz-action="login" data-placement="left" href="javascript;">{{ labels.logIn }}</a>
-        </span>
-        {% endif %}
     </h1>
+     {% if not user.isAuthenticated %}
+         <a data-toggle="modal" data-mz-action="lite-registration" class="mz-pagetitle-note">
+            <span>
+                {{ labels.registeredCustomer }} {{ labels.logIn }}
+            </span>
+        </a>
+    {% endif %}
 
     <form id="checkout-form" class="mz-checkoutform mz-l-2column mz-l-2column-right fades-in" method="post" onsubmit="return false;">
 
     {% include "modules/common/message-bar" with model=model.messages %}
-
     <div class="mz-l-column" id="checkout-rightcol">
-        
-        <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
-            {% include "modules/checkout/checkout-order-summary" %}
-        </div>
+      <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
+        {% include "modules/checkout/checkout-order-summary" %}
+      </div>
 
         <div class="mz-l-formfieldgroup">
             <div class="mz-checkoutform-couponcode mz-l-formfieldgroup-row" id="coupon-code-field" >

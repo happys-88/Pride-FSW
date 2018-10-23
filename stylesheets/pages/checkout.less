@@ -20,21 +20,63 @@
     height: 8em;
 }
 
+
 .mz-checkoutform-active {
     background-color: #eeeeee;
+    width: 100%;
+    margin-bottom: @gutter/2;
 }
 
 .mz-checkoutform {
-    padding-left: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    label {
+      cursor: default;
+    }
+    a {
+      cursor: pointer;
+    }
+    .mz-checkout-button-link {
+      padding: 3px;
+      border: 1px solid #ccc;
+      color: #666;
+      background-color: #f7f7f7;
+      cursor: pointer;
+      margin: @gutter/4;
+    }
+    .mz-checkout-button-link:hover{
+      border: 1px solid #999;
+      color: black;
+    }
+
 }
 
 .mz-checkoutform-shipping {
-    padding-top: 15px;
+  padding-top: @gutter - 10;
     display: block;
 }
 
+
+.is-loading select {
+    background-image: url('../resources/images/button-loading.gif');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: rgba(0, 0, 0, .25);
+}
+
 .mz-checkoutform-shipping-edit {
-    padding-left: 5px;
+    padding: @gutter/4 @gutter/4 @gutter/4 @gutter/4;
+    .mz-shipping-row {
+      margin: @gutter/4;
+      display: flex;
+      flex-wrap: wrap;
+      .mz-shipping-row-item{
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+      }
+    }
+
 }
 
 .mz-l-formfieldgroup-cell {
@@ -68,6 +110,31 @@
     padding: 0 0 @gutter/8;
     font-size: @fontSizeLarger;
     border-bottom: none;
+    font-weight: bold;
+}
+
+.mz-shipping-method-address{
+  width: 100%;
+  display: flex;
+    .mz-l-formfieldgroup-cell {
+      flex-grow: 1;
+      margin-left: @gutter;
+      padding: @gutter/4 0px @gutter/4 0px;
+
+    }
+
+}
+
+.mz-shipping-method-items {
+  div {
+    margin-left: @gutter;
+  }
+  span {
+    padding: @gutter/4;
+  }
+}
+.mz-shipping-method-section {
+  margin: @gutter/2;
 }
 
 .mz-l-formfieldgroup {
@@ -93,4 +160,109 @@
             vertical-align: middle;
         }
     }
+}
+
+.mz-checkoutform-shippingaddress, .mz-contact-dialog {
+    .mz-checkoutform-header{
+        margin-bottom: 0px;
+    }
+    .mz-addresssummary{
+        margin-top: 8px;
+        span{
+            padding-top: 5px;
+            display: block;
+        }
+    }
+    .mz-l-formfieldgroup-row {
+        display: block;
+    }
+    .mz-l-formfieldgroup-cell{
+        display: block;
+        padding-bottom: 0px;
+        margin-bottom: 9px;
+        .mz-contactselector{
+            background-color: @colorWhite;
+        }
+        label{
+            text-align: left;
+            font-size: @fontSize;
+        }
+        input[type="text"], input{
+            width: 240px;
+            border: 1px solid @inputBorder;
+        }
+        .text-input, select{
+            width: 240px;
+            background-color: @colorWhite;
+            .border-radius-plain(0);
+        }
+    }
+    .mz-contactselector{
+        .mz-contactselector-contact{
+            display: block;
+        }
+    } 
+}
+.mz-checkoutform-paymentinfo{
+    .mz-l-formfieldgroup-row{
+        display: block;
+        &.mz-payment-credit-card-savepayment-row{
+            margin-left: 0px;
+        }
+        .mz-l-formfieldgroup-cell{
+            display: block;
+            label{
+                text-align: left;
+                font-size: @fontSize;
+                line-height: 18px;
+                &.mz-inline{
+                    display: inline-block;
+                    font-size: @fontSize;
+                    .fontRegular();
+                    margin-left: 3px;
+                }
+            }
+            
+            input[type="text"]{
+                width: 240px;
+                border: 1px solid @inputBorder;
+            }
+            .text-input, #mz-payment-credit-card-type{
+                width: 240px;
+                background-color: @colorWhite;
+            }
+            .mz-l-formfieldgroup-halfsize{
+                width: 114px;
+                background-color: @colorWhite;
+            }
+            select {
+                background-color: @colorWhite;
+                margin-bottom: 3px;
+            }
+        }
+    }
+    .mz-checkout-digitalcredit{
+        .mz-l-formfieldgroup-cell{
+            input[type="text"]{
+                width: 240px;
+                border: 1px solid @inputBorder;
+                margin-bottom: 0px;
+            }
+        }
+    }
+    &.is-loading{
+        .mz-checkout-digitalcredit{
+            .mz-l-formfieldgroup-cell{
+                .mz-button{
+                    background-image: none;
+                    animation: none;
+                    background-size: 0;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}
+.mz-l-formfieldgroup-full{
+      display: block;
 }

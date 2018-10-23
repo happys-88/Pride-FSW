@@ -1,4 +1,4 @@
-﻿.mz-l-formfieldgroup {
+﻿.mz-l-formfieldgroup, .mz-l-formfieldgroup-full {
     display: table;
     .mz-l-formfieldgroup-row {
         display: table-row;
@@ -6,9 +6,9 @@
     .mz-l-formfieldgroup-cell {
         display: table-cell;
         padding-right: @gutter/2;
-        padding-bottom: @gutter/2;
+        padding-bottom: 8px;
         label {
-            text-align: right;
+            text-align: left;
             display: block;
             min-width: 100px;
             @media (max-width: 600px) {
@@ -32,7 +32,7 @@
     input[type="tel"],
     input[type="email"],
     select {
-        width: 220px;
+        width: 240px;
         box-sizing: border-box;
         &.is-invalid {
             background-color: @errorBackground;
@@ -44,5 +44,13 @@
     }
     &.mz-l-formfieldgroup-norows {
         margin-bottom: @gutter/2;
+    }
+}
+
+.mz-l-formfieldgroup-full {
+    width: 96%;
+    padding: 0 2%;
+    .mz-l-formfieldgroup-row {
+        width: 100%;
     }
 }
