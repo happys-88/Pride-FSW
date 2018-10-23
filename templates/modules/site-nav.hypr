@@ -1,4 +1,4 @@
-﻿<nav class="mz-sitenav collapse" id="ml-nav">
+﻿<nav class="mz-sitenav collapse" id="mz-nav"> 
     <div class="container">
       <ul class="mz-sitenav-list" 
           data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
@@ -38,7 +38,7 @@
                 {% endif %}
               </div>
             </li>
-            <li class="ml-navbar-separator"></li>
+            <li class="mz-navbar-separator"></li> 
             {% endif %}
           {% endfor %}
           {% if navigation.tree.length > themeSettings.maxTopLevelNavItems %}

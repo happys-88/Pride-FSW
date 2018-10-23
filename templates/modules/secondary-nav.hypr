@@ -1,4 +1,4 @@
-<nav class="ml-navbar-secondary">
+<nav class="mz-navbar-secondary">
     <div class="container">
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% partial_cache %}
@@ -20,7 +20,7 @@
                       {% endif %}
                       
                     </a>
-                  </h4>
+                  </h4> 
                 </div>
                 {% if link.items %}
                 <div id="main-nav-{{link.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="main-nav-heading-{{link.categoryCode}}">

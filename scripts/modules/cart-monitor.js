@@ -6,7 +6,7 @@ define(['modules/jquery-mozu', 'modules/api', 'bootstrap', 'modules/page-header/
 
     var $cartCount,
         user = require.mozuData('user'),
-        userId = user.userId,
+        userId = user.userId, 
         $document = $(document),
         CartMonitor = {
             setAmount: function(amount) {
@@ -28,7 +28,7 @@ define(['modules/jquery-mozu', 'modules/api', 'bootstrap', 'modules/page-header/
                     savedCarts[userId] = summary.data;
                     console.log(summary);
                     $document.ready(function() {
-                        $('.ml-header-global-cart-wrapper').css('display', 'block');
+                        $('.mz-header-global-cart-wrapper').css('display', 'block');
                         CartMonitor.setCount(summary.data.totalQuantity);
                         CartMonitor.setAmount(summary.data.total); 
                         GlobalCart.update(showGlobalCart);                         

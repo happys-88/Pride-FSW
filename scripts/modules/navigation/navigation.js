@@ -4,8 +4,8 @@ define([
 ], function($, doubletaptogo) {
     //Sub Dropdown Menu
     function calculatingSubPosition() {
-        var leftReference = $(".ml-header-content").offset().left,
-            rightReference = leftReference + $(".ml-header-content").outerWidth(),
+        var leftReference = $(".mz-header-content").offset().left,
+            rightReference = leftReference + $(".mz-header-content").outerWidth(),
             colWidth = $(document).width() > 991 ? 235 : 175;
         $(".mz-sitenav-sub-container").css({ "left": 0, "right": "auto" }).addClass("calculating-position").removeClass("calculated-position").each(function() {
             var currentElemnt = $(this),
@@ -40,7 +40,7 @@ define([
     $(window).resize(function() {
         calculatingSubPosition();
     });
-    $('.sub-level-col.col-sm-3').each(function(index, el) {
+    $('.sub-level-col.col-sm-3').each(function(index, el) { 
         var html = $(el).html().trim();
         if (html === "")
             $(el).remove();

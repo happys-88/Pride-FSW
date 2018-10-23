@@ -8,7 +8,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         return !Modernizr.mq('(max-width: 480px)');
     },
     isTemplate = function(path) {
-        return require.mozuData('pagecontext').cmsContext.template.path === path;
+        return require.mozuData('pagecontext').cmsContext.template.path === path; 
     },
     returnFalse = function () {
         return false;
@@ -642,7 +642,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             loginPage.init(this);
         });
 
-        $(".ml-navbar-secondary .panel-body").each(function() {
+        $(".mz-navbar-secondary .panel-body").each(function() {
             var headingElemnt = $(this).parent().parent().find("a[aria-controls]");
             if ($(this).text().trim() === "" && headingElemnt.data("target")) {
                 headingElemnt.find("span").hide();

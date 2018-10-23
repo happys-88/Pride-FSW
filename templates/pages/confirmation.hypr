@@ -10,13 +10,13 @@
 
 {% require_script "pages/confirmation" %}
 
-<div class="ml-header-logo-wrapper printLogo">
+<div class="mz-header-logo-wrapper printLogo">
     {% block store-branding %}
         {% include "modules/page-header/store-branding" %}
     {% endblock store-branding %}
 </div>
 
-<div id="confirmation-container">
+<div id="confirmation-container"> 
   {% include "modules/confirmation/confirmation-detail" %}
 </div>
 

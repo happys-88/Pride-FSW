@@ -6,7 +6,7 @@
         </li>
         -->
         <li class="mz-utilitynav-item navbar-collapse-control">
-            <a data-target="#ml-nav"  data-toggle="collapse" class="mz-utilitynav-link">
+            <a data-target="#mz-nav"  data-toggle="collapse" class="mz-utilitynav-link">
                 {% dropzone "products-collapsible-label" scope="site" %}
                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
             </a>

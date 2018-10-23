@@ -1,27 +1,27 @@
-﻿<div id="global-header-wrapper">
+﻿<div id="global-header-wrapper"> 
     {% block store-branding %}
         {% include "modules/page-header/global-header-include" %}
     {% endblock store-branding %}
 </div>
 <header class="mz-pageheader{% if themeSettings.bannerImageEnabled %} mz-pageheader-hasbanner {% endif %}">
     <div class="container">
-        <div class="ml-header-content">
-            <div class="ml-header-logo-wrapper">
+        <div class="mz-header-content">
+            <div class="mz-header-logo-wrapper">
                 {% block store-branding %}
-                    {% include "modules/page-header/store-branding" %}
+                    {% include "modules/page-header/store-branding" %} 
                 {% endblock store-branding %}
             </div>
-            <div class="ml-header-search-wrapper">
-                {% block search-box %}
+            <div class="mz-header-search-wrapper">
+                {% block search-box %} 
                     {% include "modules/page-header/search-box" %}
                 {% endblock search-box %}             
-            </div>
-            <div class="ml-header-links-wrapper"> 
+            </div> 
+            <div class="mz-header-links-wrapper"> 
                 {% block utility-nav %}
                     {% include "modules/page-header/utility-nav" %}
                 {% endblock utility-nav %}            
             </div>
-            <div class="ml-header-global-cart-wrapper" style="display:none;">
+            <div class="mz-header-global-cart-wrapper" style="display:none;">
                 {% block global-cart-container %}
                     {% include "modules/page-header/global-cart-container" %}
                 {% endblock global-cart-container %}              
@@ -29,4 +29,4 @@
         </div>
     </div>
 </header>
-{% require_script "modules/navigation/navigation" %}
+{% require_script "modules/navigation/navigation" %} 
