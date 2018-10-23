@@ -6,13 +6,13 @@
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "PrideTheme_Happy",
+    "name": "MasterTheme_PrideFSW", 
     "allowProduction": true,
-    "baseTheme": "https://github.com/singh-vsc/PrideFSW",
+    "baseTheme": "https://github.com/happys-88/Pride-FSW", 
     "baseThemeVersion": {
       "commit": "6498fbf65e610bd74dc66045e2cfb145482a9683"
     },
-    "baseThemeChannel": "stable"
+    "baseThemeChannel": "stable" 
   },
   "editors": [
     {
