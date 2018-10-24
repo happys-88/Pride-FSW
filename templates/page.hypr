@@ -94,7 +94,8 @@
 
         {%header_content%}
 
-
+        <!-- Script for custom JS changes -->
+        {% require_script "custom" %} 
 
     </head>
     {% endblock head-tag %}

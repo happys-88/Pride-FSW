@@ -11,9 +11,20 @@ define(['modules/api',
         'modules/xpress-paypal'
       ], function (api, Backbone, _, $, CartModels, CartMonitor, HyprLiveContext, Hypr, preserveElement, modalDialog, paypal) {
 
+    var value;
 
     var CartView = Backbone.MozuView.extend({
         templateName: "modules/cart/cart-table",
+          additionalEvents: {
+                /*"change [data-mz-value=usShipping]":"populateShipping",
+                "change [data-mz-value=usStates]":"populateShipping"
+                "change [data-mz-value=usShipping]":"populateDropDowns",*/
+                "click [data-mz-qty-minus]": "quantityMinus",
+                "click [data-mz-qty-plus]": "quantityPlus",
+                "keyup [data-mz-value=quantity]":"updateQuantity",
+                "keyup  [data-mz-value='usStates']": "allowDigit"
+                /*"click [data-mz-value=callRoute]": "callCustomRoute"*/
+        },
         initialize: function () {
 
             this.pickerDialog = this.initializeStorePickerDialog();
@@ -69,6 +80,65 @@ define(['modules/api',
                 item.saveQuantity();
 
             }
+        },400),
+        quantityMinus: _.debounce(function (e) {
+      
+            var $qField = $(e.currentTarget).parent(".qty-block"); 
+            var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
+            var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
+            value = parseInt(qFieldValue, 10);
+            var _qtyCartObj = $('[data-mz-Cart-validationmessage-for="quantity"]');
+            var _qtyGlobalObj = $('[data-mz-Global-validationmessage-for="quantity"]');
+            _qtyCartObj.text('');
+            _qtyGlobalObj.text('');
+
+            if (value == 1) {
+                if ($(e.delegateTarget).attr("id")=="cart"){
+                  _qtyCartObj.text("Quantity can't be zero.");
+                }
+                if ($(e.delegateTarget).attr("id")=="global-cart-listing"){
+                     _qtyGlobalObj.text("Quantity can't be zero.");
+                }   
+                return;
+            }   
+            value--;
+            var errormsg = this.$('[data-mz-message]'); 
+            if(value===0){
+                errormsg.text("Quantity cannot be zero");   
+            }
+            _qtyCountObj.val(value); 
+            e.stopImmediatePropagation();
+             var newQuantity = parseInt( value, 10);
+             var id = _qtyCountObj.data('mz-cart-item');
+             var item = this.model.get("items").get(id); 
+             this._isSyncing = true;
+            if (item && !isNaN(newQuantity)) {
+                item.set('quantity', newQuantity);
+                item.saveQuantity();
+                
+            }     
+           
+        },400),
+         quantityPlus:  _.debounce(function (e) {
+            var $qField = $(e.currentTarget).parent(".qty-block"); 
+            var qFieldValue = $qField.find(".mz-carttable-qty-field").val();            
+            var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
+            value = parseInt(qFieldValue, 10);
+            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
+            _qtyObj.text('');   
+            value++;
+            _qtyCountObj.val(value);  
+            e.stopImmediatePropagation();
+            var newQuantity = parseInt(value, 10);
+            var id = _qtyCountObj.data('mz-cart-item');
+            var item = this.model.get("items").get(id);
+            this._isSyncing = true;
+            if (item && !isNaN(newQuantity)) {
+                item.set('quantity', newQuantity);
+                item.saveQuantity();
+                
+            }         
+           
         },400),
         onQuantityUpdateFailed: function(model, oldQuantity) {
             var field = this.$('[data-mz-cart-item=' + model.get('id') + ']');
