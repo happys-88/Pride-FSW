@@ -8,12 +8,15 @@
 @dropzoneMargin: 70px;
 @primaryColor: #002C50;
 @textColorWhite: #fff;
+@textColorBlackTwo: #333; 
 @buttonBgColor: #d15f2a;
-@defaultBorderColor: #d4d4d4;
+@defaultBorderColor: #d8d8d8; 
 @listItemColor: #00adce;
 @mzSiteNavBg: #e20177;
-@mzSiteNavMainLinkActive: #9f146c;
-@mzSiteNavSubLinkActive: #e20177;     
+@mzSiteNavMainLinkActive: #efefef; 
+@mzSiteNavSubLinkActive: #e20177;
+@black: #000;
+@black-two: #333;      
 
 @mobileNavBorderBtm: #cbcbcb; 
 @mobileNavSubMenuBg: #f1f1f1;
@@ -130,16 +133,16 @@ img[data-mztp]{
 	input[type="email"],
 	input[type="tel"],
 	select {
-	    border: 1px solid #d4d4d4;
+	    border: 1px solid @defaultBorderColor;
 	    margin-bottom: 0;
-	}
+	} 
 }
 
 /*** Page Header ***/
 .mz-pageheader{
-	font-family: @fontFamily;   
+	font-family: @fontFamily; 
+	background: none;   
 	.mz-header-links-wrapper{ 
-		background: #e0e0e0; 
 		a{
 			color: @textColor;
 			&:visited{
@@ -359,7 +362,9 @@ img[data-mztp]{
 
 /**** Navigation ****/
 .mz-sitenav{
-	background: @mzSiteNavBg;
+	background: #fff;
+	border-top: 1px solid @defaultBorderColor;
+	border-bottom: 1px solid @defaultBorderColor; 
 	.mz-sitenav-sub-container{ 
 		z-index: 99; 
 		.sub-nav-arrow{

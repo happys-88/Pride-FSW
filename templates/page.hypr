@@ -114,22 +114,25 @@
             {% block site-nav %}
 				{% include "modules/site-nav" %}
             {% endblock site-nav %}
+            {% block global-marketing-area %}
+                <div class="global-marketing-area">
+                    <div class="container">
+                        {% if pageContext.isEditMode %}Global Marketing Area - HTML/Image Dropzone {% endif %}
+                        {% dropzone "global-marketing-below-nav" scope="site" %}
+                    </div> 
+                </div>
+            {% endblock global-marketing-area %} 
+
             <div role="main" id="page-content" class="mz-l-pagecontent">
                 <div class="container">
-                <div class="row">
-                   <!--  {% block breadcrumbs %}
-                    {% if themeSettings.showBreadcrumbs %}
-                    {% include "modules/breadcrumbs" %}
-                    {% endif %}
-                    {% endblock breadcrumbs %} -->
-                    
-                    {% block body-content %}
-                    {% dropzone "body" scope="page" %}
-                    {% endblock body-content %}
-                    
-                    {% block body-below-content %}
-                    {% dropzone "body-bottom" scope="template" %}
-                    {% endblock body-below-content %}
+                    <div class="row">
+                        {% block body-content %}
+                            {% dropzone "body" scope="page" %}
+                        {% endblock body-content %}
+                        
+                        {% block body-below-content %}
+                            {% dropzone "body-bottom" scope="template" %}
+                        {% endblock body-below-content %}
                     </div>
                 </div>
             </div>
