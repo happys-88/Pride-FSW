@@ -120,6 +120,14 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         },
         displayMessage: function (msg) {
             this.setLoading(false);
+            if(msg.toLowerCase().indexOf('missing') > -1 ) {
+                var val = msg.split(':');
+                msg = val[1].trim();
+                msg = msg.substr(msg.indexOf(' ')+1, msg.length);
+            }
+            if (msg.indexOf('Item not found:') > -1) { 
+                msg = msg.replace("Item not found:", Hypr.getLabel('forgetPasswordErrorMsg')); 
+            } 
             this.$parent.find('[data-mz-role="popover-message"]').html('<span class="mz-validationmessage">' + msg + '</span>');
         },
         init: function (el) {
@@ -268,7 +276,16 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         },
         handleLoginComplete: function (returnUrl) {
             if ( returnUrl ){
-                window.location.href= returnUrl;
+                // window.location.href= returnUrl;
+                var url = HyprLiveContext.locals.pageContext.url;
+                var domain = "";
+                if (url.includes("/user/login")){
+                    domain = url.split('/user')[0];
+                }else {
+                    domain = url.split('?')[0];
+                }
+                url = domain + returnUrl;
+                window.location = url;
             }else{
                 window.location.reload();
             }
@@ -485,7 +502,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
                     acceptsMarketing: accMarketing,
                     contacts: [{
                         email: email
-                    }],
+                    }]/*,
                     attributes: [
                       {
                          //"attributeDefinitionId": "14",
@@ -497,7 +514,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
                          "fullyQualifiedName": "tenant~recovery-answer",
                          "values": [recoveryanswer]
                       }
-                   ]               
+                   ] */              
                 },
                 password: $(this).parents('#newshopper').find('[data-mz-signup-password]').val()
             };
@@ -536,9 +553,9 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             if (!payload.account.emailAddress) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('emailMissing')), false;
             if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(payload.account.emailAddress))) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('emailwrongpattern')), false;                       
             if (payload.password !== $(el).parents('#newshopper').find('[data-mz-signup-confirmpassword]').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('passwordsDoNotMatch')), false;
-            if (payload.account.attributes.recoveryquestion === "0") return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('chooseRecoveryQuestion')), false;
+            /*if (payload.account.attributes.recoveryquestion === "0") return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('chooseRecoveryQuestion')), false;
             if($('#recoveryQuestionList').val() === "0") return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('chooseRecoveryQuestion')), false;
-            if(!$('#recoveryAnswer').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('recoveryAnswerMissing')), false;
+            if(!$('#recoveryAnswer').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('recoveryAnswerMissing')), false;*/
             return true;
         };
     };
