@@ -493,8 +493,8 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             if(emailupdates === "on")
                 accMarketing = true;
             var email = $(this).parents('#newshopper').find('[data-mz-signup-emailaddress]').val().trim();
-            var recoveryquestion = $(this).parents('#newshopper').find('[data-mz-signup-recoveryquestion]').val();
-            var recoveryanswer = $(this).parents('#newshopper').find('[data-mz-signup-recoveryanswer]').val().trim();
+            /*var recoveryquestion = $(this).parents('#newshopper').find('[data-mz-signup-recoveryquestion]').val();
+            var recoveryanswer = $(this).parents('#newshopper').find('[data-mz-signup-recoveryanswer]').val().trim();*/ 
             var payload = {
                 account: {
                     emailAddress: email,
