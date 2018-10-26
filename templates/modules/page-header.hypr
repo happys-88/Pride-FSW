@@ -6,25 +6,27 @@
 <header class="mz-pageheader{% if themeSettings.bannerImageEnabled %} mz-pageheader-hasbanner {% endif %}">
     <div class="container">
         <div class="mz-header-content">
-            <div class="mz-header-logo-wrapper">
+            <div class="mz-header-logo-wrapper"> 
                 {% block store-branding %}
                     {% include "modules/page-header/store-branding" %} 
                 {% endblock store-branding %}
             </div>
+            <div class="mz-header-login-cart-wrapper"> 
+                <div class="mz-header-links-wrapper"> 
+                    {% block utility-nav %}
+                        {% include "modules/page-header/utility-nav" %}
+                    {% endblock utility-nav %}            
+                </div>
+                <div class="mz-header-global-cart-wrapper" style="display:none;">
+                    {% block global-cart-container %}
+                        {% include "modules/page-header/global-cart-container" %}
+                    {% endblock global-cart-container %}              
+                </div>    
+            </div>   
             <div class="mz-header-search-wrapper">
                 {% block search-box %} 
                     {% include "modules/page-header/search-box" %}
                 {% endblock search-box %}             
-            </div> 
-            <div class="mz-header-links-wrapper"> 
-                {% block utility-nav %}
-                    {% include "modules/page-header/utility-nav" %}
-                {% endblock utility-nav %}            
-            </div>
-            <div class="mz-header-global-cart-wrapper" style="display:none;">
-                {% block global-cart-container %}
-                    {% include "modules/page-header/global-cart-container" %}
-                {% endblock global-cart-container %}              
             </div>
         </div>
     </div>

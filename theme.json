@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "83904d7c86d2aba319c9fcf6448496bdcea8e349"
+      "commit": "043e26ba3c8a2d36be6fa88d2b1662d363eb4701"
     },
     "baseThemeChannel": "stable"
   },
@@ -835,7 +835,7 @@
     "showProductDetailProperties": false,
     "showProductDetailShortDesc": true,
     "showProductDetailUPC": true,
-    "textColor": "#000000", 
+    "textColor": "#000000",
     "companyLogo": "/resources/images/logo-sm.png",
     "facetMoreColorCount": 3,
     "enableQuickView": true,

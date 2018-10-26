@@ -1,16 +1,13 @@
 <a class="mz-utilitynav-link mz-utilitynav-link-cart" href="{% make_url "cart" %}">
-	<div class="mz-icon mz-icon-global-cart">
-		<span class="mz-header-global-cart-count"><b><span class="mz-cartmonitor" data-mz-role="cartcount">0</span></b></span>
-	</div>
-	<div class="mz-header-global-cart-text">
-		<span class="mz-header-global-cart-label">{{ labels.viewCart }} </span>
+	<div class="mz-header-global-cart-text"> 
+		<span class="mz-header-global-cart-label">{{ labels.viewCart }} (<span class="mz-cartmonitor" data-mz-role="cartcount">0</span>) </span>
+		<span class="caret"></span> 
 		<span class="mz-header-global-cart-price" data-mz-role="cartamount"></span>
-	</div>	
+	</div> 	
 </a>
 
 <div id="global-cart">
 	{% require_script "modules/page-header/global-cart" %} 
-</div>
-
+</div> 
 
 {% require_script "modules/cart-monitor" %}

@@ -7,22 +7,19 @@
 		</div>
 	</div>
 </div>
+
 <footer>
 	<div class="container">
-		<div class="row ">
+		<div class="row">
 			<div class="col-xs-12 col-sm-4 pull-right">
-				<div>
-					{% dropzone "email-signup-tag-line" scope="site" %}
-				</div>
-
+				<h4>Sign up for Emails &amp; Exclusive Offers</h4>  
 				<div>
 					<form class="form form-footer-cont">
 					  <div class="form-group">
-
-						  <div class="input-group">					  	
+					  	<div class="input-group"> 					  	
 							<input type="email" class="form-control" placeholder="Enter Email Address" id="newsletterEmail">
 							<span class="input-group-btn">
-								<button class="btn btn-default" id="newsletter" type="button" >SIGN UP</button>
+								<button class="btn btn-default" id="newsletter" type="button">SIGN UP</button>
 							</span>
 						</div>
 						<div class="input-group">   
@@ -32,6 +29,7 @@
 						<div id="footerStoreLocator">
 							{% include "modules/location/store-locator-footer" %}
 						</div>
+					</div>
 					</form>					
 				</div>
 				<div class="social-links">
@@ -72,8 +70,7 @@
 						</div>
 					</div>								
 				</div>
-
-			</div>		
+			</div>		 
 		</div>
 		<div class="row">
 			<div class="col-xs-12 {% if themeSettings.footerEnableMini %}mini-footer-on{% else %}mini-footer-off{% endif %}">

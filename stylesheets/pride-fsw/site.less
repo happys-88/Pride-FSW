@@ -16,7 +16,8 @@
 @mzSiteNavMainLinkActive: #efefef; 
 @mzSiteNavSubLinkActive: #e20177;
 @black: #000;
-@black-two: #333;      
+@black-two: #333;
+@footerBg: #efefef;       
 
 @mobileNavBorderBtm: #cbcbcb; 
 @mobileNavSubMenuBg: #f1f1f1;
@@ -141,7 +142,9 @@ img[data-mztp]{
 /*** Page Header ***/
 .mz-pageheader{
 	font-family: @fontFamily; 
-	background: none;   
+	background: none;
+	height: auto;
+	padding: 15px 0 10px;      
 	.mz-header-links-wrapper{ 
 		a{
 			color: @textColor;
@@ -184,9 +187,12 @@ img[data-mztp]{
 		}   
 	}
 	.mz-header-content{
-		padding: 0 0 20px;
+		padding: 0;
+		height: auto;   
 		position: relative; 
 		.mz-header-logo-wrapper {
+			position: static;
+			float: left;  
 			padding: 0 7px; 
 			.logo {
 			    background-image: url(../resources/images/logo.png); 
@@ -200,8 +206,32 @@ img[data-mztp]{
 			    height: 61px; 
 			}
 		}
+		.mz-header-links-wrapper{ 
+		 	position: static;
+		 	float: left;
+		 	.mz-utilitynav{
+		 		.mz-utilitynav-list{
+		 			.mz-utilitynav-item{
+		 				padding: 0 !important;
+		 				margin: 0;
+		 			}	
+		 		}	
+		 	}   
+		} 
+		.mz-header-login-cart-wrapper{
+			position: absolute;
+			right: 415px;
+			.caret{
+				border-width: 5px 5px 0 5px;
+				margin-left: 8px;    
+			}   
+		}
 		/**** Search Box ****/
 		.mz-header-search-wrapper{
+			position: relative;
+			float: right;
+			left: auto;
+			top: auto;  
 			width: 395px;  
 			margin: 8px 0;
 			@expandedSearchWidth: 570px;   
@@ -252,9 +282,21 @@ img[data-mztp]{
 
 		/**** Global Cart Wrapper ****/
 		.mz-header-global-cart-wrapper {
-			margin-top: 15px;
-			padding: 0 15px; 
-			width: 25%;
+			position: static;
+			float: left;
+			width: auto; 
+			padding: 0; 
+			.mz-header-global-cart-text{
+				margin-top: 0;
+				margin-left: 20px;
+				.mz-header-global-cart-label{
+					padding: 0;
+					font-weight: normal; 
+				} 
+				.mz-header-global-cart-price{
+					display: none; 
+				}
+			}
 			#global-cart{
 				top: 50px;
 				.arrow-up{
@@ -375,6 +417,36 @@ img[data-mztp]{
 	}  
 }
 
+/**** Global Marketing Area ****/
+.global-marketing-area{ 
+	background: #f1f1f1;
+	padding: 8px 0;  
+	ul{
+		display: table;
+		width: 100%;  
+		li{
+			display: table-cell;
+			position: relative;
+			text-align: center;
+			&:before{
+				content: "";
+				width: 1px;
+				height: 10px;
+				background: #80a1b8;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translate(0, -50%);   
+			}
+			&:first-child{
+				&:before{
+					display: none; 
+				}	
+			} 
+		}
+	}
+}
+
 /**** Product Listing ****/
 .mz-productlist{
 	.mz-productlist-list{
@@ -486,7 +558,7 @@ img[data-mztp]{
 
 /**** Footer ****/
 footer{
-	background: #000;
+	background: @footerBg; 
 	.regular-footer{
 		border: none; 
 	}
