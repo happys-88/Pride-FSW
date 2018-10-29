@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="footerZipCodeInput" class="control-label text-uppercase">{{ labels.storeLocator }}</label>
+    <label for="footerZipCodeInput" class="control-label"><i class="fa fa-map-marker"></i> {{ labels.dealerLocator }}</label>
     <div class="input-group">                       
         <input type="text" id="footerZipCodeInput" class="form-control" maxlength="50" placeholder="{{ labels.enterZipCode }}" data-mz-footer-storelocator>
         <span class="input-group-btn">

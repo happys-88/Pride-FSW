@@ -11,14 +11,19 @@
 
 .mz-button {
     .border-radius(4px);
-    background-color: #eee;
+    background-color: #2b648c;
     background-image: url('../resources/images/button-loading.gif');
     background-repeat: no-repeat;
     background-position: -9999px -9999px;
     padding: @gutter/4 @gutter/2;
     min-width: 64px;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
     &:hover {
-        background-color: #e3e3e3;
+        background-color: #2b648c;
+        opacity: 0.8;
     }
     &:active {
         .box-shadow(~"inset 0 0 4px #999)");

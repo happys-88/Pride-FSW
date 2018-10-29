@@ -12,12 +12,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-4 pull-right">
-				<h4>Sign up for Emails &amp; Exclusive Offers</h4>  
+				<h4><i class="fa fa-envelope"></i> Sign up for Emails &amp; Exclusive Offers</h4>  
 				<div>
 					<form class="form form-footer-cont">
 					  <div class="form-group">
 					  	<div class="input-group"> 					  	
-							<input type="email" class="form-control" placeholder="Enter Email Address" id="newsletterEmail">
+							<input type="email" class="form-control" placeholder="Enter Your Email Address" id="newsletterEmail">
 							<span class="input-group-btn">
 								<button class="btn btn-default" id="newsletter" type="button">SIGN UP</button>
 							</span>
@@ -33,14 +33,14 @@
 					</form>					
 				</div>
 				<div class="social-links">
-					<div class="mz-footer-social-connect">Connect with us:</div>
+					<div class="mz-footer-social-connect">
+						<h4><i class="fa fa-heart"></i> Connect with us:</h4>
+					</div>
 					<div>
-						<a title="Facebook" href="#" class="mz-icon mz-social-icon mz-icon-facebook">&nbsp;</a>
-						<a title="Twitter" href="#" class="mz-icon mz-social-icon mz-icon-twitter">&nbsp;</a>
-						<a title="Pintrest" href="#" class="mz-icon mz-social-icon mz-icon-pintrest">&nbsp;</a>
-						<a title="Google" href="#" class="mz-icon mz-social-icon mz-icon-google">&nbsp;</a>
-						<a title="Instagram" href="#" class="mz-icon mz-social-icon mz-icon-instagram">&nbsp;</a>
-						<a title="YouTube" href="#" class="mz-icon mz-social-icon mz-icon-youtube">&nbsp;</a>
+						<a title="Pintrest" href="#"><i class="fa fa-pinterest"></i></a>
+						<a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+						<a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+						<a title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
 					</div>
 				</div>
 				<div class="mz-footer-phone-number">
@@ -81,5 +81,21 @@
 				</div>
 			</div>			
 		</div>
+		<div class="footer-bottom">
+			{% block copyright-footer %}
+	            <div class="row">
+	                <div class="col-xs-12">
+	                	<ul>
+	                		<li><a href="#">Site Map</a></li>
+	                		<li><a href="#">Privacy Policy</a></li>
+	                		<li><a href="#">Terms &amp; Conditions</a></li>
+	                	</ul>
+	                    <div class="mz-pagefooter-copyright" id="copyright">
+	                        {{ labels.copyRight }} {% now Y %} {{ labels.prideCentric }}
+	                    </div>
+	                </div>
+	            </div>                
+	        {% endblock copyright-footer%}
+	    </div>
 	</div>
 </footer>
