@@ -6,10 +6,9 @@
 @headingTwoFontSize: 24px;
 @headingTwoColor: #000;  
 @dropzoneMargin: 70px;
-@primaryColor: #002C50;
-@textColorWhite: #fff;
+@textColorWhite: #fff;  
 @textColorBlackTwo: #333; 
-@buttonBgColor: #d15f2a;
+@buttonBgColor: #2b648c; 
 @defaultBorderColor: #d8d8d8; 
 @listItemColor: #00adce;
 @mzSiteNavBg: #e20177;
@@ -214,13 +213,21 @@ img[data-mztp]{
 		 			.mz-utilitynav-item{
 		 				padding: 0 !important;
 		 				margin: 0;
+		 				font-size: 14px; 
 		 			}	
 		 		}	
 		 	}   
 		} 
 		.mz-header-login-cart-wrapper{
 			position: absolute;
-			right: 415px;
+			right: 425px;
+			margin-top: 20px; 
+			.mz-header-global-cart-wrapper{
+				font-size: 14px;
+				.mz-cartmonitor{
+					font-size: 14px;  
+				} 
+			}
 			.caret{
 				border-width: 5px 5px 0 5px;
 				margin-left: 8px;    
@@ -259,7 +266,9 @@ img[data-mztp]{
 						height: 42px;
 						right: 0;
 						top: 0; 
-						color: #9f146c; 
+						color: @buttonBgColor;
+						background: none;
+						text-indent: inherit;      
 					} 
 				} 
 			}
