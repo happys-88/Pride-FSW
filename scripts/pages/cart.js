@@ -8,8 +8,9 @@ define(['modules/api',
         'hyprlive',
         'modules/preserve-element-through-render',
         'modules/modal-dialog',
-        'modules/xpress-paypal'
-      ], function (api, Backbone, _, $, CartModels, CartMonitor, HyprLiveContext, Hypr, preserveElement, modalDialog, paypal) {
+        'modules/xpress-paypal',
+        'modules/block-ui'
+      ], function (api, Backbone, _, $, CartModels, CartMonitor, HyprLiveContext, Hypr, preserveElement, modalDialog, paypal, blockUiLoader) {
 
     var value;
 
@@ -475,6 +476,25 @@ define(['modules/api',
             this.model.isLoading(true);
             // the rest is done through a regular HTTP POST
         },
+         removeCoupon: function(e) { 
+            var self = this;
+            var getCouponCode = e.currentTarget.id; 
+            blockUiLoader.globalLoader();
+            var serviceurl = '/api/commerce/carts/' + this.model.get('id') + '/coupons/' + getCouponCode;
+            api.request('DELETE', serviceurl).then(function(response) {
+                blockUiLoader.unblockUi();
+                self.model.set(response);
+              //  var arr = _.without(self.model.get("appliedCouponCodes"), _.findWhere(self.model.get("appliedCouponCodes"), getCouponCode));
+              //  self.model.set("appliedCouponCodes", arr);
+               // self.model.set('codeApplied', false);
+                self.render();
+                $("#couponDisclaimer").text("");
+            }, function(err) {
+                self.trigger('error', {
+                    message: Hypr.getLabel('promoCodeError', getCouponCode) 
+                });
+            });
+        }, 
         addCoupon: function () {
             var self = this;
             this.model.addCoupon().ensure(function () {
