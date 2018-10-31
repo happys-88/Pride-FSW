@@ -7,6 +7,7 @@
 @headingTwoColor: #000;  
 @dropzoneMargin: 70px;
 @textColorWhite: #fff;  
+@textColorBlack: #000;  
 @textColorBlackTwo: #333; 
 @buttonBgColor: #2b648c; 
 @defaultBorderColor: #d8d8d8; 
@@ -14,9 +15,7 @@
 @mzSiteNavBg: #e20177;
 @mzSiteNavMainLinkActive: #efefef; 
 @mzSiteNavSubLinkActive: #e20177;
-@black: #000;
-@black-two: #333;
-@footerBg: #efefef;       
+@footerBg: #efefef;        
 
 @mobileNavBorderBtm: #cbcbcb; 
 @mobileNavSubMenuBg: #f1f1f1;
@@ -252,24 +251,36 @@ img[data-mztp]{
 				.mz-searchbox-field{
 					.twitter-typeahead{
 						.mz-header-search-field{ 
-							height: 42px;
-							padding: 6px 40px 6px 18px;
-							border: 1px solid #999;
-							font-size: 16px;
-							color: #535353; 
+							height: 36px; 
+							padding: 6px 45px 6px 13px;    
+							border: 1px solid #d8d8d8; 
+							font-size: 14px;
+							color: @textColorBlackTwo;  
 							font-family: @fontFamily;
-							   
+							border-radius: 0px;
+							box-shadow: none;     
 						}		
 					}
 					.mz-searchbox-button{ 
-						width: 42px;
-						height: 42px;
+						width: 36px;
+						height: 36px;  
 						right: 0;
 						top: 0; 
 						color: @buttonBgColor;
 						background: none;
 						text-indent: inherit;      
 					} 
+				}
+				.tt-dataset-pages{
+					.tt-suggestion{
+						width: 100%;
+						.mz-itemlisting{
+							.mz-itemlisting-title{
+								font-size: 14px;
+								font-weight: normal; 
+							}
+						}  
+					}
 				} 
 			}
 		}
@@ -407,7 +418,7 @@ img[data-mztp]{
 	background: none;
 	p{
 		font-size: 16px;
-		color: @black-two;
+		color: @textColorBlackTwo;
 		line-height: 28px;  
 	} 
 } 
@@ -434,7 +445,6 @@ img[data-mztp]{
     background: rgba(159, 20, 108, 1);
 }
 /*** Back to top button ***/ 
-
 
 
 /********************************************* Pride FSW *********************************************/

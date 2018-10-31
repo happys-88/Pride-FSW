@@ -1,6 +1,5 @@
-﻿define(['shim!vendor/typeahead.js/typeahead.bundle[modules/jquery-mozu=jQuery]>jQuery', 'hyprlive', 'modules/api',
-      'hyprlivecontext'], function($, Hypr, api,
-        HyprLiveContext) {
+﻿define(['shim!vendor/typeahead.js/typeahead.bundle[modules/jquery-mozu=jQuery]>jQuery', 'underscore',  'hyprlive', 'modules/api',
+      'hyprlivecontext'], function($, _, Hypr, api, HyprLiveContext) {  
 
     // bundled typeahead saves a lot of space but exports bloodhound to the root object, let's lose it
     var Bloodhound = window.Bloodhound.noConflict();
@@ -9,6 +8,7 @@
     // so instead of using the SDK to place the request, we just use it to get the URL configs and the required API headers
     var qs = '%QUERY',
         eqs = encodeURIComponent(qs),
+        useSearchAutocomplete = Hypr.getThemeSetting('useSearchAutocomplete'),
         suggestPriorSearchTerms = Hypr.getThemeSetting('suggestPriorSearchTerms'),
         getApiUrl = function(groups) {
             return api.getActionConfig('suggest', 'get', { query: qs, groups: groups }).url;
@@ -65,20 +65,9 @@
         set.initialize();
     });
 
-    var dataSetConfigs = [
-        {
-            name: 'pages',
-            displayKey: function(datum) {
-                return datum.suggestion.productCode;
-            },
-            templates: {
-                suggestion: makeTemplateFn('modules/search/autocomplete-page-result')
-            },
-            source: AutocompleteManager.datasets.pages.ttAdapter()
-        }
-    ];
+    var dataSetConfigs = [];
 
-    if (suggestPriorSearchTerms) {
+    if (useSearchAutocomplete && suggestPriorSearchTerms) {
         AutocompleteManager.datasets.terms = new Bloodhound({
             datumTokenizer: function(datum) {
                 return datum.suggestion.term.split(nonWordRe);
@@ -102,7 +91,18 @@
         });
     }
 
-    $(document).ready(function() {
+    dataSetConfigs.push({
+        name: 'pages',
+        displayKey: function(datum) {
+            return datum.suggestion.productCode;
+        },
+        templates: {
+            suggestion: makeTemplateFn('modules/search/autocomplete-page-result')
+        },
+        source: AutocompleteManager.datasets.pages.ttAdapter()
+    });
+
+            $('window').ready( function(){
         var $field = AutocompleteManager.$typeaheadField = $('[data-mz-role="searchquery"]');
         AutocompleteManager.typeaheadInstance = $field.typeahead({
             minLength: 1
