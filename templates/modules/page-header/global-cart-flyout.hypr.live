@@ -1,3 +1,6 @@
+{% with model.orderDiscounts|first as discountData %}
+	{{ discountData.discount.name }}
+{% endwith %}
 <div class="arrow-up"></div>
 {% if model.items.length>0 %}
 	<ul class="media-list">	
