@@ -1,59 +1,75 @@
 #mz-home-slider {
-  margin-bottom: 60px; 
-  .bx-viewport {
-    min-height: 460px;
-    overflow: hidden;
-  }
-  .slider {
-    visibility: hidden;
-    .mz-slide {
-      display: block;
-      background-position: center center;  
-      background-size: cover;
-      min-height: 460px;
+    .slider {
+        .mz-slide {
+            display: block;
+            img {
+                margin: 0 auto;
+            }
+        }
+        .slide {
+            &:first-child {
+                display: block;
+            }
+            display: none;
+        }
     }
-    .mz-slide-details {
-      padding: 70px 110px 0;  
-      text-align: center; 
-      h2 {
-        color: #000; 
-        font-size: 56px; 
-        text-transform: uppercase; 
-        margin: 0; 
-      }
-      p {
-        color: #000; 
-        margin: 0;
-        &.text-1{
-          font-size: 30px;
-          line-height: 35px;
-          margin-bottom: 15px;  
+    .bx-wrapper {
+        .slider {
+            .slide {
+                display: block;
+            }
         }
-        &.text-2{
-          font-size: 26px;
-          line-height: 28px; 
+        padding: 0;
+        .bx-controls-direction {
+            width: 100%;
+            // max-width: 1140px;
+            position: absolute;
+            margin: 0 auto;
+            top: 50%;
+            right: 0;
+            left: 0;
+            transform: translateY(-50%);
+            a {
+                font-size: 0;
+                width: auto;
+                height: auto;
+                margin-top: -32px;
+                text-decoration: none;
+                &:before {
+                    color: #c2c2c2;
+                    font-size: 100px;
+                    font-family: "FontAwesome";
+                    line-height: 55px;
+                }
+                &.bx-next {
+                    right: 15px;
+                    &:before {
+                        content: "\f105";
+                    }
+                }
+                &.bx-prev {
+                    left: 15px;
+                    &:before {
+                        content: "\f104";
+                    }
+                }
+            }
         }
-        &.text-3{
-          font-size: 26px;
-          line-height: 30px;   
-          color: #e20177;
-          text-transform: uppercase;   
+        .bx-pager {
+            bottom: 20px;
+            &.bx-default-pager {
+                a {
+                    background: #fff;
+                    width: 15px;
+                    height: 15px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    &:hover, &.active, &:focus {
+                        background: #2b648c;
+                    }
+                }
+            }
         }
-      }
-      button {
-        font-size: @fontSizeLarger;
-        color: #fff;
-        background: #000;
-        padding: 6px 20px; 
-        font-weight: normal;
-        border: none;
-        text-transform: uppercase;  
-        margin: 15px 0 0; 
-      }
     }
-  }
-}
-
-.mz-cms-row {
-  max-width: 100% !important;
 }

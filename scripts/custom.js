@@ -1,7 +1,27 @@
 define([ 
-	"modules/jquery-mozu"
+	"modules/jquery-mozu",
+  "bxslider"
  
-], function( $) {   
+], function( $, bxslider) { 
+
+    //home slider
+    $('#mz-home-slider .slider').bxSlider({
+      auto: true,
+      useCSS: false,
+      speed: 1000,  
+      minSlides: 1,
+      maxSlides: 1,
+      moveSlides: 1,
+      slideMargin: 0,
+      infiniteLoop: true,
+      pager: true,
+      hideControlOnEnd: true,
+      touchEnabled: true,
+      stopAutoOnClick: true,
+      onSliderLoad: function() {
+        $(".slider").css("visibility", "visible");
+      }
+    });  
 	
 	$(document).ready(function(){ 
 		$("#newsletterEmail").keydown(function(e) {

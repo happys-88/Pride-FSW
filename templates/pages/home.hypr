@@ -5,8 +5,18 @@
 {% block body-tag-classes %} mz-homepage {% endblock body-tag-classes %}
 
 {% block body-content %}
-	 
-    {% dropzone "home2" scope="template" %} 
+    {% dropzone "home-slider" scope="template" %} 
+    <div class="container">
+	    {% dropzone "guided-by-fsw" scope="template" %} 
+	    {% dropzone "featured-product" scope="template" %} 
+	    {% dropzone "brand-we-love" scope="template" %} 
+	    {% dropzone "promo-banner" scope="template" %}
+	    {% dropzone "shop-by-category" scope="template" %}
+	    {% dropzone "shop-now-widget" scope="template" %}
+	    {% dropzone "instagram-follow-fsw" scope="template" %} 
+	    {% dropzone "featured-experts" scope="template" %}
+	</div>
+	{% dropzone "fsw-about-us" scope="template" %}
 {% endblock body-content %}
 
 {% block body-below-content %}

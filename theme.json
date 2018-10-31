@@ -1260,6 +1260,12 @@
       "editViewFields": [
         {
           "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
           "fieldLabel": "Products",
           "name": "productCodes",
           "xtype": "mz-input-productmulti"
@@ -2316,6 +2322,230 @@
       ],
       "icon": "/resources/admin/widgets/new_arrival.png",
       "id": "new_arrivals_product",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "slider",
+      "displayName": "Home Slider",
+      "displayTemplate": "catalog/slider",
+      "editViewFields": [
+        {
+          "xtype": "panel",
+          "title": "First Slide",
+          "items": [
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image",
+              "name": "slideImageOne",
+              "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkOne",
+              "xtype": "mz-input-text"
+            }
+          ]
+        },
+        {
+          "xtype": "panel",
+          "title": "Second Slide",
+          "items": [
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image",
+              "name": "slideImageTwo",
+              "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkTwo",
+              "xtype": "mz-input-text"
+            }
+          ]
+        },
+        {
+          "xtype": "panel",
+          "title": "Third Slider",
+          "items": [
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image",
+              "name": "slideImageThree",
+              "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkThree",
+              "xtype": "mz-input-text"
+            }
+          ]
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Promo Banner",
+      "displayTemplate": "misc/home-promo-banner",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "promoUrl",
+          "fieldLabel": "Enter url for Promo Banner"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Promo Image",
+          "name": "promoImage",
+          "xtype": "mz-input-image"
+        }
+      ],
+      "icon": "/resources/admin/widgets/01_photo_text.png",
+      "id": "promo-banner",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "shopNowWidget",
+      "displayName": "Shop Now Widget",
+      "displayTemplate": "misc/shop-now-widget",
+      "editViewFields": [
+        {
+          "anchor": "50%",
+          "fieldLabel": "Add Image",
+          "name": "slideImageOne",
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Title",
+          "name": "TitleOne",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Description",
+          "name": "TitleTwo",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Button Text Value",
+          "name": "ButtonTextValue",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Link",
+          "name": "shopNowWidgetUrl",
+          "xtype": "mz-input-text"
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Shop By Category",
+      "displayTemplate": "misc/shop-by-category",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Choose Shop By Category",
+          "name": "shopByCategory",
+          "xtype": "mz-input-categorymulti"
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
+      "id": "shop-by-category",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+     {
+      "id": "Brandhospitality",
+      "displayName": "Featured Experts",
+      "displayTemplate": "misc/featured-experts",
+      "title": "Featured Experts",
+      "collapsed": false,
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageOne",
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageTwo",
+          "xtype": "mz-input-image",
+          "showIf": "FeaturedExpertsOne"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageThree",
+          "xtype": "mz-input-image",
+          "showIf": "FeaturedExpertsTwo"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageFour",
+          "xtype": "mz-input-image",
+          "showIf": "FeaturedExpertsThree"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageFive",
+          "xtype": "mz-input-image",
+          "showIf": "FeaturedExpertsFour"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image for featured experts",
+          "name": "FeaturedExpertsImageSix",
+          "xtype": "mz-input-image",
+          "showIf": "FeaturedExpertsFive"
+        },
+        {
+          "anchor": "50%",
+          "fieldLabel": "Add button text value",
+          "name": "FeaturedExpertsButton",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "50%",
+          "fieldLabel": "Add url",
+          "name": "FeaturedExpertsUrl",
+          "xtype": "mz-input-text"
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
       "validPageTypes": [
         "*"
       ]

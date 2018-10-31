@@ -1,0 +1,12 @@
+<div class="mz-shop-now-widget">
+    <div class="mz-image-container">
+        <a href="{{ model.config.shopNowWidgetUrl }}">
+            <img src="{% make_url "image" model.config.slideImageOne.imageUrl %}" alt="{{model.config.slideImageOne.altText}}">
+        </a>  
+    </div>  
+    <div class="mz-details-container">
+        <p class="mz-hot-deal-title-one">{{model.config.TitleOne}}</p>
+        <p class="mz-hot-deal-title-two">{{model.config.TitleTwo}}</p>
+        <a href="{{ model.config.shopNowWidgetUrl }}" class="mz-btn">{{model.config.ButtonTextValue}}</a>
+    </div>
+</div>

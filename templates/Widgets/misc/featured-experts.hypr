@@ -1,0 +1,40 @@
+<div class="mz-featured-experts">
+    <h2 class="heading-2"><span>{{ model.config.title }}</span></h2>
+    <ul>
+        {% if model.config.FeaturedExpertsImageOne.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageOne.imageUrl %}'>
+            </li>
+        {% endif %}
+        {% if model.config.FeaturedExpertsImageTwo.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageTwo.imageUrl %}'>
+            </li>
+        {% endif %}
+        {% if model.config.FeaturedExpertsImageThree.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageThree.imageUrl %}'>
+            </li>
+        {% endif %}
+        {% if model.config.FeaturedExpertsImageFour.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageFour.imageUrl %}'>
+            </li>
+        {% endif %}
+        {% if model.config.FeaturedExpertsImageFive.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageFive.imageUrl %}'>
+            </li>
+        {% endif %}
+        {% if model.config.FeaturedExpertsImageSix.imageUrl %}
+            <li class="col-sm-2 col-xs-6">
+                <img src='{% make_url "image" model.config.FeaturedExpertsImageSix.imageUrl %}'>
+            </li>
+        {% endif %}
+    </ul>
+    {% if model.config.FeaturedExpertsButton %}
+        <div class="text-right">
+            <a href="{{ model.config.FeaturedExpertsUrl }}">{{ model.config.FeaturedExpertsButton }}</a>
+        </div>
+    {% endif %}
+</div> 
