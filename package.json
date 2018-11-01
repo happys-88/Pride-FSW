@@ -1,10 +1,10 @@
 {
-  "name": "MasterTheme_PrideFSW", 
+  "name": "MasterTheme_PrideFSW",
   "author": {
     "name": "Happy",
     "email": "hmasih@stegtechnologies.com"
   },
-  "description": "MasterTheme_PrideFSW", 
+  "description": "MasterTheme_PrideFSW",
   "version": "0.1.0",
   "scripts": {
     "clean": "rm -rf compiled",
@@ -30,9 +30,14 @@
     "node": ">=0.10"
   },
   "dependencies": {
+    "@zeitiger/elevatezoom": "^2.5.4",
     "backbone": "1.1.2",
-    "bootstrap": "3.2.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-3-typeahead": "^4.0.2",
+    "bxslider": "^4.2.14",
+    "jquery": "^3.3.1",
     "jquery-colorbox": "1.5.15",
+    "jquery-typeahead": "^2.10.6",
     "jquery.cookie": "1.4.1",
     "typeahead.js": "0.10.5",
     "underscore": "1.8.3"
