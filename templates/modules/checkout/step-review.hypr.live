@@ -25,7 +25,7 @@
                 </label>
             </div>
 
-                {% if model.createAccount %}
+                
                 <div class="mz-l-formfieldgroup mz-create-account-fields mz-checkoutform mz-checkoutform-active">
                     <div class="mz-l-formfieldgroup-row">
                       <div class="mz-l-formfieldgroup-cell">
@@ -35,6 +35,13 @@
                         <input type="text" name="new-account-email" data-mz-value="emailAddress" value="{{ model.emailAddress|default(model.billingInfo.billingContact.email) }}" maxlength="{{themeSettings.emailLength}}">
                         <span class="mz-validationmessage" data-mz-validationmessage-for="emailAddress"></span>
                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4">
+                        <label>
+                            <input type="checkbox" name="sign-up-offer" id="PSNewsLetter"> {{ labels.signUpForSpecialOffers }}
+                        </label>
+                    </div>
                     </div>
                   <div class="mz-l-formfieldgroup-row">
                       <div class="mz-l-formfieldgroup-cell">
@@ -55,7 +62,7 @@
                        </div>
                     </div>
                 </div>
-                {% endif %}
+                
             {% endif %}
 
             <div class="mz-formstep-next">
