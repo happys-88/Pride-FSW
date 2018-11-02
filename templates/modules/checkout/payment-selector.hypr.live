@@ -89,12 +89,14 @@
     {% endif %}
     {% if siteContext.checkoutSettings.payByMail %}
     <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-check mz-checkoutform {% if model.paymentType == "Check" %}mz-checkoutform-active{% endif %}">
+        {% comment %}
         <div class="mz-l-formfieldgroup-row">
             <div class="mz-l-formfieldgroup-cell">
                 <input data-mz-value="paymentType" data-mz-check data-mz-payment-type id="paymentType-check-{{ paymentId }}" name="paymentType" type="radio" class="mz-paymenttype-input" value="Check" {% if model.paymentType == "Check" %}checked="checked"{% endif %} />
                 <label class="mz-paymentselector-label mz-paymentselector-label-check mz-checkoutform-radio" for="paymentType-check-{{ paymentId }}">{{ labels.checkByMail }}</label>
             </div>
         </div>
+        {% endcomment %}
         {% if model.paymentType == "Check" %}
         {% include "modules/checkout/checking-account-form" %}
         <div class="mz-l-stack-section">
