@@ -618,4 +618,15 @@ define(['modules/api',
         paypal.loadScript();
     });
 
+     $(document).on('click','#continueShoppingCartButton', function(e){
+      console.log("continueShoppingCartButton");
+            var lasturl=document.referrer;  
+            if(lasturl.lastIndexOf("/checkout")==-1){ 
+                window.history.back();
+            }
+            else{
+                window.location = "/";
+            }
+        });     
+
 });

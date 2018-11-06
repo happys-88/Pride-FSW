@@ -180,6 +180,10 @@
        {% if not model.isEmpty %}<span class="mz-empty-cart-link-container"><button class="font-large button_promotional" href="javascript:;" data-mz-action="empty">{{ labels.emptyCart }}</button></span>{% endif %}
        {% endif %} 
       <div class="mz-common-button-padding pull-right">
+
+         <button type="button" id="continueShoppingCartButton" class="mz-button continue-btn">{{ labels.continueShopping }}</button>
+
+         
                 <button id="cart-checkout" class="mz-button font-large button_primary"  {% if model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="proceedToCheckout">{{ labels.proceedToCheckout }}</button>
       </div>
       </div>
