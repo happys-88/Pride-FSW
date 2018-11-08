@@ -31,7 +31,9 @@
       <label class="mz-qty-label text-uppercase" for="mz_pdp_qty">{{ labels.qty }}</label>
       <div class="qty-block">
         <div class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="fa fa-minus"  aria-hidden="true"></i></div>
-        <input id="mz_pdp_qty" class="mz-productdetail-qty text-center" type="text" value="{{model.quantity}}" readonly onfocus="this.blur()" data-mz-value="{{model.quantity}}" title="Quantity" />
+
+         <input id="mz_pdp_qty" class="mz-productdetail-qty text-center" type="text" {% if model.quantity %} value="{{ model.quantity }}" {% else %} value="1" {% endif %} min="1" data-mz-value='quantity' title="Quantity" maxlength="3" />
+
         <div class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
       </div>
       <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>

@@ -134,6 +134,7 @@
             "blur [data-mz-product-option]": "onOptionChange",
             "click [data-mz-product-option-attribute]": "onOptionChangeAttribute",
             "click [data-mz-qty-minus]": "quantityMinus",
+            "keyup input[data-mz-value='quantity']": "onQuantityChange1",
             "click [data-mz-qty-plus]": "quantityPlus",
             'mouseenter .color-options': 'onMouseEnterChangeImage',
             'mouseleave .color-options': 'onMouseLeaveResetImage'
@@ -206,6 +207,43 @@
                 } catch (e) {}
             }
         },
+        onQuantityChange1: function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
+            var $qField = $(e.currentTarget),
+              newQuantity = parseInt($qField.val(), 10);
+              var Quantity = e.currentTarget.value;
+              Quantity = Quantity.trim();
+              var lastValue ='';
+              var reg = /^[A-Za-z]+$/;
+            if (Quantity !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              
+                if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))&& (newQuantity > 0)) {
+                     this.model.updateQuantity(newQuantity);
+                     this.model.set("currentVal", newQuantity);
+                } else if (newQuantity!== 'NaN'  && (!reg.test(newQuantity))) {
+
+                    if (newQuantity > 0){
+                       this.model.updateQuantity(newQuantity);
+                     this.model.set("currentVal", Quantity);
+                     }else {
+                        lastValue =  this.model.get("currentVal");
+                        if(lastValue === undefined){
+                                lastValue ='1';
+                        }
+                        $('.mz-productdetail-qty').val(lastValue);
+                        this.model.updateQuantity(lastValue);
+                     }
+                }else{
+                     lastValue =  this.model.get("currentVal");
+                      if(lastValue === undefined){
+                                lastValue ='1';
+                        }
+                     $('.mz-productdetail-qty').val(lastValue);
+                     this.model.updateQuantity(lastValue);
+                }
+            }else {
+                $('.mz-productdetail-qty').val('1');
+            }
+         },  
         quantityMinus: function() {
             this.model.messages.reset();
             var qty = this.model.get('quantity');
