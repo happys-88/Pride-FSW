@@ -130,6 +130,8 @@
                         {% block body-content %}
                             {% dropzone "body" scope="page" %}
                         {% endblock body-content %}
+
+                        {% block category-gateway %}{% endblock category-gateway %}
                         
                         {% block body-below-content %}
                             {% dropzone "body-bottom" scope="template" %}

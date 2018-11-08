@@ -9,7 +9,7 @@
 					  	<div class="input-group"> 					  	
 							<input type="email" class="form-control" placeholder="Enter Your Email Address" id="newsletterEmail">
 							<span class="input-group-btn">
-								<button class="btn btn-default" id="newsletter" type="button">SIGN UP</button>
+								<button class="btn mz-button" id="newsletter" type="button">Sing up</button>
 							</span>
 						</div>
 						<div class="input-group">   

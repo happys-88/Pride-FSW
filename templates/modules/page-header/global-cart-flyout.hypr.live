@@ -53,7 +53,7 @@
 							</h5>
 							{% if items.product.options %}
 								{% for option in items.product.options %}
-								<div><b>{{ option.name }}</b>  <span>{% if option.stringname %}{{ option.stringname }}{% else %}{{ option.value }}{% endif %}</span></div>
+								<div class="mz-options"><b>{{ option.name }}</b>  <span>{% if option.stringname %}{{ option.stringname }}{% else %}{{ option.value }}{% endif %}</span></div>
 								{% endfor %}
 							{% endif %}	
 							<div><b>{{ labels.qty }} </b>  <span>{{ items.quantity }}</span></div>
@@ -93,26 +93,23 @@
 	    	<span>{{ model.total|currency }}</span>
 	    </div>	    
 	</div>
-	<div class="row">
-		<div class="col-xs-8">
-			<a href="/cart" class="primary-btn view-cart-btn">{{ labels.openCart }}</a>
-			{% if (themeSettings.globalCartEnableSaveCart && user.isAnonymous)  %}
-				<button data-mz-action="openLiteRegistration" class="primary-btn">Save Cart</button>
-			{% endif %}
-		</div>
-		<div class="col-xs-4 text-right">
-			{% if not user.isAnonymous %}
-  				<form method="post" value="" action="{{ pageContext.secureHost }}/cart/checkout">
-  					<button type="submit" class="mz-button btn btn-default" >Checkout</button>
-  				</form>
- 			{% else%}
- 				<button type="submit" class="mz-button btn btn-default" data-mz-action="checkoutGuest">Checkout</button>
-			{% endif%}
-		</div>
+	<div class="mz-cart-section clearfix {% if not user.isAnonymous %}mz-user-login{% endif%}">
+		<a href="/cart" class="mz-button view-cart-btn">{{ labels.openCart }}</a>
+		{% if (themeSettings.globalCartEnableSaveCart && user.isAnonymous)  %}
+			<button data-mz-action="openLiteRegistration" class="mz-button mz-save-cart">Save Cart</button>
+		{% endif %}
+	
+		{% if not user.isAnonymous %}
+				<form method="post" value="" action="{{ pageContext.secureHost }}/cart/checkout">
+					<button type="submit" class="mz-button">Checkout</button>
+				</form>
+			{% else%}
+				<button type="submit" class="mz-button" data-mz-action="checkoutGuest">Checkout</button>
+		{% endif%}
 	</div>
 
 	{% if themeSettings.globalCartRelatedProducts %}
-		<h5>You may also like</h5>
+		<h5 class="mz-you-many">You may also like</h5>
 		<div class="related-products"></div>
 	{% endif %}
 	<div class="row text-center" style="padding-top: 15px;">

@@ -302,6 +302,13 @@
       "customEditor": "categoryContent@mozu"
     },
     {
+      "entityType": "category",
+      "id": "category-gateway",
+      "template": "category-gateway",
+      "title": "Category Gateway",
+      "userCreatable": true
+    },
+    {
       "entityType": "product",
       "id": "product",
       "template": "product",
@@ -2545,6 +2552,28 @@
           "xtype": "mz-input-text"
         }
       ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "categoryBanner",
+      "displayName": "Image Dropzone",
+      "displayTemplate": "cms/category-banner",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add Image",
+          "name": "categoryBannerImage",
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Add URL/Links",
+          "name": "categoryBannerUrl",
+          "xtype": "mz-input-text"
+        }      ],
       "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
       "validPageTypes": [
         "*"

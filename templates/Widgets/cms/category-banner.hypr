@@ -1,0 +1,7 @@
+<div class="mz-category-banner">
+	{% if model.config.categoryBannerImage %}
+		<a {% if model.config.categoryBannerUrl %}href="{{ model.config.categoryBannerUrl }}"{% endif %}>
+			<img src="{% make_url "image" model.config.categoryBannerImage %}" {% if model.config.categoryBannerImage.altText %}alt="{{ model.config.categoryBannerImage.altText }}"{% endif %}>
+		</a>
+	{% endif %}
+</div>
