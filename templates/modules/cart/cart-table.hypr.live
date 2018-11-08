@@ -159,41 +159,40 @@
   {% endfor %}
 
 
-  <div class="mz-carttable-total-row row"> 
-    <div class="mz-carttable-total-wrap col-xs-12 mz-padding-xs">
-    <div class="col-xs-7 col-sm-9 text-right"> {{ labels.orderTotal }}:</div>
-    <div id="mz-carttable-total" class="mz-carttable-total col-xs-5 col-sm-3 pull-right">
-      <strong>{{ model.discountedTotal|currency }}</strong>
-    </div>
-    </div>
-    <div></div>
+    <div class="mz-carttable-total-row row"> 
+      <div class="mz-carttable-total-wrap col-xs-12 mz-padding-xs">
+          <div class="col-xs-7 col-sm-9 text-right"> {{ labels.orderTotal }}:</div>
+          <div id="mz-carttable-total" class="mz-carttable-total col-xs-5 col-sm-3 pull-right">
+            <strong>{{ model.discountedTotal|currency }}</strong>
+          </div>
+      </div>
+    <div>
+      
+  </div>
   </div>
   <div class="mz-carttable-checkout-row row">
     <div class="col-xs-12 mz-padding-xs">
-     {% if  themeSettings.showcouponCodeBasket %}
-      <div class="mz-carttable-checkout-couponcode col-sm-4 col-xs-12" id="coupon-code-field" >
-        {% include "modules/common/coupon-code-field" %}
-      </div>
+      {% if  themeSettings.showcouponCodeBasket %}
+        <div class="mz-carttable-checkout-couponcode col-sm-4 col-xs-12" id="coupon-code-field" >
+          {% include "modules/common/coupon-code-field" %}
+        </div>
       {% endif %}  
+
       <div class="col-xs-12 col-sm-8 pull-right mz-button-bottom-cart">
-      {% if  themeSettings.showemptyBasket %}
-       {% if not model.isEmpty %}<span class="mz-empty-cart-link-container"><button class="font-large button_promotional" href="javascript:;" data-mz-action="empty">{{ labels.emptyCart }}</button></span>{% endif %}
-       {% endif %} 
-      <div class="mz-common-button-padding pull-right">
-
-         <button type="button" id="continueShoppingCartButton" class="mz-button continue-btn">{{ labels.continueShopping }}</button>
-
-         
-                <button id="cart-checkout" class="mz-button font-large button_primary"  {% if model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="proceedToCheckout">{{ labels.proceedToCheckout }}</button>
-      </div>
+          {% if  themeSettings.showemptyBasket %}
+              {% if not model.isEmpty %}<span class="mz-empty-cart-link-container"><button class="font-large button_promotional" href="javascript:;" data-mz-action="empty">{{ labels.emptyCart }}</button></span>{% endif %}
+          {% endif %} 
+          <div class="mz-carttable-checkout-row row"> 
+             {% include "modules/cart/cart-buttons" %}
+          </div>
       </div>
 
       {% if siteContext.checkoutSettings.visaCheckout.isEnabled %}
-      <div>
-        <p>or checkout with</p>
-        <img alt="Visa Checkout" class="v-button" role="button"
-          src="{{pageContext.visaCheckoutButtonUrl}}"/>       
-      </div>
+        <div>
+          <p>or checkout with</p>
+          <img alt="Visa Checkout" class="v-button" role="button"
+            src="{{pageContext.visaCheckoutButtonUrl}}"/>       
+        </div>
       {% endif %}
     </div>
     <div>

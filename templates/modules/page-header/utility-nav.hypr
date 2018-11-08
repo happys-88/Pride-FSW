@@ -85,6 +85,6 @@
     </ul> 
 
     <!-- Modal for Login/Signup -->
-    {% include "modules/page-header/login-signup-modal" %}
+
     
 </nav>
