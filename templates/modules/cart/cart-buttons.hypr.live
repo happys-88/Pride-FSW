@@ -2,10 +2,10 @@
     <button type="button" id="continueShoppingCartButton" class="mz-button continue-btn">{{ labels.continueShopping }}</button>
 
     {% if user.isAnonymous %}
-        <button id="cart-guest-checkout" type="button" class="mz-button"  data-mz-action="loginCheckout-registration" data-toggle="modal" data-target="#loginCheckoutPopup">Checkout</button>
+        <button type="button" id="cart-checkout" aria-label="{{ labels.cartCheckout }}" class="mz-button mz-button-large{% if model.isLoading %} button_disabled{% endif %}"  {% if model.isLoading or model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="checkoutGuest">{{ labels.proceedToCheckout }}</button>
     {% else %}
-        {% comment %} <button id="cart-checkout"  class="mz-button" {% if model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="proceedToCheckout">{{ labels.proceedToCheckout }}</button> {% endcomment %}
-
-        <button id="cart-checkout" class="mz-button font-large button_primary"  {% if model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="proceedToCheckout">{{ labels.proceedToCheckout }}</button>
+          <button  id="cart-checkout-btn" class="mz-button font-large button_primary" data-mz-action="proceedToCheckout">
+          {{ labels.proceedToCheckout }}
+        </button>
     {% endif %} 
 </div>

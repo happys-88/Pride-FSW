@@ -148,7 +148,6 @@
             {% endblock page-footer %}
 
             {% include "modules/page-header/login-signup-modal" %}
-            {% include "modules/checkout/login-checkout-modal" %}
         </div>
 
         {% block trailing-scripts %}

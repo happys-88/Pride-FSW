@@ -203,6 +203,80 @@ define(['modules/api',
                 this.render();
             }
         },
+        checkoutGuest: function() {
+            blockUiLoader.globalLoader();
+            var itemQuantity;
+            var flag = true;
+            var self = this;
+            var items = window.cartView.cartView.model.attributes.items.models;
+            var productCodes = [];
+            for (var i = 0; i < items.length; i++) {
+                var pdtCd = items[i].attributes.product.id;
+                productCodes.push(pdtCd);
+            }
+            var filter = _.map(productCodes, function(c) {
+                return "ProductCode eq " + c;
+            }).join(' or ');
+            api.get("search", { filter: filter, pageSize: productCodes.length }).then(function(collection) {
+                var cartItems = collection.data.items;
+                var obj = {};
+                var skuID;
+                for (var i = 0; i < cartItems.length; i++) {
+                    var limitAttribute = _.findWhere(cartItems[i].properties, { "attributeFQN": "tenant~limitPerOrder" });
+                    var limitAttributeModel = _.findWhere(items[i].properties, { "attributeFQN": "tenant~limitPerOrder" });
+                    var limitperorder, limitperorderModel;
+                    if (cartItems[i].mfgPartNumber) {
+                        skuID = cartItems[i].mfgPartNumber.toString();
+                        if (limitAttribute) {
+                            limitperorder = parseInt(JSON.parse(limitAttribute.values[0].stringValue)[skuID], 10);
+                            limitperorderModel = parseInt(JSON.parse(limitAttribute.values[0].stringValue)[skuID], 10);
+                            obj[skuID] = limitperorder;
+                            limitperorderModel = limitperorder;
+                        }
+                    } else {
+                        if (cartItems[i].mfgPartNumbers) {
+                            for (var j = 0; j < cartItems[i].mfgPartNumbers.length; j++) {
+                                skuID = cartItems[i].mfgPartNumbers[j].toString();
+                                if (limitAttribute) {
+                                    limitperorder = parseInt(JSON.parse(limitAttribute.values[0].stringValue)[skuID], 10);
+                                    limitperorderModel = parseInt(JSON.parse(limitAttribute.values[0].stringValue)[skuID], 10);
+                                    obj[skuID] = limitperorder;
+                                    limitperorderModel = limitperorder;
+                                }
+                            }
+                        }
+                    }
+                }
+                blockUiLoader.unblockUi();
+                Object.keys(obj).forEach(function(key, index) {
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].attributes.product.attributes.mfgPartNumber === key) {
+                            itemQuantity = items[j].attributes.quantity;
+                            if (itemQuantity > obj[key]) {
+                                flag = false;
+                                /*if (pageContext.isMobile) {
+                                    $('div.mz-qty-xs-align').find('span#' + items[j].attributes.id).text("*Max " + obj[key] + " items are allowed.");
+                                } else { */
+                                    $('div.mz-desktop-align').find('span#' + items[j].attributes.id).text("*Max " + obj[key] + " items are allowed.");
+                               // }
+                                $("[data-mz-cart-item=" + items[j].get('id') + "]").focus();
+                                break;
+                            }
+                        }
+                    }
+                });
+                if (flag) {
+                    $(".second-tab").hide();
+                    $(".third-tab").show();
+                    $('#liteRegistrationModal').modal('show');
+                    window.isCheckoutGuest = true;
+                    self.model.isLoading(true);
+                }
+            }, function() {
+                window.console.log("Got some error at cross sell in Global Cart");
+            });
+            return flag;
+        },
         removeItem: function(e) {
             if(require.mozuData('pagecontext').isEditMode) {
                 // 65954
@@ -523,7 +597,6 @@ define(['modules/api',
 
         },
         proceedToCheckout: function () {
-          console.log("proceedToCheckout");
             //commenting  for ssl for now...
             //this.model.toOrder();
             // return false;

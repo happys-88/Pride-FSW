@@ -1,7 +1,11 @@
 <div class="col-md-6 pull-right col-sm-6 col-xs-12 col-xs-12 text-right hidden-xs mz-button-checkout-cart-top">
-          <button  id="cart-checkout-btn" class="mz-button font-large button_primary" data-mz-action="proceedToCheckout">
+    {% if user.isAnonymous %}
+      <button type="button" id="cart-checkout" aria-label="{{ labels.cartCheckout }}" class="mz-button mz-button-large{% if model.isLoading %} button_disabled{% endif %}"  {% if model.isLoading or model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="checkoutGuest">{{ labels.proceedToCheckout }}</button>
+    {% else %}
+       <button  id="cart-checkout-btn" class="mz-button font-large button_primary" data-mz-action="proceedToCheckout">
           {{ labels.proceedToCheckout }}
-        </button>
+       </button>
+    {% endif %} 
 </div>
 <div class="clearfix"></div>
 <div class="mz-header-basket-md-sm hidden-xs">
@@ -182,6 +186,8 @@
           {% if  themeSettings.showemptyBasket %}
               {% if not model.isEmpty %}<span class="mz-empty-cart-link-container"><button class="font-large button_promotional" href="javascript:;" data-mz-action="empty">{{ labels.emptyCart }}</button></span>{% endif %}
           {% endif %} 
+
+          
           <div class="mz-carttable-checkout-row row"> 
              {% include "modules/cart/cart-buttons" %}
           </div>
