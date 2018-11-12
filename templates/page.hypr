@@ -147,7 +147,6 @@
                 {% include "modules/page-footer" %}
             {% endblock page-footer %}
 
-            {% include "modules/page-header/login-signup-modal" %}
         </div>
 
         {% block trailing-scripts %}
