@@ -6,11 +6,16 @@
   <span class="stock-price">{{ model.stockInfo }}</span>
 </div>
 {% endif %}
+
 <div class="col-xs-12 mz-reset-padding-left">
     <div class="col-xs-12 email-popup">
       {% dropzone "email-notification" scope="template" %}
     </div>
 </div>
+
+ {% if model.purchasableState.isPurchasable %}
+   Instock -  {{model.price.price|currency}} 
+ {% endif %}
 {% if model.options and model.options.length > 0 and model.productType != themeSettings.familyProductType %}
 <div class="mz-productdetail-options mz-l-stack-section">
   {% include "modules/product/product-options" %}
@@ -38,7 +43,6 @@
       </div>
       <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
     </div>
-    
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section pull-right col-xs-8 col-sm-8 text-right">
       {% include "modules/product/price-stack" %}
     </div>
