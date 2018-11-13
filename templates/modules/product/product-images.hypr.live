@@ -1,14 +1,6 @@
 {% if model.content.productImages %}
-<figure class="mz-productimages-main text-center {% if model.content.productImages.length > 1 %}hidden-xs {% endif %}">
-    {% include "modules/product/product-image" with productImage=model.mainImage productAltText=model.mainImage.altText productMaxWidth=themeSettings.productImagePdpMaxWidth isMainImage="true" as_parameter %}
-</figure>
-<div class="row hidden-xs">
-    <div class="col-sm-12">
-        <label class="rollover"><i class="fa fa-search-plus" aria-hidden="true"></i> {{ labels.rolloverToZoom}}</label>  
-    </div>
-</div>
-<div class="clearfix"></div>
-{% if model.content.productImages.length > 1 %}
+<div class="col-sm-3">
+    {% if model.content.productImages.length > 1 %}
 <figure class="mz-productimages-thumbs" data-length="{{model.content.productImages.length}}">
 {% if pageContext.isMobile %}
     <div class="visible-xs mobile-carousal">
@@ -36,6 +28,18 @@
 </figure>
 <figure class="mz-productimages-pager col-xs-12 visible-xs"></figure>
 {% endif %}
+</div>
+<div class="col-sm-9">
+        <figure class="mz-productimages-main text-center {% if model.content.productImages.length > 1 %}hidden-xs {% endif %}">
+        {% include "modules/product/product-image" with productImage=model.mainImage productAltText=model.mainImage.altText productMaxWidth=themeSettings.productImagePdpMaxWidth isMainImage="true" as_parameter %}
+    </figure>
+    <div class="row hidden-xs">
+        <div class="col-sm-12">
+            <label class="rollover"><i class="fa fa-search-plus" aria-hidden="true"></i> {{ labels.rolloverToZoom}}</label>  
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
 {% else %}
 <figure class="mz-productimages-main text-center">
     <span class="mz-productlisting-imageplaceholder img-responsive">

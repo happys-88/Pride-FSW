@@ -1344,8 +1344,8 @@ ul.tabs {
             }
         }
         .mz-productimages-thumbs{
-          width: 316px;
-          margin: 0px 0px 0px 22px;
+          //width: 316px;
+          //margin: 0px 0px 0px 22px;
           #productpager-Carousel, .products_list{
             margin-top: 6px;
             height: 71px;
@@ -1361,10 +1361,15 @@ ul.tabs {
           .bx-wrapper{
             .bx-controls-direction{
               a{
-                margin-top: 0px;
-                top: 11px;
+               // margin-top: 0px;
+               // top: 11px;
                 &.bx-next{
-                  right: -45px;
+                  right: 27px;
+                  top: -23px
+                }
+                &.bx-prev{    
+                    top: 311px;
+                    left: 24px;
                 }
               }
             }
@@ -2005,7 +2010,7 @@ ul.tabs {
 .products_list{
     list-style: none;
     padding: 0;
-    overflow: hidden;
+   // overflow: hidden;
     margin-bottom: 0px;
     margin-top: 0px;
     height: 93px;
@@ -2136,7 +2141,7 @@ ul.tabs {
             font-size: @fontSize - 1;
             line-height: 1.08;
             a{
-                color: @colorMediumGray;
+               // color: @colorMediumGray;
                 span{
                  margin: 5px;
                 }
@@ -2227,7 +2232,7 @@ ul.tabs {
     .mz-productdetail-shortdesc{
         font-size: @fontSize+4;
         line-height: 1.4;
-        color: @colorMediumGray;
+       // color: @colorMediumGray;
         border-bottom: 1px solid @colorLightGray;
         padding-bottom: @gutter+7;
         margin-bottom: @gutter+2;

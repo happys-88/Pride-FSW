@@ -111,12 +111,14 @@ define([
                     minSlides: 4,
                     maxSlides: 4,
                     moveSlides: 1,
-                    slideMargin: 15,
-                    nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
-                    prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+                    slideMargin: 5,
+                    nextText: '<i class="fa fa-angle-up" aria-hidden="true"></i>',
+                    prevText: '<i class="fa fa-angle-down" aria-hidden="true"></i>',
                     infiniteLoop: false,
                     hideControlOnEnd: true,
-                    pager: false
+                    pager: false,
+                    mode: 'vertical',
+                    adaptiveHeight: false
                 });
             },
             render: function() {

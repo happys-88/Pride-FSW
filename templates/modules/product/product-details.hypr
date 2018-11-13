@@ -14,6 +14,16 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="mz-product-top-content">
+                {% with model|get_product_attribute("tenant~brand") as brandName %}
+                    {% for brandCat in model.categories %}
+                        {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
+                            <div class="col-xs-12 mz-view-all-brand">
+                                {% comment %}<a href="/shop-by-brand/c/1270">{{ labels.viewAll }}</a> {% endcomment %}<a href='{% make_url "category" brandCat %}'>Brand Name:{{
+                                    brandName.values|first|prop("value") }}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
                 <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|replace("'","&rsquo;")|safe }}</h1>
                 <div class="row">
                     <div class="col-xs-5">
@@ -44,7 +54,6 @@
                 <div id="product-detail" class="product-detail mz-productdetail mz-l-stack">
                     {% include "modules/product/product-detail" %}
                 </div>
-                {% include "modules/product/product-desc-tabs" %}
             </div>
         </div>
     </div>
@@ -72,4 +81,6 @@
     <div class="mz-middle-breakpoint hidden-xs">
         {% dropzone "product-middle-breakpoint" scope="template" %}  
     </div> 
+    {% include "modules/product/product-desc-tabs" %}
+    {% include "Widgets/catalog/recently-viewed-products.hypr " %}
 </div>
