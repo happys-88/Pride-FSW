@@ -81,6 +81,14 @@
     <div class="mz-middle-breakpoint hidden-xs">
         {% dropzone "product-middle-breakpoint" scope="template" %}  
     </div> 
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            {% dropzone "detailpage-dropzone1" scope="template" %}
+        </div>
+        <div class="col-xs-12 col-md-6">
+            {% dropzone "detailpage-dropzone12" scope="template" %}
+        </div>
+    </div>
     {% include "modules/product/product-desc-tabs" %}
     {% include "Widgets/catalog/recently-viewed-products.hypr " %}
 </div>

@@ -1,35 +1,35 @@
 {% if model.content.productImages %}
-<div class="col-sm-3">
-    {% if model.content.productImages.length > 1 %}
-<figure class="mz-productimages-thumbs" data-length="{{model.content.productImages.length}}">
-{% if pageContext.isMobile %}
-    <div class="visible-xs mobile-carousal">
-        <ul id="productmobile-Carousel" class="products_list_mobile">
-        {% for image in model.content.productImages %}
-            <li data-label="{{image.imageLabel}}">
-                <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}"/>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-{% else %}
-    <div class="hidden-xs">
-        <ul{% if model.content.productImages.length > 4 %} id="productpager-Carousel"{% endif %} class="products_list ">
-        {% for image in model.content.productImages %}
-            <li{% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-thumb="{{ forloop.index }}" data-label="{{image.imageLabel}}">
-                <a class="mz-productimages-thumb" data-slide-index="{{ forloop.index0 }}" href="javascript:void(0);">
-                    {% include "modules/product/product-image" with productImage=image productAltText=image.altText productMaxWidth=themeSettings.maxProductImageThumbnailSize productImageClass="mz-productimages-thumbimage" isThumb="true" as_parameter %}
-                </a><br>
-            </li>
-        {% endfor %}
-        </ul>
+{% if model.content.productImages.length > 1 %}
+    <div class="col-sm-3">
+        <figure class="mz-productimages-thumbs" data-length="{{model.content.productImages.length}}">
+        {% if pageContext.isMobile %}
+            <div class="visible-xs mobile-carousal">
+                <ul id="productmobile-Carousel" class="products_list_mobile">
+                {% for image in model.content.productImages %}
+                    <li data-label="{{image.imageLabel}}">
+                        <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}"/>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="hidden-xs">
+                <ul {% if model.content.productImages.length > 4 %} id="productpager-Carousel"{% endif %} class="products_list ">
+                {% for image in model.content.productImages %}
+                    <li {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-thumb="{{ forloop.index }}" data-label="{{image.imageLabel}}">
+                        <a class="mz-productimages-thumb" data-slide-index="{{ forloop.index0 }}" href="javascript:void(0);">
+                            {% include "modules/product/product-image" with productImage=image productAltText=image.altText productMaxWidth=themeSettings.maxProductImageThumbnailSize productImageClass="mz-productimages-thumbimage" isThumb="true" as_parameter %}
+                        </a><br>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        </figure>
+    <figure class="mz-productimages-pager col-xs-12 visible-xs"></figure>
     </div>
 {% endif %}
-</figure>
-<figure class="mz-productimages-pager col-xs-12 visible-xs"></figure>
-{% endif %}
-</div>
-<div class="col-sm-9">
+<div class="{% if model.content.productImages.length > 1 %}col-sm-9{% else %}col-sm-12{% endif %} ">
         <figure class="mz-productimages-main text-center {% if model.content.productImages.length > 1 %}hidden-xs {% endif %}">
         {% include "modules/product/product-image" with productImage=model.mainImage productAltText=model.mainImage.altText productMaxWidth=themeSettings.productImagePdpMaxWidth isMainImage="true" as_parameter %}
     </figure>
