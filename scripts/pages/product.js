@@ -248,8 +248,11 @@
          },  
         quantityMinus: function() {
             this.model.messages.reset();
+            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
             var qty = this.model.get('quantity');
+            _qtyObj.text('');
             if (qty === 1) {
+                _qtyObj.text("Quantity can't be zero.");
                 return;
             }
             this.model.set('quantity',--qty);

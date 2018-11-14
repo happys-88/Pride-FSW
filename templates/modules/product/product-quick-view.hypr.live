@@ -49,6 +49,8 @@
                                                 </div>
                                                 {% endif %}
 
+                                                 <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+
                                                 <div class="mz-l-stack-section mz-productdetail-conversion row">
                                                     <div class="mz-productdetail-conversion-controls col-xs-4">
                                                         <label class="mz-qty-label text-uppercase" for="mz_quickview_qty">{{ labels.qty }}</label>
@@ -62,7 +64,7 @@
                                                     {% include "modules/product/price-stack" %}
                                                     </div>
                                                 </div>
-                                                <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+                                               
                                             </div>
                                             
                                         </div>

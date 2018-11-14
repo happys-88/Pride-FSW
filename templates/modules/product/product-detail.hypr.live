@@ -30,6 +30,7 @@
     </div>
 </div>
 {% endif %}
+<span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
 <section class="mz-l-stack-section mz-productdetail-conversion row">
   {% if model.productType != themeSettings.familyProductType %}
     <div class="mz-productdetail-conversion-controls col-xs-4 col-sm-4">
@@ -41,7 +42,7 @@
 
         <div class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
       </div>
-      <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+      
     </div>
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section pull-right col-xs-8 col-sm-8 text-right">
       {% include "modules/product/price-stack" %}
