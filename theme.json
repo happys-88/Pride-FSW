@@ -255,6 +255,14 @@
     },
     {
       "documentType": "web_page",
+      "entityType": "category",
+      "id": "brands",
+      "template": "brand-gateway",
+      "title": "Brand Gateway",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
       "entityType": "webpage",
       "id": "location",
       "template": "location",
@@ -829,7 +837,7 @@
     "suggestPriorSearchTerms": true,
     "searchExpandOnFocus": true,
     "showAddressTypeDropdown": true,
-    "showBreadcrumbs": false,
+    "showBreadcrumbs": true,
     "showCartItemDimensions": true,
     "showCartItemImage": true,
     "showCartItemOptions": true,
