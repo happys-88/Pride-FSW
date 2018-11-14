@@ -65,6 +65,7 @@ define([
             events: {
                 'click .qvButton': 'buttonClicked',
                 "click [data-mz-quickview-close]": "quickviewClose",
+                "keyup input[data-mz-value='quantity']": "onQuantityChange1",
                 "click #quickViewModal [data-mz-swatch-color]": "selectSwatch",
                 "click #quickViewModal [data-mz-product-option-attribute]": "onOptionChangeAttribute",
                 "click [data-mz-qty-minus]": "quantityMinus",
@@ -146,6 +147,41 @@ define([
                     }
                 }
             },
+            onQuantityChange1: _.debounce(function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
+            var Quantity = e.currentTarget.value;
+            Quantity = Quantity.trim();
+            var lastValue ='';
+              var reg = /^[A-Za-z]+$/;
+            if (Quantity !== '' &&  (!isNaN(Quantity) || reg.test(Quantity))){              
+                if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) && (Quantity > 0)){
+                     this.model.updateQuantity(Quantity);
+                     this.model.set("currentVal", Quantity);
+                } else if (Quantity!== 'NaN'  && (!reg.test(Quantity))) {
+                    if (Quantity > 0){
+                     this.model.updateQuantity(Quantity);
+                     this.model.set("currentVal", Quantity);
+                    }else{
+                        lastValue =  this.model.get("currentVal");
+                        if(lastValue === undefined){
+                                lastValue ='1';
+                        }
+                        $('.mz-productdetail-qty').val(lastValue);
+                        this.model.updateQuantity(lastValue);
+                    }
+                }else{
+                    lastValue =  this.model.get("currentVal");
+                     if(lastValue === undefined){
+                                lastValue ='1';
+                        }
+                     $('.mz-productdetail-qty').val(lastValue);
+                     this.model.updateQuantity(lastValue);
+                }
+            }else {
+                $('.mz-productdetail-qty').val('1');
+                this.model.updateQuantity('1');
+            }
+            },500),
             quantityMinus: function() {
                 var _qtyObj = $('[data-mz-validationmessage-for="quantity"]'),
                     _qtyCountObj = $('.mz-productdetail-qty');
