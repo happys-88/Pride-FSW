@@ -14,10 +14,14 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="mz-product-top-content">
+                {% comment %} remove after brand category avialbale in catalog {% endcomment %}
+                <div class="mz-brand">
+                    <a>Pride</a>
+                </div>
                 {% with model|get_product_attribute("tenant~brand") as brandName %}
                     {% for brandCat in model.categories %}
                         {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
-                            <div class="col-xs-12 mz-view-all-brand">
+                            <div class="mz-brand">
                                 {% comment %}<a href="/shop-by-brand/c/1270">{{ labels.viewAll }}</a> {% endcomment %}<a href='{% make_url "category" brandCat %}'>Brand Name:{{
                                     brandName.values|first|prop("value") }}</a>
                             </div>

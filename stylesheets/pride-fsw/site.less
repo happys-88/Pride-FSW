@@ -9,7 +9,7 @@
 @textColorWhite: #fff;  
 @textColorBlack: #000;  
 @textColorBlackTwo: #333; 
-@buttonBgColor: #2b648c; 
+@buttonBgColor: #2b648c;
 @defaultBorderColor: #d8d8d8; 
 @listItemColor: #00adce;
 @mzSiteNavBg: #e20177;
@@ -525,6 +525,24 @@ img[data-mztp]{
 			.mz-productlisting-info{	
                  display: none;
 			}
+		}
+	}
+}
+//color option
+.product-color-swatches{
+	li{
+		&.color-options {
+			border-radius: 50px;
+			 &.active{
+				   outline: none;
+					border: 1px solid black;
+					box-shadow: 0 0 0px 2px #fff inset;
+			    }
+				&:hover{
+					outline: none;
+					border: 1px solid black;
+					box-shadow: 0 0 0px 2px #fff inset;
+				}
 		}
 	}
 }

@@ -57,3 +57,68 @@
     float: left;
     max-width: 400px;
 }
+.mz-product {
+    .mz-product-top-content{
+        .mz-brand{
+            a{
+                color:#2b648c;
+                font-size:16px;
+                text-align:left;
+                line-height:28px;
+            }
+       }
+    }
+    .mz-product-tabs {
+            .nav {
+                text-align: center;
+                &.nav-tabs {
+                    border-bottom: none;
+                    li {
+                       // float: none;
+                        display: inline-block;
+                        margin: 3px 3px;
+                        a {
+                            border: 0;
+                            color: #000;
+                            font-size: 16px;
+                            font-weight: 600;
+                            padding: 5px 15px;
+                            text-transform: uppercase;
+                            &:hover {
+                                background: #fff;
+                                border: 0;
+                            }
+                        }
+                        &.active {
+                            a {
+                                border: 0;
+                                border-radius: 0;
+                                border-right: 1px solid #d6cfcf;
+                              //  border-bottom: 4px solid #e20177;
+                            }
+                        }
+                    }
+                }
+            }
+            .tab-content {
+                border-top: 1px solid #e1e1e1;
+                font-size: 14px;
+                line-height: 22px;
+                min-height: 150px;
+                padding: 20px 0;
+                text-align: left;
+            }
+        }
+        .mz-l-pagecontent {
+                h1 {
+                    &.mz-pagetitle {
+                        color: #495363;
+                        font-size: 16px;
+                        margin-top: 16px;
+                        margin-bottom: 10px;
+                        padding-bottom: 12px;
+                        text-transform: uppercase;
+                    }
+                }
+    }
+}
