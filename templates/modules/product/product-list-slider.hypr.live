@@ -1,0 +1,45 @@
+
+<li class="mz-productlist-item-slider" data-mz-product="{{model.variationProductCode|default(model.productCode)}}">      
+    <div class="mz-product-image">
+        <a href="{% make_url 'product' model.productCode %}" data-mz-productimage-thumb="{{ model.sequence }}">   
+            {% if model.content.productImages.length > 0 %}  
+                <img src="{{ model.content.productImages|first.imageUrl }}" {% if model.altText %}alt="{{ image.altText }}"{% endif %} />
+            {% else %}
+                <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+            {% endif %}
+        </a> 
+    </div>
+    
+    <div class="mz-product-details">
+        <a href="{% make_url "product" model.productCode %}" class="mz-productlisting-title">{{ model.content.productName }}</br><span> {{model.variationProductCode|default(model.productCode)}}</span></a>
+        
+        {% block product-rating %}     
+            <div id="product-rating">
+                <div class="yotpo bottomline">
+                    <div class="yotpo-bottomline pull-left star-clickable">
+                        <span class="yotpo-stars"></span> 
+                    </div> 
+                </div> 
+            </div> 
+        {% endblock product-rating %}
+        <div class="mz-price-stack">
+            <span class="mz-price {% if model.price.salePrice %} is-crossedout {% endif %}">
+                {% if model.priceRange %}
+                    <div itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/PriceSpecification" class="mz-pricestack mz-pricestack-range">
+                        <span itemprop="minPrice" class="mz-pricestack-price-lower">
+                             {% include "modules/common/price" with model=model.priceRange.lower %}
+                        </span>
+                        <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+                             {% include "modules/common/price" with model=model.priceRange.upper %}
+                        </span>
+                    </div>
+                {% else %}
+                    {{ model.price.price|currency }}
+                {% endif %}
+            </span>
+            {% if model.price.salePrice %}
+                <span>{{ model.price.salePrice|currency }}</span>
+            {% endif %}
+        </div>
+    </div> 
+</li> 

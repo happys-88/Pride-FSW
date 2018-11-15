@@ -96,7 +96,7 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                                 });
                             }
                             if(productslist.items.length > 0){
-                                rp.prepend('<div class="mz-related-products"> <h3>' + 'Recently Viewed' + '</h3> </div>');                      
+                                rp.prepend('<div class="mz-related-products"> <h3 class="heading-2"><span>' + 'Recently Viewed' + '</span></h3> </div>');                      
                             }                                
                     });
                 }

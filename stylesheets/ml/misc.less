@@ -2957,3 +2957,50 @@ ul.tabs {
         padding-left: 0px;
     } 
 }
+//no-serach result
+&.mz-searchresults.mz-noresults {
+    #page-content {
+        #search-again-box {
+            margin: 10px 0 10px 0;
+        }
+        .mz-searchbox-input {
+            padding-right: 30px;
+            width: 220px;
+            border: 1px solid @inputBorder;
+            box-shadow: none;
+        }
+        .mz-searchbox-button {
+            top: 33px;
+            left: 220px;
+        }
+        .mz-searchresults-query {
+            .fontsBold();
+            text-transform: uppercase;
+        }
+        .helpful-tips-wrapper,
+        .contact-us-wrapper {
+            color: @colorMediumGray;
+            .tips-title,
+            .contact-us-title {
+                text-transform: uppercase;
+                .fontsBold();
+            }
+            .tips-list,
+            .contact-us-list {
+                list-style-position: outside;
+                list-style-type: disc;
+                margin: 2px 2px 2px 12px;
+                padding: 6px;
+                li {
+                    line-height: 2;
+                }
+            }
+        }
+        .contact-us-wrapper {
+            padding: 3px 0 @defaultGutter 0;
+        }
+        .helpful-tips-wrapper {
+            margin-top: 10px; 
+        }
+    }
+}

@@ -1,0 +1,33 @@
+
+<div class="shop-by-brand">
+	<h2 class="heading-2"><span>{{ Model.config.title }}</span></h2>
+	<ul class="shop-by-brand-list"> 
+		{% for getBrandCategoryId in model.config.shopByBrand %} 
+			{% for categoryObject in categories.all %}
+				{% if categoryObject.content.name == "Shop By Brand" %}    
+				{% for brandSubCat in categoryObject.childrenCategories %}
+						{% if brandSubCat.categoryId == getBrandCategoryId %}
+							<li> 
+								<div class="brand-logo">
+									{% if brandSubCat.content.categoryImages.length > 0 %}
+										{% for imgurl in brandSubCat.content.categoryImages %}
+										 {% if forloop.first %}
+											<a href='{% make_url "category" brandSubCat %}'>
+												<img class="lozad" src="/cms/files/Loading_icon.gif" data-src='{% make_url "image" imgurl.imageUrl %}' alt="{{ brandSubCat.content.categoryImages.altText }}" >  
+											</a>
+											{% endif %}
+										{% endfor %}
+									{% else %}
+										<a href='{% make_url "category" brandSubCat %}'>
+											<img class="lozad" src="/cms/files/Loading_icon.gif" data-src='{% make_url "cdn" "/cms/files/no-image-hr.jpg" %}' alt="no-image" />
+										</a>
+									{% endif %}	
+								</div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+</div>

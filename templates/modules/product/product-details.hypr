@@ -95,6 +95,9 @@
     </div>
     {% include "modules/product/product-desc-tabs" %}
     {% include "Widgets/catalog/recently-viewed-products.hypr " %}
+    {% block you-may-also-like %}
+      <div id="product-crosssells"></div>
+    {% endblock you-may-also-like %}
     <div class="row">
         <div class="col-xs-12">
             {% dropzone "detailpage-dropzone3" scope="page" %}

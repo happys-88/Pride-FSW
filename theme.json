@@ -2471,6 +2471,29 @@
       ]
     },
     {
+      "displayName": "Shop By Brand",
+      "displayTemplate": "misc/shop-by-brand",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "Title",
+          "name": "title",
+          "xtype": "mz-input-text"
+        },
+        {
+          "anchor": "100%",
+          "fieldLabel": "Choose Shop By Brand",
+          "name": "shopByBrand",
+          "xtype": "mz-input-categorymulti"
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
+      "id": "shop-by-brand",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
       "displayName": "Shop By Category",
       "displayTemplate": "misc/shop-by-category",
       "editViewFields": [
