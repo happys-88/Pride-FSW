@@ -136,23 +136,19 @@ define(['modules/api',
             }*/
         },400),
         quantityMinus: _.debounce(function (e) {
+             var minusQty =$(e.currentTarget);
+            var msgId = minusQty.data('mz-cart-item-minus');
       
             var $qField = $(e.currentTarget).parent(".qty-block"); 
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
             value = parseInt(qFieldValue, 10);
-            var _qtyCartObj = $('[data-mz-Cart-validationmessage-for="quantity"]');
-            var _qtyGlobalObj = $('[data-mz-Global-validationmessage-for="quantity"]');
+            var _qtyCartObj = $('[data-mz-cart-item-msg='+ '"' +msgId + '"' +']');
             _qtyCartObj.text('');
-            _qtyGlobalObj.text('');
-
             if (value == 1) {
                 if ($(e.delegateTarget).attr("id")=="cart"){
                   _qtyCartObj.text("Quantity can't be zero.");
                 }
-                if ($(e.delegateTarget).attr("id")=="global-cart-listing"){
-                     _qtyGlobalObj.text("Quantity can't be zero.");
-                }   
                 return;
             }   
             value--;

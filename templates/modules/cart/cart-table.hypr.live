@@ -99,10 +99,10 @@
 
         <div class="col-xs-5 col-sm-3 cart-item-qty hidden-xs"> 
           <span class="mz-validationmessage">{{ model.addToCartErr }}</span>
-          <span class="mz-validationmessage" data-mz-Cart-validationmessage-for="quantity"></span> 
+          <span class="mz-validationmessage" data-mz-Cart-validationmessage-for="quantity" data-mz-cart-item-msg="{{ item.id }}"></span> 
           <div class="mz-carttable-item-qty mz-cart-qty-box">
             <div class="qty-block">
-              <div class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="fa fa-minus"  aria-hidden="true"></i></div>
+              <div class="qty-counter" id="minus" data-mz-qty-minus role="button" data-mz-cart-item-minus="{{ item.id }}"><i class="fa fa-minus"  aria-hidden="true" data-mz-cart-item-minus="{{ item.id }}"></i></div>
               <input class="mz-carttable-qty-field text-center" data-id ="global-mz-carttable-qty-field" type="text" {% if model.isLoading %}disabled="disabled"{% endif %} data-mz-cart-item="{{ item.id }}" data-mz-value="quantity" value="{{ item.quantity }}" min="1" maxlength="3"/>
           
               <div class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
