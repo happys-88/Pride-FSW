@@ -513,7 +513,7 @@ img[data-mztp]{
     margin: 30px 0 40px!important;
 }
 
-//recently product
+//Recently product
 #recently-viewed-products{
 	.mz-l-carousel{
 		height: 185px;
@@ -528,21 +528,90 @@ img[data-mztp]{
 		}
 	}
 }
-//color option
-.product-color-swatches{
-	li{
-		&.color-options {
-			border-radius: 50px;
-			 &.active{
-				   outline: none;
-					border: 1px solid black;
-					box-shadow: 0 0 0px 2px #fff inset;
-			    }
-				&:hover{
-					outline: none;
-					border: 1px solid black;
-					box-shadow: 0 0 0px 2px #fff inset;
-				}
+
+//Cart Page
+.mz-cart {
+	.mz-button-checkout-cart-top {
+	    margin: 0px 0 30px 0;
+	}
+	.mz-carttable-item {
+		.mz-carttable-item-product {
+			>a {
+				border: 1px solid #e0e0e0;
+				padding: 10px;
+				float: left;
+				box-sizing: border-box;
+				width: 100px;
+				height: 100px;
+				margin-right: 15px;
+			}
 		}
+	}
+	.mz-carttable-item-qty {
+		.qty-block {
+		    float: none;
+		    width: 86px;
+		    margin: 0 auto;
+			.qty-counter {
+			    background: #e1e1e1;
+			    cursor: pointer;
+			    padding: 0 8px;
+			    float: left;
+			    width: 25px;
+			    height: 34px;
+			    text-align: center;
+			}
+			#minus {
+			    border-radius: 4px 0 0 4px;
+			}
+			input[type=text] {
+			    border-color: #e1e1e1;
+			    height: 34px;
+			    width: 34px;
+			    float: left;
+			    background: #fff;
+			    margin: 0px;
+			}
+			#plus {
+			    border-radius: 0 4px 4px 0;
+			}
+			i {
+			    margin-top: 13px;
+			    font-size: 12px;
+			}
+		}
+	}
+	.mz-header-basket-md-sm {
+		div {
+		    font-size: 16px;
+		    font-weight: 600;
+		}
+	}
+	.mz-table-cart-items {
+		.mz-carttable-item-remove {
+			.btn-link {
+			    color: #2b648c;
+			    font-size: 12px;
+			}
+		}
+	}
+	#coupon-code {
+	    height: 42px;
+	    margin-bottom: 0;
+	}
+	.mz-carttable-checkout-couponcode {
+		.mz-button {
+			font-size: 16px;
+		    height: 42px;
+		    margin-top: 0;
+		    margin-left: -1px;
+		}
+	}
+	.cart-empty-btn {
+	    display: inline-block;
+	    margin-top: 20px;
+	    &:hover {
+	    	text-decoration: none;
+	    }
 	}
 }

@@ -1,11 +1,11 @@
 ﻿@keyframes loadingthrob {
-    from { background-color: #eee; }
-     to { background-color: #e3e3e3; }
+    from { background-color: #5583a4;border-color: #5583a4;}
+     to { background-color: #2b648c;border-color: #2b648c;}
 }
 
 @-webkit-keyframes loadingthrob {
-    from { background-color: #eee; }
-     to { background-color: #e3e3e3; }
+    from { background-color: #5583a4;border-color: #5583a4;}
+     to { background-color: #2b648c;border-color: #2b648c;}
 }
 
 
@@ -30,14 +30,15 @@
         .box-shadow(~"inset 0 0 4px rgba(0,0,0,0.3)");
     }
     &[disabled], &[disabled]:active {
-        background-color: #eee;
-        border-color: #eee;
+        background-color: #2b648c;
+        border-color: #2b648c;
+        opacity: 0.6;
         .box-shadow(none);
     }
 }
 .mz-button-large {
-    font-size: @fontSizeLarge;
-    padding: @gutter/2 @gutter;
+    font-size: @fontSizeLarge - 2;
+    padding: @gutter/2 - 2.5 @gutter @gutter/2 - 3.5;
 }
 
 .mz-button-small {
@@ -49,7 +50,6 @@
 
 .is-loading .mz-button, .mz-button.is-loading {
     background-position: 50% 50%;
-    border-color: #eee;
     color: transparent;
     animation: loadingthrob 1s linear 0s alternate infinite;
     -webkit-animation: loadingthrob 1s linear 0s alternate infinite;
