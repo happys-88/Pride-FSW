@@ -26,7 +26,7 @@ define([
 				pager = true;
 				controls = false;
 			}else{
-				minSlides=4;
+				minSlides=6;
 				maxSlides=12;
 				slideWidth= 333;
 				slideMargin=15;
@@ -40,8 +40,8 @@ define([
                 slideWidth: slideWidth,
                 slideMargin: slideMargin,
                 responsive: true,
-				pager: pager,
-				controls: controls,
+				controls: false,
+				pager: true,
                 speed: 1000,
 				infiniteLoop: false,
 				touchEnabled: true,

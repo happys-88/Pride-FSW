@@ -13,13 +13,13 @@
 										{% for imgurl in brandSubCat.content.categoryImages %}
 										 {% if forloop.first %}
 											<a href='{% make_url "category" brandSubCat %}'>
-												<img class="lozad" src="/cms/files/Loading_icon.gif" data-src='{% make_url "image" imgurl.imageUrl %}' alt="{{ brandSubCat.content.categoryImages.altText }}" >  
+												<img src='{% make_url "image" imgurl.imageUrl %}' alt="{{ brandSubCat.content.categoryImages.altText }}" >  
 											</a>
 											{% endif %}
 										{% endfor %}
 									{% else %}
 										<a href='{% make_url "category" brandSubCat %}'>
-											<img class="lozad" src="/cms/files/Loading_icon.gif" data-src='{% make_url "cdn" "/cms/files/no-image-hr.jpg" %}' alt="no-image" />
+											<img src='{% make_url "cdn" "/cms/files/no-image-hr.jpg" %}' alt="no-image" />
 										</a>
 									{% endif %}	
 								</div>
