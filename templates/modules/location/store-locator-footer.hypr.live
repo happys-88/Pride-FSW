@@ -6,6 +6,6 @@
             <button id="btnFindStore" class="btn mz-button button_promotional" type="submit">{{ labels.find }}</button>
         </span>
     </div>
-    <span id="zipcodeHelpBlock" class="text-danger hidden">{{labels.zipErrorMessage}}</span>
+    <span id="zipcodeHelpBlock" class="text-danger"></span>
 </div>
 {% require_script "modules/store-locator-footer" %}

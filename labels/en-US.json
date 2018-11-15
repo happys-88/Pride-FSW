@@ -554,5 +554,6 @@
     //Pride
     "dealerLocator"       :    "Dealer Locator",
     "copyRight"           :    "Copyright",
-    "prideCentric"        :    "PRIDE Centric Resources, Inc."
+    "prideCentric"        :    "PRIDE Centric Resources, Inc.",
+    "zipCodeEmpty"        : "Zipcode is either empty or invalid"
 }
