@@ -1,4 +1,13 @@
-﻿<footer>
+﻿<div class="mz-about-pride">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{% dropzone "fsw-about-us" scope="template" %}
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-4 pull-right">

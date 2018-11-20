@@ -1,8 +1,7 @@
-
 /**** Custom Styles for harmon discount ****/ 
 
 /**** Custom Variables ****/
-@fontFamily: "Montserrat", sans-serif;
+@fontFamily: 'Montserrat', sans-serif;
 @headingTwoFontSize: 24px;
 @headingTwoColor: #000;  
 @dropzoneMargin: 70px;
@@ -193,13 +192,7 @@ img[data-mztp]{
 			float: left;  
 			padding: 0 7px; 
 			.logo {
-			    background-image: url(../resources/images/logo.png); 
-			    background-repeat: no-repeat;
-			    background-size: contain;
-			    background-position: left top;  
-			    display: block;
-			    float: none;
-			    max-width: 141px;   
+			    background-image: none; 
 			    width: 141px;  
 			    height: 61px; 
 			}
@@ -449,6 +442,29 @@ img[data-mztp]{
 
 /********************************************* Pride FSW *********************************************/
 
+/*** Validation error msg ***/
+.mz-validationmessage:empty {
+	display: none;
+}
+.mz-validationmessage {
+    font-size: 12px;
+    font-weight: 500;
+}
+/***\ Validation error msg ***/
+
+
+@media (min-width: 1500px) {
+	.container {
+	    width: 1440px;
+	}
+}
+.mz-drop-zone {
+	.mz-cms-row {
+	    max-width: 100%;
+	}
+}
+
+
 .mz-homepage {
 	.mz-l-pagecontent {
 		padding: 0 15px 25px;
@@ -456,6 +472,9 @@ img[data-mztp]{
 			width: 100%;
 			max-width: 100%;
 			padding: 0;
+			.container {
+			    max-width: 1440px;
+			}
 		}
 	}
 	#mz-drop-zone-home-slider {
@@ -609,7 +628,7 @@ img[data-mztp]{
 	}
 	.cart-empty-btn {
 	    display: inline-block;
-	    margin-top: 20px;
+	    margin: 20px 0 40px;
 	    &:hover {
 	    	text-decoration: none;
 	    }
@@ -620,16 +639,5 @@ img[data-mztp]{
 		}
 	}
 }
-//crossell
-#product-crosssells{
-	margin-bottom: 40px;
-	.mz-product-slider{
-		.mz-product-image{
-			img{
-				max-height: 166px;
-				display: block;
-				margin: 0 auto;
-			}
-		}
-	}
-}
+
+

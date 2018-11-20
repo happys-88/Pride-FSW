@@ -1,12 +1,9 @@
 ﻿{% block credit-card-form %}
-    
     <div class="mz-l-formfieldgroup-row mz-payment-credit-card-number-row mz-card-type-images">        
-        {% comment %}
-        <div class="mz-l-formfieldgroup-cell">
+        <div class="col-sm-4">
             <label for="mz-payment-credit-card-number"></label>
         </div>       
-        {% endcomment %} 
-        <div class="mz-l-formfieldgroup-cell">
+        <div class="col-sm-8">
             {% if siteContext.checkoutSettings.supportedCards.visa %}
             <span class="mz-credit-card-image-container mz-visa-image-container {% if model.paymentOrCardType == "VISA" %}active{% endif %} " data-mz-card-type-image="VISA" ><img alt="Visa" src="/resources/images/visa.gif"></span>
             {% endif %}
@@ -28,36 +25,33 @@
             <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}paymentOrCardType"></span>
         {% endif %}
     </div>
-    <div class="mz-l-formfieldgroup-row mz-payment-credit-card-number-row">
-        {% comment %}
-        <div class="mz-l-formfieldgroup-cell">
+
+    <div class="form-group  mz-l-formfieldgroup-row mz-payment-credit-card-number-row">
+        <div class="col-sm-4">
             <label for="mz-payment-credit-card-number">{{ labels.cardNumber }}<span class="is-required"> *</span>:</label>
         </div>
-        {% endcomment %}
-        <div class="mz-l-formfieldgroup-cell">
-            <input type="text" name="credit-card-number" id="mz-payment-credit-card-number" data-mz-value="{{ cardcontext }}cardNumberPartOrMask" value="{{ model.cardNumberPartOrMask }}" maxlength="{{themeSettings.creditCardNumberLength}}" placeholder="{{ labels.cardNumber }}*" autocomplete="on">
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="credit-card-number" id="mz-payment-credit-card-number" data-mz-value="{{ cardcontext }}cardNumberPartOrMask" value="{{ model.cardNumberPartOrMask }}" maxlength="{{themeSettings.creditCardNumberLength}}" placeholder="{{ labels.cardNumber }}*" autocomplete="on">
             <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}cardNumberPartOrMask"></span>
         </div>
     </div>
-    <div class="mz-l-formfieldgroup-row mz-payment-credit-card-name-row">
-        {% comment %}
-        <div class="mz-l-formfieldgroup-cell">
+
+    <div class="form-group mz-l-formfieldgroup-row mz-payment-credit-card-name-row">
+        <div class="col-sm-4">
             <label for="mz-payment-credit-card-name">{{ labels.nameOnCard }}<span class="is-required"> *</span>:</label>
         </div>
-        {% endcomment %}
-        <div class="mz-l-formfieldgroup-cell">
-            <input type="text" name="credit-card-name" id="mz-payment-credit-card-name" data-mz-value="{{ cardcontext }}nameOnCard" value="{{ model.nameOnCard }}" maxlength="{{themeSettings.fullNameLength}}" placeholder="{{ labels.nameOnCard }}*">
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="credit-card-name" id="mz-payment-credit-card-name" data-mz-value="{{ cardcontext }}nameOnCard" value="{{ model.nameOnCard }}" maxlength="{{themeSettings.fullNameLength}}" placeholder="{{ labels.nameOnCard }}*">
             <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}nameOnCard" ></span>
         </div>
     </div>
-    <div class="mz-l-formfieldgroup-row mz-payment-credit-card-expiration-row">
-    {% comment %}
-        <div class="mz-l-formfieldgroup-cell">
+
+    <div class="form-group mz-l-formfieldgroup-row mz-payment-credit-card-expiration-row">
+        <div class="col-sm-4">
             <label for="mz-payment-expiration-month">{{ labels.expires }}<span class="is-required"> *</span>:</label>
         </div>
-    {% endcomment %}
-        <div class="mz-l-formfieldgroup-cell">
-            <select class="mz-l-formfieldgroup-halfsize expiry-month" id="mz-payment-expiration-month" name="expiration-month" data-mz-value="{{ cardcontext }}expireMonth">
+        <div class="col-sm-4 col-xs-6">
+            <select class="form-control mz-l-formfieldgroup-halfsize expiry-month" id="mz-payment-expiration-month" name="expiration-month" data-mz-value="{{ cardcontext }}expireMonth">
                 <option value="">{{ labels.expiryMonth }}*</option>
                 <option {% if model.expireMonth == "01" %}selected="selected"{% endif %} value="01">01 - {{ labels.january }}</option>
                 <option {% if model.expireMonth == "02" %}selected="selected"{% endif %} value="02">02 - {{ labels.february }}</option>
@@ -72,7 +66,9 @@
                 <option {% if model.expireMonth == "11" %}selected="selected"{% endif %} value="11">11 - {{ labels.november }}</option>
                 <option {% if model.expireMonth == "12" %}selected="selected"{% endif %} value="12">12 - {{ labels.december }}</option>
             </select>
-            <select class="mz-l-formfieldgroup-halfsize" name="mz-payment-expiration-year" data-mz-value="{{ cardcontext }}expireYear">
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <select class="form-control mz-l-formfieldgroup-halfsize" name="mz-payment-expiration-year" data-mz-value="{{ cardcontext }}expireYear">
                 <option value="">{{ labels.expiryYear }}*</option>
                 <option {% if model.expireYear == "2018" %}selected="selected"{% endif %} value="2018">2018</option>
                 <option {% if model.expireYear == "2019" %}selected="selected"{% endif %} value="2019">2019</option>

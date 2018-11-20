@@ -16,7 +16,6 @@
 	    {% dropzone "instagram-follow-fsw" scope="template" %} 
 	    {% dropzone "featured-experts" scope="template" %}
 	</div>
-	{% dropzone "fsw-about-us" scope="template" %}
 {% endblock body-content %}
 
 {% block body-below-content %}

@@ -11,5 +11,6 @@
 	</a>
 {% else %}
 	<a class="logo" href="/" title="{{ siteContext.generalSettings.websiteName }}">
+		<img src='{% make_url "cdn" "/cms/files/fsw-logo.png" %}' alt="{{ siteContext.generalSettings.websiteName }}" />
 	</a>
 {% endif %}

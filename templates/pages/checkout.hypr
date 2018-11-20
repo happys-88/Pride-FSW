@@ -1,81 +1,83 @@
-﻿    {% extends "page" %}
-
+﻿{% extends "page" %}
 {% block title-tag-content %}{% firstof pageContext.metaTitle labels.checkout %} - {% parent %}{% endblock title-tag-content %}
-
 {% block head-tag-scripts %}
-{% parent %}
-{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
-{% include "modules/common/anti-clickjacking-script" %}
-{% endif %}
+    {% parent %}
+    {% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
+        {% include "modules/common/anti-clickjacking-script" %}
+    {% endif %}
 {% endblock head-tag-scripts %}
-
 {% block body-tag-classes %} mz-checkout {% endblock body-tag-classes %}
-
 {% block site-nav %}{% endblock site-nav %}
 {% block secondary-nav %}{% endblock secondary-nav %}
 {% block page-footer %}{% endblock page-footer%}
+{% block page-header %}
+    <div class="mz-checkout-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-left">
+                        <a class="logo" href="/" title="{{ siteContext.generalSettings.websiteName }}">
+                            <img src='{% make_url "cdn" "/cms/files/fsw-logo.png" %}' alt="{{ siteContext.generalSettings.websiteName }}" /> 
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="tel:+(303) 801-0624" class="mz-phone-number">(303) 801-0624</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-header %}
 
 {% block body-content %}
+    {% require_script "pages/checkout" %}
+    {% preload_json model "checkout" %}
 
-{% require_script "pages/checkout" %}
+    <div class="mz-l-container">
+        <h1 class="mz-pagetitle">
+            {{ labels.checkout }}
+        </h1>
+         {% if not user.isAuthenticated %}
+             <a data-toggle="modal" data-mz-action="lite-registration" class="mz-pagetitle-note">
+                <span>
+                    {{ labels.registeredCustomer }} {{ labels.logIn }}
+                </span>
+            </a>
+        {% endif %}
 
-{% preload_json model "checkout" %}
+        <form id="checkout-form" class="mz-checkoutform mz-l-2column mz-l-2column-right fades-in clearfix" method="post" onsubmit="return false;">
+            {% include "modules/common/message-bar" with model=model.messages %}
+            <div class="mz-l-column" id="checkout-rightcol">
+                <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
+                    {% include "modules/checkout/checkout-order-summary" %}
+                </div>
 
-<div class="mz-l-container">
-    <h1 class="mz-pagetitle">
-        {{ labels.checkout }}
-    </h1>
-     {% if not user.isAuthenticated %}
-         <a data-toggle="modal" data-mz-action="lite-registration" class="mz-pagetitle-note">
-            <span>
-                {{ labels.registeredCustomer }} {{ labels.logIn }}
-            </span>
-        </a>
-    {% endif %}
-
-    <form id="checkout-form" class="mz-checkoutform mz-l-2column mz-l-2column-right fades-in" method="post" onsubmit="return false;">
-
-    {% include "modules/common/message-bar" with model=model.messages %}
-    <div class="mz-l-column" id="checkout-rightcol">
-      <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
-        {% include "modules/checkout/checkout-order-summary" %}
-      </div>
-
-        <div class="mz-l-formfieldgroup">
-            <div class="mz-checkoutform-couponcode mz-l-formfieldgroup-row" id="coupon-code-field" >
-                {% include "modules/checkout/coupon-code-field" %}
+                <div class="mz-l-formfieldgroup">
+                    <div class="mz-checkoutform-couponcode mz-l-formfieldgroup-row" id="coupon-code-field" >
+                        {% include "modules/checkout/coupon-code-field" %}
+                    </div>
+                    {% if themeSettings.showCheckoutCommentsField %}
+                        <div class="mz-checkoutform-comments mz-l-formfieldgroup-row" id="comments-field" >
+                            {% include "modules/checkout/comments-field" %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-            {% if themeSettings.showCheckoutCommentsField %}
-            <div class="mz-checkoutform-comments mz-l-formfieldgroup-row" id="comments-field" >
-                {% include "modules/checkout/comments-field" %}
-            </div>
-            {% endif %}
-        </div>
 
+            <div class="mz-l-column">
+                <div class="mz-formstep mz-checkoutform-shippingaddress" id="step-shipping-address">
+                    {% include "modules/checkout/step-shipping-address" %}
+                </div>
+                <div class="mz-formstep mz-checkoutform-shippingmethod" id="step-shipping-method" {% if not model.requiresFulfillmentInfo %}style="display:none"{% endif %}>
+                    {% include "modules/checkout/step-shipping-method" %}
+                </div>
+                <div class="mz-formstep mz-checkoutform-paymentinfo" id="step-payment-info">
+                    {% include "modules/checkout/step-payment-info" %}
+                </div>
+                <div class="mz-formstep mz-checkoutform-review" id="step-review">
+                    {% include "modules/checkout/step-review" %}
+                </div>
+            </div><!-- left .column -->
+        </form>
     </div>
-
-    <div class="mz-l-column">
-
-        <div class="mz-formstep mz-checkoutform-shippingaddress" id="step-shipping-address">
-            {% include "modules/checkout/step-shipping-address" %}
-        </div>
-
-        <div class="mz-formstep mz-checkoutform-shippingmethod" id="step-shipping-method" {% if not model.requiresFulfillmentInfo %}style="display:none"{% endif %}>
-            {% include "modules/checkout/step-shipping-method" %}
-        </div>
-
-        <div class="mz-formstep mz-checkoutform-paymentinfo" id="step-payment-info">
-            {% include "modules/checkout/step-payment-info" %}
-        </div>
-
-        <div class="mz-formstep mz-checkoutform-review" id="step-review">
-            {% include "modules/checkout/step-review" %}
-        </div>
-
-    </div><!-- left .column -->
-
-</form>
-
-</div>
-
 {% endblock body-content %}
