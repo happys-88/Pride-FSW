@@ -14,22 +14,32 @@
             font-weight: 500;
             display: block;
             margin-top: 11px;
+            &:hover {
+                color: #2b648c;
+            }
         }
     }
     .global-marketing-area {
         display: none;
     }
-    h1 {
-        float: left;
-        width: 100%;
-    }
-    .mz-pagetitle {
-        .mz-pagetitle-note {
-            font-weight: 600;
-            a {
-                color: #00adce;
+    .mz-l-pagecontent {
+        h1 {
+            float: left;
+            width: 100%;
+            &.mz-pagetitle {
+                margin-bottom: 15px;
             }
         }
+    }
+    .mz-pagetitle-note {
+        font-weight: 600;
+        color: #2b648c;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    #checkout-form {
+        padding-top: 0;
     }
     #checkout-rightcol {
         padding-left: 15px;
@@ -68,7 +78,8 @@
         input[type="text"], 
         input[type="password"], 
         input[type="email"],
-        input[type="tel"] {
+        input[type="tel"],
+        textarea {
             margin-bottom: 0;
             width: 100%;
             border: 1px solid #ccc;
@@ -257,6 +268,10 @@
     .mz-header-basket-md-sm {
         font-weight: 600;
     }
+    .mz-item-price,
+    .mz-item-rowtotal {
+        font-weight: 500;
+    }
     .mz-ordersummary-checkout {
         .mz-ordersummary {
             .mz-ordersummary-item-product {
@@ -291,9 +306,9 @@
     }
     .mz-carttable-item-info-wrap {
         max-width: 100%;
-        .mz-carttable-item-code {
-            font-size: 14px;
-        }
+        // .mz-carttable-item-code {
+        //     font-size: 14px;
+        // }
         .mz-product-option {
             font-weight: 600;
             font-size: 13px;
@@ -302,19 +317,37 @@
             }
         }
     }
+    .mz-terms-and-conditions {
+        a {
+            color: #2b648c;
+        }
+    }
 
     //Coupon code
+    .mz-checkoutform-couponcode,
+    .mz-checkoutform-comments {
+        margin-top: 15px;
+        float: left;
+        width: 100%;
+        label {
+            display: block;
+            text-align: right;
+        }
+        .mz-button {
+            margin-top: 10px;
+        }
+    }
     #coupon-code {
         height: 34px;
         margin-bottom: 0;
     }
-    .mz-checkoutform-couponcode {
-        .mz-button[disabled] {
-            &:hover {
-                background: #fe832e;
-            }
-        }
-    }
+    // .mz-checkoutform-couponcode {
+    //     .mz-button[disabled] {
+    //         &:hover {
+    //             background: #fe832e;
+    //         }
+    //     }
+    // }
 
     .mz-global-footer {
         margin-top: 50px;

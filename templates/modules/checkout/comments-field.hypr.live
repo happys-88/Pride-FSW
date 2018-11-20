@@ -1,6 +1,8 @@
-﻿    <div class="mz-l-formfieldgroup-cell">
-      <label for="order-comments">{{ labels.comments }}:</label>
-    </div>
-    <div class="mz-l-formfieldgroup-cell">
-      <textarea id="order-comments" class="mz-checkoutform-comments-field" name="comments" data-mz-value="shopperNotes.comments" maxlength="{{themeSettings.checkoutCommentsLength}}" >{{ model.shopperNotes.comments }}</textarea>
-    </div>
+﻿<div class="form-group">
+	<div class="col-sm-4">
+	    <label for="order-comments">{{ labels.comments }}:</label>
+	</div>
+	<div class="col-sm-8">
+	    <textarea id="order-comments" class="mz-checkoutform-comments-field" class="form-control" name="comments" data-mz-value="shopperNotes.comments" maxlength="{{themeSettings.checkoutCommentsLength}}" >{{ model.shopperNotes.comments }}</textarea>
+	</div>
+</div>
