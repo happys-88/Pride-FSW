@@ -547,8 +547,8 @@
     "logInMsg"            :    "Welcome back! Please enter your email address and password to sign into your online shopping account.",
     "signUpMsg"           :    "Sign up with an email address and password.",
     "createNewAccount"    :    "Create New Account",
-    "checkoutAsGuest"     :  "Checkout as guest",
-    "checkoutAsGuestMsg"  :   "You will have the opportunity to register after placing your order.",
+    "checkoutAsGuest"     :    "Checkout as guest",
+    "checkoutAsGuestMsg"  :    "You will have the opportunity to register after placing your order.",
 
 
     //Pride
@@ -558,6 +558,10 @@
     "zipCodeEmpty"        :    "Zipcode is either empty or invalid",
 
     "cvvNumber"           :    "(CVV/CID/CVC)",
-    "giftCard"            :    "Gift Card"
+    "giftCard"            :    "Gift Card",
+
+    //My account by:- Ashish
+    "subscribedMessage": "✔ Subscribed to store news and specials",
+    "unSubscribedMessage": "✖ Unsubscribed to store news and specials"
 }
  

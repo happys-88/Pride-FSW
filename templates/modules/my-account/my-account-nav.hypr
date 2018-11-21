@@ -5,21 +5,14 @@
                 {{ labels.accountSettings }}
             </a>
         </li>
-        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
         <li class="mz-scrollnav-item">
-            <a class="mz-scrollnav-link" href="#wishlist">
-                {{ labels.accountMyWishlist }}
+            <a class="mz-scrollnav-link" href="#addressbook">
+                {{ labels.addressBook }}
             </a>
         </li>
-        {% endif %}
         <li class="mz-scrollnav-item">
             <a class="mz-scrollnav-link" href="#orderhistory">
                 {{ labels.orderHistory }}
-            </a>
-        </li>
-        <li class="mz-scrollnav-item">
-            <a class="mz-scrollnav-link" href="#returnhistory">
-                {{ labels.returns }}
             </a>
         </li>
         <li class="mz-scrollnav-item">
@@ -28,15 +21,29 @@
             </a>
         </li>
         <li class="mz-scrollnav-item">
-            <a class="mz-scrollnav-link" href="#addressbook">
-                {{ labels.addressBook }}
+            <a class="mz-scrollnav-link" href="javascript:void(0);">
+                {{ labels.logOut }}
             </a>
         </li>
+        {% comment %}
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" href="#returnhistory">
+                {{ labels.returns }}
+            </a>
+        </li>
+        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="#wishlist">
+                    {{ labels.accountMyWishlist }}
+                </a>
+            </li>
+        {% endif %}
         <li class="mz-scrollnav-item">
             <a class="mz-scrollnav-link" href="#{{ labels.digitalCreditsAnchor }}">
                 {{ labels.digitalCredit }}
             </a>
         </li>
+        {% endcomment %}
     </ul>
 </nav>
 {% require_script "modules/scroll-nav" %}
