@@ -6,6 +6,8 @@
                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
             </a>
         </li> 
+
+        {% include "modules/page-header/login-signup-modal" %}
      
         {% comment %}
         The below require_script tag does not render anything in the place it's actually inserted; it instead adds the script to a list of scripts  which are then included at the end of the page by RequireJS.
