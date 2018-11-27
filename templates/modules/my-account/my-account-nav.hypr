@@ -20,11 +20,6 @@
                 {{ labels.paymentMethods }}
             </a>
         </li>
-        <li class="mz-scrollnav-item">
-            <a class="mz-scrollnav-link" href="javascript:void(0);">
-                {{ labels.logOut }}
-            </a>
-        </li>
         {% comment %}
         <li class="mz-scrollnav-item">
             <a class="mz-scrollnav-link" href="#returnhistory">
@@ -44,6 +39,11 @@
             </a>
         </li>
         {% endcomment %}
+        <div class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" href="/logout">
+                {{ labels.logOut }}
+            </a>
+        </div>
     </ul>
 </nav>
 {% require_script "modules/scroll-nav" %}

@@ -161,12 +161,14 @@
             }
             .mz-scrollnav-item {
                 margin: 0;
+                padding: 0;
                 .mz-scrollnav-link {
                     border-top: 1px solid #e0e0e0;
                     color: #495363;
                     display: block;
                     font-weight: 600;
                     letter-spacing: -0.1px;
+                    padding: 10px 15px;
                     text-transform: capitalize;
                     &:hover {
                         background: #eee;
@@ -630,10 +632,11 @@
         margin: 10px 0;
         text-transform: uppercase;
     }
-    p {
+    p,
+    label {
         color: #000;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
     }
     .mz-l-formfieldgroup {
         display: block;
@@ -678,9 +681,12 @@
 .mz-reset-password {
     .mz-messagebar {
         .mz-errors {
+            background: none;
+            border: none;
             padding: 0;
             li {
                 font-size: 14px;
+                font-style: normal;
                 font-weight: 500;
             }
         }

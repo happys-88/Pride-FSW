@@ -784,7 +784,29 @@ define(['modules/backbone-mozu', "modules/api", 'hyprlive', 'hyprlivecontext', '
             model: accountModel.get('wishlist'),
             messagesEl: $messagesEl
         });
-
+        $(".account_content").hide();
+        if (window.location.hash !== "") {
+            var hash = window.location.hash;
+            hash = hash.indexOf('?') !== -1 ? hash.substring(0, hash.indexOf('?')) : hash;
+            $(hash).show();
+            $('a[href="' + hash + '"]').parent('li').addClass('active');
+            $("#account-panels").css('visibility', 'visible');
+            $('html, body').animate({ scrollTop: $("h3.mz-l-stack-sectiontitle").offset().top - 10 }, 700);
+        } else {
+            $(".account_content:first").show();
+            $(".mz-scrollnav-list li:first-child").addClass('active');
+            $("#account-panels").css('visibility', 'visible');
+        }
+        $("ul.mz-scrollnav-list li").click(function (e) {
+            e.preventDefault();
+            $("#account-messages").html("");
+            var activeTab = $(this).children('a').attr("href").replace("#", "");
+            $(".account_content").fadeOut(500);
+            $("#" + activeTab).delay(400).fadeIn(1000);
+            $('html, body').animate({ scrollTop: $("h3.mz-l-stack-sectiontitle").offset().top - 10 }, 700);
+            $("ul.mz-scrollnav-list li").removeClass("active");
+            $(this).addClass("active");
+        });
         // TODO: upgrade server-side models enough that there's no delta between server output and this render,
         // thus making an up-front render unnecessary.
         _.invoke(window.accountViews, 'render');
