@@ -43,4 +43,17 @@ define([
 		});
 
 	}); 
+
+
+  $("#resetPassword").blur(function() {
+      var newPassword = $('#resetPassword').val();
+      var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{8}$/;
+      if(!regularExpression.test(newPassword)) {
+        $('.mz-reset-password-val').css("display","block");
+          $('.mz-reset-password-val').text('Minimum length should 8 and alphanumeric');
+       }else {
+        $('.mz-reset-password-val').text('');
+       }
+      
+  });
 }); 
