@@ -395,6 +395,7 @@
                 }
                 var errors = { "items": [] };
                 async.series(promises, function(err, results) {
+                    console.log(err);
                         var resp = results.reduce(
                             function(flag, value) {
                                 return flag && results[0] === value;
@@ -402,7 +403,7 @@
                             true
                         );
                         if (resp === true) {
-                            window.productView.model.trigger('error', { message: Hypr.getLabel('selectValidOption') });
+                            // window.productView.model.trigger('error', { message: Hypr.getLabel('selectValidOption') });
                             blockUiLoader.unblockUi();
                             return;
                         }
@@ -456,7 +457,7 @@
             }else if (typeof me.model.get('inventoryInfo').onlineStockAvailable !== "undefined" && me.model.get('inventoryInfo').onlineStockAvailable === 0 && me.model.get('inventoryInfo').outOfStockBehavior === "DisplayMessage") {
                 blockUiLoader.productValidationMessage();
                 $('#SelectValidOption').children('span').html(Hypr.getLabel('productOutOfStock'));
-            }else if (typeof me.model.get('inventoryInfo').onlineStockAvailable === "undefined" || $(".mz-productoptions-optioncontainer").length != $(".mz-productoptions-optioncontainer .active").length) {
+            }else if (typeof me.model.get('inventoryInfo').onlineStockAvailable === "undefined" && $(".mz-productoptions-optioncontainer").length != $(".mz-productoptions-optioncontainer .active").length) {
                 blockUiLoader.productValidationMessage();
             } else if (me.model.get('inventoryInfo').onlineStockAvailable) {
                 if (me.model.get('inventoryInfo').onlineStockAvailable < me.model.get('quantity')) {
@@ -464,6 +465,9 @@
                     return false;
                 }
                 this.model.addToCart();
+            }else{
+                blockUiLoader.productValidationMessage();
+                $('#SelectValidOption').children('span').html(Hypr.getLabel('productOutOfStock'));
             }
         }, 1500),
         addToWishlist: function() {
