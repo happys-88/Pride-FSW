@@ -449,6 +449,22 @@
     {
       "documentType": "web_page",
       "entityType": "webpage",
+      "id": "contact-us",
+      "template": "contact-us",
+      "title": "Contact Us",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "ways-to-shop",
+      "template": "ways-to-shop",
+      "title": "Ways to Shop",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
       "id": "customer-service",
       "template": "customer-service",
       "title": "Customer Service",

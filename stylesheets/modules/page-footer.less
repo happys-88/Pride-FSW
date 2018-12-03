@@ -1,23 +1,12 @@
-﻿.mz-pagefooter {
-    background: #666;
-    padding: 10px 20px;
-    overflow: hidden;
-    font-size: @fontSizeSmall;
-    .mz-pagefooter-copyright {
-        padding: 15px 0;
-        text-align: center;
-        color: white;
-        line-height: 130%;
-        a {
-            color: white
-        }
-    }   
-}
-footer {
+﻿footer {
     background: #efefef;
+    margin-top: 15px;
     padding: 18px 0 50px;
     a {
         color: #000;
+        &:visited {
+            color: #000;
+        }
     }
     h4 {
         font-size: 14px;
@@ -28,12 +17,12 @@ footer {
             font-weight: 600;
             text-transform: capitalize;
             &:hover {
-                color: #2b648c;
+                color: @linkColor;
             }
         }
     }
     i {
-        color: #2b648c;
+        color: @linkColor;
     }
     ul {
         li {
@@ -41,7 +30,7 @@ footer {
             margin-bottom: 9px;
             a { 
                 &:hover {
-                    color: #2b648c;
+                    color: @linkColor;
                     text-decoration: underline;
                 }
             }
@@ -61,9 +50,10 @@ footer {
     }
     .mz-button {
         border-radius: 0;
-        border: 1px solid #2b648c;
+        border: 1px solid @btnBgColor;
         width: 90px;
         height: 44px;
+        margin-top: 0;
         text-transform: capitalize;
     }
     .social-links {

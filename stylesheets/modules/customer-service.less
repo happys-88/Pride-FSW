@@ -1,14 +1,19 @@
-
 .mz-customer-service-page, .mz-aboutus {   	
 	h3 { 
 		&.mz-l-stack-sectiontitle {
-		    font-size: 22px; 
-		    font-weight: 700;
-		    line-height: 26px; 
-		    margin: 0 0 10px; 
-		    text-transform: capitalize;  
+			border-bottom: 1px solid #e0e0e0;
+			font-size: 22px;
+			font-weight: 500;
+			line-height: 26px;
+			margin: 0 0 20px 0;
+			padding: 8px 0;
+			text-transform: capitalize;
 		} 
 	} 
+	.mz-l-sidebar {
+	    float: none;
+	    padding-right: 0;
+	}
 	.mz-dropzone {
 		margin-bottom: 30px;
 	}
@@ -38,14 +43,12 @@
 		min-height: 100px;
 		max-height: 150px;
 	}
-	button {
-		&.mz-button {
-			border-radius: 0;
-			line-height: 10px;
-		    float: right;
-		    width: 70%;
-		}
-	}
+	// button {
+	// 	&.mz-button {
+	// 	    float: right;
+	// 	    width: 70%;
+	// 	}
+	// }
 }
 
 .mz-content-left-nav {  
@@ -58,13 +61,13 @@
             margin: 0;
             .mz-scrollnav-link {
                 border-top: 1px solid #e0e0e0;
-                color: #495363;
-                font-weight: 700;
+                color: #333;
+                font-weight: 600;
                 text-transform: capitalize;
                 &:visited, 
                 &:focus, 
                 &:active {
-                    color: #495363;
+                    color: #333;
                 }
             }
             &.active {

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				{% dropzone "fsw-about-us" scope="template" %}
+				{% dropzone "fsw-about-us" scope="site" %}
 			</div>
 		</div>
 	</div>

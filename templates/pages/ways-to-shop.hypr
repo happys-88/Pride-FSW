@@ -2,9 +2,7 @@
 {% block main-container-class %}container{% endblock main-container-class %}
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
-
-{% block body-tag-classes %}{% endblock body-tag-classes %}
-
+{% block body-tag-classes %}ways-to-shop{% endblock body-tag-classes %}
 {% block body-content %}
 	{% block breadcrumbs %}{% endblock breadcrumbs %}
 	<div class="mz-customer-service-page">

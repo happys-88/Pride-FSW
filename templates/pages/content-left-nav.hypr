@@ -1,0 +1,62 @@
+{% if model.properties.page_type_definition=="customer-service" or pageContext.cmsContext.template.path=="order-status" or pageContext.cmsContext.template.path=="contact-us" %}     
+    <h3 class="mz-l-stack-sectiontitle">Customer Service</h3> 
+    <nav class="mz-scrollnav"> 
+        <ul class="mz-scrollnav-list nav">
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/user/order-status" name="/user/order-status">Order Tracking</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/100-satisfaction-guarantee" name="/100-guarantee">100% satisfaction guarantee</a> 
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/faqs" name="/faqs">FAQS</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/return-policy" name="/return-policy">Return Policy</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/shipping-information" name="/shipping-information">Shipping Information</a>
+            </li>
+        </ul>
+    </nav> 
+{% endif %}
+
+{% if model.properties.page_type_definition=="about-us" %} 
+    <h3 class="mz-l-stack-sectiontitle">About Us</h3> 
+    <nav class="mz-scrollnav"> 
+        <ul class="mz-scrollnav-list nav">
+            <li class="mz-scrollnav-item"> 
+                <a class="mz-scrollnav-link" href="/who-we-are" name="/who-we-are">Who We Are</a>  
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}
+
+{% if model.properties.page_type_definition=="ways-to-shop" %} 
+    <h3 class="mz-l-stack-sectiontitle">Ways To Shop</h3> 
+    <nav class="mz-scrollnav"> 
+        <ul class="mz-scrollnav-list nav">
+            <li class="mz-scrollnav-item"> 
+                <a class="mz-scrollnav-link" href="/brand" name="/who-we-are">Shop by Brand</a>  
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/meet-a-designer" name="/our-partnerships">Meet a Designer</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/chef-picks" name="/our-partnerships">Chef Picks</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content Item</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}

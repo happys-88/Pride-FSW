@@ -28,7 +28,7 @@ body{
   background: @textColorWhite;
   font-family: @fontFamily;
   font-size: 14px;
-  font-weight: normal; 
+  font-weight: 500; 
 }
 
 ul, ol{
@@ -65,7 +65,7 @@ a {
 .mz-cms-content{
 	padding: 0 !important;
 	overflow: visible !important;
-	font-family: @fontFamily !important;    
+	
 }
 
 img[data-mztp]{
@@ -138,7 +138,7 @@ img[data-mztp]{
 
 /*** Page Header ***/
 .mz-pageheader{
-	font-family: @fontFamily; 
+	
 	background: none;
 	height: auto;
 	padding: 15px 0 10px;      
@@ -174,7 +174,6 @@ img[data-mztp]{
 							padding: 6px 0;
 							font-size: 12px; 
 							font-weight: 600;
-							font-family: @fontFamily;
 							color: @textColor; 
 							line-height: 21px;
 						}  
@@ -249,7 +248,6 @@ img[data-mztp]{
 							border: 1px solid #d8d8d8; 
 							font-size: 14px;
 							color: @textColorBlackTwo;  
-							font-family: @fontFamily;
 							border-radius: 0px;
 							box-shadow: none;     
 						}		
@@ -376,35 +374,6 @@ img[data-mztp]{
 }
 /***\ Page Header ***/
 
-/**** Global Marketing Area ****/
-.global-marketing-area{ 
-	background: #f1f1f1;
-	padding: 8px 0;  
-	ul{
-		display: table;
-		width: 100%;  
-		li{
-			display: table-cell;
-			position: relative;
-			text-align: center;
-			&:before{
-				content: "";
-				width: 1px;
-				height: 10px;
-				background: #80a1b8;
-				position: absolute;
-				left: 0;
-				top: 50%;
-				transform: translate(0, -50%);   
-			}
-			&:first-child{
-				&:before{
-					display: none; 
-				}	
-			} 
-		}
-	}
-}
 
 /**** Footer ****/
 .mz-global-footer { 
@@ -467,6 +436,38 @@ label {
 	}
 }
 
+/**** Global Marketing Area ****/
+.global-marketing-area{ 
+	background: #f1f1f1;
+	padding: 8px 0;  
+	ul{
+		display: table;
+		width: 100%;  
+		li{
+			display: table-cell;
+			position: relative;
+			text-align: center;
+			&:before{
+				content: "";
+				width: 1px;
+				height: 10px;
+				background: #80a1b8;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translate(0, -50%);   
+			}
+			&:first-child{
+				&:before{
+					display: none; 
+				}	
+			}
+			a {
+				color: #666;
+			}
+		}
+	}
+}
 
 .mz-homepage {
 	.mz-l-pagecontent {
@@ -532,7 +533,7 @@ label {
 
 //Featured Experts on home page
 .mz-featured-experts {
-    margin: 30px 0 40px!important;
+    margin-top: 30px!important;
 }
 
 //Recently product
@@ -545,7 +546,7 @@ label {
 				display: none;
 			}
 			.mz-productlisting-info{	
-                 display: none;
+                display: none;
 			}
 		}
 	}

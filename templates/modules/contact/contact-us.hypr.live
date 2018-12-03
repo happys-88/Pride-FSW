@@ -1,0 +1,61 @@
+<form name="" method="post" id="" action="">      
+    <div class="form-group"> 
+        <div class="col-sm-4 col-xs-12">
+            <label for="firstname">{{ labels.firstName }}</label>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <input type="text" name="firstname" data-mz-value="firstname" placeholder="{{ labels.firstName }}" maxlength="{{themeSettings.firstNameLength}}" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-xs-12">
+            <label for="lastname">{{ labels.lastName }}</label>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <input type="text" name="lastname" data-mz-value="lastname" placeholder="{{ labels.lastName }}" maxlength="{{themeSettings.lastNameLength}}" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-xs-12">
+            <label for="email">{{ labels.email }}<span class="is-required"> *</span></label>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <input type="email" id="emailAddress" name="email" data-mz-value="email" placeholder="{{ labels.emailAddress }}" maxlength="{{themeSettings.emailLength}}" class="form-control">
+            <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span> 
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-xs-12">
+            <label for="subject">{{ labels.subject }}<span class="is-required"> *</span></label>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <select id="selectedTopic" name="selectedTopic" class="select form-control">
+                <option value="" selected>{{labels.selectTopic}}</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Gift Certificates and Promotions">Gift Certificates and Promotions</option>
+                <option value="My Account Information">My Account Information</option>
+                <option value="Order Inquiry">Order Inquiry</option>
+                <option value="Placing an Order">Placing an Order</option>
+                <option value="Product Questions">Product Questions</option>
+                <option value="Returns">Returns</option>
+                <option value="Store Experience">Store Experience</option>  
+
+            </select>
+            <span class="mz-validationmessage" data-mz-validationmessage-for=""></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-xs-12">
+            <label for="message">{{ labels.message }}<span class="is-required"> *</span></label>
+        </div>
+        <div class="col-sm-8 col-xs-12"> 
+            <textarea rows="5" cols="50" id="message" name="message" data-mz-value="message" maxlength="{{ themeSettings.contactUsMessageLength }}" class="form-control"></textarea>
+            <span class="mz-validationmessage" data-mz-validationmessage-for=""></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-4 text-right">
+            <button class="mz-button" type="button" data-mz-action="contactUsSubmit">{{ labels.send }}</button>
+        </div>
+    </div>
+</form>
