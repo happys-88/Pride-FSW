@@ -466,8 +466,9 @@
                 }
                 this.model.addToCart();
             }else{
-                blockUiLoader.productValidationMessage();
-                $('#SelectValidOption').children('span').html(Hypr.getLabel('productOutOfStock'));
+                this.model.addToCart();
+                // blockUiLoader.productValidationMessage();
+                // $('#SelectValidOption').children('span').html(Hypr.getLabel('productOutOfStock'));
             }
         }, 1500),
         addToWishlist: function() {
