@@ -469,6 +469,14 @@
       "template": "customer-service",
       "title": "Customer Service",
       "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "order-tracking",
+      "template": "order-status",
+      "title": "Order Tracking",
+      "userCreatable": true
     }
   ],
   "settings": {

@@ -7,26 +7,30 @@
 				  	{% if categoryObject.content.categoryImages.length > 0 %}
 						{% for catImage in categoryObject.content.categoryImages %}
 							<li class="mz-shop-by-categorylist-item col-sm-2 col-xs-4">
-								<a href="{{ categoryObject.url }}">
-									<div class="mz-category-image">
+								<div class="mz-category-image">
+									<a href='{% make_url "category" categoryObject %}'>
 										<img src='{% make_url "image" catImage.imageUrl %}' alt="{{ catImage.altText }}">
-									</div>
-									<div class="mz-categorylisting-info">
+									</a>
+								</div>
+								<div class="mz-categorylisting-info">
+									<a href="{% make_url "category" categoryObject %}">
 										<h3>{{ categoryObject.content.name|safe }}</h3>
-									</div>
-								</a>
+									</a>
+								</div>
 							</li>
 						{% endfor %}
 				 	{% else %}
 						<li class="mz-shop-by-categorylist-item col-sm-2 col-xs-4">
-							<a href='{% make_url "category" categoryObject %}'>
-								<div class="mz-category-image no-category-image">
+							<div class="mz-category-image no-category-image">
+								<a href='{% make_url "category" categoryObject %}'>
 									<img src='{% make_url "cdn" "/cms/files/no-image-pride.jpg" %}' alt="no-image" />
-								</div>
-								<div class="mz-categorylisting-info">
+								</a>
+							</div>
+							<div class="mz-categorylisting-info">
+								<a href='{% make_url "category" categoryObject %}'>
 									<h3>{{ categoryObject.content.name|safe }}</h3>
-								</div>
-							</a>
+								</a>
+							</div>
 						</li>
 					{% endif %}
 				{% endif %}   
