@@ -9,8 +9,10 @@
                         $nav.scrollspy('refresh');
                     }, 500);
                 $this.on('click', 'a', function (e) {
-                    e.preventDefault();
-                    $(this.getAttribute('href')).ScrollTo({ axis: 'y', offsetTop: gutterWidth });
+                    if(this.getAttribute('href') != "/logout") {
+                        e.preventDefault();
+                        $(this.getAttribute('href')).ScrollTo({ axis: 'y', offsetTop: gutterWidth });
+                    }
                 }).affix({
                     offset: {
                         top: $this.offset().top - gutterWidth,
