@@ -17,6 +17,15 @@
             <li class="mz-scrollnav-item">
                 <a class="mz-scrollnav-link" href="/shipping-information" name="/shipping-information">Shipping Information</a>
             </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/contact-us" name="/contact-us">Contact Us</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/privacy-policy" name="/privacy-policy">Privacy Policy</a>
+            </li>
+            <li class="mz-scrollnav-item">
+                <a class="mz-scrollnav-link" href="/term-conditions" name="/term-conditions">Terms &amp; Conditions</a>
+            </li>
         </ul>
     </nav> 
 {% endif %}
