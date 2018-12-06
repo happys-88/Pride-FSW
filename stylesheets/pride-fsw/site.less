@@ -191,7 +191,6 @@ img[data-mztp]{
 			float: left;  
 			padding: 0 7px; 
 			.logo {
-			    background-image: none; 
 			    width: 141px;  
 			    height: 61px; 
 			}
@@ -309,9 +308,9 @@ img[data-mztp]{
 				}
 			}
 			#global-cart{
-				top: 50px;
+				top: 30px;
 				.arrow-up{
-					right: 75px;  
+					right: 30px;  
 				} 
 			}
 			.mz-utilitynav-list{
@@ -497,6 +496,30 @@ label {
 				&:nth-child(3n+1) {
 				    clear: none;
 				}
+			}
+		}
+		.mz-productlist-list {
+			.mz-productlisting-title {
+			    color: @textColor;
+			    line-height: 18px;
+			}
+			.mz-directory-ratings {
+	    		display: none;
+			}
+
+			.mz-productlisting-info {
+				.mz-pricestack {
+					.is-saleprice {
+					    font-weight: 500;
+					}
+				}
+			}
+			.mz-productlisting-image {
+			    button {
+			    	&.quick-view-btn {
+			    		display: none;
+			    	}
+			    }
 			}
 		}
 	}

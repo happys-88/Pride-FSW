@@ -75,3 +75,4 @@
     </div>
     {% dropzone "directory-page-bottom" scope="page" %}
 </div>
+{% require_script "modules/category/infinite-scroller" %}

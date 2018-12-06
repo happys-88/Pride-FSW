@@ -1,5 +1,5 @@
-{% if model.properties.page_type_definition=="customer-service" or pageContext.cmsContext.template.path=="order-status" or pageContext.cmsContext.template.path=="contact-us" %}     
-    <h3 class="mz-l-stack-sectiontitle">Customer Service</h3> 
+ {% if model.properties.page_type_definition=="customer-service" or pageContext.cmsContext.template.path=="order-status" or pageContext.cmsContext.template.path=="contact-us" %}     
+     <h3 class="mz-l-stack-sectiontitle">Customer Service</h3>
     <nav class="mz-scrollnav"> 
         <ul class="mz-scrollnav-list nav">
             <li class="mz-scrollnav-item">
@@ -24,7 +24,7 @@
                 <a class="mz-scrollnav-link" href="/privacy-policy" name="/privacy-policy">Privacy Policy</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/term-conditions" name="/term-conditions">Terms &amp; Conditions</a>
+                <a class="mz-scrollnav-link" href="/terms-conditions" name="/terms-conditions">Terms &amp; Conditions</a>
             </li>
         </ul>
     </nav> 

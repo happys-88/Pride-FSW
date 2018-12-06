@@ -875,7 +875,7 @@
     "showProductDetailProperties": false,
     "showProductDetailShortDesc": true,
     "showProductDetailUPC": true,
-    "textColor": "#000000",
+    "textColor": "#333333",
     "companyLogo": "/resources/images/logo-sm.png",
     "facetMoreColorCount": 3,
     "enableQuickView": true,

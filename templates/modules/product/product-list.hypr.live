@@ -6,6 +6,5 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <div id="more-item-container" class="clearfix"></div>
-    {% require_script "modules/category/infinite-scroller" %} 
+    <div id="more-item-container" class="clearfix"></div> 
 </div>
