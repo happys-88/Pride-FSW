@@ -1,9 +1,15 @@
-{% with model.orderDiscounts|first as discountData %}
-	{{ discountData.discount.name }}
-{% endwith %}
-{% with model.discountThresholdMessages|first as ThresholdMessage  %}
-    {{ ThresholdMessage.message }}
- {% endwith %}
+<div class="mz-info-section">
+	{% with model.orderDiscounts|first as discountData %}
+		{% if discountData.discount.name %}
+			<div class="mz-discount-msg">{{ discountData.discount.name }}</div>
+		{% endif %}
+	{% endwith %}
+	{% with model.discountThresholdMessages|first as ThresholdMessage %}
+		{% if ThresholdMessage.message %}
+			<div class="mz-threshold-msg">{{ ThresholdMessage.message }}</div>
+		{% endif %}
+	{% endwith %}
+</div>
 <div class="arrow-up"></div>
 {% if model.items.length>0 %}
 	<ul class="media-list">	
