@@ -1,4 +1,4 @@
-<form name="" method="post" id="" action="">      
+<form name="" method="post" id="" action="">     
     <div class="form-group"> 
         <div class="col-sm-4 col-xs-12">
             <label for="firstname">{{ labels.firstName }}</label>
@@ -29,7 +29,7 @@
             <label for="subject">{{ labels.subject }}<span class="is-required"> *</span></label>
         </div>
         <div class="col-sm-8 col-xs-12">
-            <select id="selectedTopic" name="selectedTopic" class="select form-control">
+            <select id="selectedTopic" name="selectedTopic" data-mz-value="selectedTopic" class="select form-control">
                 <option value="" selected>{{labels.selectTopic}}</option>
                 <option value="General Inquiry">General Inquiry</option>
                 <option value="Gift Certificates and Promotions">Gift Certificates and Promotions</option>
@@ -41,7 +41,7 @@
                 <option value="Store Experience">Store Experience</option>  
 
             </select>
-            <span class="mz-validationmessage" data-mz-validationmessage-for=""></span>
+            <span class="mz-validationmessage" data-mz-validationmessage-for="selectedTopic"></span>
         </div>
     </div>
     <div class="form-group">
@@ -50,7 +50,7 @@
         </div>
         <div class="col-sm-8 col-xs-12"> 
             <textarea rows="5" cols="50" id="message" name="message" data-mz-value="message" maxlength="{{ themeSettings.contactUsMessageLength }}" class="form-control"></textarea>
-            <span class="mz-validationmessage" data-mz-validationmessage-for=""></span>
+            <span class="mz-validationmessage" data-mz-validationmessage-for="message"></span>
         </div>
     </div>
     <div class="form-group">

@@ -261,6 +261,8 @@
   "digitalCreditAmtToUse" : "Amt. to Apply",
   "digitalCreditRemainder"  : "Remainder",
   "digitalCreditAddToAccount"  : "Add to my account",
+  
+  
 
   "digitalCreditApplied"  : "You have applied the following gift card or store credit payments to your order:",
 
@@ -385,6 +387,8 @@
   "reenterCVV"           : "Please verify your card's security code",
   "cardBillingMissing"   : "Please select a billing contact for this credit card.",
   "emailMissing"         : "Please enter a valid email address",
+  "contactUsMessageMissing": "Please enter your message",
+  "selectedMissing": "Please select topic",
   "passwordMissing"      : "Please enter a password",
   "passwordsDoNotMatch"  : "Passwords did not match, please reenter",
   // signup form new fields validation added(gagandeep 4 may 2017)
