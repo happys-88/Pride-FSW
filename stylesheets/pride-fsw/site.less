@@ -137,7 +137,6 @@ img[data-mztp]{
 
 /*** Page Header ***/
 .mz-pageheader{
-	
 	background: none;
 	height: auto;
 	padding: 15px 0 10px;      
@@ -170,7 +169,6 @@ img[data-mztp]{
 						border: none;
 						.mz-utilitynav-link{
 							display: inline-block; 
-							padding: 6px 0;
 							font-size: 12px; 
 							font-weight: 600;
 							color: @textColor; 
@@ -188,7 +186,6 @@ img[data-mztp]{
 		.mz-header-logo-wrapper {
 			position: static;
 			float: left;  
-			padding: 0 7px; 
 			.logo {
 			    width: 141px;  
 			    height: 61px; 
@@ -366,6 +363,33 @@ img[data-mztp]{
 }
 /***\ Page Header ***/
 
+/*** Navigation ***/
+.mz-sitenav {
+    border-top: 1px solid #d8d8d9;
+	border-bottom: 1px solid #d8d8d8;
+	.mz-sitenav-list {
+		text-align: center;
+		>.mz-sitenav-item {
+			float: none;
+    		white-space: unset;
+			.mz-sitenav-item-inner {
+				.mz-sitenav-link {
+				    color: #000;
+				    font-weight: 500!important;
+				   	&:visited {
+					    color: #000;
+					}
+					&.main-link {
+						&:first-child {
+						    padding: 8px 14px 8px 14px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/***] Navigation ***/
 
 /**** Footer ****/
 .mz-global-footer { 
@@ -470,6 +494,8 @@ label {
 			padding: 0;
 			.container {
 			    max-width: 1440px;
+			    padding-left: 15px;
+			    padding-right: 15px;
 			}
 		}
 	}

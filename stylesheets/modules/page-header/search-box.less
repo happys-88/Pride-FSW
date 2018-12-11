@@ -47,17 +47,23 @@
         width: 100%;/*@expandedSearchWidth + 1;*/
         background: white;
         box-shadow: 0 3px 3px rgba(0,0,0,0.2);
-        &:after{ 
+        &:after,
+        &:before {
             content: " ";
             position: absolute;
-            top: -20px;  
-            left: 38px;
             margin-left: -5px;
             border-width: 10px;
             border-style: solid;
-            border-color: transparent transparent #efefef transparent;   
-            
+            left: 38px;
+        }
+        &:after { 
+            top: -20px;  
+            border-color: transparent transparent #fff transparent;   
         } 
+        &:before {
+            top: -22px;
+            border-color: transparent transparent #ddd transparent;
+        }
     }
 
     .tt-suggestion {

@@ -1,4 +1,4 @@
-﻿<div class="mz-ordersummary col-xs-12 mz-reset-padding">
+﻿<div class="mz-ordersummary mz-reset-padding">
         <div class="mz-header-basket-md-sm hidden-xs">
                 <div class="mz-ordersummary-header-product col-sm-6 mz-order-content-container">{{ labels.product }}</div>
                 <div class="mz-ordersummary-header-each col-sm-3 mz-order-content-container">{{ labels.price }}</div>
