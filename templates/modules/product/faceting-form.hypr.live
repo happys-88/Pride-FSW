@@ -20,11 +20,9 @@
                         {% with facet.values|default(facetSetting.values) as facetValues %}
                             {% if facet.field == facetSetting.key and facetSetting.enable and facetValues.length > 0 %}
                                 {% if pageContext.pageType=='search' %}
-                                    {% if facetSetting.key =='tenant~COLOR' or facetSetting.key=='tenant~SIZE' or facetSetting.key=='price' %}
+                                    {% if facetSetting.key =='tenant~color' or facetSetting.key=='tenant~SIZE' or facetSetting.key=='price' %}
                                         <div class="mz-l-sidebaritem" id="facet_{{facetSetting.key|replace("tenant~")}}">
-                                        <div id="filter-{{facet.field |lower|replace('~','-')}}" class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facetSetting.name }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <button data-clear-text="{{facet.field|lower}}" class="btn-transparent text-uppercase pull-right mz-clear-facet-section hide">{{ labels.clear }} <i  class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                        </div>
+                                        <div class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facetSetting.name }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
                                         <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy clearfix {{facetSetting.definition.type|lower}}" id="filterList{{ forloop.index0 }}">
                                             <li class="hide" aria-hidden="true">For Blank</li>
                                             {% if facetSetting.definition.type|lower == "stars" %}
@@ -40,26 +38,24 @@
                                         </div>
                                     {% endif %}
                                 {% else %}
-                                    <div id="filter-{{facet.field |lower|replace('~','-')}}" class="mz-l-sidebaritem" id="facet_{{facetSetting.key|replace("tenant~")}}">
-                                    <div class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facetSetting.name }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                     <button data-clear-text="{{facet.field|lower}}" class="btn-transparent text-uppercase pull-right mz-clear-facet-section hide">{{ labels.clear }} <i  class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                    </div>
-                                    <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy clearfix {{facetSetting.definition.type|lower}}" id="filterList{{ forloop.index0 }}">
-                                        <li class="hide" aria-hidden="true">For Blank</li>
-                                        {% if facetSetting.definition.type|lower == "swatch" %}
-                                            {% include "modules/facets/facet-color" with allfacets=facetValues and showCount=facetSetting.showCount and showMore=facetSetting.definition.showMoreCount and isDirectory="true" %}
-                                        {% else %}
-                                            {% if facetSetting.definition.type|lower == "stars" %}
-                                                {% include "modules/facets/facet-stars" with stars=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
+                                    <div class="mz-l-sidebaritem" id="facet_{{facetSetting.key|replace("tenant~")}}">
+                                        <div class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facetSetting.name }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+                                        <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy clearfix {{facetSetting.definition.type|lower}}" id="filterList{{ forloop.index0 }}">
+                                            <li class="hide" aria-hidden="true">For Blank</li>
+                                            {% if facetSetting.definition.type|lower == "swatch" %}
+                                                {% include "modules/facets/facet-color" with allfacets=facetValues and showCount=facetSetting.showCount and showMore=facetSetting.definition.showMoreCount and isDirectory="true" %}
                                             {% else %}
-                                                {% if facet.facetType|lower == "rangequery" %}
-                                                    {% include "modules/facets/facet-price" with prices=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
+                                                {% if facetSetting.definition.type|lower == "stars" %}
+                                                    {% include "modules/facets/facet-stars" with stars=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
                                                 {% else %}
-                                                    {% include "modules/facets/facet-text" with texts=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
+                                                    {% if facet.facetType|lower == "rangequery" %}
+                                                        {% include "modules/facets/facet-price" with prices=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
+                                                    {% else %}
+                                                        {% include "modules/facets/facet-text" with texts=facetValues and showMore=facetSetting.definition.showMoreCount and showCount=facetSetting.showCount and isDirectory="true" %}
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endif %}
-                                        {% endif %}
-                                    </ul>
+                                        </ul>
                                     </div>
                                 {% endif %}
                             {% endif %}
@@ -69,15 +65,13 @@
             {% else %}
                 {% for facet in model.facets %}
                     {% if pageContext.pageType=='search' %}
-                        {% if facet.field =='tenant~COLOR' or facet.field=='tenant~SIZE' or facet.field=='price'  %}
+                        {% if facet.field =='tenant~color' or facet.field=='tenant~SIZE' or facet.field=='price'  %}
                             {% if facet.values and facet.facetType != "Hierarchy" %}
                                 <div class="mz-l-sidebaritem">
-                                    <div id="filter-{{facet.field |lower|replace('~','-')}}" class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facet.label }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                         <button data-clear-text="{{facet.field|lower}}" class="btn-transparent text-uppercase pull-right mz-clear-facet-section hide">{{ labels.clear }} <i  class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                    </div>
+                                    <div class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facet.label }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
                                     <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy clearfix" id="filterList{{ forloop.index0 }}">
                                         <li class="hide" aria-hidden="true">For Blank</li>
-                                        {% if facet.values and facet.field == "tenant~COLOR" %}
+                                        {% if facet.values and facet.field == "tenant~color" %}
                                             {% include "modules/facets/facet-color" with allfacets=facet.values and isDirectory="true" %}
                                         {% else %}
                                             {% if facet.values and facet.facetType == "RangeQuery" %}
@@ -91,14 +85,20 @@
                             {% endif %}
                         {% endif %}
                     {% else %}
+                        {% if facet.values and facet.facetType == "Hierarchy" %}
+                            {% if facet.values.length == 1 %}        
+                                {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values|first|prop("childrenFacetValues") %}
+                            {% else %}
+                                {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values %}
+                            {% endif %}
+                        {% endif %} 
+
                         {% if facet.values and facet.facetType != "Hierarchy" %}
                             <div class="mz-l-sidebaritem">
-                                <div id="filter-{{facet.field |lower|replace('~','-')}}" class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facet.label }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                     <button data-clear-text="{{facet.field|lower}}" class="btn-transparent text-uppercase pull-right mz-clear-facet-section hide">{{ labels.clear }} <i  class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                </div>
-                                <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy clearfix" id="filterList{{ forloop.index0 }}">
+                                <div class="faceting-header" data-mz-filter-collapse="{{ forloop.index0 }}">{{ facet.label }} <span id="filterIcon{{ forloop.index0 }}" class="filter-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+                                <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy {{ facet.label|slugify }} clearfix" id="filterList{{ forloop.index0 }}">
                                     <li class="hide" aria-hidden="true">For Blank</li>
-                                    {% if facet.values and facet.field == "tenant~COLOR" %}
+                                    {% if facet.values and facet.field == "tenant~color" %}
                                         {% include "modules/facets/facet-color" with allfacets=facet.values and isDirectory="true" %}
                                     {% else %}
                                         {% if facet.values and facet.facetType == "RangeQuery" %}

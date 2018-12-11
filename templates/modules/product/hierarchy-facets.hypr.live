@@ -1,7 +1,7 @@
 {% if facetValues and facetValues.length > 0 %}
-<div class="mz-l-sidebaritem">
+<div class="mz-l-sidebaritem">  
     <h4>{{ facet.label|safe }}</h4>
-    <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy">
+    <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy {{facet.label|slugify}}"> 
         {% for fval in facetValues %}
         {% if fval.isDisplayed %}
         <li>
