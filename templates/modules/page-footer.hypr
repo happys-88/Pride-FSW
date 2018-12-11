@@ -18,11 +18,11 @@
 					  	<div class="input-group"> 					  	
 							<input type="email" class="form-control" placeholder="Enter Your Email Address" id="newsletterEmail">
 							<span class="input-group-btn">
-								<button class="btn mz-button" id="newsletter" type="button">Sing up</button>
+								<button class="btn mz-button" id="newsletter" type="button">Sign up</button>
 							</span>
 						</div>
 						<div class="input-group">   
-							<span id="errorEmail" hidden="true">Please enter correct email</span>  
+							<span id="errorEmail" class="text-danger" hidden="true">Please enter correct email</span>  
 							<span id="thanksMsg" hidden="true">Thanks for Subscribing!!</span>
 						</div>
 						<div id="footerStoreLocator">
