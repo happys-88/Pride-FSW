@@ -35,11 +35,13 @@
     .mz-productdetail-conversion-buttons {
         display: inline-block;
         vertical-align: middle;
+        padding-left: 0px;
     }
 
         .mz-productdetail-conversion-buttons .mz-button {
             display: block;
             margin: 0 0 @gutter/2;
+            padding: 8px 80px;
         }
 
     .mz-productbundle-measurements-product {
@@ -48,6 +50,17 @@
 
     .mz-productbundle-measurements-productname {
         font-weight: bold;
+    }
+    .mz-stock-info{
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.36;
+        letter-spacing: normal;
+        text-align: left;
+        color: #285e84;
+        margin-bottom: 12px;
     }
 }
 
@@ -58,17 +71,32 @@
     max-width: 400px;
 }
 .mz-product {
+    .product-wrapper{
+        .mz-breadcrumbs{
+            padding-left: 20px;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1.7
+        }
+    }
+    .mz-recently-viewed-products {
+            .mz-product-swatch{
+                display:none;
+            }
+    }
     .mz-product-top-content{
         .mz-brand{
             a{
                 color: @linkColor;
-                font-size:16px;
+                font-size:18px;
                 text-align:left;
-                line-height:28px;
+                line-height:22px;
+                text-transform: uppercase;
             }
        }
     }
     .mz-product-tabs {
+        margin-top: 15px;
             .nav {
                 text-align: center;
                 &.nav-tabs {
@@ -77,12 +105,13 @@
                        // float: none;
                         display: inline-block;
                         margin: 3px 3px;
+                        border-right: 1px solid #d6cfcf;
                         a {
                             border: 0;
                             color: #000;
-                            font-size: 16px;
+                            font-size: 14px;
                             font-weight: 600;
-                            padding: 5px 15px;
+                            padding: 0 10px 0 0;
                             text-transform: uppercase;
                             &:hover {
                                 background: #fff;
@@ -92,9 +121,8 @@
                         &.active {
                             a {
                                 border: 0;
-                                border-radius: 0;
-                                border-right: 1px solid #d6cfcf;
-                              //  border-bottom: 4px solid #e20177;
+                                border-radius: 0;   
+                                outline: none;
                             }
                         }
                     }
@@ -117,7 +145,8 @@
                         margin-top: 16px;
                         margin-bottom: 10px;
                         padding-bottom: 12px;
-                        text-transform: uppercase;
+                        text-transform: capitalize;
+                         border-bottom: 0;
                     }
                 }
     }

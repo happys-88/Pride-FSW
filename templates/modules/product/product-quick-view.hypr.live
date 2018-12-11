@@ -53,7 +53,7 @@
 
                                                 <div class="mz-l-stack-section mz-productdetail-conversion row">
                                                     <div class="mz-productdetail-conversion-controls col-xs-4">
-                                                        <label class="mz-qty-label text-uppercase" for="mz_quickview_qty">{{ labels.qty }}</label>
+                                                        <label class="mz-qty-label text-uppercase" for="mz_quickview_qty">{{ labels.qty }}:</label>
                                                         <div class="qty-block">
                                                             <div class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="fa fa-minus"  aria-hidden="true"></i></div>
 
