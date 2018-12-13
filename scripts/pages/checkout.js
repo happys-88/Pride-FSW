@@ -18,6 +18,10 @@ require(["modules/jquery-mozu",
         next: function () {
             // wait for blur validation to complete
             var me = this;
+            var gift_Card = $('#digital-credit-code').val();
+            if (gift_Card !== null && gift_Card.length > 0){
+              this.getDigitalCredit();
+           }
             me.editing.savedCard = false;
             _.defer(function () {
                 me.model.next();
