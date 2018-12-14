@@ -572,13 +572,18 @@
                 {
                     "xtype": "mz-input-text",
                     "name": "familyProductAttribute",
-                    "fieldLabel": "Family Product Attribute"
+                    "fieldLabel": "Family Members Attribute"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "familyMemberAttribute",
+                    "fieldLabel": "Family Code Attribute"
                 },
                 {
                     "xtype": "mz-input-number",
                     "name": "familyProductImageMaxWidth",
                     "fieldLabel": "Family Product image max width (px)"
-                }
+                } 
             ]
         },
         {

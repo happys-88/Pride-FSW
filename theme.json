@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "31c2231151bb0a549e6f830d26f2adb68bae0ddd"
+      "commit": "2b8da812bd7992941edcaa968cf9146aac4fd536"
     },
     "baseThemeChannel": "stable"
   },
@@ -492,9 +492,10 @@
     "pdpSwatchImageName": "{1}.gif",
     "pdpSwatchImageMaxWidth": "30",
     "colorSwatchesChangeMain": true,
-    "familyProductType": "Family Products",
+    "familyProductType": "Family Product",
     "familyProductAttribute": "tenant~family-members",
-    "colorSwatchesChangeAlternate": false,
+    "familyMemberAttribute": "tenant~family-code", 
+    "colorSwatchesChangeAlternate": false, 
     "customCountries": [
       {
         "value": "US",
@@ -751,7 +752,7 @@
         "value": "Wyoming"
       }
     ],
-    "showcouponCodeBasket":true,
+    "showcouponCodeBasket": true,
     "fullNameLength": 80,
     "firstNameLength": 40,
     "middleNameInitialsLength": 1,
@@ -2540,7 +2541,7 @@
         "*"
       ]
     },
-     {
+    {
       "id": "Brandhospitality",
       "displayName": "Featured Experts",
       "displayTemplate": "misc/featured-experts",
@@ -2628,7 +2629,8 @@
           "fieldLabel": "Add URL/Links",
           "name": "categoryBannerUrl",
           "xtype": "mz-input-text"
-        }      ],
+        }
+      ],
       "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
       "validPageTypes": [
         "*"

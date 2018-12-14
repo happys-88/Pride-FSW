@@ -32,16 +32,9 @@
 					</form>					
 				</div>
 				<div class="social-links">
-					<div class="mz-footer-social-connect">
-						<h4><i class="fa fa-heart"></i> Connect with us:</h4>
-					</div>
-					<div>
-						<a title="Pintrest" href="#"><i class="fa fa-pinterest"></i></a>
-						<a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-						<a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
-						<a title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-					</div>
-				</div>
+					{% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Footer Social Links - HTML Dropzone</span>{% endif %}  
+					{% dropzone "mz-footer-social-links" scope="site" %} 
+				</div> 
 				<div class="mz-footer-phone-number">
 					{% dropzone "mz-footer-phone-number" scope="site" %} 
 				</div>
