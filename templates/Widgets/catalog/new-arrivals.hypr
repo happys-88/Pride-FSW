@@ -1,9 +1,9 @@
 <div class="new-arrival-product-container">
-    <p class="slider-title">{{ model.config.title }}</p>
-    <div class="ig-new-arrivals carousel-parent">
-        <div data-ig-new-arrivals="{% json_attribute Model.config %}">
-            {% include_products "modules/product/related-product-tiles" with productCodes=Model.config.productCodes as_parameter %}
-        </div>
+    <div class="carousel-parent">
+        <div class="mz-newarrval-products"  data-ig-new-arrivals="{% json_attribute Model.config %}">
+	<h2 class="heading-2"><span>{{ Model.config.title }}</span></h2> 
+	{% include_products Model.config.template|default:"modules/product/product-list-tiled" with  productCodes=Model.config.productCodes as_parameter %}	
+</div>
     </div>
 </div>
-{% require_script "pages/parent-category" %}
+{% require_script "widgets/newarrival-products" %}

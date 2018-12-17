@@ -1,105 +1,80 @@
-// require([
-//     'modules/jquery-mozu',
-//     'bxslider'
-// ],
-// function ($, bxSlider) { 
-//     $(document).ready(function(){
-//         var eachSlide = $(".mz-featured-products .mz-productlist-list").find(".mz-productlist-item"), 
-//             minSlides,
-//             slideWidth, 
-//             windowWidth = $( window ).width();  
-//         if(windowWidth <= 767){
-//             minSlides = 2;
-//             slideWidth = 150;  
-//         }else{
-//             if(windowWidth >=768 && windowWidth <=1024 ){
-//                 minSlides = 4;
-//                 slideWidth = 170; 
-//             }
-//             else{
-//                 minSlides = 6;
-//                 slideWidth = 275;     
-//             } 
-            
-//         }
-        
-//         if ((minSlides == 2 && eachSlide.length > 2) || (minSlides >=4  && eachSlide.length > 6)) {  
-//             $(".mz-featured-products .mz-productlist-list").bxSlider({
-//                 auto: false,
-//                 speed: 600,  
-//                 minSlides: minSlides, 
-//                 maxSlides: 12, 
-//                 slideWidth: slideWidth,  
-//                 moveSlides: 1,
-//                 slideMargin: 0,
-//                 infiniteLoop: false,
-//                 controls: false,
-//                 pager: true,
-//                 touchEnabled: true,
-//                 onSliderLoad: function() {
-//                     $(".slider").css("visibility", "visible"); 
-//                 }
-//             });       
-//         }
-       
-//     });
-// });
+
 define([
     'modules/jquery-mozu',
-    'bxslider'
+    'bxslider',
+    'slick'
 ],
-    function ($, bxSlider, lazyload) {
-            var slider;
+    function ($, bxSlider, slick) {
+           // var slider;
             var slide = {
                 productCarousel: function () {
 
-                    var minSlides,
-                        maxSlides,
-                        slideWidth,
-                        slideMargin,
-                        pager,
-                        controls,
-                        windowWidth = $(window).width();
-                    if (windowWidth >= 480 || windowWidth <= 767) {
-                        minSlides = 2;
-                        maxSlides = 2;
-                        slideMargin = 10;
-                        slideWidth = 400;
-                        pager = true;
-                        controls = false;
+                    // var minSlides,
+                    //     maxSlides,
+                    //     slideWidth,
+                    //     slideMargin,
+                    //     pager,
+                    //     controls,
+                    //     windowWidth = $(window).width();
+                    // if (windowWidth >= 480 || windowWidth <= 767) {
+                    //     minSlides = 2;
+                    //     maxSlides = 2;
+                    //     slideMargin = 10;
+                    //     slideWidth = 400;
+                    //     pager = true;
+                    //     controls = false;
 
-                    }
-                    if (windowWidth > 767) {
-                        minSlides = 6;
-                        maxSlides = 12;
-                        slideWidth = 400;
-                        slideMargin = 15;
-                        pager = false;
-                        controls = true;
-                    }
-                    slider = $(".mz-featured-products .mz-productlist-list").bxSlider({
-                        auto: false,
-                        speed: 600,
-                        minSlides: minSlides,
-                        maxSlides: 12,
-                        slideWidth: slideWidth,
-                        moveSlides: 1,
-                        slideMargin: 0,
-                        controls: false,
-                        pager: true,
-                        infiniteLoop: false,
-                        touchEnabled: true,
-                        stopAutoOnClick: true,
-                        onSliderLoad: function () {
-                            $(".slider").css("visibility", "visible");
+                    // }
+                    // if (windowWidth > 767) {
+                    //     minSlides = 6;
+                    //     maxSlides = 12;
+                    //     slideWidth = 400;
+                    //     slideMargin = 15;
+                    //     pager = false;
+                    //     controls = true;
+                    // }
+                    $(".mz-featured-products .mz-productlist-list").slick({
+                        infinite: false,
+                        slidesToShow: 5,
+                        prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+                        nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+                        responsive: [{
+                            breakpoint: 1024,
+                            settings: {
+                                arrows: true,
+                                slidesToShow: 5
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                arrows: true,
+                                slidesToShow: 4
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: true,
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 460,
+                            settings: {
+                                arrows: true,
+                                slidesToShow: 2
+                            }
                         }
+
+                        ]
                     });
-                    window.slider = slider;
+                    //window.slider = slider;
                 }
             };
             slide.productCarousel();
-            $(window).resize(function () {
-                slider.destroySlider();
-                slide.productCarousel();
-            });
+            // $(window).resize(function () {
+            //    // slider.destroySlider();
+            //     //slide.productCarousel();
+            // });
     });

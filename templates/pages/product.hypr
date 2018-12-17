@@ -3,7 +3,6 @@
 {% block body-tag-classes %}mz-product{% endblock body-tag-classes %}
 {% block body-content %}
 {% preload_json model "product" %}
-{% require_script "modules/product/product-crosssells" %}
 <div class="product-wrapper">
 	{% block breadcrumbs %}
 		{% if themeSettings.showBreadcrumbs %}

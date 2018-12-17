@@ -1,35 +1,53 @@
 {% extends "page" %}
 
-{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
-{% block body-tag-classes %} category-gateway {% endblock body-tag-classes %} 
+{% block title-tag-content %}{% firstof pageContext.metaTitle|safe model.name|safe %}  - {% parent %}{% endblock title-tag-content %}
 
-{% block category-gateway %} 
 
-<div class="row">
-    <div class="col-sm-3 col-xs-12"> 
-        {% for categoryObject in categories.all %}
-            {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %}
-                {% if categoryObject.content.pageTitle %}
-                    <h1 class="heading-2"><span>{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</span></h1> 
-                    {% set_var pageTitle=true %}
-                {% endif %}
-            {% endif %} 
-        {% endfor %}
-        {% if not pageTitle %}
-            <h1 class="heading-2"><span>{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</span></h1>   
-        {% endif %}
+{% block body-tag-classes %}mz-category{% endblock body-tag-classes %}
+
+{% block body-content %}
+<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
+    <h1 class="mz-pagetitle parent-heading">{{ model.name|replace(themeSettings.columnBreaker,"")|replace("_"," ")|safe }}</h1>
+    <div class="row">
+        <div data-mz-facets class="mz-l-sidebar col-xs-12 col-sm-3 col-lg-3 new-hierarchy">
+            {% for link in navigation.tree %}
+                    {% if not link.isHidden and not link.isEmpty and link.nodeType != "page" %}
+                        {% if model.categoryId==link.categoryCode %}
+                            {%for child in link.items%}
+                                {% if not child.isHidden and not child.isEmpty %}
+                                <div class="sub-category"><a href="{{child.url}}" class="mz-facetingform-link">{{ child.name|replace(themeSettings.columnBreaker,"")|replace("_"," ")|safe }}</a></div>
+                                    {% if themeSettings.showChildCategoriesInFaceting and child.items.length > 0 %}
+                                            <ul>
+                                                {% for subchild in child.items%}
+                                                    {% if not subchild.isHidden and not subchild.isEmpty %}
+                                                    <li><a href="{{subchild.url}}" class="mz-facetingform-link">{{ subchild.name|replace(themeSettings.columnBreaker,"")|replace("_"," ")|safe }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {%endif%}
+            {% endfor %}
+        </div>
+        <div class="mz-l-paginatedlist pull-right col-xs-12 col-sm-9 col-lg-9"> 
+            {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area</span>{% endif %}
+           {% dropzone "category-gateway-top" scope="page" %} 
+            
+            {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">RTI Widget - New Arrivals</span>{% endif %}  
+             {% dropzone "new-arrival" scope="page" %}
+            
+            {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Featured Brands</span>{% endif %}
+            {% dropzone "featured-brands" scope="page" %}
+
+            {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Featured Categories</span>{% endif %}
+           {% dropzone "featured-category" scope="page" %}
+
+            {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Category Specific Text</span>{% endif %}
+            {% dropzone "category-gateway-bottom" scope="page" %}    
+        </div>
+       
     </div>
-    <div class="col-sm-9 col-xs-12"> 
-        {% dropzone "category-gateway-top" scope="page" %}
-
-        {% dropzone "new-arrival" scope="page" %}
-
-        {% dropzone "featured-brands" scope="page" %}
-
-        {% dropzone "featured-category" scope="page" %}
-
-        {% dropzone "category-gateway-bottom" scope="page" %}
-    </div>
-</div>  
-
-{% endblock category-gateway %}
+</div>
+{% endblock body-content %}

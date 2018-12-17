@@ -1,8 +1,21 @@
 
 /*** Site Changes for Mobile screens ***/
 
-@media @mz-xs-media-query {  
-
+@media @mz-xs-media-query {
+	.mz-featured-products{
+					.mz-productlist {
+							.grid-view {
+								.mz-productlist-item{
+											&:nth-child(2n+1) {
+												clear: none;
+											}
+											&:nth-child(3n+1) {
+												clear: none;
+										}
+							   }
+						}
+				}
+		}
 	footer{
 		.footer-bottom{
 			.mz-pagefooter-copyright{

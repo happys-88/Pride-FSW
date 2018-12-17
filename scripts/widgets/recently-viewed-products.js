@@ -1,5 +1,5 @@
-define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mozu", "modules/models-product", "hyprlivecontext", "bxslider"],
-    function ($, _, api, Backbone, ProductModels, HyprLiveContext, bxslider) {
+define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mozu", "modules/models-product", "hyprlivecontext", "bxslider", 'slick'],
+    function ($, _, api, Backbone, ProductModels, HyprLiveContext, bxslider, slick) {
         var sitecontext = HyprLiveContext.locals.siteContext;
         var cdn = sitecontext.cdnPrefix;
         var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
@@ -82,17 +82,41 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                             window.recentProductsView = recentProductsView;
                             recentProductsView.render();                   
                             if(productslist.items.length > 1){
-                                $('.mz-recently-viewed-products .bxslider').bxSlider({
-                                    minSlides: 2,
-                                    maxSlides: 4,
-                                    slideWidth: 270,
-                                    slideMargin: 20,
-                                    nextText:'<i class="fa fa-angle-right" aria-hidden="true"></i>',
-                                    prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-                                    responsive: true,
-                                    speed: 0,
-                                    infiniteLoop: false,
-                                    hideControlOnEnd: true
+                                $('.mz-recently-viewed-products .mz-productlist-list').slick({
+                                    infinite: false,
+                                    slidesToShow: 6,
+                                    prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+                                    nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+                                    responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 5
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 992,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 4
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 768,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 3
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 460,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 2
+                                        }
+                                    }
+
+                                    ]
                                 });
                             }
                             if(productslist.items.length > 0){
