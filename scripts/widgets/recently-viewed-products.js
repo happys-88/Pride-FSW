@@ -20,23 +20,10 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                 var config = rp.data('mzRecentlyViewedProducts');
                 var template = config.template || 'modules/product/product-list-carousel';
                 var title = config.title || '';
-                var numberToDisplay = HyprLiveContext.locals.themeSettings.maxRecentlyViewedItems || 5;
+                var numberToDisplay = HyprLiveContext.locals.themeSettings.maxRecentlyViewedItems || 8;
                 var productCodes = [];// = _.pluck(currentProduct.properties[0].values, "value");
                 var RecentlyViewedProductsView = Backbone.MozuView.extend({
                     templateName: template
-                    /*
-                    ,events: {
-                        'mouseover [data-mz-swatch-color]': 'selectSwatchOption'
-                    },
-                    selectSwatchOption: function(e) {
-                        var colorCode = $(e.currentTarget).data('mz-swatch-color').toLowerCase();
-                        var productCode = $(e.currentTarget).data('mz-product-code');
-                        var width = HyprLiveContext.locals.themeSettings.listProductImageWidth;
-                        var height = HyprLiveContext.locals.themeSettings.listProductImageHeight;
-                        var imagepath = imagefilepath + '/' + productCode + '_' + colorCode + '.jpg?maxWidth=' + width;
-                        $(e.target).parents('.product-code').find('.image').attr('src', imagepath);
-                    }
-                    */
                 });
                 
                 var existingProducts = $.cookie('recentProducts'), 

@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "2b8da812bd7992941edcaa968cf9146aac4fd536"
+      "commit": "31c2231151bb0a549e6f830d26f2adb68bae0ddd"
     },
     "baseThemeChannel": "stable"
   },
@@ -494,8 +494,8 @@
     "colorSwatchesChangeMain": true,
     "familyProductType": "Family Product",
     "familyProductAttribute": "tenant~family-members",
-    "familyMemberAttribute": "tenant~family-code", 
-    "colorSwatchesChangeAlternate": false, 
+    "familyMemberAttribute": "tenant~family-code",
+    "colorSwatchesChangeAlternate": false,
     "customCountries": [
       {
         "value": "US",

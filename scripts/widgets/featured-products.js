@@ -5,6 +5,7 @@ define([
     'slick'
 ],
     function ($, bxSlider, slick) {
+
            // var slider;
             var slide = {
                 productCarousel: function () {
@@ -33,6 +34,7 @@ define([
                     //     pager = false;
                     //     controls = true;
                     // }
+                    $('.mz-featured-products').show();
                     $(".mz-featured-products .mz-productlist-list").slick({
                         infinite: false,
                         slidesToShow: 5,
