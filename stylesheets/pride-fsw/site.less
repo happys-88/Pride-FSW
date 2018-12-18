@@ -516,6 +516,7 @@ label {
 	.mz-productlist {
 		.grid-view {
 			.mz-productlist-item {
+				padding: 0;
 				&:nth-child(3n+1) {
 				    clear: none;
 				}
@@ -524,7 +525,8 @@ label {
 		.mz-productlist-list {
 			.mz-productlisting-title {
 			    color: @textColor;
-			    line-height: 18px;
+				line-height: 18px;
+			    //padding: 0 29px;
 			}
 			.mz-directory-ratings {
 	    		display: none;
@@ -714,15 +716,15 @@ label {
 	display:none;
 		.mz-productlist-list {
 			.mz-productlist-item{
-				.mz-productlisting-info{
-					.mz-product-info-wrapper{
+				.mz-productlisting {
+					.mz-productlisting-title {
 						font-size: 14px;
 						color: #262626;
 						font-weight: 500; 
 						display: block;
 						text-align: center;
 						margin-bottom: 10px;
-						.multiLineEllipsis(18px, 3);
+						.multiLineEllipsis(18px, 2);
 					}
 				}
 			}

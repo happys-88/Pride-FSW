@@ -4,6 +4,12 @@
 @media @mz-xs-media-query {
 	.mz-featured-products{
 					.mz-productlist {
+						.slick-arrow.fa-angle-right {
+									right: 19px;
+							}
+							.slick-arrow.fa-angle-left {
+									left: 19px;
+							}
 							.grid-view {
 								.mz-productlist-item{
 											&:nth-child(2n+1) {
@@ -11,6 +17,13 @@
 											}
 											&:nth-child(3n+1) {
 												clear: none;
+										}
+										.mz-productlisting-image{
+											img{
+												max-height: 120px;
+												display: block;
+                                                margin: 0 auto;
+											}
 										}
 							   }
 						}

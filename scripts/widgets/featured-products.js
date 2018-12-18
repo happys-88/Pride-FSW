@@ -5,35 +5,8 @@ define([
     'slick'
 ],
     function ($, bxSlider, slick) {
-
-           // var slider;
             var slide = {
                 productCarousel: function () {
-
-                    // var minSlides,
-                    //     maxSlides,
-                    //     slideWidth,
-                    //     slideMargin,
-                    //     pager,
-                    //     controls,
-                    //     windowWidth = $(window).width();
-                    // if (windowWidth >= 480 || windowWidth <= 767) {
-                    //     minSlides = 2;
-                    //     maxSlides = 2;
-                    //     slideMargin = 10;
-                    //     slideWidth = 400;
-                    //     pager = true;
-                    //     controls = false;
-
-                    // }
-                    // if (windowWidth > 767) {
-                    //     minSlides = 6;
-                    //     maxSlides = 12;
-                    //     slideWidth = 400;
-                    //     slideMargin = 15;
-                    //     pager = false;
-                    //     controls = true;
-                    // }
                     $('.mz-featured-products').show();
                     $(".mz-featured-products .mz-productlist-list").slick({
                         infinite: false,
@@ -71,12 +44,7 @@ define([
 
                         ]
                     });
-                    //window.slider = slider;
                 }
             };
             slide.productCarousel();
-            // $(window).resize(function () {
-            //    // slider.destroySlider();
-            //     //slide.productCarousel();
-            // });
     });
