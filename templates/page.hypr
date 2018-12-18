@@ -40,6 +40,7 @@
 
         {% include "modules/json-required-for-hyprlive" %}
 
+        {% include "modules/page-header/login-signup-modal" %} 
 
         {% block meta-tags %}
         <meta charset="utf-8">
@@ -83,8 +84,7 @@
         {% block stylesheets %}   
             <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/vendor/bootstrap-3.3.7/css/bootstrap.min.css" %}" title="default" /> 
             <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" title="default" />          
-            <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/vendor/font-awesome/css/font-awesome.min.css" %}" media="all">  
-              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" >
+            <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/vendor/font-awesome/css/font-awesome.min.css" %}" media="all">     
         {% endblock stylesheets %}
 
         {% block head-tag-scripts %}
@@ -109,7 +109,7 @@
     {% endblock open-body-tag %}
         <div id="page-wrapper" class="mz-l-pagewrapper">
             {% block utility-bar %}
-                {% include "modules/utility-bar/header" %} 
+                {% include "modules/utility-bar/header" %}
             {% endblock utility-bar %}
             {% block page-header %}
 				{% include "modules/page-header" %}
@@ -156,6 +156,11 @@
         {% endblock trailing-scripts %}
 
         {% visitor_tracking_pixel %}
+
+        <!-- Begin Constant Contact Active Forms -->
+            <script> var _ctct_m = "61b325e1e6e81fefce62e60e85d0b4a6"; </script>
+            <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+        <!-- End Constant Contact Active Forms -->
     </body>
     {% endblock body-tag %}
 
