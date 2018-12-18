@@ -1,14 +1,5 @@
 ﻿<nav class="mz-utilitynav">
-    <ul class="mz-utilitynav-list">
-        <li class="mz-utilitynav-item navbar-collapse-control">
-            <a data-target="#mz-nav"  data-toggle="collapse" class="mz-utilitynav-link">
-                {% dropzone "products-collapsible-label" scope="site" %}
-                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-            </a>
-        </li> 
-
-        {% include "modules/page-header/login-signup-modal" %}
-     
+    <ul class="mz-utilitynav-list"> 
         {% comment %}
         The below require_script tag does not render anything in the place it's actually inserted; it instead adds the script to a list of scripts  which are then included at the end of the page by RequireJS.
         Use require_script to load AMD modules that are wrapped in define() or require() function calls.
@@ -81,3 +72,4 @@
     </ul> 
     <!-- Modal for Login/Signup --> 
 </nav>
+{% include "modules/page-header/login-signup-modal" %} 

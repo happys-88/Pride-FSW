@@ -1,11 +1,18 @@
 ﻿<div id="global-header-wrapper"> 
-    {% block store-branding %}
+    {% block global-header %}
         {% include "modules/page-header/global-header-include" %}
-    {% endblock store-branding %}
+    {% endblock global-header %} 
 </div>
 <header class="mz-pageheader{% if themeSettings.bannerImageEnabled %} mz-pageheader-hasbanner {% endif %}">
     <div class="container">
         <div class="mz-header-content">
+            <div class="mz-hamburger-icon">   
+                <div class="mz-utilitynav-item navbar-collapse-control">
+                    <button data-target="#mz-nav" data-toggle="collapse" class="mz-utilitynav-link">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>  
             <div class="mz-header-logo-wrapper"> 
                 {% block store-branding %}
                     {% include "modules/page-header/store-branding" %} 
