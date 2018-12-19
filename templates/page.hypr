@@ -40,8 +40,6 @@
 
         {% include "modules/json-required-for-hyprlive" %}
 
-        {% include "modules/page-header/login-signup-modal" %} 
-
         {% block meta-tags %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
@@ -151,16 +149,27 @@
 
         </div>
 
+        {% include "modules/page-header/login-signup-modal" %} 
+
         {% block trailing-scripts %}
-        {% include "modules/trailing-scripts" %}
+            {% include "modules/trailing-scripts" %}
         {% endblock trailing-scripts %}
 
         {% visitor_tracking_pixel %}
 
-        <!-- Begin Constant Contact Active Forms -->
-            <script> var _ctct_m = "61b325e1e6e81fefce62e60e85d0b4a6"; </script>
-            <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
-        <!-- End Constant Contact Active Forms -->
+        <!-- Constant Contact Active Forms Script --> 
+        {% block constant-contact-form %} 
+            <script> var _ctct_m = "61b325e1e6e81fefce62e60e85d0b4a6"; </script>  
+            <script type="text/javascript">
+              (function() {
+                var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+                se.src = '//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js'; 
+                se.id = 'signupScript'; 
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+              })();
+            </script>
+       {% endblock constant-contact-form %}  
+
     </body>
     {% endblock body-tag %}
 

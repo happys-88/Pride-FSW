@@ -8,7 +8,7 @@ define([
 ], function(Backbone, $, Api, Hypr, _, ProductModels) {
 
     var globalCartRelatedProducts = Hypr.getThemeSetting('globalCartRelatedProducts'),
-        globalCartRelatedProductsSize = Hypr.getThemeSetting('globalCartRelatedProductsSize'),
+        globalCartRelatedProductsSize = Hypr.getThemeSetting('globalCartRelatedProductsSize'), 
         globalCartMaxItemCount = Hypr.getThemeSetting('globalCartMaxItemCount'),
         globalCartHidePopover = Hypr.getThemeSetting('globalCartHidePopover'),
         coerceBoolean = function(x) {
@@ -38,14 +38,12 @@ define([
                     }
                 }
             }
-            console.log("productCodes", productCodes);
             var filter = _.map(productCodes, function(c) {
                 return "ProductCode eq " + c;
-            }).join(' or ');
-            console.log("filter", filter);
+            }).join(' or '); 
+            
             Api.get("search", { filter: filter, pageSize : globalCartRelatedProductsSize}).then(function(collection) {
-                console.log("collection.data",collection.data);
-                var template = 'Widgets/misc/product-carousel-listing';
+                var template = 'Widgets/misc/product-carousel-listing'; 
                 var RelatedProductsView = Backbone.MozuView.extend({
                     templateName: template
                 });
