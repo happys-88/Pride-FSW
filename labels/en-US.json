@@ -156,7 +156,9 @@
   "searchTitle"          : "Search Results for {0}",
   "noResultsTitle"       : "No results for {0}",
   "noResults"            : "No Results",
-  "noResultsText"        : "We're sorry! No results were found matching your query.",
+  "sorryLabel"           : "We're Sorry",  
+  "noResultsText"        : "We couldn't find",
+  "anotherSearchText"    : "Please try another search term",    
   "searchResultsSummary"  : "Your search for \"{0}\" within {1} returned {2} results. <a href=\"#\" data-mz-action=\"expandSearch\">Repeat this search across all categories.</a>",
 
   "cart"                 : "Cart",
