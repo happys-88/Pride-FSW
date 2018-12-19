@@ -23,7 +23,6 @@ define(['modules/api',
                 this.trigger('error', { message: msg || 'Something went wrong!! Please try after sometime!' });
             },
             contactUsSubmit: function() {
-                console.log("contactUsSubmit");
                 var self = this;
                 var firstName = self.model.get('firstname');
                 var lastName = self.model.get('lastname');
@@ -31,8 +30,13 @@ define(['modules/api',
                 var selectedTopic = self.model.get('selectedTopic');
                 var message = self.model.get('message');
                 if (!self.model.validate()) {
-                    var mail= "mailto:sanjay93rajput8@gmail.com?subject="+ selectedTopic + "&amp;body="+ message;
-                    window.open( mail,'_blank'); 
+                    var mail= "mailto:test@gmail.com?subject="+ selectedTopic + "&amp;body="+ message;
+                    window.open( mail,'_blank', 'height=400,width=400,resizable=yes,scrollbars=yes,status=no,titlebar=no');
+                    $("#firstname").val('');
+                    $("#lastname").val(''); 
+                    $("#emailAddress").val('');
+                    $("#selectedTopic").val('');
+                    $("#message").val('');
                 } else {
                     self.setError("Invalid form submission");
                 }
