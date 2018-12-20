@@ -1,7 +1,6 @@
 
 define([
     'modules/jquery-mozu',
-    'bxslider',
     'slick'
 ],
     function ($, bxSlider, slick) {

@@ -79,6 +79,8 @@
     // Common to both List and Grid View
         .mz-productlisting-image {
             position: relative;
+          //  min-height: 150px;
+          //  max-height: 150px;
             button.quick-view-btn {
                 left: 0;
                 right: 0;
@@ -114,6 +116,8 @@
                 .mz-productlisting-image {
                     .mz-productlisting-imageplaceholder, img {
                         max-height: 171px;
+                        display: block;
+                        margin: 0 auto;
                         >.mz-productlisting-imageplaceholdertext {
                             line-height: 265px;
                         }
@@ -215,8 +219,8 @@
             }
         }
      }
-     .mz-category{
-     }
+    //  .mz-category{
+    //  }
      .mz-l-carousel {
         .bx-wrapper {
             max-width: ({{themeSettings.productCarouselImageWidth}}px+40)*{{themeSettings.productCarouselSize}}!important;

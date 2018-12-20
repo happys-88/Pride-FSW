@@ -566,7 +566,7 @@
     }
     .is-crossedout{
         width: 100%;
-        display: inline-block;
+       // display: inline-block;
         text-align: right;
         color: @colorLighterGray;
         font-size: @fontSizeSmall;
@@ -1415,8 +1415,8 @@ ul.tabs {
             color: #333;
             margin: 0px;
           }
-          .mz-productcodes-productcode{
-          }
+        //   .mz-productcodes-productcode{
+        //   }
           .mz-all-review-container{
             +.mz-productdetail-conversion{
               padding-top: 12px;
@@ -1835,6 +1835,8 @@ ul.tabs {
             .mz-productlisting-title {
                 font-size: @font-size + 2;
                 line-height: 22px;
+                .multiLineEllipsis(18px, 3);
+                    padding: 0;
             }
             .mz-productlisting-info {            
                 .mz-pricestack {
@@ -2501,7 +2503,7 @@ ul.tabs {
 .mz-table-cart-items{
   .cart-noimage{
     .no-image(104px,100px);
-    display: inline-block;
+    //display: inline-block;
     float: left;
     margin-right: @defaultGutter;
   }

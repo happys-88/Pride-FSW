@@ -12,7 +12,7 @@
             {% endif %}
             {% endblock product-image %}
         </div>
-        <a class="mz-productlisting-title visible-xs" href='{% make_url "product" model %}'>{{model.content.productName|safe}}</a>
+        
         <!--Color Swatch-->
         {% for option in model.options %}
             {% if option.attributeFQN=="tenant~color" and option.values.length!=0 %}
@@ -28,7 +28,12 @@
     </div>
     <div class="mz-productlisting-info">
         <div class="mz-product-info-wrapper">
-            <a class="mz-productlisting-title hidden-xs" href='{% make_url "product" model %}'>{{model.content.productName|safe}}</a>
+            {% with model|get_product_attribute("tenant~brand") as brandName %}
+                    {% if brandName %}
+                        <div class="mz-brand"> {{ brandName.values|first|prop("value") }} </div>
+                    {% endif %}
+            {% endwith %}
+            <a class="mz-productlisting-title" href='{% make_url "product" model %}'>{{model.content.productName|safe}}</a>
             {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
             <p class="mz-productlisting-shortdesc">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</p>
             {% endif %}

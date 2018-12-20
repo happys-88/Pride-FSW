@@ -6,6 +6,7 @@ define([
     function ($, slick) {
         var slide = {
             productCarousel: function () {
+                 $('.new-arrival-product-container').show();
                 $(".new-arrival-product-container .mz-productlist-list").slick({
                     infinite: false,
                     slidesToShow: 6,
