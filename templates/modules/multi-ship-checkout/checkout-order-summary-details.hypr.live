@@ -26,9 +26,7 @@
                             {% if item.product.imageUrl %}
                                   <img class="mz-carttable-item-image" src="{% make_url "image" item.product with maxWidth=themeSettings.globalCartItemImageMaxWidth as_parameters %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% endif %} />
                             {% else %}
-                                <span class="mz-carttable-item-image mz-product-image-placeholder pull-left">
-                                  <span class="mz-productlisting-imageplaceholdertext">{{ labels.productImagePlaceholder }}</span>
-                                </span>
+                                <img src='{% make_url "cdn" "/cms/files/no-image-pride.jpg" %}' alt="no-image" />
                             {% endif %}    
                           {% endif %}  
                         {% endwith %}                       

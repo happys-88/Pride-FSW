@@ -12,12 +12,12 @@
       {% else %}
         {% if item.product.imageUrl %}
             <a href="{{ item.product.url }}">
-              <img class="mz-carttable-item-image" src="{% make_url "image" item.product with maxWidth=themeSettings.globalCartItemImageMaxWidth as_parameters %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% endif %} />
+              <img class="mz-carttable-item-image" src="{% make_url "image" item.product %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% endif %} />
             </a>
         {% else %}
           <a href="{{ item.product.url }}">
             <div class="cart-noimage">
-              [{{ labels.noImages }}]
+               <img src='{% make_url "cdn" "/cms/files/no-image-pride.jpg" %}' alt="no-image" />
             </div>
           </a>
         {% endif %}    
