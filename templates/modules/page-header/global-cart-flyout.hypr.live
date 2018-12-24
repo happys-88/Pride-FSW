@@ -54,6 +54,12 @@
 					</div>
 					<div class="media-body">
 						<div class="col-xs-5 global-cart-padding">
+						{% with items.product|get_product_attribute("tenant~brand") as brandName %}
+						
+							<div class="mz-brand">
+								{{ brandName.values|first|prop("value") }}</a>
+							</div>	
+						{% endwith %} 
 							<h5 class="media-heading">
 								<a href="/p/{{items.product.productCode}}">
 									{{ items.product.name }}									
