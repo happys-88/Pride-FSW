@@ -37,9 +37,7 @@
 
     {% block head-tag %}
     <head>
-
-
-        {% block meta-tags %}
+        {% block meta-tags %} 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="{{ PageContext.MetaDescription }}">
@@ -96,7 +94,8 @@
         <!-- Script for custom JS changes -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
         {% require_script "custom" %} 
-         {% include "modules/json-required-for-hyprlive" %}
+        {% include "modules/json-required-for-hyprlive" %}
+        
     </head>
     {% endblock head-tag %}
 
@@ -116,9 +115,9 @@
 				{% include "modules/site-nav" %}
             {% endblock site-nav %}
             {% block global-marketing-area %}
-                <div class="global-marketing-area">
+                <div class="global-marketing-area"> 
                     <div class="container">
-                        {% if pageContext.isEditMode %}Global Marketing Area - HTML/Image Dropzone {% endif %}
+                        {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Global Marketing Area - HTML/Image Dropzone</span> {% endif %}
                         {% dropzone "global-marketing-below-nav" scope="site" %}
                     </div> 
                 </div>

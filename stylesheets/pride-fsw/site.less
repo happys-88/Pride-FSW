@@ -30,7 +30,7 @@ body {
 	background: @textColorWhite;
 	font-family: @fontFamily;
 	font-size: 14px;
-	//font-weight: 500;
+	font-weight: 500; 
 }
 
 ul,
@@ -67,6 +67,18 @@ a {
 	padding-left: 0;
 }
 
+@media (min-width: 1500px) {
+	.container {
+		width: 1440px;
+	}
+}
+
+.mz-drop-zone {
+	.mz-cms-row {
+		max-width: 100%;
+	}
+}
+
 .container {
 	max-width: 1440px;
 }
@@ -101,15 +113,14 @@ img[data-mztp] {
 	text-transform: none;
 	position: relative;
 	margin: 0 0 30px;
-	font-weight: normal;
-	text-align: center;
+	text-align: center; 
 
 	span {
 		display: inline-block;
 		background: @textColorWhite;
 		padding: 0 25px;
 		position: relative;
-		z-index: 1;
+		z-index: 9;
 	}
 
 	&:after {
@@ -161,6 +172,7 @@ img[data-mztp] {
 	.mz-header-links-wrapper {
 		a {
 			color: @textColor;
+			font-weight: 600; 
 
 			&:visited {
 				color: @textColor;
@@ -496,14 +508,14 @@ img[data-mztp] {
 /*** Back to top button ***/
 
 
-/********************************************* Pride FSW *********************************************/
+/*************** Pride FSW *********************/ 
 
 label {
 	font-weight: 600;
 }
 
 /*** Validation error msg ***/
-.mz-validationmessage:empty {
+.mz-validationmessage:empty { 
 	display: none;
 }
 
@@ -513,19 +525,6 @@ label {
 }
 
 /***\ Validation error msg ***/
-
-
-@media (min-width: 1500px) {
-	.container {
-		width: 1440px;
-	}
-}
-
-.mz-drop-zone {
-	.mz-cms-row {
-		max-width: 100%;
-	}
-}
 
 /**** Global Marketing Area ****/
 .global-marketing-area {
@@ -590,7 +589,9 @@ label {
 }
 
 //Featured Products on home page
-.mz-featured-products, .new-arrival-product-container, .mz-recently-viewed-products {
+.mz-featured-products,
+.new-arrival-product-container, 
+.mz-recently-viewed-products {
 	padding-bottom: 70px;
 
 	.mz-productlist {
@@ -649,10 +650,14 @@ label {
 
 
 // Guided By FSW on home page
+#mz-drop-zone-guided-by-fsw{
+	background: #f1f1f1;
+	padding: 20px 0 25px;
+	margin-bottom: 35px;   
+}
 .guided-by-fsw {
 	float: left;
 	width: 100%;
-	padding: 10px 0 50px;
 	text-align: center;
 
 	h4 {
@@ -675,7 +680,13 @@ label {
 	}
 
 	p {
+		font-size: 16px;
 		color: #323132;
+	}
+	.col-xs-12{
+		p{
+			font-size: 14px; 
+		}
 	}
 }
 

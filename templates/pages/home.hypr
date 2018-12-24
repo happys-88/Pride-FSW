@@ -1,20 +1,35 @@
-﻿{% extends "page" %}
+{% extends "page" %}
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.name %} - {% parent %}{% endblock title-tag-content %}
 
 {% block body-tag-classes %} mz-homepage {% endblock body-tag-classes %}
 
 {% block body-content %}
-    {% dropzone "home-slider" scope="template" %} 
+	{% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Home Slider Widget</span> {% endif %}
+    {% dropzone "home-slider" scope="template" %}
+
+    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Guided By FSW - HTML Widget</span> {% endif %}
+    {% dropzone "guided-by-fsw" scope="template" %}
+
     <div class="container">
-	    {% dropzone "guided-by-fsw" scope="template" %} 
+    	{% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Featured Products Widget</span> {% endif %}
 	    {% dropzone "featured-product" scope="template" %} 
+
+	    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Brands We Love - Shop By Brand Widget</span> {% endif %}
 	    {% dropzone "brand-we-love" scope="template" %} 
+
+	    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Promo Banner Widget</span> {% endif %}
 	    {% dropzone "promo-banner" scope="template" %}
+
+	    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Shop By Category</span> {% endif %}
 	    {% dropzone "shop-by-category" scope="template" %}
+
+	    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Shop Now Widget</span> {% endif %}
 	    {% dropzone "shop-now-widget" scope="template" %}
+
+	    {% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Dropzone Area - Home Slider Widget</span> {% endif %}
 	    {% dropzone "instagram-follow-fsw" scope="template" %} 
-	    {% dropzone "featured-experts" scope="template" %}
+	    {% dropzone "featured-experts" scope="template" %} 
 	</div>
 {% endblock body-content %}
 
