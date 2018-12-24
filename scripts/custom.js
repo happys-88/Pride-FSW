@@ -40,6 +40,23 @@ define([
    			} else {
    				$("#errorEmail").show();
    			}
+    });
+    	// Back To 
+	  	function scrollToTop(){
+        	$("body, html").animate({ 
+	            scrollTop: 0
+	        }, 600); 
+        }
+	  	$(window).scroll(function() {    
+		    var scroll = $(window).scrollTop();
+		    if (scroll >= 200) {
+		    	$("#back-to-top").fadeIn();
+		    } else{
+		    	$("#back-to-top").fadeOut(); 
+		    }
+		});
+		$("#back-to-top").click(function(){
+	        scrollToTop(); 
 		});
 
 	}); 

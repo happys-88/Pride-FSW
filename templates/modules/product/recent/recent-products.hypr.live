@@ -14,11 +14,17 @@
 <div class="mz-productlist {% block module-classes %}{% endblock module-classes %}">
         <ul id="product-list-ul" class="mz-productlist-list row mz-list-view-toggle grid-view {% block list-classes %}{% endblock list-classes %}">
             {% for productData in model.items %}
-                <li class="mz-productlist-item col-xs-6 col-sm-4" data-mz-product="{{ prod.productCode }}"><a href='{% make_url "product" productData %}'> <img  
-            src="{% make_url "image" productData.mainImage with maxWidth=160  %}"></a>
+                <li class="mz-productlist-item col-xs-6 col-sm-4" data-mz-product="{{ prod.productCode }}">
+				<a href='{% make_url "product" productData %}'> 
+				{% if productData.mainImage %} 
+				    <img src="{% make_url "image" productData.mainImage with maxWidth=160  %}"> 
+			      {% else %}
+                    <img src='{% make_url "cdn" "/cms/files/no-image-pride.jpg" %}' alt="no-image" />
+			    {% endif %}
+			    </a>
                 </li>        
             {% endfor %} 
-       </ul>
+        </ul>
 </div>
 <div id="more-item-container" class="clearfix"></div>
 {% endif %}

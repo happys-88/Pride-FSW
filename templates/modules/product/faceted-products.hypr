@@ -64,7 +64,7 @@
     </div>
     <div class="mz-l-paginatedlist-footer">
         <div class="back-to-top">
-            <button class="tertiary-btn">{{ labels.backToTop }}</button>
+            <button class="tertiary-btn">{{ labels.backToTop }} <i class="fa fa-chevron-up"></i></button>
         </div>
         <div data-mz-pagenumbers class="mz-pagenumbers">
             {% include "modules/common/page-numbers" %}

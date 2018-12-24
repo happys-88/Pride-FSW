@@ -1,4 +1,4 @@
-﻿{% if model.pageSize != themeSettings.viewAllPageSize and model.pageSize < model.totalCount %}
+﻿{% if model.pageSize != themeSettings.viewAllPageSize and model.pageSize <= model.totalCount %}
 <ul class="pagination">
     <li>
         {% if not model.hasPreviousPage %}

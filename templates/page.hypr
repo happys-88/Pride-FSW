@@ -38,7 +38,6 @@
     {% block head-tag %}
     <head>
 
-        {% include "modules/json-required-for-hyprlive" %}
 
         {% block meta-tags %}
         <meta charset="utf-8">
@@ -97,6 +96,7 @@
         <!-- Script for custom JS changes -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
         {% require_script "custom" %} 
+         {% include "modules/json-required-for-hyprlive" %}
     </head>
     {% endblock head-tag %}
 
@@ -148,7 +148,9 @@
             {% endblock page-footer %}
 
         </div>
-
+        <div id="back-to-top">
+            <i class="fa fa-chevron-up"></i>
+        </div>
         {% include "modules/page-header/login-signup-modal" %} 
 
         {% block trailing-scripts %}
