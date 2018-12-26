@@ -443,12 +443,17 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         this.bindListeners =  function (on) {
             var onOrOff = on ? "on" : "off";
             $(this).parent()[onOrOff]('click', '[data-mz-action="lite-registration"]', self.openLiteModal);
-            $(this).parents('.mz-utilitynav')[onOrOff]('click', '[data-mz-action="doLogin"]', self.doLogin);
-            $(this).parents('.mz-utilitynav')[onOrOff]('click', '[data-mz-action="doSignup"]', self.doSignup);
-            
+            // $(this).parents('.mz-utilitynav')[onOrOff]('click', '[data-mz-action="doLogin"]', self.doLogin);
+            // $(this).parents('.mz-utilitynav')[onOrOff]('click', '[data-mz-action="doSignup"]', self.doSignup);
+
             // bind other events
         };
-
+        $('[data-mz-action="doLogin"]').click(function(e) {
+            self.doLogin(e);
+        });
+        $('[data-mz-action="doSignup"]').click(function(e) {
+            self.doSignup(e);
+        });
         this.openLiteModal = function(){
             if (self.modalEl[0] == $("#liteRegistrationModal")[0]) {
                 $(".second-tab").show();
@@ -457,20 +462,20 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             self.modalEl.modal('show');
         };
 
-        this.doLogin = function(){
+        this.doLogin = function(e){
             //console.log("Write business logic for Login form submition");
             var returnUrl = $('#returnUrl').val();
             var payload = {
-                email: $(this).parents('#login').find('[data-mz-login-email]').val(),
-                password: $(this).parents('#login').find('[data-mz-login-password]').val()
+                email: $('[data-mz-login-email]').val(),
+                password: $('[data-mz-login-password]').val()
             };
-            current = this;
-            if (self.validateLogin(this, payload) && self.validatePassword(this, payload)) {   
+            current = e.currentTarget;
+            if (self.validateLogin(e.currentTarget, payload) && self.validatePassword(e.currentTarget, payload)) {   
                 //var user = api.createSync('user', payload);
                 (LoginPopover.prototype).newsetLoading(true);
                 return api.action('customer', 'loginStorefront', {
-                    email: $(this).parents('#login').find('[data-mz-login-email]').val(), 
-                    password: $(this).parents('#login').find('[data-mz-login-password]').val()
+                    email: $('[data-mz-login-email]').val(), 
+                    password: $('[data-mz-login-password]').val()
                 }).then(function () {
                     if ( returnUrl ){
                         window.location.href= returnUrl;
@@ -485,14 +490,14 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(payload.email))) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('emailwrongpattern')), false;            
             return true;
         };
-        this.doSignup = function(){
+        this.doSignup = function(e){
             var redirectTemplate = 'myaccount';
             var returnUrl = $('#returnUrl').val();
-            var emailupdates = $(this).parents('#newshopper').find('[data-mz-signup-emailupdates]').val();
+            var emailupdates = $('[data-mz-signup-emailupdates]').val();
             var accMarketing = false;
             if(emailupdates === "on")
                 accMarketing = true;
-            var email = $(this).parents('#newshopper').find('[data-mz-signup-emailaddress]').val().trim();
+            var email = $('[data-mz-signup-emailaddress]').val().trim();
             /*var recoveryquestion = $(this).parents('#newshopper').find('[data-mz-signup-recoveryquestion]').val();
             var recoveryanswer = $(this).parents('#newshopper').find('[data-mz-signup-recoveryanswer]').val().trim();*/ 
             var payload = {
@@ -516,10 +521,10 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
                       }
                    ] */              
                 },
-                password: $(this).parents('#newshopper').find('[data-mz-signup-password]').val()
+                password: $('[data-mz-signup-password]').val()
             };
-            current = this; 
-            if (self.validateSignup(this, payload) && self.validatePassword(this, payload)) {   
+            current = e.currentTarget; 
+            if (self.validateSignup(e.currentTarget, payload) && self.validatePassword(e.currentTarget, payload)) {   
                 //var user = api.createSync('user', payload);
                 (LoginPopover.prototype).newsetLoading(true);
                 return api.action('customer', 'createStorefront', payload).then(function () {
@@ -552,7 +557,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         this.validateSignup = function (el, payload) { 
             if (!payload.account.emailAddress) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('emailMissing')), false;
             if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(payload.account.emailAddress))) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('emailwrongpattern')), false;                       
-            if (payload.password !== $(el).parents('#newshopper').find('[data-mz-signup-confirmpassword]').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('passwordsDoNotMatch')), false;
+            if (payload.password !== $('[data-mz-signup-confirmpassword]').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('passwordsDoNotMatch')), false;
             /*if (payload.account.attributes.recoveryquestion === "0") return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('chooseRecoveryQuestion')), false;
             if($('#recoveryQuestionList').val() === "0") return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('chooseRecoveryQuestion')), false;
             if(!$('#recoveryAnswer').val()) return (LoginPopover.prototype).newdisplayMessage(el, Hypr.getLabel('recoveryAnswerMissing')), false;*/
