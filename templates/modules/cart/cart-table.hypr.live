@@ -99,8 +99,14 @@
                             {% endif %}
 
                             <div class="mz-carttable-item-qty mz-cart-qty-box visible-xs mz-qty-xs-align">
-                                <input class="mz-carttable-qty-field" type="number" {% if model.isLoading %}disabled="disabled"{% endif %} data-mz-cart-item="{{ item.id }}" data-mz-value="quantity" value="{{ item.quantity }}" min="1"/>
-                                <a href="javascript:;" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}" class="btn-link" title="{{ labels.remove }}">{{ labels.remove }}</a>
+                                <div class="qty-block">
+                                    <div class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="fa fa-minus"  aria-hidden="true"></i></div>
+                                    <input class="mz-carttable-qty-field text-center" type="text" {% if model.isLoading %}disabled="disabled"{% endif %} data-mz-cart-item="{{ item.id }}" data-mz-value="quantity" value="{{ item.quantity }}" min="1"/>
+                                    <div class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="mz-carttable-item-remove">
+                                    <a href="javascript:void(0);" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}" class="btn-link" title="{{ labels.remove }}">{{ labels.remove }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
