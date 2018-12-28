@@ -1,6 +1,6 @@
 {% if model.content.productImages %}
 {% if model.content.productImages.length > 1 %}
-    <div class="col-sm-3 padding-0">
+    <div class="col-sm-3 col-xs-12 padding-0">
         <figure class="mz-productimages-thumbs" data-length="{{model.content.productImages.length}}">
         {% if pageContext.isMobile %}
             <div class="visible-xs mobile-carousal">

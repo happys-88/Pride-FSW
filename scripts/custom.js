@@ -41,6 +41,11 @@ define([
    				$("#errorEmail").show();
    			}
     });
+        $(document).on('click', '.mz-mobile-tabs li', function () {
+          console.log("active");
+          $(this).addClass("active");
+          $(this).find(".active").prev().addClass("active");
+        });
     	// Back To 
 	  	function scrollToTop(){
         	$("body, html").animate({ 
