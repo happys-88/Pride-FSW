@@ -32,7 +32,7 @@
 
     function initSlider() {
         slider = $('#productpager-Carousel').bxSlider({
-            slideWidth: 600,
+            slideWidth: 800,
             minSlides: 4,
             maxSlides: 4,
             moveSlides: 1,
@@ -53,7 +53,7 @@
         if (current_zoom_id_added)
             id = $(current_zoom_id_added)[0].attributes.id.value.replace('zoom_', '') - 1;
         slider_mobile = $('#productmobile-Carousel').bxSlider({
-            slideWidth: 300,
+            slideWidth: 800,
             minSlides: 1,
             maxSlides: 1,
             moveSlides: 1,
