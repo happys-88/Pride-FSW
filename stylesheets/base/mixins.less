@@ -353,3 +353,17 @@
    max-height: @lineHeight * @lineCount;   
    padding: 0 20px;      
 }
+.footerinputplaceholder{
+	&::-webkit-input-placeholder { 
+        color: @footerplaceholdergrey;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: @footerplaceholdergrey;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: @footerplaceholdergrey;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: @footerplaceholdergrey;
+    }
+}  

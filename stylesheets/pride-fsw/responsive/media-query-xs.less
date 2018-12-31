@@ -33,20 +33,138 @@
 		}
 	}
 
-	footer {
-		.footer-bottom {
-			.mz-pagefooter-copyright {
-				top: 0px;
+	footer{ 
+		padding: 18px 0 20px;
+		.footer-bottom{
+			padding-top: 30px;
+			.mz-pagefooter-copyright{
+				top:0px;
+				margin-left: 0px;
+				font-size: 11px;
 			}
+			ul{
+				margin-top: 0px;
+				li{
+					padding: 0 3px 0 7px; 
+					a{
+						font-size: 11px;  
+					}
+				}
+		    }
+		}
+		
+		 input[type="email"],
+		    input[type="text"] {
+		        padding: 21px 9px;
+		  }
+	}
+
+	.regular-footer {
+		&.mini-footer-off{
+			text-align: center;
+		}
+	} 
+
+	.footer_menu {
+		.glyphicon{
+		    display: block !important;
+		    position: absolute;
+		    right: 8px; 
+		    width: 100%;
+			text-align: right; 
+		} 
+		ul{
+			display: none; 
+		}
+ 		&.active{
+			.glyphicon-triangle-bottom:before{
+				content: "\e253";
+			}  
 		}
 	}
+
+	.social-links{
+		text-align: center;
+	    padding: 10px 0 20px;
+	    h4{
+			margin: 0 0 10px;
+		}
+		div{
+			a{
+				font-size: 27px;  
+		    }
+		}
+	} 
 	.mz-category {
 			.mz-l-paginatedlist-header, .mz-l-paginatedlist-footer{
 				.mz-pagingcontrols{
-					display: none;
+					display: none; 
 				}
 			}
 	}
+
+	#mz-drop-zone-fsw-about-us {
+    	text-align: center;
+	    h2{
+	    	margin-bottom: 0;
+    		font-size: 24px;
+	    } 
+	}
+
+	.mz-pageheader {
+		.mz-header-content{ 
+			.mz-header-search-wrapper{
+				width:100%; 
+			}
+
+		}
+
+	}
+	.why-read-more {
+    	display: inline-block;
+    	.glyphicon{
+    		position: relative;
+		    top: 1px;
+		    font-size: 12px;
+		    left: 2px;
+    	}
+	}
+	.why-us-desc {
+	    height: 90px;
+	    overflow: hidden; 
+	}
+	#mz-drop-zone-footer-cat-links-col1{
+		border-top: 1px solid rgba(188,194,200,0.38);
+        padding: 20px 0 0;
+		ul{
+			margin: 20px 0 0;
+		}
+		li{
+			margin-bottom:20px;
+		}
+		i{
+			padding-left: 4px;
+		}
+	} 
+	input#email_address_0{
+		padding: 0 10px;
+	}
+	.why-read-more.show-content{
+		.glyphicon-chevron-down:before {
+	       content: "\e113";
+		} 
+	} 
+	.why-read-more::before {
+   		 content: 'Read More';
+	}
+	.why-read-more {
+		&.show-content{ 
+			&:before{
+				content: 'Read Less'; 
+			}
+		}
+	}
+	
 	#back-to-top {
 	    font-size: 23px;
 	    width: 45px;
@@ -55,6 +173,7 @@
 	    bottom: 80px;
 	}
 
+	/**** Cart Page ****/ 
 	.mz-cart {
 		.mz-price-total-container {
 		    padding-left: 100px;
