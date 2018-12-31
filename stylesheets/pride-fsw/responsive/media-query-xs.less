@@ -145,4 +145,64 @@
 		}
 	}
 
+	.mz-checkout {
+		#page-content {
+		    padding: 25px 0;
+		}
+		#checkout-rightcol {
+		    padding-left: 0;
+		}
+		.mz-checkoutform-couponcode, 
+		.mz-checkoutform-comments {
+			label {
+			    text-align: left;
+			}
+		}
+		.form-group {
+			.col-sm-4,
+			.col-sm-8 {
+				padding: 0;
+			}
+		}
+		.mz-checkoutform-shippingaddress {
+			.mz-formgroup-align {
+				&.mz-label {
+					label {
+					    line-height: 30px;
+					    display: block;
+					    width: 100%;
+					    text-align: left;
+					}
+				}
+			}
+		}
+		.mz-paymentselector {
+			&.mz-l-formfieldgroup {
+				.form-group {
+					label {
+    					line-height: 30px;
+						text-align: left;
+					}
+				}
+			}
+		}
+		.mz-payment-credit-card-expiration-row {
+			.form-control {
+				&.mz-l-formfieldgroup-halfsize {
+				    float: right;
+				    margin-right: 0;
+				    width: 95%;
+				}
+				&#mz-payment-expiration-month {
+				    float: left;
+				    width: 95%;
+				}
+			}
+		}
+		.mz-payment-credit-card-securitycode-row {
+			label {
+			    width: 170px;
+			}
+		}
+	}
 }
