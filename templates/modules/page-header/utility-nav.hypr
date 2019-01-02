@@ -42,26 +42,7 @@
                                     <h4>{{ labels.logOut }}</h4>
                                 </a>
                             </div>
-                            {% comment %}
-                            {% if siteContext.generalSettings.isWishlistCreationEnabled %}
-                                <div class="my-account-details">
-                                    <a href="/myaccount#wishlist">
-                                        <h4>{{ labels.wishLists }}</h4>
-                                    </a>
-                                </div>
-                            {% endif %}
-                            <div class="my-account-details">
-                                <a href="/myaccount#returnhistory">
-                                    <h4>{{ labels.returns }}</h4>
-                                </a>
-                            </div>
-                            <div class="my-account-details">
-                                <a href="/myaccount#{{ labels.digitalCreditsAnchor }}">
-                                    <h4>{{ labels.digitalCredit }}</h4>
-                                </a>
-                            </div>
-                            {% endcomment %}
-                        </div>     
+                        </div>      
                 </div> 
             </li>
         {%else%}
@@ -70,6 +51,4 @@
             </li>
         {% endif %}                 
     </ul> 
-    <!-- Modal for Login/Signup --> 
-</nav>
-{% include "modules/page-header/login-signup-modal" %} 
+</nav> 
