@@ -7,35 +7,33 @@
 {% block body-content %}
     <div class="mz-l-container">
         {% dropzone "login-top" scope="template" %}
-        <div class="row">
-            {% include "modules/common/message-bar" with model=model.messages %}
-            <div class="mz-loginform">
-                <h3 class="mz-pagetitle">{{ labels.logIn2 }}</h3>
-                <p>{{ labels.logInMsg }}.</p>
-                <form method="post" class="mz-loginform-page" name="mz-loginform">
-                    <input type="hidden" name="returnUrl" value="{{ model.returnUrl }}" />
-                    <div class="mz-l-formfieldgroup">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input name="email" value="{{model.email|default:user.email}}" type="email" placeholder="{{ labels.emailAddress }}" data-mz-login-email maxlength="{{themeSettings.emailLength}}"/>
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input name="password"  type="password" data-mz-login-password maxlength="{{themeSettings.passwordMaxLength}}" placeholder="{{ labels.password }}"/>
-                        </div>
-                        <div class="from-group clearfix">
-                            <div class="pull-left">
-                                <a href="/user/forgotpassword" class="mz-forgot">{{ labels.liteRegForgotPasswordLabel }}</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="/user/signup" class="mz-forgot">{{ labels.signUpLink }}</a>
-                            </div>
-                        </div>
-                        <section data-mz-role="popover-message" class="mz-popover-message"></section>
-                        <button class="mz-button mz-login-button" data-mz-action="loginpage-submit">{{ labels.logIn }}</button>
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <div class="mz-loginform">
+            <h3 class="mz-pagetitle">{{ labels.logIn2 }}</h3>
+            <p>{{ labels.logInMsg }}.</p>
+            <form method="post" class="mz-loginform-page" name="mz-loginform">
+                <input type="hidden" name="returnUrl" value="{{ model.returnUrl }}" />
+                <div class="mz-l-formfieldgroup">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input name="email" value="{{model.email|default:user.email}}" type="email" placeholder="{{ labels.emailAddress }}" data-mz-login-email maxlength="{{themeSettings.emailLength}}"/>
                     </div>
-                </form>
-            </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input name="password"  type="password" data-mz-login-password maxlength="{{themeSettings.passwordMaxLength}}" placeholder="{{ labels.password }}"/>
+                    </div>
+                    <div class="from-group clearfix">
+                        <div class="pull-left">
+                            <a href="/user/forgotpassword" class="mz-forgot">{{ labels.liteRegForgotPasswordLabel }}</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="/user/signup" class="mz-forgot">{{ labels.signUpLink }}</a>
+                        </div>
+                    </div>
+                    <section data-mz-role="popover-message" class="mz-popover-message"></section>
+                    <button class="mz-button mz-login-button" data-mz-action="loginpage-submit">{{ labels.logIn }}</button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock body-content %}

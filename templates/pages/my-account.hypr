@@ -7,14 +7,14 @@
     {% require_script "pages/myaccount" %}
     {% preload_json model "customer" %}
     <div class="mz-l-container">
-        <div class="mz-myaccount-nav col-md-2 col-sm-3 col-xs-12">
+        <div class="mz-myaccount-nav col-sm-3 col-xs-12">
             <div class="mz-l-sidebar">
                 <h2>{{ labels.myAccount }}</h2>
                 {% include "modules/my-account/my-account-nav" with navtarget="body" %}
             </div>
         </div>
 
-        <ul id="account-panels" class="mz-myaccount-panels mz-l-stack mz-l-stack-large col-md-10 col-sm-9 col-xs-12">
+        <ul id="account-panels" class="mz-myaccount-panels mz-l-stack mz-l-stack-large col-sm-9 col-xs-12">
     		{% dropzone "my-account-top" scope="template" %}
             <div id="account-messages">
                 {% include "modules/common/message-bar" with model=model.messages %}
