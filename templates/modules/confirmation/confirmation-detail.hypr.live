@@ -8,6 +8,8 @@
     <p>{{ labels.yourOrderNumber|string_format(model.orderNumber)|safe }}</p>
 
          {% if not user or user.isAnonymous %}
+         <div id="guestUserSignUp"></div>
+         {% comment %}
             <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-checkoutform">
                 <label class='inline'>
                     <input type="checkbox" name="create-new-account" data-mz-value="createAccount" {% if model.createAccount %} checked="checked"{% endif %} > {{ labels.createAccount }}
@@ -55,7 +57,7 @@
             <div class="mz-formstep-next">
                 <button type="button" class="mz-button primary-btn" data-mz-action="submit">Email Register</button>
             </div>
-
+            {% endcomment %}
         {% endif %}
 
 
