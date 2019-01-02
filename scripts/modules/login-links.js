@@ -157,7 +157,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
     LoginPopover.prototype = new DismissablePopover();
     $.extend(LoginPopover.prototype, {
         boundMethods: ['handleEnterKey', 'handleLoginComplete', 'displayResetPasswordMessage', 'dismisser', 'displayMessage', 'displayApiMessage', 'createPopover', 'slideRight', 'slideLeft', 'login', 'retrievePassword', 'onPopoverShow'],
-        template: Hypr.getTemplate('modules/common/login-popover').render(),
+        //template: Hypr.getTemplate('modules/common/login-popover').render(), 
         bindListeners: function (on) {
             var onOrOff = on ? "on" : "off";
             this.$parent[onOrOff]('click', '[data-mz-action="forgotpasswordform"]', this.slideRight);
