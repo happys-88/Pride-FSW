@@ -33,6 +33,17 @@
 		}
 	}
 
+	.global-marketing-area {
+		ul {
+			li {
+				&:not(:first-child) {
+				    display: none;
+				}
+			}
+		}
+	}
+	
+	//Home Slider
 	#mz-home-slider {
 		.slider {
 			.mz-slide {
@@ -53,6 +64,7 @@
 			}
 		}
 	}
+
 	footer{ 
 		padding: 18px 0 20px;
 		.footer-bottom{
@@ -114,13 +126,15 @@
 				font-size: 27px;  
 		    }
 		}
-	} 
+	}
+
 	.mz-category {
-			.mz-l-paginatedlist-header, .mz-l-paginatedlist-footer{
-				.mz-pagingcontrols{
-					display: none; 
-				}
+		.mz-l-paginatedlist-header, 
+		.mz-l-paginatedlist-footer {
+			.mz-pagingcontrols {
+				display: none; 
 			}
+		}
 	}
 
 	#mz-drop-zone-fsw-about-us {
@@ -136,10 +150,9 @@
 			.mz-header-search-wrapper{
 				width:100%; 
 			}
-
 		}
-
 	}
+
 	.why-read-more {
     	display: inline-block;
     	.glyphicon{
@@ -149,10 +162,12 @@
 		    left: 2px;
     	}
 	}
+
 	.why-us-desc {
 	    height: 90px;
 	    overflow: hidden; 
 	}
+
 	#mz-drop-zone-footer-cat-links-col1{
 		border-top: 1px solid rgba(188,194,200,0.38);
         padding: 20px 0 0;
@@ -284,6 +299,7 @@
 		}
 	}
 
+	/**** Checkout Page ****/ 
 	.mz-checkout {
 		#page-content {
 		    padding: 25px 0;
@@ -344,6 +360,41 @@
 			}
 		}
 	}
+
+	/**** My Account ****/
+	#liteRegistrationModal {
+		.modal-dialog {
+			&.login-modal {
+			    margin: 0 auto;
+			    max-width: 380px;
+			    width: 100%!important;
+			    .modal-content {
+				    top: 0px;
+				}
+			}
+		}
+		.modal-body {
+			.pull-left,
+			.pull-right {
+			    width: 100%;
+			}
+			.pull-left {
+			    border-right: 0;
+			    border-bottom: 1px solid #e0e0e0;
+			    margin-top: -15px;
+    			margin-bottom: 15px;
+			    padding-right: 0;
+			    padding-bottom: 15px;
+			}
+			.pull-right {
+			    padding-left: 0;
+			}
+			.mz-button {
+    			padding: 6.25px;
+    		}
+		}
+	}
+
 	.mz-myaccount {
 		.mz-l-pagecontent {
 		    padding: 25px 0px;
@@ -415,39 +466,6 @@
 		}
 	}
 
-	#liteRegistrationModal {
-		.modal-dialog {
-			&.login-modal {
-			    margin: 0 auto;
-			    max-width: 380px;
-			    width: 100%!important;
-			    .modal-content {
-				    top: 0px;
-				}
-			}
-		}
-		.modal-body {
-			.pull-left,
-			.pull-right {
-			    width: 100%;
-			}
-			.pull-left {
-			    border-right: 0;
-			    border-bottom: 1px solid #e0e0e0;
-			    margin-top: -15px;
-    			margin-bottom: 15px;
-			    padding-right: 0;
-			    padding-bottom: 15px;
-			}
-			.pull-right {
-			    padding-left: 0;
-			}
-			.mz-button {
-    			padding: 6.25px;
-    		}
-		}
-	}
-
 	.mz-loginform, 
 	.mz-forget-password, 
 	.mz-signupform, 
@@ -457,4 +475,5 @@
 		    font-size: 20px;
 		}
 	}
+
 }
