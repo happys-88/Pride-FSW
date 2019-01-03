@@ -2,25 +2,61 @@
     <div class="slider">
         {% if model.config.slideImageOne %}
             <div class="slide">
-                <a class="mz-slide" {% if model.config.slideLinkOne %}href="{{ model.config.slideLinkOne }}"{% endif %}>
-                    <img src="{% make_url "image" model.config.slideImageOne %}" alt="{{ model.config.slideImageOne.altText }}">
-                </a>
+                <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageOne.imageUrl }}');" {% if model.config.slideLinkOne %}href="{{ model.config.slideLinkOne }}"{% endif %}></a>
+                <div class="mz-slide-details">
+                    {% if model.config.slideTitleOne %}
+                        <h4>{{ model.config.slideTitleOne }}</h4>
+                    {% endif %}
+                    {% if model.config.slideTitleMainHeadingOne %}
+                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingOne }}</h3>
+                    {% endif %}
+                    {% if model.config.slideShortDescOne %}
+                        <h3>{{ model.config.slideShortDescOne }}</h3>
+                    {% endif %}
+                    {% if model.config.addBtnTitleOne %}
+                        <button>{{ model.config.addBtnTitleOne }}</button>
+                    {% endif %}
+                </div>
             </div>
         {% endif %}
 
         {% if model.config.slideImageTwo %}
             <div class="slide">
-                <a class="mz-slide" {% if model.config.slideLinkTwo %}href="{{ model.config.slideLinkTwo }}"{% endif %}>
-                    <img src="{% make_url "image" model.config.slideImageTwo %}" alt="{{ model.config.slideImageTwo.altText }}">
-                </a>
+                <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageTwo.imageUrl }}');" {% if model.config.slideLinkTwo %}href="{{ model.config.slideLinkTwo }}"{% endif %}></a>
+                <div class="mz-slide-details">
+                    {% if model.config.slideTitleTwo %}
+                        <h4>{{ model.config.slideTitleTwo }}</h4>
+                    {% endif %}
+                    {% if model.config.slideTitleMainHeadingTwo %}
+                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingTwo }}</h3>
+                    {% endif %}
+                    {% if model.config.slideShortDescTwo %}
+                        <h3>{{ model.config.slideShortDescTwo }}</h3>
+                    {% endif %}
+                    {% if model.config.addBtnTitleTwo %}
+                        <button>{{ model.config.addBtnTitleTwo }}</button>
+                    {% endif %}
+                </div>
             </div>
         {% endif %}
 
         {% if model.config.slideImageThree %}
             <div class="slide">
-                <a class="mz-slide" {% if model.config.slideLinkThree %}href="{{ model.config.slideLinkThree }}"{% endif %}>
-                    <img src="{% make_url "image" model.config.slideImageThree %}" alt="{{ model.config.slideImageThree.altText }}">
-                </a>
+                <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageThree.imageUrl }}');" {% if model.config.slideLinkThree %}href="{{ model.config.slideLinkThree }}"{% endif %}></a>
+                <div class="mz-slide-details">
+                    {% if model.config.slideTitleThree %}
+                        <h4>{{ model.config.slideTitleThree }}</h4>
+                    {% endif %}
+                    {% if model.config.slideTitleMainHeadingThree %}
+                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingThree }}</h3>
+                    {% endif %}
+                    {% if model.config.slideShortDescThree %}
+                        <h3>{{ model.config.slideShortDescThree }}</h3>
+                    {% endif %}
+                    {% if model.config.addBtnTitleThree %}
+                        <button>{{ model.config.addBtnTitleThree }}</button>
+                    {% endif %}
+                </div>
             </div>
         {% endif %}
     </div>

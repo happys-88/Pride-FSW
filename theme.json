@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "1bbf92e1b4705e5be65054d937a2a8b6490f441e"
+      "commit": "2b8da812bd7992941edcaa968cf9146aac4fd536"
     },
     "baseThemeChannel": "stable"
   },
@@ -2383,6 +2383,30 @@
             },
             {
               "anchor": "50%",
+              "fieldLabel": "Add Title One",
+              "name": "slideTitleOne",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Title Two",
+              "name": "slideTitleMainHeadingOne",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Short Description",
+              "name": "slideShortDescOne",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Button Title",
+              "name": "addBtnTitleOne",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
               "fieldLabel": "Add Link/Url",
               "name": "slideLinkOne",
               "xtype": "mz-input-text"
@@ -2401,6 +2425,30 @@
             },
             {
               "anchor": "50%",
+              "fieldLabel": "Add Title One",
+              "name": "slideTitleTwo",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Title Two",
+              "name": "slideTitleMainHeadingTwo",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Short Description",
+              "name": "slideShortDescTwo",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Button Title",
+              "name": "addBtnTitleTwo",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
               "fieldLabel": "Add Link/Url",
               "name": "slideLinkTwo",
               "xtype": "mz-input-text"
@@ -2416,6 +2464,30 @@
               "fieldLabel": "Add Image",
               "name": "slideImageThree",
               "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Title One",
+              "name": "slideTitleThree",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Title Two",
+              "name": "slideTitleMainHeadingThree",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Short Description",
+              "name": "slideShortDescThree",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Button Title",
+              "name": "addBtnTitleThree",
+              "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",
