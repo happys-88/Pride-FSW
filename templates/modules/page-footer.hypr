@@ -67,10 +67,10 @@
 					</div>	
 					<div class="col-xs-12 col-sm-6">
 						<div class="row">
-							<div class="col-xs-6 top-pad">
+							<div class="col-sm-6 col-xs-12 top-pad">
 								{% dropzone "footer-cat-links-col3" scope="site" %}
 							</div>
-							<div class="col-xs-6 top-pad">
+							<div class="col-sm-6 col-xs-12 top-pad">
 								{% dropzone "footer-cat-links-col4" scope="site" %}
 							</div>
 						</div>
