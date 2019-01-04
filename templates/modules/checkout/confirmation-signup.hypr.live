@@ -3,9 +3,7 @@
         <h3>{{ labels.accountCreated}}</h3>
     </div>
     <div id="createAccountSignUp">
-        <h3>{{ labels.setUpAccountHeader}}</h3>
-        <p>{{ labels.confirmationAccountSetupMessage1|safe }}</p>
-        <p>{{ labels.confirmationAccountSetupMessage2|safe }}</p>
+        <p>{{ labels.confirmationAccountSetupMessage|safe }}</p>
         <div class="mz-confirmation-signup-from">
             <div class="row form-group clearfix">
                 <div class="col-sm-4">
