@@ -578,6 +578,11 @@
     "selectTopic"         :    "Select a topic",
     "message"             :    "Message",
     "send"                :    "Send",
-    "shopAllBrands"       :    "Shop All Brands"
+    "shopAllBrands"       :    "Shop All Brands",
+
+    "setUpAccountHeader"                  :   "Care to Set Up A Quick Account?",
+    "confirmationAccountSetupMessage1"    :   "Want to remember your infromation the next time you stop with us?",
+    "confirmationAccountSetupMessage2"    :   "Complete the information below, and the click <b>Save My Information</b>",
+    "saveMyInfo"                          :    "Save My Information"
 }
  

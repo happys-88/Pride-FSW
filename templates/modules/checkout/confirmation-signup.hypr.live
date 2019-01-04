@@ -7,23 +7,37 @@
         <p>{{ labels.confirmationAccountSetupMessage1|safe }}</p>
         <p>{{ labels.confirmationAccountSetupMessage2|safe }}</p>
         <div class="mz-confirmation-signup-from">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input type="text" class="form-control" name="new-account-email" id="emailAddressSignup" data-mz-value="emailAddress" value="{{ model.emailAddress|default(model.billingInfo.billingContact.email) }}" />
-                <span class="mz-validationmessage" data-mz-validationmessage-for="emailAddress"></span>
+            <div class="row form-group clearfix">
+                <div class="col-sm-4">
+                    <label for="new-account-email"> {{ labels.email }}<span class="is-required"> *</span>: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="new-account-email" id="emailAddressSignup" data-mz-value="emailAddress" value="{{ model.emailAddress|default(model.billingInfo.billingContact.email) }}" />
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="emailAddress"></span>
+                </div>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" class="form-control" name="new-account-password" id="passwordSignup" data-mz-value="password" value="{{ model.password }}" placeholder="{{ labels.password }}" />
-                <span class="mz-validationmessage" data-mz-validationmessage-for="password"></span>
+            <div class="row form-group clearfix">
+                <div class="col-sm-4">
+                    <label for="new-account-password"> {{ labels.password }}<span class="is-required"> *</span>: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" name="new-account-password" id="passwordSignup" data-mz-value="password" value="{{ model.password }}" placeholder="{{ labels.password }}" />
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="password"></span>
+                </div>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" class="form-control" name="new-account-confirm" id="confirmPasswordSignUp" data-mz-value="confirmPassword" value="{{ model.confirmPassword }}" placeholder="{{ labels.reEnterPassword }}"/>
-                <span class="mz-validationmessage" data-mz-validationmessage-for="confirmPassword"></span>
+            <div class="row form-group clearfix">
+                <div class="col-sm-4">
+                    <label for="new-account-password"> {{ labels.confirmPassword }}<span class="is-required"> *</span>: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" name="new-account-confirm" id="confirmPasswordSignUp" data-mz-value="confirmPassword" value="{{ model.confirmPassword }}" placeholder="{{ labels.reEnterPassword }}"/>
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="confirmPassword"></span>
+                </div>
             </div>
-            <section id="errorMessageSignUp" class="mz-popover-message"></section>
-            <button type="button" class="mz-button mz-button-large" data-mz-value="submitAccount">{{ labels.saveMyInfo }}</button>
+            <div class="col-sm-8 col-sm-offset-4">
+                <section id="errorMessageSignUp" class="mz-popover-message"></section>
+                <button type="button" class="mz-button" data-mz-value="submitAccount">{{ labels.saveMyInfo }}</button>
+            </div>
         </div>
     </div>
 </div>
