@@ -2229,9 +2229,6 @@ ul.tabs {
     .mz-productdetail-shortdesc{
         font-size: @fontSize+4;
         line-height: 1.4;
-       // color: @colorMediumGray;
-       // border-bottom: 1px solid @colorLightGray;
-        padding-bottom: @gutter - 9;
         margin-bottom: @gutter - 18;
     }
 
@@ -2240,9 +2237,8 @@ ul.tabs {
         width: 100%;
     }
 
-    .mz-productoptions-optionlabel{
-        font-size: @fontSizeSmall;
-        .fontRegular();
+    .mz-productoptions-optionlabel {
+        color: #292929;
     }
 
     .is-crossedout{
@@ -2407,8 +2403,7 @@ ul.tabs {
     label{
         float: left;
         width: 100%;
-        font-size: @fontSizeSmall;
-        .fontRegular();
+        color: #292929;
 
     }
     .qty-block{
@@ -2740,36 +2735,31 @@ ul.tabs {
     }   
 }
 //Recently viewed Css
-.mz-related-products{
+.mz-related-products {
     .mz-carousel-arrow-customize;
-     img{
+    img {
             max-width: 100%;
+    }
+    li {
+        list-style: none;
+    }
+    .mz-related-product-brand-name {
+        color: #000;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+    }
+    .bx-wrapper {
+        .bx-next {
+            right: -2px;
         }
-        li{
-            list-style: none;
+        .bx-prev {
+            left: 4px;
         }
-        h3{
-            font-size: 24px; 
-            line-height: 16px;
-            text-align: center;
-        }
-        .mz-related-product-brand-name{
-            color: #000;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 14px;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-        .bx-wrapper{
-            .bx-next{
-                right: -2px;
-            }
-            .bx-prev{
-                left: 4px;
-            }
-        }
+    }
 }
 .mz-product-left-container{
     .mz-productimages-thumbs{
