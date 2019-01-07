@@ -266,7 +266,7 @@ define(['modules/api',
                     $(".third-tab").show();
                     $('#liteRegistrationModal').modal('show');
                     window.isCheckoutGuest = true;
-                    self.model.isLoading(true);
+                   // self.model.isLoading(true);
                 }
             }, function() {
                 window.console.log("Got some error at cross sell in Global Cart");
