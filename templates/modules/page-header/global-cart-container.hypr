@@ -1,6 +1,7 @@
 <a class="mz-utilitynav-link mz-utilitynav-link-cart" href="{% make_url "cart" %}">
 	<div class="mz-header-global-cart-text"> 
-		<span class="mz-header-global-cart-label">{{ labels.viewCart }} (<span class="mz-cartmonitor" data-mz-role="cartcount">0</span>) </span>
+		<span class="mz-header-global-cart-label">
+			<span class="mz-cart-label">{{ labels.viewCart }}</span> (<span class="mz-cartmonitor" data-mz-role="cartcount">0</span>) </span>
 		<span class="caret"></span> 
 		<span class="mz-header-global-cart-price" data-mz-role="cartamount"></span>
 	</div> 	

@@ -1,6 +1,76 @@
 /*** Site Changes for Mobile screens ***/
 
 @media @mz-xs-media-query {
+
+	.mz-pageheader {
+		padding-bottom: 0;
+		.login-link-text {
+		    font-size: 0;
+		    &:before {
+			    content: "\f007";
+			    font-size: 20px;
+			    font-family: "FontAwesome";
+			}
+		}
+		.mz-header-content {
+			.mz-header-login-cart-wrapper {
+				.caret {
+				    display: none;
+				}
+			}
+		}
+		.mz-header-content {
+			.mz-header-links-wrapper {
+			    float: none;
+			    position: absolute;
+			    top: 0;
+			    right: 52px;
+			    left: auto;
+			    padding: 8px 10px;
+				.mz-utilitynav-link {
+					font-size: 20px;
+				    line-height: 28px;
+				}
+			}
+			.mz-header-login-cart-wrapper {
+				.mz-header-global-cart-wrapper {
+				    padding: 8px 0 10px 10px;
+				    top: 0;
+				    right: 0;
+				    position: absolute;
+				}
+			}
+			.mz-header-search-wrapper{
+				width:100%; 
+			}
+			.mz-searchbox {
+			    margin-bottom: 0;
+			}
+		}
+	}
+	.mz-header-global-cart-label {
+		&:before {
+		    content: "\f07a";
+		    font-size: 20px;
+		    font-family: "FontAwesome";
+		}
+		.mz-cart-label {
+		    display: none;
+		    font-size: 30px;
+		}
+	}
+	#mz-logged-in-notice {
+		.dropdown-menu {
+		    top: 23px;
+		    right: -62px;
+		    left: auto;
+		    &:after {
+			    left: 159.5px;
+			}
+		}
+	}
+
+
 	.mz-featured-products, .new-arrival-product-container, .mz-recently-viewed-products {
 		.mz-productlist {
 			.slick-arrow.fa-angle-right {
@@ -143,14 +213,6 @@
 	    	margin-bottom: 0;
     		font-size: 24px;
 	    } 
-	}
-
-	.mz-pageheader {
-		.mz-header-content{ 
-			.mz-header-search-wrapper{
-				width:100%; 
-			}
-		}
 	}
 
 	.why-read-more {
