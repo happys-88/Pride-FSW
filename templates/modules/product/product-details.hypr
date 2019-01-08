@@ -29,18 +29,9 @@
                     {% endfor %}
                 {% endwith %}
                 <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|replace("'","&rsquo;")|safe }}</h1>
-                <div class="row">
-                    <div class="col-xs-5">
-                        <h4 class="mz-productcodes-productcode p-3" itemprop="sku">{{ labels.item}} # {{ model.productCode }}</h4>
-                    </div>
-                    {% if model.productType != themeSettings.familyProductType %}
-                        <div class="col-xs-7">
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section pull-right text-right prize-mobile-view">
-                            {% include "modules/product/price-stack" %}
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
+                
+                <h4 class="mz-productcodes-productcode p-3" itemprop="sku">{{ labels.item}} # {{ model.productCode }}</h4>
+                
                 <div class="mz-all-review-container">
                     <span class="mz-reviews-pdp-stars">
                         {% include "modules/product/product-ratings" %}
@@ -68,7 +59,9 @@
     </div>
     
 {% if model.productType == themeSettings.familyProductType %}
-    {% include "modules/common/message-bar" %}
+    <div class="col-xs-12 mz-erroe-msg">
+        {% include "modules/common/message-bar" %}
+    </div>
     </hr>
     {% include "modules/product/family/family-list" %}
     <div class="product-detail family-details">

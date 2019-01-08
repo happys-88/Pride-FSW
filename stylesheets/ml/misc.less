@@ -2795,27 +2795,41 @@ ul.tabs {
         }
     }
 }
+/*** Family Page ***/
+.mz-erroe-msg {
+    .mz-messagebar {
+        .mz-errors {
+            background: transparent;
+            border: none;
+            padding: 15px 0;
+        }
+    }
+}
 #mz-family-container{
-    border-top: 1px solid #e1e1e1;
-    .mz-familylist-item {
-        margin-bottom: @defaultGutter;
-        border-bottom: 1px solid @colorLightGray;
+    .family-members {
+        border-bottom: 1px solid #e1e1e1;
+        float: left;
+        padding-top: 15px;
         padding-bottom: 15px;
-        .mz-messagebar{
-            li{
+        width: 100%;
+        &:first-child {
+            border-top: 1px solid #e1e1e1;
+        }
+    }
+    .mz-familylist-item {
+        .mz-messagebar {
+            li {
+                margin-top: 0;
                 white-space: normal;
             }
         }
-        .item-desc{
+        .item-desc {
             .mz-pagetitle{
                 font-size: 18px;                    
-                //line-height: 20px;
-                font-weight: 600 !important;
-                .fontsBold();
+                font-weight: 600;
             }
             .mz-productcodes-productcode{
                 font-size: 12px;
-               // line-height: 20px;
                 color: @textColor;
             }
             .mz-productdetail-shortdesc{
@@ -2867,10 +2881,7 @@ ul.tabs {
             margin-top: 22px;
             .item-price{
                 font-size: 18px;
-                /* line-height: 14px; */
-                font-weight: 500 !important;
-                .fontsBold();
-                margin-bottom: 17px;
+                margin-bottom: 15px;
                 .mz-pricestack{
                     display: table;
                     width: 100%;
@@ -2934,6 +2945,13 @@ ul.tabs {
                     max-width: 100%;
                 }
             }
+        }
+    }
+    .mz-messagebar {
+        .mz-errors {
+            background: transparent;
+            border: none;
+            padding: 0;
         }
     }
 }
