@@ -2225,13 +2225,6 @@ ul.tabs {
             }
         }
     }
-
-    .mz-productdetail-shortdesc{
-        font-size: @fontSize+4;
-        line-height: 1.4;
-        margin-bottom: @gutter - 18;
-    }
-
     .mz-productdetail-options{
         float: left;
         width: 100%;
@@ -2567,14 +2560,6 @@ ul.tabs {
     }
 }
 
-.mz-breadcrumbs{
-    .mz-breadcrumb-current{
-        color: #666;
-        font-weight: normal;
-    }
-}
-
-
 .mz-site-map{
     .single-sitemap-item-wrapper {
         div {
@@ -2840,22 +2825,24 @@ ul.tabs {
                 text-align: justify;
             }
         }
-
-	.mz-loginform, 
-	.mz-forget-password, 
-	.mz-signupform, 
-	.mz-reset-password {
-    	padding: 15px 15px 30px;
-    	.mz-pagetitle {
-		    font-size: 20px;
+        .item-options{
+            margin-top: 25px;
+            .stock-message{
+                color:#285e84;
+                font-size: @fontSize;
+                line-height: 19px;
+                margin-bottom: 10px;
             }
             .itemOutOfStock{
                 color: @colorGreen;
                 margin-bottom: 5px; 
             }
-	#contactus-container {
-		.form-group {
-			label {
+            .mz-productoptions{
+                .mz-productoptions-optioncontainer{
+                    margin-bottom: @defaultGutter;
+                    .mz-productoptions-optionlabel{
+                        font-size: @fontSizeSmall;
+                        margin-bottom: 5px;
                         text-align: left;
                         line-height: 11px;
                         color: @colorDarkGray;
@@ -2876,8 +2863,23 @@ ul.tabs {
                 }
             }
         }
-			.col-sm-offset-4 {
-				text-align: left;
+        .item-price-qty{
+            margin-top: 22px;
+            .item-price{
+                font-size: 18px;
+                /* line-height: 14px; */
+                font-weight: 500 !important;
+                .fontsBold();
+                margin-bottom: 17px;
+                .mz-pricestack{
+                    display: table;
+                    width: 100%;
+                    .mz-pricestack-price-lower{
+                        display: table-cell;
+                    }   
+                    .mz-pricestack-price-upper{
+                        display: table-cell;
+                        padding-left: 7px;
                     } 
                     .is-crossedout{
                         color: @colorLighterGray;
@@ -2907,7 +2909,7 @@ ul.tabs {
             .item-qty{
                 .qty-block{
                     min-width: 83px;
-                    height: 35px;
+                    height: 35px;                  
                     .qty-counter{
                         touch-action: manipulation;
                         padding: 0;
@@ -2919,10 +2921,27 @@ ul.tabs {
                             margin-top: 7px;
                         }
                     }
-	.mz-l-formfieldgroup{
-		.form-group {
-			label {
-				text-align: left;
+                    input{
+                        width: 33px;
+                        height: 33px;
+                    }
+                }
+            }
+        }
+        .item-image{
+            a {
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+/**  CART PAGE  **/
+.mz-table-cart-items{
+    .mz-row-carttable-item{
+        padding: 0px;
     }
     & ~ .mz-cart-total-main-container{
         padding-left: 0px;
@@ -2967,19 +2986,32 @@ ul.tabs {
                 }
             }
         }
-	.mz-aboutus{
-		.form-group {
-			float: none;
+        .contact-us-wrapper {
+            padding: 3px 0 @defaultGutter 0;
+        }
+        .helpful-tips-wrapper {
+            margin-top: 10px; 
+        }
+    }
+    
+}
+.mz-searchresults {
+    .mz-l-paginatedlist-header, .mz-l-paginatedlist-footer {
+        .mz-pagenumbers{
+            .pagination{
+                margin: 0;
+                a,span{
+                    color: #000;
                 }
-		.control-label {
-			text-align: left;
+                .mz-pagenumbers-prev.is-disabled,
+                 .mz-pagenumbers-next.is-disabled{
+                    background: transparent;
+                    .fa-chevron-left,.fa-chevron-right{
+                        opacity: 0.5;
                     }
                     &:hover{
                         background: transparent;
                     }
-	.shop-by-brand {
-		.shop-all-brands {
-			text-align: left;
                 }
             }   
         }
