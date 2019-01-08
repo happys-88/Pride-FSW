@@ -2811,9 +2811,11 @@ ul.tabs {
     }
 }
 #mz-family-container{
+    border-top: 1px solid #e1e1e1;
     .mz-familylist-item {
         margin-bottom: @defaultGutter;
         border-bottom: 1px solid @colorLightGray;
+        padding-bottom: 15px;
         .mz-messagebar{
             li{
                 white-space: normal;
@@ -2822,39 +2824,38 @@ ul.tabs {
         .item-desc{
             .mz-pagetitle{
                 font-size: 18px;                    
-                line-height: 20px;
+                //line-height: 20px;
+                font-weight: 600 !important;
                 .fontsBold();
             }
             .mz-productcodes-productcode{
-                font-size: @fontSizeSmall;
-                line-height: 20px;
-                color: @colorMediumGray;
+                font-size: 12px;
+               // line-height: 20px;
+                color: @textColor;
             }
             .mz-productdetail-shortdesc{
-                font-size: 18px;
-                line-height: 28px;
+                font-size: 14px;
+                line-height: 22px;
                 .fontRegular();
                 text-align: justify;
             }
         }
-        .item-options{
-            margin-top: 25px;
-            .stock-message{
-                color: @colorGreen;
-                font-size: @fontSize;
-                line-height: 19px;
-                margin-bottom: 10px;
+
+	.mz-loginform, 
+	.mz-forget-password, 
+	.mz-signupform, 
+	.mz-reset-password {
+    	padding: 15px 15px 30px;
+    	.mz-pagetitle {
+		    font-size: 20px;
             }
             .itemOutOfStock{
                 color: @colorGreen;
                 margin-bottom: 5px; 
             }
-            .mz-productoptions{
-                .mz-productoptions-optioncontainer{
-                    margin-bottom: @defaultGutter;
-                    .mz-productoptions-optionlabel{
-                        font-size: @fontSizeSmall;
-                        margin-bottom: 5px;
+	#contactus-container {
+		.form-group {
+			label {
                         text-align: left;
                         line-height: 11px;
                         color: @colorDarkGray;
@@ -2875,22 +2876,8 @@ ul.tabs {
                 }
             }
         }
-        .item-price-qty{
-            margin-top: 22px;
-            .item-price{
-                font-size: 22px;
-                /* line-height: 14px; */
-                .fontsBold();
-                margin-bottom: 17px;
-                .mz-pricestack{
-                    display: table;
-                    width: 100%;
-                    .mz-pricestack-price-lower{
-                        display: table-cell;
-                    }   
-                    .mz-pricestack-price-upper{
-                        display: table-cell;
-                        padding-left: 7px;
+			.col-sm-offset-4 {
+				text-align: left;
                     } 
                     .is-crossedout{
                         color: @colorLighterGray;
@@ -2927,31 +2914,15 @@ ul.tabs {
                         text-align: center;
                         width: 24px;
                         height: 33px;
+                        border: none;                       
                         i{
                             margin-top: 7px;
                         }
                     }
-                    input{
-                        width: 33px;
-                        height: 33px;
-                    }
-                }
-            }
-        }
-        .item-image{
-            a {
-                img {
-                    max-width: 100%;
-                }
-            }
-        }
-    }
-}
-
-/**  CART PAGE  **/
-.mz-table-cart-items{
-    .mz-row-carttable-item{
-        padding: 0px;
+	.mz-l-formfieldgroup{
+		.form-group {
+			label {
+				text-align: left;
     }
     & ~ .mz-cart-total-main-container{
         padding-left: 0px;
@@ -2996,32 +2967,19 @@ ul.tabs {
                 }
             }
         }
-        .contact-us-wrapper {
-            padding: 3px 0 @defaultGutter 0;
-        }
-        .helpful-tips-wrapper {
-            margin-top: 10px; 
-        }
-    }
-    
-}
-.mz-searchresults {
-    .mz-l-paginatedlist-header, .mz-l-paginatedlist-footer {
-        .mz-pagenumbers{
-            .pagination{
-                margin: 0;
-                a,span{
-                    color: #000;
+	.mz-aboutus{
+		.form-group {
+			float: none;
                 }
-                .mz-pagenumbers-prev.is-disabled,
-                 .mz-pagenumbers-next.is-disabled{
-                    background: transparent;
-                    .fa-chevron-left,.fa-chevron-right{
-                        opacity: 0.5;
+		.control-label {
+			text-align: left;
                     }
                     &:hover{
                         background: transparent;
                     }
+	.shop-by-brand {
+		.shop-all-brands {
+			text-align: left;
                 }
             }   
         }
