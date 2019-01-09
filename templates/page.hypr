@@ -162,15 +162,13 @@
         {% block constant-contact-form %} 
             <script> var _ctct_m = "61b325e1e6e81fefce62e60e85d0b4a6"; </script>  
             <script type="text/javascript">
-              (function() {
-                var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true; se.defer = true; 
+                setTimeout(function(){ var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
                 se.src = '//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js'; 
                 se.id = 'signupScript'; 
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
-              })();
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s); }, 3000);
             </script>
-       {% endblock constant-contact-form %}  
-
+       {% endblock constant-contact-form %}    
+       
     </body>
     {% endblock body-tag %}
 
