@@ -312,6 +312,18 @@ define([
 	                    		dfd.reject(Hypr.getLabel('selectValidOption'));
 	                    		return;
 	                    	}
+	                    	//if single options(color, size) present and selected and qty is zero then don't show message of quantity
+	                    	var singleOptionCheck = 0;
+	                    	for(var i=0; i < me.get('options').models.length; i++){
+	                    		if(me.get('options').models[i].get('values').length === 1 && me.get('options').models[i].get('value') !== 'undefined'){	                    			
+	                    			singleOptionCheck++;
+	                    		}
+	                    	} 
+	                    	if(singleOptionCheck === me.get('options').models.length && me.get('quantity') === 0){
+	                    		//dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
+	                    		dfd.reject( me.get('productCode'));
+	                    		return;
+	                    	}
 	                    	//options selected but qty zero
 	                    	if(me.get('quantity') === 0){
 	                    		me.trigger('error', { message : Hypr.getLabel('enterProductQuantity')});
@@ -337,14 +349,15 @@ define([
 		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
 		                }else if(me.lastConfiguration && me.lastConfiguration.length && typeof me.get('inventoryInfo').onlineStockAvailable === 'undefined' && me.get('quantity') > 0){
 		                	//if all options are not selected and qty > 0
-		                	me.trigger('error', { message : Hypr.getLabel('selectValidOption')});
+		                	me.trigger('error', { messagenterQuantitye : Hypr.getLabel('selectValidOption')});
 		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
 		                }else if(me.lastConfiguration && me.lastConfiguration.length && me.get('quantity') === 0){
 		                	//options selected but qty 0
 		                	me.trigger('error', { message : Hypr.getLabel('enterProductQuantity')});
 		                	dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
 		                }else{
-		                	dfd.reject(Hypr.getLabel('selectValidOption')); 
+		                	//dfd.reject(Hypr.getLabel('selectValidOption')); 
+		                	dfd.reject( me.get('productCode'));
 		                }
 	                }
 	            });

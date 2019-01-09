@@ -414,10 +414,20 @@
                                 if (results[i].errorCode) {
                                     var errorMessage = results[i].message.split(':');
                                     failureNames.push(errorMessage[2]);
-                                } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Please enter quantity of ") !== -1) {
+                                } else if (typeof results[i].attributes === 'undefined' &&  (!isNaN(results[i]))) {
                                     failureNames.push(results[i]);
-                                } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Select Valid Option(s) for ") !== -1) {
-                                    failureNames.push(results[i]);
+                                } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Select Valid Option(s)") !== -1) {
+                                    if(failureNames.length) {
+                                        if (failureNames[failureNames.length-1].includes("Select Valid Option")){
+                                           var msg = results[i].replace("Select Valid Option(s) for ", "");
+                                           failureNames.push(msg);
+                                        }else{
+                                           failureNames.push(results[i]); 
+                                        }
+                                    }else {
+                                        failureNames.push(results[i]);
+                                    }
+                                    
                                 } else if (typeof results[i].attributes !== 'undefined') {
                                     successNames.push(results[i].get('content').get('productName'));
                                 }
