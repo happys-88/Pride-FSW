@@ -357,7 +357,7 @@ define([
 		                	dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
 		                }else{
 		                	//dfd.reject(Hypr.getLabel('selectValidOption')); 
-		                	dfd.reject( me.get('productCode'));
+		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
 		                }
 	                }
 	            });
