@@ -349,7 +349,7 @@ define([
 		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
 		                }else if(me.lastConfiguration && me.lastConfiguration.length && typeof me.get('inventoryInfo').onlineStockAvailable === 'undefined' && me.get('quantity') > 0){
 		                	//if all options are not selected and qty > 0
-		                	me.trigger('error', { messagenterQuantitye : Hypr.getLabel('selectValidOption')});
+		                	me.trigger('error', { message : Hypr.getLabel('selectValidOption')});
 		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
 		                }else if(me.lastConfiguration && me.lastConfiguration.length && me.get('quantity') === 0){
 		                	//options selected but qty 0
