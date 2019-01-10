@@ -123,7 +123,6 @@ define([
                 });
             },
             render: function() {
-                console.log("render method called");
                 var me = this;
 
                 Backbone.MozuView.prototype.render.apply(this);
