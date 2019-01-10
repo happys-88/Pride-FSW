@@ -146,4 +146,14 @@ define([
       $(href).parent(".mz-scrollnav-item").addClass("active");
     }
     selectUrl();
-});  
+
+    $(document).on('click', '.brand-letter a', function () {
+      var id = $(this).attr("name");
+      var position = $(id + " .brand-letter").offset().top;
+      $('body,html').animate({
+        scrollTop: position
+      }, 500);
+    });
+    
+  });  
+//brand
