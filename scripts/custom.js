@@ -3,7 +3,6 @@ define([
   "bxslider"
  
 ], function( $, bxslider) { 
-
     //home slider
     $('#mz-home-slider .slider').bxSlider({
       auto: true,
@@ -140,4 +139,11 @@ define([
       $('.mz-reset-password-val').text('');
     }
   }); 
+    //focus on left Navigation
+    function selectUrl() {
+      var hash = window.location.pathname;
+      var href = "a[name~=" + "'" + hash + "'" + "]";
+      $(href).parent(".mz-scrollnav-item").addClass("active");
+    }
+    selectUrl();
 });  

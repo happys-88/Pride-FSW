@@ -6,7 +6,7 @@
                 <a class="mz-scrollnav-link" href="/user/order-status" name="/user/order-status">Order Tracking</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/100-satisfaction-guarantee" name="/100-guarantee">100% satisfaction guarantee</a> 
+                <a class="mz-scrollnav-link" href="/100-satisfaction-guarantee" name="/100-satisfaction-guarantee">100% satisfaction guarantee</a> 
             </li>
             <li class="mz-scrollnav-item">
                 <a class="mz-scrollnav-link" href="/faqs" name="/faqs">FAQS</a>
@@ -38,13 +38,13 @@
                 <a class="mz-scrollnav-link" href="/who-we-are" name="/who-we-are">Who We Are</a>  
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+                <a class="mz-scrollnav-link" href="/content-item" name="/content-item">Content item</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+                <a class="mz-scrollnav-link" href="/content-item" name="/content-item">Content item</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/content-item" name="/our-partnerships">Content item</a>
+                <a class="mz-scrollnav-link" href="/content-item" name="/content-item">Content item</a>
             </li>
         </ul>
     </nav>
