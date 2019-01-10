@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<div class="row">
-							<div class="col-sm-6 col-xs-12">
+							<div class="col-sm-6 col-xs-12 mz-contact-open">
 								{% dropzone "footer-cat-links-col1" scope="site" %}
 							</div>
 							<div class="col-sm-6 col-xs-12">
