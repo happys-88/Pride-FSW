@@ -135,7 +135,7 @@
 	</div>
 
 {% else %}
-	<div class="text-center">
+	<div class="text-center mz-cart-empty">
 		<div class=>Your shopping basket is empty</div>
 		{% if themeSettings.globalCartEmptyBasketFooter %} 
 		  <a {% if themeSettings.globalCartEmptyBasketKickerLink %} href="{{ themeSettings.globalCartEmptyBasketKickerLink }}"{% else %} href="/home" {% endif %}>
