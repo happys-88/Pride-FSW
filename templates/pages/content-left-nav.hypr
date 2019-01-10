@@ -55,16 +55,16 @@
     <nav class="mz-scrollnav"> 
         <ul class="mz-scrollnav-list nav">
             <li class="mz-scrollnav-item"> 
-                <a class="mz-scrollnav-link" href="/c/16" name="/who-we-are">Shop by Brand</a>   
+                <a class="mz-scrollnav-link" href="/c/16" name="/c/16">Shop by Brand</a>   
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/meet-a-designer" name="/our-partnerships">Meet a Designer</a>
+                <a class="mz-scrollnav-link" href="/meet-a-designer" name="/meet-a-designer">Meet a Designer</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/chef-picks" name="/our-partnerships">Chef Picks</a>
+                <a class="mz-scrollnav-link" href="/chef-picks" name="/chef-picks">Chef Picks</a>
             </li>
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/shop-all-dealers" name="/our-partnerships">Shop All Dealers</a> 
+                <a class="mz-scrollnav-link" href="/shop-all-dealers" name="/shop-all-dealers">Shop All Dealers</a> 
             </li>
         </ul>
     </nav>
