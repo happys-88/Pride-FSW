@@ -11,7 +11,7 @@
                     {% include "modules/common/message-bar" with model=model.messages %} 
                     <div class="col-sm-9 col-xs-12 pull-right mz-content">   
                         <h3 class="mz-l-stack-sectiontitle">{{ labels.orderStatus }}</h3>
-                        <form method="post" class="mz-loginform-page" name="mz-anonymousorder">
+                        <form method="post" class="mz-loginform-page mz-order-track" name="mz-anonymousorder">
                             <input type="hidden" name="order-returnUrl" value="{{ model.returnUrl }}"/>
                             <div class="mz-l-formfieldgroup">
                                 <div class="form-group">
