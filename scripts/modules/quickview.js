@@ -123,6 +123,7 @@ define([
                 });
             },
             render: function() {
+                console.log("render method called");
                 var me = this;
 
                 Backbone.MozuView.prototype.render.apply(this);
@@ -227,7 +228,7 @@ define([
                         if (typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable === "undefined" || $(".mz-productoptions-optioncontainer").length != $(".mz-productoptions-optioncontainer .active").length) {
                             blockUiLoader.productValidationMessage();
                         } else {
-                            if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable >= newQty) {
+                            if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable >= newQty || window.quickviewProduct.attributes.inventoryInfo.outOfStockBehavior == "AllowBackOrder") {
                                 window.quickviewProduct.apiAddToCart({
                                     quantity: newQty
                                 }).then(function() {
@@ -400,7 +401,7 @@ define([
                     }
 
                     product.on("change", function() {
-                        if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable && typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined") {
+                        /*if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable && typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined") {
                             var sp_price = "";
                             if (window.quickviewProduct.get('inventoryInfo').onlineStockAvailable && typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined") {
                                 if (typeof window.quickviewProduct.attributes.price.get('salePrice') != 'undefined')
@@ -411,6 +412,23 @@ define([
                                 $('.stock-info').show().html("<span>In Stock </span>" + price);
                                 $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
                             } else {
+                                $('.stock-info').hide();
+                            }
+                        }*/
+                        $('.stock-info').hide();
+                        $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
+                        var inventoryInfo = window.quickviewProduct.attributes.inventoryInfo;
+                        if (inventoryInfo && inventoryInfo.manageStock) {
+                            var sp_price = "";
+                            if (inventoryInfo.onlineStockAvailable && inventoryInfo.onlineStockAvailable > 0) {
+                                if (typeof window.quickviewProduct.attributes.price.get('salePrice') != 'undefined')
+                                    sp_price = window.quickviewProduct.attributes.price.get('salePrice');
+                                else
+                                    sp_price = window.quickviewProduct.attributes.price.get('price');
+                                var price = Hypr.engine.render("{{price|currency}}", { locals: { price: sp_price } });
+                                $('.stock-info').show().html("<span>In Stock </span>" + price);
+                            } else if (typeof inventoryInfo.onlineStockAvailable !== undefined && inventoryInfo.onlineStockAvailable === 0 && inventoryInfo.outOfStockBehavior != "AllowBackOrder") {
+                                $('[data-mz-validationmessage-for="item-out-of-stock"]').text("* This item is out of stock.");
                                 $('.stock-info').hide();
                             }
                         }
@@ -465,7 +483,7 @@ define([
                                 if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable > 0 && window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable < hyprlivecontext.locals.themeSettings.minimumQuantityForInStockQuantityMessage) {
                                     $('[data-mz-validationmessage-for="quantity"]').text("*Only " + window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable + " left in stock.");
                                 }
-                                if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable >= 1) {
+                                if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable >= 1 || window.quickviewProduct.attributes.inventoryInfo.outOfStockBehavior == "AllowBackOrder") {
                                     $('button.btnAddToCart').removeClass('button_disabled');
 
                                     $(".quickviewElement input, .quickviewElement ul.product-swatches").removeAttr("disabled");
@@ -571,7 +589,7 @@ define([
                         });
                         self.bxSliderInit();
                     }, 500);
-                    if (window.quickviewProduct.get('variationProductCode')) {
+                    /*if (window.quickviewProduct.get('variationProductCode')) {
                         var sp_price = "";
                         if (window.quickviewProduct.get('inventoryInfo').onlineStockAvailable && typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined") {
                             if (typeof window.quickviewProduct.attributes.price.get('salePrice') != 'undefined')
@@ -579,19 +597,37 @@ define([
                             else
                                 sp_price = window.quickviewProduct.attributes.price.get('price');
                             var price = Hypr.engine.render("{{price|currency}}", { locals: { price: sp_price } });
-                            $('.stock-info').show().html("<span>In Stock </span>" + price);
-                            $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
+                            // $('.stock-info').show().html("<span>In Stock </span>" + price);
+                            // $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
                         } else {
-                            $('.stock-info').hide();
+                            // $('.stock-info').hide();
                         }
-                    }
-                    if (typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined" && window.quickviewProduct.get('inventoryInfo').onlineStockAvailable === 0) {
+                    }*/
+                    /*if (typeof window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable !== "undefined" && window.quickviewProduct.get('inventoryInfo').onlineStockAvailable === 0) {
                         $('[data-mz-validationmessage-for="item-out-of-stock"]').text("* This item is out of stock.");
                         $('.stock-info').hide();
                     } else {
                         $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
                         $(".stock-info").show();
+                    }*/
+                    $('[data-mz-validationmessage-for="item-out-of-stock"]').text("");
+                    $('.stock-info').hide();
+                    var inventoryInfo = window.quickviewProduct.attributes.inventoryInfo;
+                    if (inventoryInfo && inventoryInfo.manageStock) {
+                        var sp_price = "";
+                        if (inventoryInfo.onlineStockAvailable && inventoryInfo.onlineStockAvailable > 0) {
+                            if (typeof window.quickviewProduct.attributes.price.get('salePrice') != 'undefined')
+                                sp_price = window.quickviewProduct.attributes.price.get('salePrice');
+                            else
+                                sp_price = window.quickviewProduct.attributes.price.get('price');
+                            var price = Hypr.engine.render("{{price|currency}}", { locals: { price: sp_price } });
+                            $('.stock-info').show().html("<span>In Stock </span>" + price);
+                        } else if (typeof inventoryInfo.onlineStockAvailable !== undefined && inventoryInfo.onlineStockAvailable === 0 && inventoryInfo.outOfStockBehavior != "AllowBackOrder") {
+                            $('[data-mz-validationmessage-for="item-out-of-stock"]').text("* This item is out of stock.");
+                            $('.stock-info').hide();
+                        }
                     }
+                    
                     blockUiLoader.unblockUi();
 
 //                });

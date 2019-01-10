@@ -1,24 +1,47 @@
 <div class="mz-productdetail-shortdesc mz-l-stack-section">
     <span itemscope="description" itemprop="description">{{ model.content.productShortDescription|safe }}</span>
 </div>
+{% comment %}
 {% if model.stockInfo %}
     <div class="stock-info">{{ labels.upcInStock }}
         <span class="stock-price">{{ model.stockInfo }}</span>
     </div>
 {% endif %}
-
+{% endcomment %}
 <div class="col-xs-12 mz-reset-padding-left">
     <div class="col-xs-12 email-popup">
         {% dropzone "email-notification" scope="template" %}
     </div>
 </div>
-
+{% comment %}
 {% if model.purchasableState.isPurchasable %}
     <div class="mz-stock-info">
         Instock -  {{model.price.price|currency}} 
     </div>
 {% endif %}
-
+{% endcomment %}
+{% if model.inventoryInfo.manageStock %}
+    {% if model.inventoryInfo.onlineStockAvailable and model.inventoryInfo.onlineStockAvailable > 0 %}
+    <div class="mz-stock-info">
+        {{ labels.upcInStock }}
+        {% if model.stockInfo %}
+          {{model.stockInfo}} 
+        {% else %}
+          {% if model.price.salePrice %}
+            {{ model.price.salePrice|currency }} 
+          {% else %}
+              {{model.price.price|currency}} 
+          {% endif %}
+        {% endif %}
+    </div>
+    {% else %}
+      {% if model.inventoryInfo.onlineStockAvailable === 0 %}
+          {% if model.inventoryInfo.outOfStockBehavior != "AllowBackOrder" %}
+              <div class="item-error"><span class="mz-validationmessage" data-mz-validationmessage-for="item-out-of-stock">* This item is out of stock.</span></div>
+          {% endif %}
+      {% endif %}
+    {% endif %}
+{% endif %}
 {% if model.options and model.options.length > 0 and model.productType != themeSettings.familyProductType %}
     <div class="mz-productdetail-options mz-l-stack-section">
         {% include "modules/product/product-options" %}
