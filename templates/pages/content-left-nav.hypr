@@ -3,7 +3,7 @@
     <nav class="mz-scrollnav"> 
         <ul class="mz-scrollnav-list nav">
             <li class="mz-scrollnav-item">
-                <a class="mz-scrollnav-link" href="/user/order-status" name="/user/order-status">Order Tracking</a>
+                <a class="mz-scrollnav-link" href="/order-tracking" name="/order-tracking">Order Tracking</a>
             </li>
             <li class="mz-scrollnav-item">
                 <a class="mz-scrollnav-link" href="/100-satisfaction-guarantee" name="/100-satisfaction-guarantee">100% satisfaction guarantee</a> 
