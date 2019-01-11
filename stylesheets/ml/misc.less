@@ -247,12 +247,13 @@
         -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
         box-shadow: 0 6px 12px rgba(0,0,0,0.175);
         top: 35px;
-        left: -12px;
-        padding: 0 15px 15px 15px;
+        right: 0;
+        left: 0;
+        padding: 15px;
         border: 1px solid rgba(0,0,0,0.15);
         background: white;
         z-index: 2;
-        border-radius: 3px;   
+        width: 100%;
         -webkit-transition: visibility 0s ease-out 0s;
         -moz-transition: visibility 0s ease-out 0s;
         -ms-transition: visibility 0s ease-out 0s;
@@ -280,6 +281,10 @@
                 background-color: inherit;
             }
             .mz-sitenav-sub {
+                text-align: left;
+                .mz-sitenav-item {
+                    width: 20%;
+                }
                 .mz-sitenav-link {
                     height: auto;
                     padding: 0px;
@@ -324,12 +329,12 @@
         }        
     }
     .mz-sitenav-link {
-        font-size: 13px;
+        //font-size: 13px;
         padding: 8px 0;
-        color: #363636;
+        color: @textColor;
         font-weight: bold;
         &:visited {
-            color: #363636;
+            color: @textColor;
         }
         &.is-current {
             background-color: inherit;

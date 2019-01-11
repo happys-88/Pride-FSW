@@ -8,7 +8,7 @@
         <div class="mz-header-content">
             <div class="mz-hamburger-icon">   
                 <div class="mz-utilitynav-item navbar-collapse-control">
-                    <button data-target="#mz-nav" data-toggle="collapse" class="mz-utilitynav-link">
+                    <button data-target="#ml-nav" data-toggle="collapse" class="mz-utilitynav-link">
                         <i class="fa fa-bars"></i>
                     </button>
                 </div>

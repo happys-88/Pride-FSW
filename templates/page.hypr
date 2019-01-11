@@ -111,9 +111,20 @@
             {% block page-header %}
 				{% include "modules/page-header" %}
 			{% endblock page-header %}
+
+            {% block mobile-nav %}
+                <div class="visible-xs">
+                     {% include "modules/mobile-nav" %}
+                </div>
+            {% endblock mobile-nav %}
+
             {% block site-nav %}
-				{% include "modules/site-nav" %}
+                <div class="hidden-xs">
+                 {% include "modules/site-nav" %}
+                </div>
             {% endblock site-nav %}
+
+
             {% block global-marketing-area %}
                 <div class="global-marketing-area"> 
                     <div class="container">

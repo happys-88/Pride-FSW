@@ -139,6 +139,18 @@ define([
       $('.mz-reset-password-val').text('');
     }
   }); 
+
+  //Navigation
+  $(document).on('click', function (event) { 
+    if ($('nav[id="ml-nav"]').hasClass("in")) {
+      if ($(event.target).parents("div").hasClass("panel-group")) {
+      } else {
+        $('nav[id="ml-nav"]').removeClass("in");
+        $('button[data-target="#ml-nav"]').addClass("collapsed").attr("aria-expanded", false);
+      }
+    }
+  });
+
     //focus on left Navigation
     function selectUrl() {
       var hash = window.location.pathname;

@@ -88,6 +88,80 @@
 		}
 	}
 
+	.mz-sitenav {
+		.panel-group {
+			margin-bottom: -1px;
+			.panel {
+				border: none;
+				border-bottom: 1px solid #d8d8d8;
+				border-radius: 0;
+				margin-top: 0;
+				position: relative;
+			}
+		}
+		.panel-body {
+		    padding: 0;
+		}
+		.panel {
+			position: relative;
+			.panel-heading {
+				padding: 0;
+				.panel-title {
+					a {
+						display: block;
+						padding: 10px 15px;
+						.glyphicon {
+						    font-size: 14px;
+						    color: #000;
+						    position: absolute;
+						    right: 15px;
+						    top: 12px;
+						    font-weight: normal;
+						}
+						&[class="collapsed"] {
+							.glyphicon {
+								&:before {
+								    content: "\002b";
+								}
+							}
+						}
+						&[class=""] {
+							.glyphicon {
+								right: 16px;
+								&:before {
+								    content: "\2212";
+								}
+							}
+						}
+						&[aria-expanded="true"] {
+						    background: @btnBgColor;
+						    color: #fff;
+							&[class=""] {
+								.glyphicon {
+									color: #fff;
+								}
+							}
+						}
+					}
+				}
+			}
+			.panel {
+				.panel-heading {
+	    			//padding: 10px 30px;
+	    			.panel-title {
+	    				a {
+	    					padding: 10px 30px;
+	    				}
+	    			}
+	    		}	
+			}
+		}
+		.mz-sitenav-item {
+		    padding: 1px 45px;
+		}
+	}
+
+
 	.mz-featured-products, .new-arrival-product-container, .mz-recently-viewed-products {
 		.mz-productlist {
 			.slick-arrow.fa-angle-right {

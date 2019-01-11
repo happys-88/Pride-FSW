@@ -1,51 +1,67 @@
-﻿<nav class="mz-sitenav collapse" id="mz-nav"> 
-  <div class="container"> 
+﻿<nav class="mz-sitenav collapse" aria-label="{{labels.siteNavigation|safe}}">
+  <div class="container">
     <ul class="mz-sitenav-list" 
         data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
         data-mz-contextify-attr='class'
         data-mz-contextify-val='is-current'>
-        
-      {% partial_cache %}
-        {% for link in navigation.tree %}
-          {% if not link.isHidden and not link.isEmpty and forloop.counter0 < themeSettings.maxTopLevelNavItems and link.url != "/home" and link.nodeType!="page" %} 
-            <li class="mz-sitenav-item">
-              <div class="mz-sitenav-item-inner">
-                <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">{{link.name|safe}}</a> 
+        <li class="hide" aria-hidden="true">For Blank</li> 
+        {% partial_cache %}
+          {% for link in navigation.tree %}
+            {% if not link.isHidden and not link.isEmpty and forloop.counter <= themeSettings.maxTopLevelNavItems and link.url != "/home" and link.nodeType!="page" %} 
+              <li class="mz-sitenav-item">
+                <div class="mz-sitenav-item-inner">
+                  <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">{{link.name|safe}}</a> 
                   {% if link.items %} 
-                    <div class="mz-sitenav-sub-container">
-                      <ul class="mz-sitenav-sub">
-                        {% for sublink in link.items %}
-                          {% if not sublink.isHidden and not sublink.isEmpty %}
-                            {% with "id eq {0}"|string_format(sublink.originalId) as filter %} 
-                              {% include_entities "modules/category-header-attribute" listFQN=themeSettings.categoryEntityName filter=filter %}
-                            {% endwith %}
-                            <li class="mz-sitenav-item" data-mz-role="sitemenu-item"> 
-                              <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|safe }}</a> 
-                              
-                              {% if sublink.items %}
-                                <ul class="mz-sitenav-sub-sub clearfix">
-                                  {% for subsublink in sublink.items %}
-                                    {% if not subsublink.isHidden and not subsublink.isEmpty %}
-                                      <li class="mz-sitenav-item">
-                                        <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|safe }}</a> 
-                                      </li>
-                                    {% endif %}
-                                  {% endfor %}
-                                </ul> 
+                    {% if link.name=="Shop By Brand" %}
+                    {% else %}
+                      <div class="mz-sitenav-sub-container">
+                        <span class="sub-nav-arrow"></span>
+                        <div class="col-md-9 col-sm-12 nav-dropzone-col">
+                        <ul class="mz-sitenav-sub">
+                          <li class="hide" aria-hidden="true">For Blank</li>
+                            {% for sublink in link.items %}
+                              {% if not sublink.isHidden and not sublink.isEmpty %}
+                                {% with "id eq {0}"|string_format(sublink.originalId) as filter %} 
+                                  {% include_entities "modules/category-header-attribute" listFQN=themeSettings.categoryEntityName filter=filter %}
+                                {% endwith %}
+                                <li class="mz-sitenav-item" data-mz-role="sitemenu-item"> 
+                                  <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|safe }}</a> 
+                                  
+                                  {% if sublink.items %}
+                                    <ul class="mz-sitenav-sub-sub clearfix">
+                                      {% for subsublink in sublink.items %}
+                                        {% if not subsublink.isHidden and not subsublink.isEmpty %}
+                                          <li class="mz-sitenav-item">
+                                            <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|safe }}</a> 
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+                                      <li class="hide" aria-hidden="true">For Blank</li>
+                                    </ul>
+                                  {% endif %}
+                                  
+                                </li>
                               {% endif %}
-                              
-                            </li>
-                          {% endif %}
-                        {% endfor %}
-                      </ul>
-                    </div> 
-                  {% endif %} 
-              </div>
-            </li>
-          {% endif %}
-        {% endfor %}
-      {% endpartial_cache %}
-      {% require_script "modules/contextify" %}
+                            {% endfor %}
+                        </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-12 nav-dropzone-col">
+                            {% with link.originalId as navNode %}
+                            <div class="mz-sitenav-dropzone">
+                              {% dropzone "mega-menu_{0}"|string_format(navNode) scope="site" %}
+                            </div>
+                            {% endwith %}
+                        </div>
+                      </div>
+                    {% endif %}
+                     
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endpartial_cache %}
+        {% require_script "modules/contextify" %}
     </ul>
   </div>
 </nav>
