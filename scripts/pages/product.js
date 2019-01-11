@@ -1,4 +1,5 @@
-﻿require([
+﻿
+require([
     "modules/jquery-mozu",
     "underscore",
     "bxslider",
@@ -373,24 +374,25 @@
                     promises.push((function(callback) {
                         var familyItem = me.model.get('family').models[this.index];
                         var productCode = familyItem.get('productCode');
-                        familyItem.addToCart().then(function(e) {
-                            //Clear options and set Qty to 0
-                            for (var j = 0; j < window.family.length; j++) {
-                                if (window.family[j].model.get('productCode') === productCode) {
-                                    var optionModels = window.family[j].model.get('options').models;
-                                    for (var k = 0; k < optionModels.length; k++) {
-                                        optionModels[k].unset('value');
+                            familyItem.addToCart().then(function(e) {
+                                //Clear options and set Qty to 0
+                                for (var j = 0; j < window.family.length; j++) {
+                                    if (window.family[j].model.get('productCode') === productCode) {
+                                        var optionModels = window.family[j].model.get('options').models;
+                                        for (var k = 0; k < optionModels.length; k++) {
+                                            optionModels[k].unset('value');
+                                        }
+                                        window.family[j].model.set('quantity', 0);
+                                        window.family[j].model.unset('stockInfo');
+                                        window.family[j].model.set('addedtocart', true);
                                     }
-                                    window.family[j].model.set('quantity', 0);
-                                    window.family[j].model.unset('stockInfo');
-                                    window.family[j].model.set('addedtocart', true);
                                 }
-                            }
-                            productsAdded.push(e);
-                            callback(null, e);
-                        }, function(e) {
-                            callback(null, e);
-                        });
+                                productsAdded.push(e);
+                                callback(null, e);
+                            }, function(e) {
+                                callback(null, e);
+                            });
+                        //}
                     }).bind({ index: i }))
                 }
                 var errors = { "items": [] };
@@ -407,23 +409,56 @@
                             blockUiLoader.unblockUi();
                             return;
                         }
-                        if (results) {
+                        if (results && !productsAdded.length) {
                             var failureNames = [];
                             var successNames = [];
                             for (var i = 0; i < results.length; i++) {
                                 if (results[i].errorCode) {
                                     var errorMessage = results[i].message.split(':');
-                                    failureNames.push(errorMessage[2]);
-                                } else if (typeof results[i].attributes === 'undefined' &&  (!isNaN(results[i]))) {
-                                    failureNames.push(results[i]);
+                                    failureNames.push(" Product Quantity is less than required ");
+                                    failureNames.push(errorMessage[2]);  
+                                } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("select Valid Option Product") !== -1) {
+                                    if(failureNames.length) {
+                                        var temp = results[i];
+                                        var msgTemp = failureNames[failureNames.length-1];
+                                            if (msgTemp[0].includes("Select Valid Option(s) for")){
+                                                if (temp.includes("select Valid Option Product")){
+                                                temp = temp.replace("select Valid Option Product", "");
+                                                failureNames[failureNames.length-1] = msgTemp[0] +", "+  temp;
+                                                 }
+                                        }else{
+                                           var msg = results[i].replace("select Valid Option Product", "Select Valid Option(s) for ");
+                                           failureNames[failureNames.length-1] = [msg];
+                                        }
+                                     }else{
+                                        failureNames.push(results[i]);
+                                     }
+                                }
+                                else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Please enter quantity above 0") !== -1) {
+                                    if(failureNames.length) {
+                                        var msgTemp = failureNames[failureNames.length-1];
+                                         if (failureNames.includes("Please enter quantity above 0")){
+                                           //var msg = results[i].replace("Please enter quantity above 0", "");
+                                           //failureNames.push(msg);
+                                        }else if (msgTemp[0].includes("Select Valid Option(s) for")) {
+                                            /*var msg = results[i].replace("Select Valid Option(s)", "Please enter quantity above 0");
+                                            failureNames.push(msg);*/
+                                        }else if (failureNames.includes("Select Valid Option(s)")) {
+                                            var msg = results[i].replace("Select Valid Option(s)", "Please enter quantity above 0");
+                                            failureNames.push(msg);
+                                        }
+                                    }else {
+                                        failureNames.push(results[i]);
+                                    }
+                                    //failureNames.push(results[i]);
                                 } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Select Valid Option(s)") !== -1) {
                                     if(failureNames.length) {
-                                        if (failureNames[failureNames.length-1].includes("Select Valid Option")){
-                                           var msg = results[i].replace("Select Valid Option(s) for ", "");
+                                        /*if (failureNames[failureNames.length-1].includes("Select Valid Option")){
+                                           var msg = results[i].replace("Select Valid Option(s)", "");
                                            failureNames.push(msg);
                                         }else{
                                            failureNames.push(results[i]); 
-                                        }
+                                        }*/
                                     }else {
                                         failureNames.push(results[i]);
                                     }
@@ -435,7 +470,7 @@
                             if (failureNames.length) {
                                 errors.items.push({
                                     "name": "error",
-                                    "message": Hypr.getLabel('productaddToCartError') + ": " + failureNames.join(', ')
+                                    "message":  failureNames
                                 });
                             }
                             if (successNames.length) {

@@ -283,8 +283,6 @@ define([
 	                return biscuit;
 	            }, []);
 	        },
-
-
 	        addToCart: function () {
 	            var me = this;
 	            me.messages.reset();
@@ -320,14 +318,13 @@ define([
 	                    		}
 	                    	} 
 	                    	if(singleOptionCheck === me.get('options').models.length && me.get('quantity') === 0){
-	                    		//dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
-	                    		dfd.reject( me.get('productCode'));
+	                    		dfd.reject(Hypr.getLabel('familyEnterQuantity'));
 	                    		return;
-	                    	}
+	                    	} 
 	                    	//options selected but qty zero
 	                    	if(me.get('quantity') === 0){
 	                    		me.trigger('error', { message : Hypr.getLabel('enterProductQuantity')});
-	                    		dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
+	                    		dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode'))); 
 	                    		return;
 	                    	}
 		                    me.apiAddToCart({
@@ -346,7 +343,8 @@ define([
 		                }else if(me.lastConfiguration && !me.lastConfiguration.length && me.get('quantity') > 0){
 		                	//options not selected but qty > zero
 		                	me.trigger('error', { message : Hypr.getLabel('selectValidOption')});
-		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
+		                	var name = me.apiModel.data.content.productName;
+		                	dfd.reject("select Valid Option Product " + name);
 		                }else if(me.lastConfiguration && me.lastConfiguration.length && typeof me.get('inventoryInfo').onlineStockAvailable === 'undefined' && me.get('quantity') > 0){
 		                	//if all options are not selected and qty > 0
 		                	me.trigger('error', { message : Hypr.getLabel('selectValidOption')});
@@ -355,9 +353,10 @@ define([
 		                	//options selected but qty 0
 		                	me.trigger('error', { message : Hypr.getLabel('enterProductQuantity')});
 		                	dfd.reject(Hypr.getLabel('enterQuantity', me.get('productCode')));
+		                }else if(me.get('options').models.length && me.get('quantity') ){
+		                	dfd.reject("Option should be filled");
 		                }else{
-		                	//dfd.reject(Hypr.getLabel('selectValidOption')); 
-		                	dfd.reject(Hypr.getLabel('selectValidOptionProduct', me.get('productCode')));
+		                	dfd.reject(Hypr.getLabel('selectValidOption')); 
 		                }
 	                }
 	            });
