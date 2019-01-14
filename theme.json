@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "043e26ba3c8a2d36be6fa88d2b1662d363eb4701"
+      "commit": "aebff0cb5a1b77ac10e7a022699486ffa9ded871"
     },
     "baseThemeChannel": "stable"
   },
