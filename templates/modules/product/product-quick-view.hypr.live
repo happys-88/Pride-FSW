@@ -33,12 +33,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="mz-all-review-container">
-                                                    <span class="mz-reviews-pdp-stars">
+                                                   {% comment %} <span class="mz-reviews-pdp-stars">
                                                         {% include "modules/product/product-ratings" %}
                                                     </span>
                                                     <span class="mz-reviews-pdp-text">
                                                         <a href="#">4.9(10) {{ labels.readAReview }}</a>
-                                                    </span>
+                                                    </span> {% endcomment %}
                                                 </div>
                                                 <div class="stock-info"></div>
                                                 <div class="item-error"><span class="mz-validationmessage" data-mz-validationmessage-for="item-out-of-stock"></span></div>
