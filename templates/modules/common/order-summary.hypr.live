@@ -66,7 +66,7 @@
                     <div class="col-sm-3 col-sm-3 col-xs-6  hidden-xs mz-price-each-display mz-price-main-container">
                         {% include "modules/common/item-price" %}
                     </div>
-                    <div class="col-sm-3 col-xs-6 mz-checkout-item-total-container pull-right">
+                    <div class="col-sm-3 col-xs-6 mz-checkout-item-total-container pull-right text-right">
                         {% include "modules/common/item-total" %}
                     </div>
                 </div>

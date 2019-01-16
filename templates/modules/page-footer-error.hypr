@@ -1,0 +1,96 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 pull-right">
+                <h4><i class="fa fa-envelope"></i> Sign up for Emails &amp; Exclusive Offers</h4>
+                <div>
+					
+					<form class="form form-footer-cont">
+					  <div class="form-group">
+					  	<div class="input-group"> 	
+                            <div class="ctct-inline-form" data-form-id="5196d0b2-01b1-4c99-90e5-6b1bc6076f52"></div>
+						</div>
+						<div class="input-group">   
+							<span id="errorEmail" hidden="true">Please enter correct email</span>  
+							<span id="thanksMsg" hidden="true">Thanks for Subscribing!!</span>
+						</div>
+						<div id="footerStoreLocator">
+							{% include "modules/location/store-locator-footer" %}
+						</div>
+					</div>
+					</form>					
+				</div>
+            </div>
+            <div class="col-xs-12 col-sm-8 regular-footer mini-footer-off">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12 mz-contact-open">
+                                <div id="mz-drop-zone-footer-cat-links-col1" class="mz-drop-zone">
+                                    <div class="mz-contact">
+                                        <h4><a href="/contact-us">Contact Us</a></h4>
+                                        <ul>
+                                            <li><a href="#">303-801-0624 <i class="fa fa-phone"></i></a>
+                                            </li>
+                                            <li><a href="#">Email Us <i class="fa fa-envelope"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <h4><a href="/ways-to-shop">Ways to Shop</a></h4>
+                                <ul class="list">
+                                    <li><a href="/brand">Shop by Brand</a></li>
+                                    <li><a href="/meet-a-designer">Meet a Designer</a></li>
+                                    <li><a href="/chef-picks">Chef Picks</a></li>
+                                    <li><a href="/content-item">Content Item</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12 top-pad">
+                                <h4><a href="/customer-service">Customer Service </a></h4>
+                                <ul class="list">
+                                    <li><a href="/order-status">Order Tracking</a></li>
+                                    <li><a href="/100-satisfaction-guarantee">100%
+                                            Satisfaction Guarantee</a></li>
+                                    <li><a href="/faqs">FAQs</a></li>
+                                    <li><a href="/return-policy">Return Policy</a></li>
+                                    <li><a href="/shipping-information">Shipping
+                                            Information</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-xs-12 top-pad">
+                                <h4><a href="/about-us">About Us</a></h4>
+                                <ul class="list">
+                                    <li><a href="/who-we-are">Who we are</a></li>
+                                    <li><a href="/content-item">Content Item</a></li>
+                                    <li><a href="/content-item">Content Item</a></li>
+                                    <li><a href="/content-item">Content Item</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                    <div class="mz-pagefooter-copyright" id="copyright">
+                        <span class="mz-pagefooter-copyrighttext">{{ labels.copyRight }} {% now Y %} {{ siteContext.generalSettings.websiteName }}.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

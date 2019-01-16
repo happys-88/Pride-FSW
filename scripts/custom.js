@@ -155,7 +155,6 @@ define([
     function selectUrl() {
       var hash = window.location.pathname;
       var href = "a[name~=" + "'" + hash + "'" + "]";
-      console.log(href);
       $(href).parent(".mz-scrollnav-item").addClass("active");
     }
     selectUrl();
