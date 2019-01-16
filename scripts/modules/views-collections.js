@@ -158,10 +158,10 @@ define([
                         }
                         available_facets += '<li><i class="fa fa-times-circle remove-facet" data-mz-facet="' + facetKey + '" data-mz-facet-value="' + facetValue[j].split(":")[1] + '" data-mz-purpose="remove" data-mz-action="clearFacet"></i> <u>' + displayValue + '</u></li>';
                     }
-                    if (available_facets !== '') {
-                        var filterOptionList = $("#filterOptionList");
-                        filterOptionList.append(available_facets);
-                    }
+                    // if (available_facets !== '') {
+                    //     var filterOptionList = $("#filterOptionList");
+                    //     filterOptionList.append(available_facets);
+                    // }
                     return true;
                 }
             }

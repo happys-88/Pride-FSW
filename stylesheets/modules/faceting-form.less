@@ -19,9 +19,9 @@
             }
             &.color-options {
                 float: left;
-                width: 52px;
-                height: 52px;
-                margin: 3px 10px 7px 0;
+                width: 36px;
+                height: 36px;
+                margin: 6px;
                 position: relative;
                 &:after, &:before {
                     content: "";
@@ -29,24 +29,16 @@
                     position: absolute;
                 }
                 &:after {
-                    border: 1px solid #e1e1e1;
-                    width: 52px;
-                    height: 52px;
-                    left: -2px;
-                    top: -2px;
+                    border: 1px solid #ccc;
+                    width: 44px;
+                    height: 44px;
+                    top: -4px;
+                    left: -4px;
                 }
-                &:before {
-                    border: 2px solid #fff;
-                    width:52px;
-                    height:52px;
-                    left: -1px;
-                    top: -1px;
-                }
-
-              &.active {
-                  display: block;
+                &.active {
+                    display: block;
                     &:after {
-                        border: 2px solid #333;
+                        border: 1px solid #000;
                     }
                 }
                 label {
@@ -54,15 +46,15 @@
                 }
                 input[type=checkbox] {
                     opacity: 0;
-                    margin: 0;
-                    padding: 0;
-                    border: 0;
-                    width: 50px;
-                    height: 50px;
-                    float: left;
                     display: block;
-                    z-index: 2;
+                    width: 44px;
+                    height: 44px;
                     position: absolute;
+                    top: -2px;
+                    border: 1px solid #00f;
+                    left: -2px;
+                    margin: 0;
+                    z-index: 2;
                 }
             }
             &.show-more-li {
@@ -104,6 +96,15 @@
                     color: #000;
                 }
             }
+        }
+    }
+}
+#filterOptionList {
+    .tenantcolor {
+        width: 20px;
+        height: 20px;
+        u {
+            font-size: 0;
         }
     }
 }
