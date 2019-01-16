@@ -410,6 +410,7 @@ require([
                             return;
                         }
                         if (results && !productsAdded.length) {
+                            console.log(results);
                             var failureNames = [];
                             var successNames = [];
                             for (var i = 0; i < results.length; i++) {
@@ -452,16 +453,16 @@ require([
                                     }
                                     //failureNames.push(results[i]);
                                 } else if (typeof results[i].attributes === 'undefined' && results[i].indexOf("Select Valid Option(s)") !== -1) {
-                                    if(failureNames.length) {
-                                        /*if (failureNames[failureNames.length-1].includes("Select Valid Option")){
+                                   /* if(failureNames.length) {
+                                        if (failureNames[failureNames.length-1].includes("Select Valid Option")){
                                            var msg = results[i].replace("Select Valid Option(s)", "");
                                            failureNames.push(msg);
                                         }else{
                                            failureNames.push(results[i]); 
-                                        }*/
+                                        }
                                     }else {
                                         failureNames.push(results[i]);
-                                    }
+                                    }*/
                                     
                                 } else if (typeof results[i].attributes !== 'undefined') {
                                     successNames.push(results[i].get('content').get('productName'));
