@@ -2,7 +2,7 @@ define([
 	"modules/jquery-mozu",
   "bxslider"
  
-], function( $, bxslider) { 
+], function ($, bxslider) { 
     //home slider
     $('#mz-home-slider .slider').bxSlider({
       auto: true,
@@ -155,6 +155,7 @@ define([
     function selectUrl() {
       var hash = window.location.pathname;
       var href = "a[name~=" + "'" + hash + "'" + "]";
+      console.log(href);
       $(href).parent(".mz-scrollnav-item").addClass("active");
     }
     selectUrl();
