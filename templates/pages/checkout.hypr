@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pull-left">
-                        <a class="logo" href="/" title="{{ siteContext.generalSettings.websiteName }}">
-                            <img src='{% make_url "cdn" "/cms/files/fsw-logo.png" %}' alt="{{ siteContext.generalSettings.websiteName }}" /> 
+                        <a class="logo" href="/" title="{{ siteContext.generalSettings.websiteName }}"> 
+                            <img src='{% make_url "cdn" "/cms/files/logo-kitchen-spot.png" %}' alt="{{ siteContext.generalSettings.websiteName }}" /> 
                         </a>
                     </div>
                     <div class="pull-right">
