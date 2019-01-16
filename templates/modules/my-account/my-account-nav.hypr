@@ -2,7 +2,7 @@
     <ul class="mz-scrollnav-list nav">
         <li class="mz-scrollnav-item">
             <a class="mz-scrollnav-link" href="#settings">
-                {{ labels.accountSettings }}
+                {{ labels.myInformation }}
             </a>
         </li>
         <li class="mz-scrollnav-item">

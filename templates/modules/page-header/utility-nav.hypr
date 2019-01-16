@@ -19,7 +19,7 @@
                     <div class="dropdown-menu">   
                         <div class="my-account-details">
                             <a href="/myaccount#settings">
-                                <h4>{{ labels.accountSettings }}</h4>
+                                <h4>{{ labels.myInformation }}</h4>
                             </a> 
                         </div>
                         <div class="my-account-details">
