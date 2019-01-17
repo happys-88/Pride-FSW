@@ -13,10 +13,12 @@
     </label>
   {% endfor %}
   {% if model.contactId == "new" %}
-  <div class="mz-contactselector-contact mz-contactselector-new">
+  <div class="row mz-contactselector-contact mz-contactselector-new">
+        {% comment %}
         <span class="mz-contactselector-inputwrapper">
             <input type="radio" data-mz-value="{{ contactcontext }}contactId" name="contactId" value="new" data-mz-enternewcontact checked="checked">
         </span>
+        {% endcomment %}
         <span class="mz-contactselector-summarywrapper">
             {% block enter-new-form %}
             {% include "modules/common/address-form" with model=editingContact %}
