@@ -1,4 +1,5 @@
-<div class="mz-create-account-fields mz-checkoutform mz-checkoutform-active">
+<input type="checkbox" data-mz-action="showForm"> {{ labels.createAccount }}
+<div class="mz-create-account-fields mz-checkoutform mz-checkoutform-active" id="signupform" style="display:none;">
     <div id="accountCreatedSignUp" style="display: none;">
         <h3>{{ labels.accountCreated}}</h3>
     </div>

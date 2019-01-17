@@ -43,36 +43,45 @@ define(['modules/api',
                         $('#errorMessageSignUp').html('<span class="mz-validationmessage">' + errorMsg + '</span>');
                     }
                 },
-          signup: function () {
-                var self = this,
-                    email = $('#emailAddressSignup').val(),
-                    firstName = '',
-                    lastName = '',
-                    password = $('#passwordSignup').val(),
-                    payload = {
-                        account: {
-                            emailAddress: email,
-                            userName: email,
-                            firstName: firstName,
-                            lastName: lastName,
-                            contacts: [{
-                                email: email,
-                                firstName: firstName,
-                                lastNameOrSurname: lastName
-                            }]
-                        },
-                        password: $('#passwordSignup').val()
-                    };
-                if (this.validate(payload)) {   
-                  //var user = api.createSync('user', payload);
-                    // this.setLoading(true);
-                    return api.action('customer', 'createStorefront', payload).then(function () {
-                        $('#createAccountSignUp').hide();
-                        $('#accountCreatedSignUp').show();
-                    }, self.displayApiMessage);
-                }
-            } 
-        });
+            showForm: function(e) {
+                  var event = e.target.checked;
+                  if(event) {
+                      $('#signupform').show();
+                      $('#emailAddressSignup').val(this.model.attributes.email);
+                  } else {
+                      $('#signupform').hide();
+                  }                  
+            },
+            signup: function () {
+                  var self = this,
+                      email = $('#emailAddressSignup').val(),
+                      firstName = '',
+                      lastName = '',
+                      password = $('#passwordSignup').val(),
+                      payload = {
+                          account: {
+                              emailAddress: email,
+                              userName: email,
+                              firstName: firstName,
+                              lastName: lastName,
+                              contacts: [{
+                                  email: email,
+                                  firstName: firstName,
+                                  lastNameOrSurname: lastName
+                              }]
+                          },
+                          password: $('#passwordSignup').val()
+                      };
+                  if (this.validate(payload)) {   
+                    //var user = api.createSync('user', payload);
+                      // this.setLoading(true);
+                      return api.action('customer', 'createStorefront', payload).then(function () {
+                          $('#createAccountSignUp').hide();
+                          $('#accountCreatedSignUp').show();
+                      }, self.displayApiMessage);
+                  }
+              } 
+          });
 
           var ConfirmationView = Backbone.MozuView.extend({
             templateName: 'modules/confirmation/confirmation-detail',
