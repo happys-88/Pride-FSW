@@ -286,9 +286,10 @@ define(['modules/api',
             return false;
         },
         empty: function() {
-            this.model.apiDel().then(function() {
-                window.location.reload();
-            });
+             //e.preventDefault();
+             this.model.apiDel().then(function () {
+                 window.location.href = '/cart';
+             });
         },
         initializeStorePickerDialog: function(){
 
@@ -725,9 +726,9 @@ define(['modules/api',
         });
 
         cartModel.on('sync', function() {
-             if (this.isEmpty())
-                window.location.reload();
-            else
+            //  if (this.isEmpty())
+            //    // window.location.reload();
+            // else
                 CartMonitor.update();
         });
 

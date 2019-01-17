@@ -820,7 +820,7 @@ define(['modules/backbone-mozu', "modules/api", 'hyprlive', 'hyprlivecontext', '
             $(".account_content").fadeOut(500);
             $("#" + activeTab).delay(400).fadeIn(500);
             $('html, body').animate({
-                scrollTop: $(".mz-l-sidebar h2").offset().top - 10
+                scrollTop: $(".mz-l-sidebar h2").offset().top-10
             }, 700);
             $("ul.mz-scrollnav-list li").removeClass("active");
             $(this).addClass("active");
