@@ -66,35 +66,13 @@
     }
 }
 .mz-product {
+     
     .product-wrapper{
         .mz-breadcrumbs{
             padding-left: 15px;
         }
     }
-    .mz-recently-viewed-products {
-        .mz-product-swatch{
-            display:none;
-        }
-        .slick-arrow {
-			margin-top: -15px;
-			outline: 0;
-			font-size: 48px;
-			font-weight: bold;
-			width: 17px;
-			height: 30px;
-			z-index: 1;
-			line-height: 48px;
-			color: #c1c1c1;
-			position: absolute;
-			top: 40%;
-            left: 15px;
-			cursor: pointer;
-            &.fa-angle-right {
-                left: auto;
-                right: 15px;
-            }
-		}
-    }
+    
     .mz-product-top-content {
         .mz-brand {
             a {
@@ -138,18 +116,54 @@
                     }
                     &.active {
                         a {
-                            color: #000;
+                            color: #000; 
                         }
                     }
                 }
             }
         }
-        .tab-content {
+        .tab-content { 
             border-top: 1px solid #e1e1e1;
             line-height: 22px;
             min-height: 150px;
             padding: 20px 0;
             text-align: left;
+            .tab-pane {  
+                ul{
+                    padding-left: 15px;  
+                    li {
+                        display: list-item; 
+                        border: none;
+                        list-style-type: disc;
+                    }     
+                }
+                 
+            }  
+            
+        }
+    }
+    .mz-recently-viewed-products {
+        .mz-product-swatch{
+            display:none;
+        }
+        .slick-arrow {
+            margin-top: -15px;
+            outline: 0;
+            font-size: 48px;
+            font-weight: bold;
+            width: 17px;
+            height: 30px;
+            z-index: 1;
+            line-height: 48px;
+            color: #c1c1c1;
+            position: absolute;
+            top: 40%;
+            left: 15px;
+            cursor: pointer;
+            &.fa-angle-right {
+                left: auto;
+                right: 15px;
+            }
         }
     }
     .mz-l-pagecontent {
@@ -164,8 +178,9 @@
         }
     }
 }
+
 //no option selection
-.blockUI.blockMsg.blockPage {
+.blockUI.blockMsg.blockPage {  
     width: 300px !important;
     height: 120px !important;
 }
