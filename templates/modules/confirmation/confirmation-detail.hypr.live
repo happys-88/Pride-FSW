@@ -69,8 +69,8 @@
                 <small>{{ labels.shipTo }}</small>
                 <div class="mz-addresssummary">{% include "modules/common/address-summary" with model=model.fulfillmentInfo.fulfillmentContact %}</div>
             </div>
+            <h4 class="mz-l-stack-sectiontitle">{{ labels.shippingMethod }}</div>
             <div class="mz-l-stack-item">
-                <small>{{ labels.shippingMethod }}</small>
                 <div>{{ model.fulfillmentInfo.shippingMethodName }}</div>
             </div>
         </div>
