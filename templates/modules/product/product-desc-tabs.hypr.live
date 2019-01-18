@@ -13,6 +13,10 @@
             {% if (model|get_product_attribute_value("tenant~product-specifications")) %}    
                 <li role="presentation"><a href="#prodSpecifications" aria-controls="prodSpecifications" role="tab" data-toggle="tab">Specifications</a></li>
             {% endif %}
+
+            {% if (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) %}    
+                <li role="presentation"><a href="#prodPdfDocument" aria-controls="prodPdfDocument" role="tab" data-toggle="tab">PDF Documents</a></li>
+            {% endif %}
         </ul>
         <div class="tab-content mz-mobile-tabs nav nav-tabs">
             {% if model.content.productFullDescription %}
@@ -42,7 +46,29 @@
                         {{ model|get_product_attribute_value("tenant~product-specifications")|safe }}
                     </ul>      
                 </div>
-            {% endif %}   
+            {% endif %}
+
+
+            {% if (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) %}   
+                <li class="visible-xs" role="presentation"><a href="#prodPdfDocument" aria-controls="prodPdfDocument" role="tab" data-toggle="tab">PDF Document</a></li>
+                <div role="tabpanel" class="tab-pane" id="prodPdfDocument">
+                    {% if (model|get_product_attribute_value("tenant~specificationsheet")) %}   
+                        {% with model|get_product_attribute("tenant~specificationsheet") as attrSpecificationsheet %}
+                            <p>{{ attrSpecificationsheet.attributeDetail.name }}: <a href="/cms/files/{{ attrSpecificationsheet.values.0.value }}" target="blank">{{ model|get_product_attribute_value("tenant~specificationsheet")|safe }}</a></p>
+                        {% endwith %}
+                    {% endif %}
+                    {% if (model|get_product_attribute_value("tenant~brochurecatalog")) %}  
+                        {% with model|get_product_attribute("tenant~brochurecatalog") as attrBrochurecatalog %}
+                            <p>{{ attrBrochurecatalog.attributeDetail.name }}: <a href="/cms/files/{{ attrBrochurecatalog.values.0.value }}" target="blank">{{ model|get_product_attribute_value("tenant~brochurecatalog")|safe }}</a></p>
+                        {% endwith %}
+                    {% endif %}
+                    {% if (model|get_product_attribute_value("tenant~installationinstructions")) %}   
+                        {% with model|get_product_attribute("tenant~installationinstructions") as attrInstallationinstructions %}
+                            <p>{{ attrInstallationinstructions.attributeDetail.name }}: <a href="/cms/files/{{ attrInstallationinstructions.values.0.value }}" target="blank">{{ model|get_product_attribute_value("tenant~installationinstructions")|safe }}</a></p>
+                        {% endwith %}      
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endif %}  
