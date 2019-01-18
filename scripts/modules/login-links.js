@@ -466,16 +466,16 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             //console.log("Write business logic for Login form submition");
             var returnUrl = $('#returnUrl').val();
             var payload = {
-                email: $('[data-mz-login-email]').val(),
-                password: $('[data-mz-login-password]').val()
+                email: $('[data-mz-login-email-modal]').val(),
+                password: $('[data-mz-login-password-modal]').val()
             };
             current = e.currentTarget;
             if (self.validateLogin(e.currentTarget, payload) && self.validatePassword(e.currentTarget, payload)) {   
                 //var user = api.createSync('user', payload);
                 (LoginPopover.prototype).newsetLoading(true);
                 return api.action('customer', 'loginStorefront', {
-                    email: $('[data-mz-login-email]').val(), 
-                    password: $('[data-mz-login-password]').val()
+                    email: $('[data-mz-login-email-modal]').val(), 
+                    password: $('[data-mz-login-password-modal]').val()
                 }).then(function () {
                     if ( returnUrl ){
                         window.location.href= returnUrl;

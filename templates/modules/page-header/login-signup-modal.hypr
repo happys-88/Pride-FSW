@@ -11,11 +11,11 @@
                        <div class="mz-l-formfieldgroup">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input type="email" class="form-control" data-mz-login-email placeholder="{{ labels.emailAddress }}" id="email">
+                                <input type="email" class="form-control" data-mz-login-email-modal placeholder="{{ labels.emailAddress }}" id="email">
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input type="password" class="form-control"  data-mz-login-password id="password" placeholder="{{ labels.password }}">
+                                <input type="password" class="form-control"  data-mz-login-password-modal id="password" placeholder="{{ labels.password }}">
                             </div>
                             <div class="input-group">
                                 <a href="/user/forgotpassword" class="mz-forgot">{{ labels.forgotPasswordLink }}</a>
