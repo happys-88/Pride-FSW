@@ -195,7 +195,13 @@ require([
                             if (familyItemModel.get("isReady")) {
                                 familyItemModel.off('ready');
                                 familyItemModelOnready.call({ index: i });
-                            } else {
+                            }else if (familyItemModel.attributes.price.attributes.price ) {
+                                familyItemModelOnready.call({ index: i });
+                                if (i === (familyData.models.length - 1)) {
+                                    blockUiLoader.unblockUi(); 
+                                }
+                            }
+                             else {
                                 familyItemModel.on('ready', familyItemModelOnready.bind({ index: i }));
                                 if (i === (familyData.models.length - 1)) {
                                     blockUiLoader.unblockUi();
