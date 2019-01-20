@@ -12,13 +12,11 @@
                 <div class="mz-sitenav-item-inner">
                   <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">{{link.name|safe}}</a> 
                   {% if link.items %} 
-                    {% if link.name=="Shop By Brand" %}
-                    {% else %}
-                      <div class="mz-sitenav-sub-container">
-                        <span class="sub-nav-arrow"></span>
-                        <div class="col-md-9 col-sm-12 nav-dropzone-col">
-                        <ul class="mz-sitenav-sub">
-                          <li class="hide" aria-hidden="true">For Blank</li>
+                    <div class="mz-sitenav-sub-container"> 
+                      <span class="sub-nav-arrow"></span>
+                      <div class="col-md-9 col-sm-12">
+                        <ul class="mz-sitenav-sub"> 
+                          <li class="hide" aria-hidden="true">For Blank</li> 
                             {% for sublink in link.items %}
                               {% if not sublink.isHidden and not sublink.isEmpty %}
                                 {% with "id eq {0}"|string_format(sublink.originalId) as filter %} 
@@ -43,19 +41,17 @@
                                 </li>
                               {% endif %}
                             {% endfor %}
-                        </ul>
-                        </div>
-                        <div class="col-md-3 col-sm-12 nav-dropzone-col">
-                            {% with link.originalId as navNode %}
+                        </ul> 
+                      </div>
+                      <div class="col-md-3 col-sm-12 nav-dropzone-col">
+                          {% with link.originalId as navNode %}
                             <div class="mz-sitenav-dropzone">
                               {% dropzone "mega-menu_{0}"|string_format(navNode) scope="site" %}
                             </div>
-                            {% endwith %}
-                        </div>
+                          {% endwith %}  
                       </div>
-                    {% endif %}
-                     
-                  {% endif %}
+                    </div>
+                  {% endif %} 
                 </div>
               </li>
             {% endif %}

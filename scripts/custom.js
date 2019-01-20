@@ -142,11 +142,11 @@ define([
 
   //Navigation
   $(document).on('click', function (event) { 
-    if ($('nav[id="ml-nav"]').hasClass("in")) {
+    if ($('nav[id="mz-nav"]').hasClass("in")) {
       if ($(event.target).parents("div").hasClass("panel-group")) {
       } else {
-        $('nav[id="ml-nav"]').removeClass("in");
-        $('button[data-target="#ml-nav"]').addClass("collapsed").attr("aria-expanded", false);
+        $('nav[id="mz-nav"]').removeClass("in");
+        $('button[data-target="#ml-nav"]').addClass("collapsed").attr("aria-expanded", false); 
       }
     }
   });

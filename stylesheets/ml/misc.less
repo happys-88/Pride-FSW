@@ -244,20 +244,15 @@
     }
     .mz-sitenav-sub-container{        
         background-color: #fff;
-        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.175);
-        top: 35px;
-        right: 0;
+        right: 0; 
         left: 0;
         padding: 15px;
-        border: 1px solid rgba(0,0,0,0.15);
-        background: white;
-        z-index: 2;
         width: 100%;
-        -webkit-transition: visibility 0s ease-out 0s;
+        -webkit-transition: visibility 0s ease-out 0s; 
         -moz-transition: visibility 0s ease-out 0s;
         -ms-transition: visibility 0s ease-out 0s;
         -o-transition: visibility 0s ease-out 0s;
+        box-shadow: -0.2px 4px 12.6px 0.4px rgba(0, 0, 0, 0.15);  
         .mz-sitenav-link {
             padding: 2px 0;
         }
@@ -282,10 +277,7 @@
             }
             .mz-sitenav-sub {
                 text-align: left;
-                .mz-sitenav-item {
-                    width: 20%;
-                }
-                .mz-sitenav-link {
+                .mz-sitenav-link { 
                     height: auto;
                     padding: 0px;
                 }
@@ -363,14 +355,11 @@
             width: 100%;
             
             .mz-sitenav-sub-sub {
-                .mz-sitenav-item {
+                .mz-sitenav-item { 
                     display: block;
                     float: none;
                     width: 100%;
-                    .mz-sitenav-link {
-                        font-weight: normal;
-                    }
-                }
+                } 
             }
         }
     }
@@ -999,10 +988,15 @@ footer {
         }   
     } 
 }        
-.mz-header-global-cart-wrapper, .mz-header-global-cart-wrapper:hover{
-    #global-cart{display: none;}
+.mz-header-global-cart-wrapper,
+.mz-header-global-cart-wrapper:hover{
+    #global-cart{
+        display: none;
+    } 
 }
-.mz-sitenav-sub-container{display: none;}
+.mz-sitenav-sub-container{
+    display: none;
+} 
 .mz-l-paginatedlist{
     .mz-pagingcontrols, .mz-pagenumbers{
         float: right;
