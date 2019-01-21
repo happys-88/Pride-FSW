@@ -14,7 +14,7 @@
         </ul>
         <div class="tab-content mz-mobile-tabs nav nav-tabs">
             {% if model.content.productFullDescription %}
-                <li class="active visible-xs" role="presentation"><a href="#longDescription" aria-controls="longDescription" role="tab" data-toggle="tab">Product Details</a></li> 
+                <li class="visible-xs" role="presentation"><a href="#longDescription" aria-controls="longDescription" role="tab" data-toggle="tab">Product Details</a></li> 
                 <div role="tabpanel" class="tab-pane" id="longDescription"> 
                     <ul>
                         {{ model.content.productFullDescription|safe }}  

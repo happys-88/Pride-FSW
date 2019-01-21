@@ -126,7 +126,7 @@ define([
 		$("#back-to-top").click(function(){
 	    scrollToTop();  
 		});
-    $('.nav-tabs li:eq(0)').tab('show');
+    $('.nav-tabs li:eq(0) a').tab('show');
 	}); 
 
   $("#resetPassword").blur(function() { 
