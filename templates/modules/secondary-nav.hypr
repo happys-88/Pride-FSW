@@ -11,7 +11,7 @@
                       {% if link.items %} 
                         target="_self"
                         class="collapsed"
-                        data-toggle="collapse" data-parent="#accordion" data-target="#main-nav-{{link.categoryCode}}" aria-expanded="false" aria-controls="main-nav-{{link.categoryCode}}"
+                        data-toggle="collapse" data-parent="#accordion" data-target="#main-navigation-{{link.categoryCode}}" aria-expanded="false" aria-controls="main-navigation-{{link.categoryCode}}"
                       {% endif %}
                       {% if not link.items %} href="{{link.url}}" {% endif %}>
                       {{link.name|replace(themeSettings.columnBreaker, ""|replace("_", " ")|safe}}
@@ -23,7 +23,7 @@
                   </h4> 
                 </div>
                 {% if link.items %}
-                <div id="main-nav-{{link.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="main-nav-heading-{{link.categoryCode}}">
+                <div id="main-navigation-{{link.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="main-nav-heading-{{link.categoryCode}}">
                   <div class="panel-body">
 
                     <div class="panel-group" id="sub-accordion-{{link.categoryCode}}" role="tablist" aria-multiselectable="true">

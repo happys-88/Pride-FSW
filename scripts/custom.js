@@ -146,7 +146,7 @@ define([
       if ($(event.target).parents("div").hasClass("panel-group")) {
       } else {
         $('nav[id="mz-nav"]').removeClass("in");
-        $('button[data-target="#ml-nav"]').addClass("collapsed").attr("aria-expanded", false); 
+        $('button[data-target="#mz-nav"]').addClass("collapsed").attr("aria-expanded", false); 
       }
     }
   });

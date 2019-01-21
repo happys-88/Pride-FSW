@@ -668,7 +668,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             var headingElemnt = $(this).parent().parent().find("a[aria-controls]");
             if ($(this).text().trim() === "" && headingElemnt.data("target")) {
                 headingElemnt.find("span").hide();
-                headingElemnt.attr("href", "/c/" + headingElemnt.data("target").replace("#sub-nav-", "").replace("#main-nav-", ""));
+                headingElemnt.attr("href", "/c/" + headingElemnt.data("target").replace("#sub-nav-", "").replace("#main-navigation-", ""));
                 headingElemnt.removeAttr("aria-expanded aria-controls data-toggle role");
             }
         });
