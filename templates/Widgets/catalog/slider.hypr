@@ -3,60 +3,66 @@
         {% if model.config.slideImageOne %}
             <div class="slide">
                 <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageOne.imageUrl }}');" {% if model.config.slideLinkOne %}href="{{ model.config.slideLinkOne }}"{% endif %}></a>
-                <div class="mz-slide-details">
-                    {% if model.config.slideTitleOne %}
-                        <h4>{{ model.config.slideTitleOne }}</h4>
-                    {% endif %}
-                    {% if model.config.slideTitleMainHeadingOne %}
-                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingOne }}</h3>
-                    {% endif %}
-                    {% if model.config.slideShortDescOne %}
-                        <h3>{{ model.config.slideShortDescOne }}</h3>
-                    {% endif %}
-                    {% if model.config.addBtnTitleOne %}
-                        <button>{{ model.config.addBtnTitleOne }}</button>
-                    {% endif %}
-                </div>
+                {% if model.config.slideTitleOne or model.config.slideTitleMainHeadingOne or slideShortDescOne or model.config.addBtnTitleOne %}
+                    <div class="mz-slide-details">
+                        {% if model.config.slideTitleOne %}
+                            <h4>{{ model.config.slideTitleOne }}</h4>
+                        {% endif %}
+                        {% if model.config.slideTitleMainHeadingOne %}
+                            <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingOne }}</h3>
+                        {% endif %}
+                        {% if model.config.slideShortDescOne %}
+                            <h3>{{ model.config.slideShortDescOne }}</h3>
+                        {% endif %}
+                        {% if model.config.addBtnTitleOne %}
+                            <button>{{ model.config.addBtnTitleOne }}</button>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
 
         {% if model.config.slideImageTwo %}
             <div class="slide">
                 <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageTwo.imageUrl }}');" {% if model.config.slideLinkTwo %}href="{{ model.config.slideLinkTwo }}"{% endif %}></a>
-                <div class="mz-slide-details">
-                    {% if model.config.slideTitleTwo %}
-                        <h4>{{ model.config.slideTitleTwo }}</h4>
-                    {% endif %}
-                    {% if model.config.slideTitleMainHeadingTwo %}
-                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingTwo }}</h3>
-                    {% endif %}
-                    {% if model.config.slideShortDescTwo %}
-                        <h3>{{ model.config.slideShortDescTwo }}</h3>
-                    {% endif %}
-                    {% if model.config.addBtnTitleTwo %}
-                        <button>{{ model.config.addBtnTitleTwo }}</button>
-                    {% endif %}
-                </div>
+                {% if model.config.slideTitleTwo or model.config.slideTitleMainHeadingTwo or slideShortDescTwo or model.config.addBtnTitleTwo %}
+                    <div class="mz-slide-details">
+                        {% if model.config.slideTitleTwo %}
+                            <h4>{{ model.config.slideTitleTwo }}</h4>
+                        {% endif %}
+                        {% if model.config.slideTitleMainHeadingTwo %}
+                            <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingTwo }}</h3>
+                        {% endif %}
+                        {% if model.config.slideShortDescTwo %}
+                            <h3>{{ model.config.slideShortDescTwo }}</h3>
+                        {% endif %}
+                        {% if model.config.addBtnTitleTwo %}
+                            <button>{{ model.config.addBtnTitleTwo }}</button>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
 
         {% if model.config.slideImageThree %}
             <div class="slide">
                 <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageThree.imageUrl }}');" {% if model.config.slideLinkThree %}href="{{ model.config.slideLinkThree }}"{% endif %}></a>
-                <div class="mz-slide-details">
-                    {% if model.config.slideTitleThree %}
-                        <h4>{{ model.config.slideTitleThree }}</h4>
-                    {% endif %}
-                    {% if model.config.slideTitleMainHeadingThree %}
-                        <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingThree }}</h3>
-                    {% endif %}
-                    {% if model.config.slideShortDescThree %}
-                        <h3>{{ model.config.slideShortDescThree }}</h3>
-                    {% endif %}
-                    {% if model.config.addBtnTitleThree %}
-                        <button>{{ model.config.addBtnTitleThree }}</button>
-                    {% endif %}
-                </div>
+                {% if model.config.slideTitleThree or model.config.slideTitleMainHeadingThree or slideShortDescThree or model.config.addBtnTitleThree %}
+                    <div class="mz-slide-details">
+                        {% if model.config.slideTitleThree %}
+                            <h4>{{ model.config.slideTitleThree }}</h4>
+                        {% endif %}
+                        {% if model.config.slideTitleMainHeadingThree %}
+                            <h3 class="mz-slider-main-title">{{ model.config.slideTitleMainHeadingThree }}</h3>
+                        {% endif %}
+                        {% if model.config.slideShortDescThree %}
+                            <h3>{{ model.config.slideShortDescThree }}</h3>
+                        {% endif %}
+                        {% if model.config.addBtnTitleThree %}
+                            <button>{{ model.config.addBtnTitleThree }}</button>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
     </div>
