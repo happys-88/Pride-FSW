@@ -16,16 +16,16 @@
             <div class="mz-product-top-content">
                
                 {% with model|get_product_attribute("tenant~brand") as brandName %}
-                  {% set_var brand=true %}
+                  {% set_var noBrandCat=true %}
                     {% for brandCat in model.categories %}
                         {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
-                        {% set_var brand=false %}
+                        {% set_var noBrandCat=false %}
                             <div class="mz-brand">
                                 <a href='{% make_url "category" brandCat %}'>{{ brandName.values|first|prop("value") }}</a>
                             </div>
                         {% endif %}
                     {% endfor %}
-                    {% if brand %}
+                    {% if noBrandCat %} 
                         <div class="mz-brand">
                             <p>{{ brandName.values|first|prop("value") }}</p>  
                         </div>
