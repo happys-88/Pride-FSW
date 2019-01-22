@@ -14,19 +14,22 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="mz-product-top-content">
-                {% comment %} remove after brand category avialbale in catalog {% endcomment %}
-                {% comment %} <div class="mz-brand">
-                    <a>Pride</a>
-                </div> {% endcomment %}
+               
                 {% with model|get_product_attribute("tenant~brand") as brandName %}
-                 
+                  {% set_var brand=true %}
                     {% for brandCat in model.categories %}
                         {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
+                        {% set_var brand=false %}
                             <div class="mz-brand">
                                 <a href='{% make_url "category" brandCat %}'>{{ brandName.values|first|prop("value") }}</a>
                             </div>
                         {% endif %}
                     {% endfor %}
+                    {% if brand %}
+                        <div class="mz-brand">
+                            <p>{{ brandName.values|first|prop("value") }}</p>  
+                        </div>
+                    {% endif %}
                 {% endwith %}
                 <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|replace("'","&rsquo;")|safe }}</h1>
                 
