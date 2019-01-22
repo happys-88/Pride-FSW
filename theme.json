@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "aebff0cb5a1b77ac10e7a022699486ffa9ded871"
+      "commit": "3a1741408049b87115957ce6a850faabeba283bf"
     },
     "baseThemeChannel": "stable"
   },
@@ -880,7 +880,7 @@
     "companyLogo": "/resources/images/logo-sm.png",
     "facetMoreColorCount": 3,
     "enableQuickView": true,
-    "categoryEntityName": "categoryattributes@pride", 
+    "categoryEntityName": "categoryattributes@pride",
     "globalPageHeaderLogoSM": null,
     "globalPageHeaderLogoXS": null,
     "enableProductCarousel": true,
