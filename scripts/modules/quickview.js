@@ -280,6 +280,9 @@ define([
                         $('[data-mz-validationmessage-for="quantity"]').text("");
                         blockUiLoader.unblockUi();
                         slider.closeQuickviewSlider();
+                        $('html,body').animate({
+                            scrollTop: $('header').offset().top
+                        }, 1000); 
                     }
                 } else {
                     $('[data-mz-validationmessage-for="quantity"]').text("Quantity can't be zero.");
