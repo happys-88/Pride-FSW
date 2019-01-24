@@ -15,7 +15,7 @@
         
         <!--Color Swatch-->
         {% for option in model.options %}
-            {% if option.attributeFQN=="tenant~color" and option.values.length!=0 %}
+            {% if option.attributeFQN=="tenant~color" and option.values.length > 1 %}
                 <div class="mz-product-swatch">
                     <div class="row">
                         <ul>
