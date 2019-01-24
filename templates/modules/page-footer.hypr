@@ -11,10 +11,9 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-4 pull-right">
+			<div class="col-xs-12 col-sm-4 pull-right mz-signup-social">
 				<h4><i class="fa fa-envelope"></i> Sign up for Emails &amp; Exclusive Offers</h4>  
 				<div>
-					
 					<form class="form form-footer-cont">
 					  <div class="form-group">
 					  	<div class="input-group"> 	
@@ -55,22 +54,22 @@
 			</div>
 			<div class="col-xs-12 col-sm-8 regular-footer {% if themeSettings.footerEnableMini %}mini-footer-on{% else %}mini-footer-off{% endif %}">
 				<div class="row">
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12 col-sm-6 mz-footer-nav">
 						<div class="row">
-							<div class="col-sm-6 col-xs-12 mz-contact-open">
+							<div class="col-sm-6 col-xs-12 mz-footer-links mz-contact-open">
 								{% dropzone "footer-cat-links-col1" scope="site" %}
 							</div>
-							<div class="col-sm-6 col-xs-12">
+							<div class="col-sm-6 col-xs-12 mz-footer-links">
 								{% dropzone "footer-cat-links-col2" scope="site" %}
 							</div>
 						</div>
 					</div>	
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12 col-sm-6 mz-footer-nav">
 						<div class="row">
-							<div class="col-sm-6 col-xs-12 top-pad">
+							<div class="col-sm-6 col-xs-12 mz-footer-links">
 								{% dropzone "footer-cat-links-col3" scope="site" %}
 							</div>
-							<div class="col-sm-6 col-xs-12 top-pad">
+							<div class="col-sm-6 col-xs-12 mz-footer-links">
 								{% dropzone "footer-cat-links-col4" scope="site" %}
 							</div>
 						</div>

@@ -113,13 +113,13 @@
 			{% endblock page-header %}
 
             {% block mobile-nav %}
-                <div class="visible-xs">
+                <div class="mz-mob-navigation">
                      {% include "modules/mobile-nav" %}
                 </div>
             {% endblock mobile-nav %}
 
             {% block site-nav %}
-                <div class="hidden-xs">
+                <div class="mz-desktop-navigation">
                  {% include "modules/site-nav" %}
                 </div>
             {% endblock site-nav %}
