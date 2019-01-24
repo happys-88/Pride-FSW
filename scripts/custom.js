@@ -62,12 +62,12 @@ define([
     $(".regular-footer ul:not(:first)").addClass("list");
     var allPanels = $('.regular-footer .list');
     var windowWidth = $(window).width();
-    if(windowWidth <= 767){ 
+    if(windowWidth <= 768){ 
       $(".regular-footer").addClass("mobile");
     }
     $(window).scroll(function() {
       windowWidth = $(window).width();
-      if(windowWidth <= 767){ 
+      if(windowWidth <= 768){ 
         if(!$(".regular-footer").hasClass("mobile")){
          $(".regular-footer").addClass("mobile");
         }
