@@ -25,7 +25,8 @@
                 </ul>
             {% endif %}
         </div>
-        <div id="filterOptions">
+
+        <div id="filterOptions"> 
             {% if facetSettings.length > 0 %}
                 {% for facet in model.facets %}
                     {% for facetSetting in facetSettings%}
@@ -86,12 +87,8 @@
                                         {% if facet.values and facet.field == "tenant~color" %}
                                             {% include "modules/facets/facet-color" with allfacets=facet.values and isDirectory="true" %}
                                         {% else %}
-                                            {% if facet.values and facet.facetType == "RangeQuery" %}
-                                                {% include "modules/facets/facet-price" with prices=facet.values and showCount=true and isDirectory=true %}
-                                            {%else%}
                                                 {% include "modules/facets/facet-text" with texts=facet.values and isDirectory=true %}
                                             {% endif %}
-                                        {% endif %}
                                     </ul>
                                 </div>
                             {% endif %}
@@ -114,9 +111,9 @@
                                         {% include "modules/facets/facet-color" with allfacets=facet.values and isDirectory="true" %}
                                     {% else %}
                                         {% if facet.values and facet.facetType == "RangeQuery" %}
-                                            {% include "modules/facets/facet-price" with prices=facet.values and showCount=true and isDirectory=true %}
+                                                {% include "modules/facets/facet-text" with texts=facet.values and showCount=true and isDirectory=true and IsRangeQuery=true %}
                                         {%else%}
-                                            {% include "modules/facets/facet-text" with texts=facet.values and isDirectory=true %}
+                                                {% include "modules/facets/facet-text" with texts=facet.values and isDirectory=true and showCount=true  %}
                                         {% endif %}
                                     {% endif %}
                                 </ul>
