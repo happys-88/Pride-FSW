@@ -558,17 +558,36 @@
     .mz-searchresults {
         .mz-l-pagecontent {
             .mz-l-container {
-                .mz-pagetitle {
-                    padding: 0 15px;
-                    font-size: 18px;
-                    margin-top: 16px;
-                }
+                .title-sortby-wrappper{
+                    margin: 0;
+                    .mz-sortby{
+                        border-bottom: 1px solid #000;
+                    }
+                    .mz-pagetitle {
+                        
+                        font-size: 18px;
+                        margin-top: 16px;
+                        display: none;
+                    }
+                }  
+                h1 {
+                    &.mz-pagetitle {
+                         font-size: 18px;
+                         margin-bottom: 15px;
+                         padding: 0 15px 12px;
+                         margin-top: 0;
+                     }
+                 }            
             }
             .mz-l-paginatedlist {
                 .main-directory-container{
 				    float: left !important;
             	}
-        	}
+            }
+            
+            
+            
+           
 	 	}
    	}
 
