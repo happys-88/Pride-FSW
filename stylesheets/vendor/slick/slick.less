@@ -21,11 +21,9 @@
     display: block;
     margin: 0 15px;
     padding: 0;
-
     &:focus {
         outline: none;
     }
-
     &.dragging {
         cursor: pointer;
         cursor: hand;
@@ -48,17 +46,14 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-
     &:before,
     &:after {
         content: "";
         display: table;
     }
-
     &:after {
         clear: both;
     }
-
     .slick-loading & {
         visibility: hidden;
     }
@@ -68,29 +63,22 @@
     float: left;
     height: 100%;
     min-height: 1px;
-
     [dir="rtl"] & {
         float: right;
     }
-
     &.slick-loading img {
         display: none;
     }
-
     display: none;
-
     &.dragging img {
         pointer-events: none;
     }
-
     .slick-initialized & {
         display: block;
     }
-
     .slick-loading & {
         visibility: hidden;
     }
-
     .slick-vertical & {
         display: block;
         height: auto;
@@ -102,7 +90,6 @@
     &.slick-hidden {
         display: none;
     }
-
     &.slick-disabled {
         opacity: 0.5;
     }
@@ -134,11 +121,9 @@
     position: absolute;
     top: 40%;
     cursor: pointer;
-
     &.fa-angle-left {
         left: 0;
     }
-
     &.fa-angle-right {
         right: 0;
     }
@@ -148,30 +133,25 @@
 .category-container {
     text-align: center;
     margin: 30px 0;
-
     .slick-cont {
         img {
             max-width: 100%;
         }
-
         .mz-productlisting-imageplaceholder {
             .no-image(100%, 260px);
             margin: 0 auto;
         }
-
         .mz-cc-item {
             text-align: center;
             padding: 0 @defaultGutter;
         }
     }
-
     .category-carousel-heading {
         text-align: center;
         font-size: 24px;
         text-transform: uppercase;
         position: relative;
         margin: 20px 0 10px;
-
         &:before {
             height: 1px;
             position: absolute;
@@ -186,7 +166,6 @@
             content: "";
             display: inline-block;
         }
-
         span {
             background: @colorWhite;
             padding: 0 @defaultGutter;
@@ -195,40 +174,37 @@
 }
 
 /* Slider */
+
 .slick-loading .slick-list {
     background: #fff url('./vendor/slick/ajax-loader.gif') center center no-repeat;
 }
 
 /* Icons */
+
 @font-face {
     font-family: 'slick';
     font-weight: normal;
     font-style: normal;
-
     src: url('./vendor/slick/fonts/slick.eot');
     src: url('./vendor/slick/fonts/slick.eot?#iefix') format('embedded-opentype'), url('./vendor/slick/fonts/slick.woff') format('woff'), url('./vendor/slick/fonts/slick.ttf') format('truetype'), url('./vendor/slick/fonts/slick.svg#slick') format('svg');
 }
 
 /* Arrows */
+
 .slick-prev,
 .slick-next {
     font-size: 0;
     line-height: 0;
-
     position: absolute;
     top: 50%;
-
     display: block;
-
     width: 20px;
     height: 20px;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
-
     cursor: pointer;
-
     color: transparent;
     border: none;
     outline: none;
@@ -260,7 +236,7 @@
 .slick-next:before {
     font-family: 'slick';
     font-size: 20px;
-    line-height: 1; 
+    line-height: 1;
     opacity: .75;
     color: white;
     -webkit-font-smoothing: antialiased;
@@ -302,8 +278,10 @@
 }
 
 /* Dots */
+
 .slick-dotted.slick-slider {
     margin-bottom: 30px;
+    margin: 0;
 }
 
 .slick-dots {
@@ -324,7 +302,6 @@
     height: 20px;
     margin: 0 5px;
     padding: 0;
-
     cursor: pointer;
 }
 
@@ -364,12 +341,12 @@
     content: '•';
     text-align: center;
     opacity: .25;
-    color: black;
+    color: @btnBgColor;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 .slick-dots li.slick-active button:before {
     opacity: .75;
-    color: black;
+    color: @btnBgColor;
 }
