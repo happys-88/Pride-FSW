@@ -2,17 +2,15 @@
 {% if model.content.productImages.length > 1 %}
     <div class="col-sm-2 col-xs-12 padding-0">
         <figure class="mz-productimages-thumbs" data-length="{{model.content.productImages.length}}">
-        {% if pageContext.isMobile %}
             <div class="visible-xs mobile-carousal">
                 <ul id="productmobile-Carousel" class="products_list_mobile">
                 {% for image in model.content.productImages %}
                     <li data-label="{{image.imageLabel}}">
-                        <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}"/>
+                        <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}" {% if not forloop.first %}hidden=true {% endif %} {% if not forloop.first %}hidden=true {% endif %}/>
                     </li>
                 {% endfor %}
                 </ul>
             </div>
-        {% else %}
             <div class="hidden-xs">
                 <ul {% if model.content.productImages.length > 4 %} id="productpager-Carousel"{% endif %} class="products_list ">
                 {% for image in model.content.productImages %}
@@ -24,7 +22,6 @@
                 {% endfor %}
                 </ul>
             </div>
-        {% endif %}
         </figure>
     <figure class="mz-productimages-pager col-xs-12 visible-xs"></figure>
     </div>

@@ -1,8 +1,6 @@
 /*** Site Changes for Mobile screens ***/
 
 @media @mz-xs-media-query {
-    
-
     #mz-drop-zone-shop-now-widget {
         .mz-cms-col-6-12 {
             &:first-child {
@@ -88,28 +86,33 @@
         }
     }
     .why-us-desc {
-       // height: 90px;
+        // height: 90px;
         overflow: hidden;
     }
-    .mz-homepage  {
-		.shop-by-brand {
-			.shop-all-brands {
-			    margin: 15px 0 20px;
-			    a {
-				    display: block;
-				    text-align: center;
-				}
-			}
-		}
-		.mz-featured-experts {
-			.text-right {
-			    text-align: center;
-			    float: left;
-			    width: 100%;
-			    margin: 30px 0 10px;
-			}
-		}
-	}
+    .mz-homepage {
+        .shop-by-brand {
+            .shop-all-brands {
+                margin: 15px 0 20px;
+                a {
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+        .mz-featured-experts {
+            .text-right {
+                text-align: center;
+                float: left;
+                width: 100%;
+                margin: 30px 0 10px;
+            }
+        }
+    }
+    .product-wrapper {
+        .mz-breadcrumbs {
+            padding-left: 0;
+        }
+    }
     .mz-category {
         .mz-l-paginatedlist-header,
         .mz-l-paginatedlist-footer {
@@ -117,18 +120,18 @@
                 display: none;
             }
         }
-          .mz-productlist {
+        .mz-productlist {
             .mz-productlist-list {
                 .mz-productlist-item {
-                 .mz-productlisting-image {
-                    min-height: unset;
-                    img {
-                    width: 100%;
+                    .mz-productlisting-image {
+                        min-height: unset;
+                        img {
+                            width: 100%;
+                        }
+                    }
                 }
-              }
-             }
-           }
-         }
+            }
+        }
     }
     .mz-l-paginatedlist {
         .mz-l-paginatedlist-header {
@@ -177,7 +180,6 @@
             }
         }
     }
-
     #back-to-top {
         font-size: 23px;
         width: 45px;
@@ -185,7 +187,6 @@
         right: 15px;
         bottom: 80px;
     }
-
     /**** Cart Page ****/
     .mz-cart {
         .mz-price-total-container {
@@ -233,10 +234,15 @@
                 }
             }
         }
-    }
-
-    // Product Image
+    } // Product Image
     .mz-product {
+        .mz-l-pagewrapper {
+            .mz-l-pagecontent {
+                .mz-l-container {
+                    padding: 0;
+                }
+            }
+        }
         .mz-productdetail {
             padding: 0;
         }
@@ -304,8 +310,6 @@
             padding-right: 0;
         }
     }
-
-
     /**** Checkout Page ****/
     .mz-checkout {
         #page-content {
@@ -380,7 +384,6 @@
             }
         }
     }
-
     /**** My Account ****/
     #liteRegistrationModal {
         .modal-dialog {
@@ -492,9 +495,7 @@
         .mz-pagetitle {
             font-size: 20px;
         }
-    }
-
-    //Left Nav Page
+    } //Left Nav Page
     #contactus-container {
         .form-group {
             label {
@@ -526,9 +527,7 @@
             padding-left: 0;
             padding-right: 0;
         }
-    }
-
-	// Category Gateway Page
+    } // Category Gateway Page
     .mz-category-gateway {
         .mz-l-pagecontent {
             padding: 25px 15px;
@@ -552,9 +551,7 @@
                 margin: 15px 0 30px;
             }
         }
-    }
-
-    // Category & Search Page
+    } // Category & Search Page
     .mz-category,
     .mz-searchresults {
         .mz-facetingform {
@@ -566,8 +563,8 @@
                 }
             }
         }
-        .mz-l-paginatedlist-header{
-            .title-sortby-wrappper{
+        .mz-l-paginatedlist-header {
+            .title-sortby-wrappper {
                 .mz-pagetitle {
                     margin-bottom: 8px;
                 }
@@ -581,55 +578,46 @@
                     margin-bottom: 8px;
                 }
             }
-        }        
-    
+        }
     }
     .mz-searchresults {
         .mz-l-pagecontent {
             .mz-l-container {
-                .title-sortby-wrappper{
+                .title-sortby-wrappper {
                     margin: 0;
-                    .mz-sortby{
+                    .mz-sortby {
                         border-bottom: 1px solid #000;
                     }
                     .mz-pagetitle {
-                        
                         font-size: 18px;
                         margin-top: 16px;
                         display: none;
                     }
-                }  
+                }
                 h1 {
                     &.mz-pagetitle {
-                         font-size: 18px;
-                         margin-bottom: 15px;
-                         padding: 0 15px 12px;
-                         margin-top: 0;
-                     }
-                 }            
+                        font-size: 18px;
+                        margin-bottom: 15px;
+                        padding: 0 15px 12px;
+                        margin-top: 0;
+                    }
+                }
             }
             .mz-l-paginatedlist {
-                .main-directory-container{
-				    float: left !important;
-            	}
+                .main-directory-container {
+                    float: left !important;
+                }
             }
-            
-            
-            
-           
-	 	}
-   	}
-
-
+        }
+    }
     #confirmation-container {
         padding: 0;
     }
 }
 
-
 //Header and footer for tablet
 @media screen and (max-width: 768px) {
-	.mz-pageheader {
+    .mz-pageheader {
         padding-bottom: 0;
         .login-link-text {
             font-size: 0;
@@ -707,19 +695,19 @@
         }
     }
     .mz-desktop-navigation {
-    	display: none;
+        display: none;
     }
     .mz-mob-navigation {
-		.mz-sitenav {
-			&.in {
-				display: block;				
-			}
-		}
-	}
+        .mz-sitenav {
+            &.in {
+                display: block;
+            }
+        }
+    }
     .mz-sitenav {
-    	.container {
-    		padding: 0;
-    	}
+        .container {
+            padding: 0;
+        }
         .panel-group {
             margin-bottom: -1px;
             .panel {
@@ -789,25 +777,25 @@
         }
         .mz-sitenav-item {
             border-bottom: 1px solid #ccc;
-    		display: block;
-    		float: none;
+            display: block;
+            float: none;
             padding: 1px 45px;
         }
     }
-	footer {
+    footer {
         padding: 18px 0 20px;
         .mz-signup-social,
         .regular-footer,
         .mz-footer-nav,
         .mz-footer-links {
-        	clear: both;
-			float: none!important;
-			width: 100%;
+            clear: both;
+            float: none !important;
+            width: 100%;
         }
         .mz-signup-social,
         .mz-footer-links {
-        	max-width: 380px;
-        	margin: 0 auto;
+            max-width: 380px;
+            margin: 0 auto;
         }
         .container-menu {
             width: 100%;
@@ -899,41 +887,38 @@
             }
         }
         .form-footer-cont {
-	        .form-group {
-	            float: none;
-	        }
-	        .control-label {
-	            text-align: left;
-	        }
-	    }
+            .form-group {
+                float: none;
+            }
+            .control-label {
+                text-align: left;
+            }
+        }
         input[type="email"],
         input[type="text"] {
             padding: 21px 9px;
         }
-    }
-    // for list view  in images 
+    } // for list view  in images 
     .mz-productlist {
         .list-view {
             .mz-productlisting-info {
                 padding: 0 0 0 50px;
             }
         }
-    }
-    //homepage
-    .mz-shop-by-category  {
+    } //homepage
+    .mz-shop-by-category {
         .mz-shop-by-categorylist {
-            .mz-shop-by-categorylist-item  {
-                .mz-categorylisting-info{
-                        h3 {
-                            margin: 0px;
-                        }
+            .mz-shop-by-categorylist-item {
+                .mz-categorylisting-info {
+                    h3 {
+                        margin: 0px;
+                    }
                 }
             }
         }
-    }
-    // for detail page in  price-range
+    } // for detail page in  price-range
     .mz-l-pagewrapper {
-       .mz-productdetail-wrap {
+        .mz-productdetail-wrap {
             #product-detail {
                 .mz-l-stack-section {
                     .mz-price {
@@ -943,7 +928,7 @@
                 }
             }
         }
-    } 
+    }
 }
 
 //Logo for small device

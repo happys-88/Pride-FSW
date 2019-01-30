@@ -41,7 +41,7 @@ require([
             nextText: '<i class="fa fa-angle-up" aria-hidden="true"></i>',
             prevText: '<i class="fa fa-angle-down" aria-hidden="true"></i>',
             infiniteLoop: false,
-            hideControlOnEnd: true,
+           // hideControlOnEnd: true,
             pager: false,
             mode: 'vertical',
             adaptiveHeight: false
@@ -84,7 +84,7 @@ require([
             nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
             prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
             infiniteLoop: false,
-            hideControlOnEnd: true,
+           // hideControlOnEnd: true,
             pager: true,
             pagerCustom: '#productCarousel-pager'
         });
