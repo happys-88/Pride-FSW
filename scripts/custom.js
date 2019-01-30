@@ -91,18 +91,19 @@ define([
         $(this).addClass("open").next().slideDown();
       }
     });
-    // Footer Toggle ends 
-
-    $(".why-read-more").click(function(){        
+    // Why_FSW read more 
+    var height_whyusdesc = $(".why-us-desc.mobile-desc").height();
+    $(".why-us-desc.mobile-desc").height(90);
+    $(".why-read-more").click(function () {
       $(this).toggleClass("show-content");
       var showing = $(this);
-      if (showing.hasClass("show-content")){  
-        $(".why-us-desc").animate({height: '100%'}, 1000); 
+      if (showing.hasClass("show-content")) {
+        $(".why-us-desc.mobile-desc").animate({ height: height_whyusdesc + "px" }, 1000);
       }
       else {
-        $(".why-us-desc").animate({ height: '90px' }, "slow");   
-      }    
-    });   
+        $(".why-us-desc.mobile-desc").animate({ height: '90px' }, "slow");
+      }
+    });  
 
     $(document).on('click', '.mz-mobile-tabs li', function () {
       $(this).addClass("active");
@@ -166,6 +167,15 @@ define([
         scrollTop: position
       }, 500);
     });
+
+    //placeholder insert in thirdparty subscribe-form
+    var subscribe_form = setInterval(subscribe_placeholder, 1000);
+    function subscribe_placeholder() {
+      if ($(".ctct-form-element").length >= 1) {
+        $(".ctct-form-element").attr("placeholder", "Enter Your Email");
+        clearInterval(subscribe_form);
+      }
+    } 
     
   });  
 //brand
