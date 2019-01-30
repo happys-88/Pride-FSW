@@ -33,7 +33,7 @@ require([
 
     function initSlider() {
         slider = $('#productpager-Carousel').bxSlider({
-            slideWidth: 800,
+            slideWidth: 90,
             minSlides: 4,
             maxSlides: 4,
             moveSlides: 1,

@@ -7,45 +7,45 @@
     {% include "modules/product/product-top-carousel" %}
     {% endif %}    
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
-            <div data-mz-productimages class="mz-productimages mz-product-left-container margin-top-15">
-                {% include "modules/product/product-images" %}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <div class="mz-product-top-content">
-               
-                {% with model|get_product_attribute("tenant~brand") as brandName %}
-                  {% set_var noBrandCat=true %}
-                    {% for brandCat in model.categories %}
-                        {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
-                        {% set_var noBrandCat=false %}
-                            <div class="mz-brand">
-                                <a href='{% make_url "category" brandCat %}'>{{ brandName.values|first|prop("value") }}</a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                    {% if noBrandCat %} 
-                        <div class="mz-brand">
-                            <p>{{ brandName.values|first|prop("value") }}</p>  
-                        </div>
-                    {% endif %}
-                {% endwith %}
-                <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|replace("'","&rsquo;")|safe }}</h1>
-                
-                <h4 class="mz-productcodes-productcode p-3" itemprop="sku">{{ labels.item}} # {{ model.productCode }}</h4>
-                
-            </div>
-            <div class="clearfix"></div>
-            <div class="mz-productdetail-wrap">
-                {% if model.productType != themeSettings.familyProductType %}
-                    {% include "modules/common/message-bar" %}
-                {% endif %}
-                <div id="product-detail" class="product-detail mz-productdetail mz-l-stack">
-                    {% include "modules/product/product-detail" %}
+            <div class="col-xs-12 col-sm-6">
+                <div data-mz-productimages class="mz-productimages mz-product-left-container margin-top-15">
+                    {% include "modules/product/product-images" %}
                 </div>
             </div>
-        </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="mz-product-top-content">
+                
+                    {% with model|get_product_attribute("tenant~brand") as brandName %}
+                    {% set_var noBrandCat=true %}
+                        {% for brandCat in model.categories %}
+                            {% if brandCat.content.name == {{ brandName.values|first|prop("value") }} %}
+                            {% set_var noBrandCat=false %}
+                                <div class="mz-brand">
+                                    <a href='{% make_url "category" brandCat %}'>{{ brandName.values|first|prop("value") }}</a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% if noBrandCat %} 
+                            <div class="mz-brand">
+                                <p>{{ brandName.values|first|prop("value") }}</p>  
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|replace("'","&rsquo;")|safe }}</h1>
+                    
+                    <h4 class="mz-productcodes-productcode p-3" itemprop="sku">{{ labels.item}} # {{ model.productCode }}</h4>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <div class="mz-productdetail-wrap">
+                    {% if model.productType != themeSettings.familyProductType %}
+                        {% include "modules/common/message-bar" %}
+                    {% endif %}
+                    <div id="product-detail" class="product-detail mz-productdetail mz-l-stack">
+                        {% include "modules/product/product-detail" %}
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="row">
         <div class="social-sharing col-md-9 col-xs-12 mz-reset-padding-left{% if model.content.productImages.length <=1 %} mz-share-with-container-other{% endif %}">
