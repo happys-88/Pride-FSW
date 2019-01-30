@@ -92,6 +92,14 @@ define([
       }
     });
     // Why_FSW read more 
+    $(window).bind("resize", function () {
+      if ($(this).width() <= 768) {
+        $('.why-us-desc').addClass('mobile-desc');
+      }
+      else {
+        $('.why-us-desc').removeClass('mobile-desc');
+      }
+    }).resize();
     var height_whyusdesc = $(".why-us-desc.mobile-desc").height();
     $(".why-us-desc.mobile-desc").height(90);
     $(".why-read-more").click(function () {
