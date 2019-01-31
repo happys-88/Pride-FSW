@@ -91,17 +91,18 @@ define([
         $(this).addClass("open").next().slideDown();
       }
     });
-    // Why_FSW read more 
+  // Why_FSW read more 
+    var height_whyusdesc = $(".why-us-desc").height();
     $(window).bind("resize", function () {
       if ($(this).width() <= 768) {
         $('.why-us-desc').addClass('mobile-desc');
+        $(".why-us-desc.mobile-desc").height(90);
       }
       else {
         $('.why-us-desc').removeClass('mobile-desc');
+        $(".why-us-desc").css("height","auto");
       }
     }).resize();
-    var height_whyusdesc = $(".why-us-desc.mobile-desc").height();
-    $(".why-us-desc.mobile-desc").height(90);
     $(".why-read-more").click(function () {
       $(this).toggleClass("show-content");
       var showing = $(this);
@@ -112,8 +113,6 @@ define([
         $(".why-us-desc.mobile-desc").animate({ height: '90px' }, "slow");
       }
     });  
- 
-    
     // Back To Top
   	function scrollToTop(){
     	$("body, html").animate({ 
