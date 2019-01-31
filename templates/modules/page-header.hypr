@@ -24,7 +24,7 @@
                         {% include "modules/page-header/utility-nav" %}
                     {% endblock utility-nav %}            
                 </div>
-                <div class="mz-header-global-cart-wrapper" style="display:none;">
+                <div class="mz-header-global-cart-wrapper">
                     {% block global-cart-container %}
                         {% include "modules/page-header/global-cart-container" %}
                     {% endblock global-cart-container %}              
