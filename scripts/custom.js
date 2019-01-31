@@ -112,11 +112,7 @@ define([
         $(".why-us-desc.mobile-desc").animate({ height: '90px' }, "slow");
       }
     });  
-
-    $(document).on('click', '.mz-mobile-tabs li', function () {
-      $(this).addClass("active");
-      $(this).find(".active").prev().addClass("active");
-    }); 
+ 
     
     // Back To Top
   	function scrollToTop(){
@@ -136,6 +132,11 @@ define([
 	    scrollToTop();  
 		});
     $('.nav-tabs li:eq(0) a').tab('show');
+    $(".mz-mobile-tabs").find(".active").prev().addClass("active");
+    $(document).on('click', '.mz-mobile-tabs li', function () {
+      $(this).addClass("active");
+      $(this).find(".active").prev().addClass("active");
+    });
 	}); 
 
   $("#resetPassword").blur(function() { 
