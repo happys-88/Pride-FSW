@@ -90,6 +90,18 @@
         overflow: hidden;
     }
     .mz-homepage {
+
+        .mz-l-pagecontent {
+            padding: 0 15px 25px;
+            .container {
+                .container {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+          }
+
+
         .shop-by-brand {
             .shop-all-brands {
                 margin: 15px 0 20px;
@@ -616,6 +628,11 @@
     #confirmation-container {
         padding: 0;
     }
+     .heading-2{
+        span{
+           padding: 0 8px; 
+        }
+     }
 }
 
 //Header and footer for tablet
@@ -913,10 +930,16 @@
     .mz-shop-by-category {
         .mz-shop-by-categorylist {
             .mz-shop-by-categorylist-item {
+                    min-height: 175px;
                 .mz-categorylisting-info {
+                    padding-top: 10px;
                     h3 {
                         margin: 0px;
                     }
+                }
+                .mz-category-image{
+                    max-height: unset;
+                    min-height: unset;
                 }
             }
         }
