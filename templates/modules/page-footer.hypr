@@ -90,14 +90,16 @@
 			{% block copyright-footer %}			
 	            <div class="row">
 	                <div class="col-xs-12">
-					{% comment %}
-	                	<ul>
-	                		<li><a href="#">Site Map</a></li>
-	                		<li><a href="#">Privacy Policy</a></li>
-	                		<li><a href="#">Terms &amp; Conditions</a></li>
-	                	</ul>
-					{% endcomment %}    
-			       {% dropzone "copyright-footer" scope="site" %}  
+						{% comment %}
+		                	<ul>
+		                		<li><a href="#">Site Map</a></li>
+		                		<li><a href="#">Privacy Policy</a></li>
+		                		<li><a href="#">Terms &amp; Conditions</a></li>
+		                	</ul>
+						{% endcomment %}    
+				        
+						{% if pageContext.isEditMode %}<span class="mz-dropzone-heading">Copyright Links in Footer - HTML Dropzone</span> {% endif %} 
+				        {% dropzone "copyright-footer-links" scope="site" %}   
 	                    <div class="mz-pagefooter-copyright" id="copyright">
 	                        {{ labels.copyRight }} {% now Y %} {{ labels.prideCentric }}
 	                    </div>
