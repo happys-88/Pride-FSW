@@ -87,19 +87,22 @@
 			</div>			
 		</div>
 		<div class="footer-bottom">
-			{% block copyright-footer %}
+			{% block copyright-footer %}			
 	            <div class="row">
 	                <div class="col-xs-12">
+					{% comment %}
 	                	<ul>
 	                		<li><a href="#">Site Map</a></li>
 	                		<li><a href="#">Privacy Policy</a></li>
 	                		<li><a href="#">Terms &amp; Conditions</a></li>
 	                	</ul>
+					{% endcomment %}    
+			       {% dropzone "copyright-footer" scope="site" %}  
 	                    <div class="mz-pagefooter-copyright" id="copyright">
 	                        {{ labels.copyRight }} {% now Y %} {{ labels.prideCentric }}
 	                    </div>
 	                </div>
-	            </div>                
+	            </div>  		
 	        {% endblock copyright-footer%}
 	    </div>
 	</div>
