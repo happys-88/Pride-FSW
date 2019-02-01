@@ -11,38 +11,35 @@ define([
                     infinite: false,
                     slidesToShow: 5,
                     dots: true,
+                    arrows: false, 
                     prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
                     nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
                     responsive: [{
                         breakpoint: 1024,
                         settings: {
-                            arrows: true,
-                            slidesToShow: 5,
-                            dots: false
+                            slidesToShow: 5 
                         }
                     },
                     {
-                        breakpoint: 992,
+                        breakpoint: 992, 
                         settings: {
-                            arrows: true,
-                            slidesToShow: 4,
-                            dots: false
+                            slidesToShow: 4
                         }
                     },
                     {
                         breakpoint: 768,
                         settings: {
-                            arrows: false,
-                            slidesToShow: 3,
-                            dots: true
+                            arrows: true,
+                            slidesToShow: 3, 
+                            dots: false 
                         }
                     },
                     {
                         breakpoint: 460,
                         settings: {
-                            arrows: false,
+                            arrows: true,
                             slidesToShow: 2,
-                            dots: true
+                            dots: false
                         }
                     }
 
@@ -50,5 +47,5 @@ define([
                 });
             }
         };
-        slide.productCarousel();
+        slide.productCarousel(); 
     });
