@@ -22,18 +22,20 @@
 {% endcomment %}
 {% if model.inventoryInfo.manageStock %}
     {% if model.inventoryInfo.onlineStockAvailable and model.inventoryInfo.onlineStockAvailable > 0 %}
-    <div class="mz-stock-info">
-        {{ labels.upcInStock }}
-        {% if model.stockInfo %}
-          {{model.stockInfo}} 
-        {% else %}
-          {% if model.price.salePrice %}
-            {{ model.price.salePrice|currency }} 
-          {% else %}
-              {{model.price.price|currency}} 
-          {% endif %}
+        {% if model.productType!="Family Product" %}
+            <div class="mz-stock-info">
+                {{ labels.upcInStock }}
+                {% if model.stockInfo %}
+                {{model.stockInfo}} 
+                {% else %}
+                {% if model.price.salePrice %}
+                    {{ model.price.salePrice|currency }} 
+                {% else %}
+                    {{model.price.price|currency}} 
+                {% endif %}
+                {% endif %}
+            </div>
         {% endif %}
-    </div>
     {% else %}
       {% if model.inventoryInfo.onlineStockAvailable === 0 %}
           {% if model.inventoryInfo.outOfStockBehavior != "AllowBackOrder" %}

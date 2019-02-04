@@ -264,29 +264,33 @@
             .mz-productimages {
                 .mz-productimages-thumbs {
                     // width: 339px;
-                    #productpager-Carousel {
-                        &.products_list {
-                            height: 74px;
-                            margin-top: 8px;
-                            li {
-                                //  border: 1px solid #e0e0e0;
-                                height: 80px;
-                                .mz-productimages-thumb {
-                                    outline: 0;
-                                }
-                                &.active {
-                                    .mz-productimages-thumb {
-                                        img {
-                                            border: 1px solid #2b648c; //border: 0;
-                                            width: 100%;
-                                            display: block;
-                                            margin: 0 auto;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                   #productpager-Carousel {
+                       &.products_list {
+                           height: 100%;
+                           margin-top: 0px;
+
+                           li {
+                               //  border: 1px solid #e0e0e0;
+                               height: 85px;
+
+                               .mz-productimages-thumb {
+                                   outline: 0;
+                               }
+
+                               &.active {
+                                   border: 1px solid #2b648c;
+
+                                   .mz-productimages-thumb {
+                                       img {
+                                           width: 100%;
+                                           display: block;
+                                           margin: 0 auto;
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
                     .bx-wrapper {
                         .bx-viewport {
                             top: -20px;
@@ -299,9 +303,7 @@
                                 transform: translateY(-50%);
                                 &.bx-prev {
                                     //left: -23px;
-                                    left: 50%;
-                                    margin-left: -10px;
-                                    top: 342px;
+                                    bottom: -10px;
                                 }
                                 &.bx-next {
                                     background-position: -18px 0px; // right: -23px;
