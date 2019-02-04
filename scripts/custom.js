@@ -180,7 +180,7 @@ define([
     var subscribe_form = setInterval(subscribe_placeholder, 1000);
     function subscribe_placeholder() {
       if ($(".ctct-form-element").length >= 1) {
-        $(".ctct-form-element").attr("placeholder", "Enter Your Email");
+        $(".ctct-form-element").attr("placeholder", "Enter Your Email Address"); 
         clearInterval(subscribe_form);
       }
     } 
