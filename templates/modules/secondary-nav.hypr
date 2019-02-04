@@ -1,4 +1,4 @@
-<nav class="mz-navbar-secondary">
+<nav class="mz-navbar-secondary" id="mz-navbar-secondary">
     <div class="container">
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% partial_cache %}
@@ -19,6 +19,7 @@
                       {% endif %}
                       {% if link.name!="Shop By Brand" %}
                         {% if link.items %} 
+                        
                           <span class="glyphicon glyphicon-plus-minus glyphicon-test pull-right" aria-hidden="true"></span>  
                         {% endif %}
                       {% endif %}
@@ -40,7 +41,7 @@
                                       {% endif %}
                                       {% if not sublink.items %} href="{{sublink.url}}"{% endif %}>
                                       {{sublink.name|replace(themeSettings.columnBreaker, "")|replace("_", " ")|safe}}
-                                      {% if sublink.items %} 
+                                      {% if sublink.items %}
                                         <span class="glyphicon glyphicon-test pull-right" aria-hidden="true"></span> 
                                       {% endif %} 
                                     </a>

@@ -258,6 +258,11 @@
         }
         .mz-productdetail {
             padding: 0;
+             .mz-pricestack-price-upper{
+                &::before{    
+                    left: -13px; 
+                }
+             }
         }
         .mz-productoptions-valuecontainer {
             .product-swatches {
@@ -950,11 +955,19 @@
                     .mz-price {
                         font-size: 20px;
                         font-weight: 600;
+                        &.is-saleprice{
+                            display: block; 
+                        }
                     }
                 }
             }
         }
     }
+    #mz-nav,#mz-navbar-secondary {
+        .panel-body{
+             border-top: none;
+        } 
+    } 
 }
 
 //Logo for small device
