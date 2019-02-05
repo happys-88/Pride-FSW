@@ -148,7 +148,7 @@
     {% endif %}
 </div>
 
-<div class="col-xs-12 mz-cart-total-main-container text-right nopaddingright">
+<div class="col-xs-12 mz-cart-total-main-container text-right">
     <div class="mz-carttable-shipping-row pull-right">
         <div class="col-xs-12 mz-padding-xs">
             <em class="mz-auxiliary-text pull-right mz-cart-message-padding">{{ labels.taxAtCheckout }}</em>

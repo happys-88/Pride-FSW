@@ -236,6 +236,8 @@ img[data-mztp] {
             .mz-header-global-cart-wrapper {
                 font-size: 14px;
                 padding: 15px 0 15px 20px;
+                position: relative;
+                top: 2px;
                 .mz-cartmonitor {
                     font-size: 14px;
                 }
@@ -259,7 +261,10 @@ img[data-mztp] {
                     width: 100%;
                 }
                 .tt-dropdown-menu {
-                    width: 100%;
+                    width: 100%;  
+                    img{
+                        width:100%; 
+                    }
                 }
                 .mz-searchbox-field {
                     .twitter-typeahead {
@@ -312,6 +317,7 @@ img[data-mztp] {
         }
         /***\ Free shipping offer ***/
         /**** Global Cart Wrapper ****/
+
         .mz-header-global-cart-wrapper {
             position: static;
             float: left;
@@ -835,8 +841,14 @@ label {
         text-align: left;
         text-transform: uppercase;
         margin-bottom: 5px;
-        font-weight: normal;
+        font-weight: 500; 
     }
+}
+.quantity-info {
+    color: #666666;
+} 
+.total-info {
+    color: #333333;
 }
 
 .why-read-more {
@@ -899,3 +911,18 @@ label {
         display:none;
     }
 }
+.mz-productlist{
+    &.without-facet{
+        .grid-view{ 
+            .mz-productlist-item{ 
+                width: ~"calc(25% - 4px)";
+                float: none;
+                display: inline-block;
+                vertical-align: top;
+                &:nth-child(3n+1){
+                  clear: none; 
+                }
+            } 
+        } 
+    }
+}   

@@ -105,6 +105,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
         {% require_script "custom" %} 
         {% include "modules/json-required-for-hyprlive" %}
+
         
     </head>
     {% endblock head-tag %}
@@ -159,10 +160,11 @@
                         {% endblock body-content %}
 
                         {% block category-gateway %}{% endblock category-gateway %}
-                        
+                        <div class="col-xs-12">
                         {% block body-below-content %}
                             {% dropzone "body-bottom" scope="template" %}
                         {% endblock body-below-content %}
+                        </div>
                     </div>
                 </div>
             </div>
