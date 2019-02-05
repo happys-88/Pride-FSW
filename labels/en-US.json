@@ -583,6 +583,9 @@
     "shopAllBrands"       :    "Shop All Brands",
 
     "confirmationAccountSetupMessage"    :   "Create an account for easy checkout on future orders",
-    "saveMyInfo"                          :    "Save My Information"
+    "saveMyInfo"                          :    "Save My Information",
+
+    "orderPackageQuantity"  :      "Qty",
+    "orderPackagePrice"     :      "Price"
 }
  
