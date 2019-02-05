@@ -72,7 +72,7 @@
 								<div class="mz-options"><span>{{ option.name }}</span> <span>{% if option.stringname %}{{ option.stringname }}{% else %}{{ option.value }}{% endif %}</span></div>
 								{% endfor %}
 							{% endif %}	
-							<div><span>{{ labels.qty }} </span>  <span>{{ items.quantity }}</span></div>
+							<div class="quantity-info"><span>{{ labels.qty }} </span>  <span>{{ items.quantity }}</span></div>
 						</div>
 						<div class="col-xs-7">
 							<div class="row">
@@ -87,8 +87,8 @@
 		    {% endfor %}
 	</ul>
 	<div class="row total-amount-row">
-	    <div class="col-xs-12 text-right">
-	    	<b>Subtotal: </b>
+	    <div class="col-xs-12 text-right total-info">
+	    	<span>Subtotal: </span>
 	    	<span>{{ model.subtotal|currency }}</span>
 	    </div>
   	    {% if model.orderDiscounts %}
@@ -104,8 +104,8 @@
 	    	<a href="/cart"> {{model.items.length-themeSettings.globalCartMaxItemCount}} more item(s)... </a>
 	    </div>
 	    {% endif%}
-	    <div class="{% if model.items.length > themeSettings.globalCartMaxItemCount %}col-xs-6{% else %}col-xs-12{% endif %} text-right">
-	    	<b>Total: </b>
+	    <div class="{% if model.items.length > themeSettings.globalCartMaxItemCount %}col-xs-6{% else %}col-xs-12{% endif %} text-right total-info">
+	    	<span>Total: </span>
 	    	<span>{{ model.total|currency }}</span>
 	    </div>	    
 	</div>
