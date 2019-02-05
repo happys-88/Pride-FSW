@@ -2157,7 +2157,6 @@ ul.tabs {
     margin-top: 0px;
     height: 90px;
     li {
-        border: 1px solid #999;
         text-align: center;
         float: left;
         max-height: 85px;
@@ -2172,6 +2171,12 @@ ul.tabs {
             img {
                 width: 100%;
             }
+        }
+        &[aria-hidden=false]{
+            border: 1px solid #999;
+        }
+        &.ariatrue{
+             border: 1px solid #999;
         }
     }
 }

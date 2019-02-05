@@ -6,7 +6,7 @@
                 <ul id="productmobile-Carousel" class="products_list_mobile">
                 {% for image in model.content.productImages %}
                     <li data-label="{{image.imageLabel}}">
-                        <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}" {% if not forloop.first %}hidden=true {% endif %} {% if not forloop.first %}hidden=true {% endif %}/>
+                        <img id="zoom_{{forloop.index}}" prop="image" src="{% make_url "image" image with maxWidth=themeSettings.productImagePdpMaxWidth as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with maxWidth=themeSettings.productZoomImageMaxWidth %}" {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-mobile="{{ forloop.index }}" {% if not forloop.first %}hidden=true {% endif %} {% if not forloop.first %}hidden=true{% endif %}/>
                     </li>
                 {% endfor %}
                 </ul>
@@ -14,9 +14,19 @@
             <div class="hidden-xs">
                 <ul {% if model.content.productImages.length > 4 %} id="productpager-Carousel"{% endif %} class="products_list ">
                 {% for image in model.content.productImages %}
-                    <li {% if forloop.index==1 %} class="active"{% endif %} data-mz-productimage-thumb="{{ forloop.index }}" data-label="{{image.imageLabel}}">
+                   <li class="{% if forloop.index==1 %}active{% endif %}{% if forloop.index<=4 %} ariatrue {% endif %}" data-mz-productimage-thumb="{{ forloop.index }}"  data-label="{{image.imageLabel}}">
                         <a class="mz-productimages-thumb" data-slide-index="{{ forloop.index0 }}" href="javascript:void(0);">
-                            {% include "modules/product/product-image" with productImage=image productAltText=image.altText productMaxWidth=themeSettings.maxProductImageThumbnailSize productImageClass="mz-productimages-thumbimage" isThumb="true" as_parameter %}
+                        <img  prop="image" src="{% make_url "image" image with maxWidth=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} alt="{{ image.altText }}"{% endif %}  class="{% if forloop.index==1 %}active{% endif %}mz-productimages-thumbimage" 
+                        {% if themeSettings.maxProductImageThumbnailSize %}
+                            data-orig-src="{% make_url "image" productImage with maxWidth=themeSettings.maxProductImageThumbnailSize as_parameter %}"
+                        {% else %}
+                            data-orig-src="{% make_url "image" productImage with maxWidth=themeSettings.productImagePdpMaxWidth %}"
+                        {% endif %}
+                        {% if productZoomWidth %}
+                            data-orig-zoom="{% make_url "image" productImage with maxWidth=productZoomWidth %}"
+                        {% else %}
+                            data-orig-zoom="{% make_url "image" productImage with maxWidth=themeSettings.productZoomImageMaxWidth %}"
+                        {% endif %} {% if forloop.index>4 %}hidden=true {% endif %}/>
                         </a><br>
                     </li>
                 {% endfor %}
