@@ -166,7 +166,7 @@
     }
     .mz-pageview {
         margin-top: 15px;
-        float: left;
+       // float: left;
         width: 100%;
     }
     #mz-drop-zone-fsw-about-us {
@@ -629,7 +629,7 @@
                 .main-directory-container {
                     float: left !important;
                 }
-            }
+            } 
         }
     }
     #confirmation-container {
@@ -640,6 +640,45 @@
            padding: 0 8px; 
         }
      }
+
+        #mz-nav,#mz-navbar-secondary {
+        .panel-body{
+             border-top: none;
+        } 
+    } 
+    .mz-productlist {
+        .mz-productlist-list{
+            .mz-productlisting-image{
+                min-height:unset; 
+            }
+        }
+    } 
+    .mz-productlist{
+        &.without-facet{
+            .grid-view{
+                .mz-productlist-item{
+                    width: ~"calc(50% - 2px)"; 
+                }  
+            }
+        }
+    }  
+    .grid-view {
+            .mz-productlist-item {
+                padding-left:0px;
+                &:nth-child(2n){
+                   padding-right:0px;  
+                   padding-left: 10px;
+                }
+                &:nth-child(2n+1){
+                   padding-right:10px;  
+                   padding-left: 0px;
+                }
+        }
+    }
+    ul#product-list-ul {
+    margin-top: 15px;
+    display: inline-block;
+    }
 }
 
 //Header and footer for tablet
@@ -803,7 +842,7 @@
             }
         }
         .mz-sitenav-item {
-            border-bottom: 1px solid #ccc;
+            border-bottom: none;
             display: block;
             float: none;
             padding: 1px 45px;
@@ -932,7 +971,7 @@
     .mz-productlist {
         .list-view {
             .mz-productlisting-info {
-                padding: 0 0 0 50px;
+               // padding: 0 0 0 50px;
             }
         }
     } //homepage
@@ -969,27 +1008,7 @@
             }
         }
     }
-    #mz-nav,#mz-navbar-secondary {
-        .panel-body{
-             border-top: none;
-        } 
-    } 
-    .mz-productlist {
-        .mz-productlist-list{
-            .mz-productlisting-image{
-                min-height:unset; 
-            }
-        }
-    } 
-    .mz-productlist{
-        &.without-facet{
-            .grid-view{
-                .mz-productlist-item{
-                    width: ~"calc(50% - 2px)"; 
-                }  
-            }
-        }
-    } 
+
 }
 
 //Logo for small device
