@@ -64,7 +64,7 @@
                                             {% else %}
                                                 {{ option.name }}
                                             {% endif %}
-                                        </dt>&nbsp;
+                                        </dt> 
                                         <dd>
                                             {% if option.stringValue == 'CHR(38)' %}
                                                 &amp;
