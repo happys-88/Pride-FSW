@@ -1,5 +1,7 @@
-﻿<h1 class="mz-pagetitle">{{ labels.searchResults }}: <span class="mz-searchresults-query">{{ pageContext.search.query }}</span></h1>
+﻿<div class="col-xs-12">
+	<h1 class="mz-pagetitle">{{ labels.searchResults }}: <span class="mz-searchresults-query">{{ pageContext.search.query }}</span></h1>
+</div>
 {% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy pageContext.search.query %}
 {% include "modules/product/faceted-products" %}
-{% endpartial_cache %}
-{% dropzone "search-results" scope="template" %}
+{% endpartial_cache %} 
+{% dropzone "search-results" scope="template" %} 
