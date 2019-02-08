@@ -17,7 +17,7 @@
                 <li class="mz-productlist-item col-xs-6 col-sm-4" data-mz-product="{{ prod.productCode }}">
 				<a href='{% make_url "product" productData %}'> 
 				{% if productData.mainImage %} 
-				    <img src="{% make_url "image" productData.mainImage with maxWidth=160  %}"> 
+				    <img src="{% make_url "image" productData.mainImage with maxWidth=160 %}" onerror="this.setAttribute('src','https:{% make_url 'cdn' '/cms/files/no-image-pride.jpg' %}')"> 
 			      {% else %}
                     <img src='{% make_url "cdn" "/cms/files/no-image-pride.jpg" %}' alt="no-image" />
 			    {% endif %}
