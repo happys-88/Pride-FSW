@@ -1974,15 +1974,15 @@ ul.tabs {
                 >span {
                     font-size: @font-size + 2;
                     display: inline-block;
-                    vertical-align: top;
+                    vertical-align: top; 
                 }
                 .mz-pricestack-price-lower {
                     margin: 0 15px 0 0;
                 }
                 .mz-pricestack-price-upper {
                     &::before {
-                        top: 11px;
-                        left: -16px;
+                        // top: 11px;
+                        // left: -16px; 
                     }
                 }
                 .is-saleprice {
@@ -2329,7 +2329,7 @@ ul.tabs {
             .mz-price {
                 font-size: @fontSize+10;
                 text-align: right;
-                width: 100%;
+                width: auto; 
                 .mz-price-discountname {
                     font-size: @fontSize;
                     color: @secondaryColor;
@@ -2521,8 +2521,8 @@ ul.tabs {
     .mz-pricestack-price-upper {
         margin-left: 20px;
         &::before {
-            top: 19px;
-            left: -17px;
+          top: 24px;
+          left: -16px;
         }
     }
 }
@@ -3249,6 +3249,17 @@ ul.tabs {
                     box-shadow: none;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    footer{
+        input#email_address_0 {
+        padding: 0 10px; 
+        }
+        input#footerZipCodeInput {
+        padding: 0 10px;
         }
     }
 }
