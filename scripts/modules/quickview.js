@@ -233,7 +233,7 @@ define([
                                     quantity: newQty
                                 }).then(function() {
                                     CartMonitor.addToCount(newQty);
-                                    me.pushGoogleData(newQty);
+                                    me.pushGoogleData(newQty, window.quickviewProduct);
                                     $('[data-mz-validationmessage-for="quantity"]').text("");
                                     blockUiLoader.unblockUi();
                                     slider.closeQuickviewSlider();
@@ -300,6 +300,12 @@ define([
                 var productCode = quickviewProduct.get("productCode");
                 var price = quickviewProduct.get("price");
                 var categories = quickviewProduct.get("categories");
+                var properties = quickviewProduct.get("properties");
+                var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+                var brand = '';
+                if(brandAttr.length) {
+                    brand = brandAttr[0].values[0].value;
+                }
                 dataLayer.push({
                   'event': 'addToCart',
                   'ecommerce': {
@@ -309,7 +315,7 @@ define([
                         'name': productName,
                         'id': productCode,
                         'price': price.get("price"),
-                        'brand': 'Google',
+                        'brand': brand,
                         'category': categories[0].content.name,
                         'variant': 'Gray',
                         'quantity': newQty
