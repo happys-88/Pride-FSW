@@ -700,13 +700,59 @@ require([
     });
 
     $(document).ready(function() {
+          
         if ($('.mz-product-detail-tabs ul.tabs li').length === 0)
             $('.mz-product-detail-tabs').remove();
         
         var product = ProductModels.Product.fromCurrent();
-
+        var content = product.get("content");
+        var productName = content.get("productName");
+        var productCode = product.get("productCode");
+        var pricee = product.get("price");
+        var categories = product.get("categories");
+        var properties = product.get("properties");
+        var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+        var brand = '';
+        if(brandAttr.length) {
+            brand = brandAttr[0].values[0].value;
+        }
+        var dataLayer = window.dataLayer;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+              'click': {
+                'actionField': {'list': ''},      // Optional list property.
+                'products': [{
+                  'name': productName,                      // Name or ID is required.
+                  'id': productCode,
+                  'price': pricee.get("price"),
+                  'brand': brand,
+                  'category': categories[0].content.name,
+                  'variant': '',
+                  'position': 1
+                 }]
+               }
+             }
+          });
         product.on('addedtocart', function(cartitem) {
             if (cartitem && cartitem.prop('id')) {
+                dataLayer.push({
+                  'event': 'addToCart',
+                  'ecommerce': {
+                    'currencyCode': 'usd',
+                    'add': {                                // 'add' actionFieldObject measures.
+                      'products': [{                        //  adding a product to a shopping cart.
+                        'name': productName,
+                        'id': productCode,
+                        'price': pricee.get("price"),
+                        'brand': brand,
+                        'category': categories[0].content.name,
+                        'variant': 'Gray',
+                        'quantity': product.get('quantity')
+                       }]
+                    }
+                  }
+                });
                 //product.isLoading(true);
                 CartMonitor.addToCount(product.get('quantity'));
                 $('html,body').animate({

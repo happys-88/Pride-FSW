@@ -724,7 +724,31 @@ define(['modules/api',
             cartModel.isLoading(true);
             window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory||'') + '/checkout/' + order.prop('id');
         });
-
+        var dataLayer = window.dataLayer;
+        cartModel.on('removedfromcart', function (itemData) {
+            var properties = itemData.product.properties;
+            var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+            var brand = '';
+            if(brandAttr.length) {
+                brand = brandAttr[0].values[0].value;
+            }
+            dataLayer.push({
+              'event': 'removeFromCart',
+              'ecommerce': {
+                'remove': {                               // 'remove' actionFieldObject measures.
+                  'products': [{                          //  removing a product to a shopping cart.
+                      'name': itemData.product.name,
+                      'id': itemData.product.productCode,
+                      'price': itemData.product.price.price,
+                      'brand': brand,
+                      'category': 'Apparel',
+                      'variant': 'Gray',
+                      'quantity': itemData.quantity
+                  }]
+                }
+              }
+            });
+        });
         cartModel.on('sync', function() {
             //  if (this.isEmpty())
             //    // window.location.reload();

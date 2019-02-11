@@ -42,6 +42,23 @@
                         {% include "modules/common/message-bar" %}
                     {% endif %}
                     <div id="product-detail" class="product-detail mz-productdetail mz-l-stack">
+                        <script>
+                            dataLayer.push({
+                              'ecommerce': {
+                                'detail': {
+                                  'actionField': {'list': '{{model.categories.0.content.name}}'},
+                                  'products': [{
+                                    'name': '{{ model.content.productName }}',
+                                    'id': '{{ model.productCode }}',
+                                    'price': '{{ model.price.price }}',
+                                    'brand': '{% with model|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
+                                    'category': '{{model.categories.0.content.name}}',
+                                    'variant': 'Gray'
+                                   }]
+                                 }
+                               }
+                            });
+                        </script>
                         {% include "modules/product/product-detail" %}
                     </div>
                 </div>

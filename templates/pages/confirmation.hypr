@@ -11,6 +11,49 @@
 	        {% include "modules/page-header/store-branding" %}
 	    {% endblock store-branding %}
 	</div>
+	<script>
+		dataLayer.push({
+		  'ecommerce': {
+		    'purchase': {
+		      'actionField': {
+		        'id': 'T12345',                         
+		        'affiliation': 'Online Store',
+		        'revenue': '{{ model.total }}',                     
+		        'tax':'{{ model.taxTotal }}',
+		        'shipping': '{{ model.shippingTotal }}',
+		        'coupon': ''
+		      },
+		      'products': [
+		      {% for prod in model.items %}
+		      	{% if forloop.last %}
+			      {                           
+				        'name': '{{ prod.product.name }}',     
+				        'id': '{{ prod.product.productCode }}',
+				        'price': '{% if prod.product.price.salePrice %} {{prod.product.price.salePrice}} {% else %} {{ prod.product.price.price }} {% endif %}',
+				        'brand': '{% with prod.product|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
+				        'category': 'Apparel',
+				        'variant': 'Gray',
+				        'quantity': '{{ prod.quantity }}',
+				        'coupon': ''                            
+				    }
+			    {% else %}
+			    	{                           
+				        'name': '{{ prod.product.name }}',     
+				        'id': '{{ prod.product.productCode }}',
+				        'price': '{% if prod.product.price.salePrice %} {{prod.product.price.salePrice}} {% else %} {{ prod.product.price.price }} {% endif %}',
+				        'brand': '{% with prod.product|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
+				        'category': 'Apparel',
+				        'variant': 'Gray',
+				        'quantity': '{{ prod.quantity }}',
+				        'coupon': ''                            
+				    },
+		       	{% endif %}
+		       {% endfor %}
+		       ]
+		    }
+		  }
+		});
+	</script>
 	<div class="col-xs-12" id="confirmation-container"> 
 	  {% include "modules/confirmation/confirmation-detail" %}
 	</div>

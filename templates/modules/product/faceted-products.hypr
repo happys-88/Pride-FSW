@@ -61,6 +61,40 @@
     </div>
     <div data-mz-productlist class="mz-l-paginatedlist-list">
         {% include "modules/product/product-list-tiled" %}
+        <script>
+        dataLayer.push({
+          'ecommerce': {
+            'currencyCode': 'US dollar',
+            'impressions': [
+            {% for prod in model.items %}
+                {% if forloop.last %}
+                    {
+                       'name': '{{ prod.content.productName }}',
+                       'id': '{{ prod.productCode }}',
+                       'price': '{{ prod.price.price }}',
+                       'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
+                       'category': '{{ prod.categories.0.content.name }}',
+                       'variant': 'Gray',
+                       'list': 'Products',
+                       'position': '{{ forloop.counter }}'
+                     } 
+                {% else %}
+                    {
+                       'name': '{{ prod.content.productName }}',
+                       'id': '{{ prod.productCode }}',
+                       'price': '{{ prod.price.price }}',
+                       'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
+                       'category': '{{ prod.categories.0.content.name }}',
+                       'variant': 'Gray',
+                       'list': 'Products',
+                       'position': '{{ forloop.counter }}'
+                     }, 
+                {% endif %}
+            {% endfor %}
+            ]
+          }
+        });
+    </script>
     </div>
     <div class="mz-l-paginatedlist-footer">
         <div class="back-to-top">

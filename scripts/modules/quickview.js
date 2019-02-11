@@ -219,6 +219,7 @@ define([
                 }
             },
             addToCart: function() {
+                var me = this;
                 $('.stock-error').remove();
                 blockUiLoader.globalLoader();
                 var newQty = $('.mz-productdetail-qty').val();
@@ -232,6 +233,7 @@ define([
                                     quantity: newQty
                                 }).then(function() {
                                     CartMonitor.addToCount(newQty);
+                                    me.pushGoogleData(newQty);
                                     $('[data-mz-validationmessage-for="quantity"]').text("");
                                     blockUiLoader.unblockUi();
                                     slider.closeQuickviewSlider();
@@ -276,6 +278,7 @@ define([
                             quantity: newQty
                         }).then(function() {
                             CartMonitor.addToCount(newQty);
+                            me.pushGoogleData(newQty, window.quickviewProduct);
                         });
                         $('[data-mz-validationmessage-for="quantity"]').text("");
                         blockUiLoader.unblockUi();
@@ -289,6 +292,31 @@ define([
                     blockUiLoader.unblockUi();
                     return;
                 }
+            },
+            pushGoogleData: function(newQty, quickviewProduct) {
+                var dataLayer = window.dataLayer;
+                var content = quickviewProduct.get("content");
+                var productName = content.get("productName");
+                var productCode = quickviewProduct.get("productCode");
+                var price = quickviewProduct.get("price");
+                var categories = quickviewProduct.get("categories");
+                dataLayer.push({
+                  'event': 'addToCart',
+                  'ecommerce': {
+                    'currencyCode': hyprlivecontext.locals.siteContext.currencyInfo.currencyCode,
+                    'add': { 
+                      'products': [{      
+                        'name': productName,
+                        'id': productCode,
+                        'price': price.get("price"),
+                        'brand': 'Google',
+                        'category': categories[0].content.name,
+                        'variant': 'Gray',
+                        'quantity': newQty
+                       }]
+                    }
+                  }
+                });
             },
             selectSwatch: function(e) {
                 this.isColorClicked = true;

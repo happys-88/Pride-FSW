@@ -298,6 +298,15 @@
                     this.set(newMethod);
                     this.applyShipping(resetMessage);
                 }
+                var dataLayer = window.dataLayer;
+                dataLayer.push({
+                    'event': 'checkoutOption',
+                    'ecommerce': {
+                      'checkout_option': {
+                        'actionField': {'step': "Shipping Method", 'option': newMethod.shippingMethodName}
+                      }
+                    }
+                });
             },
             applyShipping: function(resetMessage) {
                 if (this.validate()) return false;
@@ -1183,7 +1192,15 @@
                 if(this.get('paymentType').toLowerCase() === "purchaseorder") {
                     this.get('purchaseOrder').inflateCustomFields();
                 }
-
+                var dataLayer = window.dataLayer;
+                dataLayer.push({
+                    'event': 'checkoutOption',
+                    'ecommerce': {
+                      'checkout_option': {
+                        'actionField': {'step': "Payment Method", 'option': this.get('paymentType')}
+                      }
+                    }
+                });
                 if (!currentPayment) {
                     return this.applyPayment();
                 } else if (this.hasPaymentChanged(currentPayment)) {
@@ -1193,6 +1210,7 @@
                 } else {
                     this.markComplete();
                 }
+                
             },
             applyPayment: function () {
                 var self = this, order = this.getOrder();
@@ -1822,6 +1840,16 @@
 
                 if (isSavingNewCustomer) {
                     process.unshift(this.addNewCustomer); 
+                    var email = this.get('emailAddress');
+                    var dataLayer = window.dataLayer;
+                    dataLayer.push({
+                        'event': 'checkoutOption',
+                        'ecommerce': {
+                          'checkout_option': {
+                            'actionField': {'step': "Place Order", 'option': email}
+                          }
+                        }
+                    });
                 }
 
                 var activePayments = this.apiModel.getActivePayments();
