@@ -42,7 +42,7 @@
                         {% include "modules/common/message-bar" %}
                     {% endif %}
                     <div id="product-detail" class="product-detail mz-productdetail mz-l-stack">
-                        <script>
+                       <script>
                             dataLayer.push({
                               'ecommerce': {
                                 'detail': {
@@ -50,10 +50,10 @@
                                   'products': [{
                                     'name': '{{ model.content.productName }}',
                                     'id': '{{ model.productCode }}',
-                                    'price': '{{ model.price.price }}',
+                                    'price': '{%if model.productType == "Family Product" %}{% else %}{% if model.hasPriceRange %}{{ model.priceRange.lower.price|floatformat }}{% else %}{% if model.price.onSale %}{{model.price.price|floatformat}}{% else%}{{model.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
                                     'brand': '{% with model|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                                     'category': '{{model.categories.0.content.name}}',
-                                    'variant': 'Gray'
+                                    'variant': ''
                                    }]
                                  }
                                }

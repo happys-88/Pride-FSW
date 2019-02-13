@@ -704,11 +704,12 @@ require([
         if ($('.mz-product-detail-tabs ul.tabs li').length === 0)
             $('.mz-product-detail-tabs').remove();
         
+        console.log("Price : "+JSON.stringify(product));
+
         var product = ProductModels.Product.fromCurrent();
         var content = product.get("content");
         var productName = content.get("productName");
         var productCode = product.get("productCode");
-        var pricee = product.get("price");
         var categories = product.get("categories");
         var properties = product.get("properties");
         var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
@@ -716,6 +717,23 @@ require([
         if(brandAttr.length) {
             brand = brandAttr[0].values[0].value;
         }
+
+        var priceVal = '';
+        if(product.attributes.family.length > 0) {
+            priceVal = '';
+        } else {
+            if(product.attributes.hasPriceRange > 0) {
+                priceVal = product.get('priceRange').get('lower').get('price');
+            } else {
+                var pricee = product.attributes.price;
+                if(pricee.get("onSale")){
+                    priceVal = pricee.get('salePrice');
+                } else {
+                    priceVal = pricee.get('price');
+                }
+            }
+        }
+
         var dataLayer = window.dataLayer;
         dataLayer.push({
             'event': 'productClick',
@@ -725,7 +743,7 @@ require([
                 'products': [{
                   'name': productName,                      // Name or ID is required.
                   'id': productCode,
-                  'price': pricee.get("price"),
+                  'price': priceVal.toString(),
                   'brand': brand,
                   'category': categories[0].content.name,
                   'variant': '',
@@ -736,6 +754,19 @@ require([
           });
         product.on('addedtocart', function(cartitem) {
             if (cartitem && cartitem.prop('id')) {
+
+                var optionsData = cartitem.data.product.options;
+                var options = '';
+                _.each(optionsData, function(optionVal, index){
+                    options = options + optionVal.stringValue;
+                    if(index+1 < optionsData.length) {
+                        options = options+",";
+                    }
+                });
+
+                var cartItemData = cartitem.data;
+
+                var pricevalue = cartItemData.unitPrice.saleAmount ? cartItemData.unitPrice.saleAmount : cartItemData.unitPrice.listAmount;
                 dataLayer.push({
                   'event': 'addToCart',
                   'ecommerce': {
@@ -743,11 +774,11 @@ require([
                     'add': {                                // 'add' actionFieldObject measures.
                       'products': [{                        //  adding a product to a shopping cart.
                         'name': productName,
-                        'id': productCode,
-                        'price': pricee.get("price"),
+                        'id': cartItemData.product.variationProductCode ? cartItemData.product.variationProductCode : cartItemData.product.productCode,
+                        'price': pricevalue.toString(),
                         'brand': brand,
                         'category': categories[0].content.name,
-                        'variant': 'Gray',
+                        'variant': options,
                         'quantity': product.get('quantity')
                        }]
                     }

@@ -61,6 +61,7 @@
     </div>
     <div data-mz-productlist class="mz-l-paginatedlist-list">
         {% include "modules/product/product-list-tiled" %}
+        {% dump model.items %}
         <script>
         dataLayer.push({
           'ecommerce': {
@@ -71,22 +72,22 @@
                     {
                        'name': '{{ prod.content.productName }}',
                        'id': '{{ prod.productCode }}',
-                       'price': '{{ prod.price.price }}',
+                       'price': '{% if prod.productType == "Family Product" %}{% else %}{% if prod.hasPriceRange %}{{ prod.priceRange.lower.price|floatformat }}{% else %}{% if prod.price.onSale %}{{prod.price.price|floatformat}}{% else%}{{prod.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
                        'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                        'category': '{{ prod.categories.0.content.name }}',
-                       'variant': 'Gray',
-                       'list': 'Products',
+                       'variant': '',
+                       'list': '{% if pageContext.pageType == "search" %}Search Results {% else %} {{ pageContext.title|safe }}{% endif %}',
                        'position': '{{ forloop.counter }}'
                      } 
                 {% else %}
                     {
                        'name': '{{ prod.content.productName }}',
                        'id': '{{ prod.productCode }}',
-                       'price': '{{ prod.price.price }}',
+                       'price': '{% if prod.productType == "Family Product" %}{% else %}{% if prod.hasPriceRange %}{{ prod.priceRange.lower.price|floatformat}}{% else %}{% if prod.price.onSale %}{{prod.price.price|floatformat}}{% else%}{{prod.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
                        'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                        'category': '{{ prod.categories.0.content.name }}',
-                       'variant': 'Gray',
-                       'list': 'Products',
+                       'variant': '',
+                       'list': '{% if pageContext.pageType == "search" %}Search Results {% else %} {{ pageContext.title|safe }}{% endif %}',
                        'position': '{{ forloop.counter }}'
                      }, 
                 {% endif %}
