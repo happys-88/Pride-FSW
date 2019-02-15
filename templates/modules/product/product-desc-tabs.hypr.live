@@ -1,6 +1,7 @@
-{% if (model|get_product_attribute_value("product-specifications")) or (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) or model.content.productFullDescription %}   
-    <div class="mz-product-tabs"> 
-        <ul class="nav nav-tabs hidden-xs" role="tablist">
+{% if (model|get_product_attribute_value("product-specifications")) or (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) or model.content.productFullDescription or (model|get_product_attribute("tenant~ca-prop-65")) %}   
+
+    <div class="mz-product-tabs">
+        <ul class="nav nav-tabs hidden-xs" role="tablist"> 
             {% if model.content.productFullDescription %}
                 <li role="presentation"><a href="#longDescription" aria-controls="longDescription" role="tab" data-toggle="tab">Product Details</a></li> 
             {% endif %}
@@ -11,7 +12,14 @@
             {% if (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) %}    
                 <li role="presentation"><a href="#prodPdfDocument" aria-controls="prodPdfDocument" role="tab" data-toggle="tab">PDF Documents</a></li>
             {% endif %}
-        </ul>
+
+            {% with model|get_product_attribute("tenant~ca-prop-65") as prop65Attr %}
+                {% if prop65Attr.values|first|prop("value") %}
+                    <li role="presentation"> <a href="#prop65" aria-controls="prop65" role="tab" data-toggle="tab">{{ prop65Attr.attributeDetail.name }}</a></li>
+                {% endif %}
+            {% endwith %}         
+        </ul> 
+     
         <div class="tab-content mz-mobile-tabs nav nav-tabs">
             {% if model.content.productFullDescription %}
                 <li class="visible-xs" role="presentation"><a href="#longDescription" aria-controls="longDescription" role="tab" data-toggle="tab">Product Details</a></li> 
@@ -29,8 +37,9 @@
                     </ul>      
                 </div>
             {% endif %}
+
             {% if (model|get_product_attribute_value("tenant~specificationsheet")) or (model|get_product_attribute_value("tenant~brochurecatalog")) or (model|get_product_attribute_value("tenant~installationinstructions")) %}   
-                <li class="visible-xs" role="presentation"><a href="#prodPdfDocument" aria-controls="prodPdfDocument" role="tab" data-toggle="tab">PDF Document</a></li>
+                <li class="visible-xs" role="presentation"><a href="#prodPdfDocument" aria-controls="prodPdfDocument" role="tab" data-toggle="tab">PDF Documents</a></li>
                 <div role="tabpanel" class="tab-pane" id="prodPdfDocument">
                     {% if (model|get_product_attribute_value("tenant~specificationsheet")) %}   
                         {% with model|get_product_attribute("tenant~specificationsheet") as attrSpecificationsheet %}
@@ -49,6 +58,19 @@
                     {% endif %}
                 </div>
             {% endif %}
+
+            {% with model|get_product_attribute("tenant~ca-prop-65") as prop65Attr %}
+                {% if prop65Attr.values|first|prop("value") %}
+                    <li class="visible-xs" role="presentation"><a href="#prop65" aria-controls="prop65" role="tab" data-toggle="tab">{{ prop65Attr.attributeDetail.name }}</a></li> 
+                    <div role="tabpanel" class="tab-pane" id="prop65">
+                        <a href="{{ themeSettings.prop65-link }}" target="_blank">
+                            {{ themeSettings.prop65-link }}
+                        </a>       
+                    </div> 
+                {% endif %}
+            {% endwith %} 
         </div>
+        
     </div>
+
 {% endif %}

@@ -713,6 +713,11 @@
                     "xtype": "mz-input-text",
                     "name": "oneSizeProductType",
                     "fieldLabel": "One Size Product Type"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "prop65-link",
+                    "fieldLabel": "PROP 65 Link"   
                 }
             ]
         }

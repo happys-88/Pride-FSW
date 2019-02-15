@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "0bbade9b04a82fdd674f9307da633ed2fd5e0e16"
+      "commit": "aebff0cb5a1b77ac10e7a022699486ffa9ded871"
     },
     "baseThemeChannel": "stable"
   },
@@ -482,6 +482,7 @@
   "settings": {
     "oneSizeAttributeName": "tenant~ONESIZE",
     "oneSizeProductType": "Single Variant",
+    "prop65-link": "http://www.google.com", 
     "maxRecentlyViewedItems": 5,
     "allProductsCategoryId": 0,
     "pdpMainImageNameSwatch": "{0}_{1}_v{2}.jpg",
