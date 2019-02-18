@@ -182,7 +182,7 @@ define(['modules/api',
                   var coupon = '';
                   if (couponCodes && couponCodes.length) {
                     for (var l = 0; l < couponCodes.length; l++) {
-                      var coupon = coupon + couponCodes[l];
+                      coupon = coupon + couponCodes[l];
                       if (l + 1 < couponCodes.length) {
                         coupon = coupon + ",";
                       }
@@ -206,8 +206,8 @@ define(['modules/api',
                 }
               }
               var orderDiscounts = confModel.get("orderDiscounts");
-              for (var m = 0; m < orderDiscounts.length; m++) {
-                var orderDiscount = orderDiscounts[m];
+              for (var s = 0; s < orderDiscounts.length; s++) {
+                var orderDiscount = orderDiscounts[s];
                 if (orderDiscount.couponCode) {
                   orderCoupon = orderCoupon + orderDiscount.couponCode + ",";
                 }
