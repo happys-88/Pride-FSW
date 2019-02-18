@@ -1,5 +1,4 @@
-﻿{% if model.productType == "Family Product" %}{% dump model %}{% endif %}
-<div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
+﻿<div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
     <div class="product-image-swatch-wrapper">
         <div class="mz-productlisting-image">
             {% block product-image %}
