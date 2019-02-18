@@ -9,8 +9,9 @@ define(['modules/api',
         'modules/preserve-element-through-render',
         'modules/modal-dialog',
         'modules/xpress-paypal',
-        'modules/block-ui'
-      ], function (api, Backbone, _, $, CartModels, CartMonitor, HyprLiveContext, Hypr, preserveElement, modalDialog, paypal, blockUiLoader) {
+        'modules/block-ui',
+        'gtm'
+      ], function (api, Backbone, _, $, CartModels, CartMonitor, HyprLiveContext, Hypr, preserveElement, modalDialog, paypal, blockUiLoader, gtm) {
 
     var value;
 
@@ -726,28 +727,26 @@ define(['modules/api',
         });
         var dataLayer = window.dataLayer;
         cartModel.on('removedfromcart', function (itemData) {
+            var optionsData = itemData.product.options;
+            var options = '';
+            _.each(optionsData, function(optionVal, index){
+                options = options + optionVal.stringValue;
+                if(index + 1 < optionsData.length) {
+                    options = options+",";
+                }
+            });
+            var pCode = itemData.product.variationProductCode ? itemData.product.variationProductCode : itemData.product.productCode;
+            var pricevalue = itemData.unitPrice.saleAmount ? itemData.unitPrice.saleAmount : itemData.unitPrice.listAmount;
             var properties = itemData.product.properties;
             var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
             var brand = '';
             if(brandAttr.length) {
                 brand = brandAttr[0].values[0].value;
             }
-            dataLayer.push({
-              'event': 'removeFromCart',
-              'ecommerce': {
-                'remove': {                               // 'remove' actionFieldObject measures.
-                  'products': [{                          //  removing a product to a shopping cart.
-                      'name': itemData.product.name,
-                      'id': itemData.product.productCode,
-                      'price': itemData.product.price.price,
-                      'brand': brand,
-                      'category': 'Apparel',
-                      'variant': 'Gray',
-                      'quantity': itemData.quantity
-                  }]
-                }
-              }
-            });
+            api.request("GET", "/api/commerce/catalog/storefront/products/"+itemData.product.productCode).then(function(response){
+                var data = {name: itemData.product.name, code: pCode, price: pricevalue, brand: brand, cat: response.categories[0].content.name, options:options, quantity: itemData.quantity};
+                gtm.productRemoveFromCart(data);
+            }); 
         });
         cartModel.on('sync', function() {
             //  if (this.isEmpty())

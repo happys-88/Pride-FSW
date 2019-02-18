@@ -7,9 +7,10 @@
     'modules/models-customer',
     'modules/models-address',
     'modules/models-paymentmethods',
-    'hyprlivecontext'
+    'hyprlivecontext',
+    'gtm'
 ],
-    function ($, _, Hypr, Backbone, api, CustomerModels, AddressModels, PaymentMethods, HyprLiveContext) {
+    function ($, _, Hypr, Backbone, api, CustomerModels, AddressModels, PaymentMethods, HyprLiveContext, gtm) {
 
         var CheckoutStep = Backbone.MozuModel.extend({
             helpers: ['stepStatus', 'requiresFulfillmentInfo','isNonMozuCheckout', 'requiresDigitalFulfillmentContact','isShippingEditHidden'],  //
@@ -297,16 +298,9 @@
                 if (newMethod) {
                     this.set(newMethod);
                     this.applyShipping(resetMessage);
+                    gtm.onCheckoutStep("Shipping Method", newMethod.shippingMethodName);
                 }
-                var dataLayer = window.dataLayer;
-                dataLayer.push({
-                    'event': 'checkoutOption',
-                    'ecommerce': {
-                      'checkout_option': {
-                        'actionField': {'step': "Shipping Method", 'option': newMethod.shippingMethodName}
-                      }
-                    }
-                });
+                
             },
             applyShipping: function(resetMessage) {
                 if (this.validate()) return false;
@@ -1192,15 +1186,7 @@
                 if(this.get('paymentType').toLowerCase() === "purchaseorder") {
                     this.get('purchaseOrder').inflateCustomFields();
                 }
-                var dataLayer = window.dataLayer;
-                dataLayer.push({
-                    'event': 'checkoutOption',
-                    'ecommerce': {
-                      'checkout_option': {
-                        'actionField': {'step': "Payment Method", 'option': this.get('paymentType')}
-                      }
-                    }
-                });
+                gtm.onCheckoutStep("Payment Method", this.get('paymentType'));
                 if (!currentPayment) {
                     return this.applyPayment();
                 } else if (this.hasPaymentChanged(currentPayment)) {
@@ -1841,15 +1827,7 @@
                 if (isSavingNewCustomer) {
                     process.unshift(this.addNewCustomer); 
                     var email = this.get('emailAddress');
-                    var dataLayer = window.dataLayer;
-                    dataLayer.push({
-                        'event': 'checkoutOption',
-                        'ecommerce': {
-                          'checkout_option': {
-                            'actionField': {'step': "Place Order", 'option': email}
-                          }
-                        }
-                    });
+                    gtm.onCheckoutStep("Place Order", email);
                 }
 
                 var activePayments = this.apiModel.getActivePayments();

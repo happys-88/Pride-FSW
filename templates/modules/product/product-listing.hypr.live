@@ -1,8 +1,9 @@
-﻿<div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
+﻿{% if model.productType == "Family Product" %}{% dump model %}{% endif %}
+<div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
     <div class="product-image-swatch-wrapper">
         <div class="mz-productlisting-image">
             {% block product-image %}
-            <a href='{% make_url "product" model %}'>
+            <a class="product-link" data-mz-produrl='{% make_url "product" model %}' href='{% make_url "product" model %}' data-mz-prodcode="{{model.productCode}}" data-mz-cat="{{ model.categories.0.content.name }}" data-mz-prodname="{{model.content.productName}}" data-mz-prodbrand='{% with model|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}' data-mz-price='{% if model.hasPriceRange %}{% if model.priceRange.lower.onSale %}{{ model.priceRange.lower.salePrice|floatformat(2) }}{% else %}{{ model.priceRange.lower.price|floatformat(2) }}{% endif %}{% else %}{% if model.price.onSale %}{{model.price.salePrice|floatformat(2)}}{% else%}{{model.price.price|floatformat(2)}}{% endif %}{% endif %}' data-mz-position="{{ forloop.counter }}">
                 {% include "modules/product/product-image" with productImage=model.mainImage productMaxWidth=themeSettings.productImageDirectoryMaxWidth productAltText=model.mainImage.altText as_parameter %}
             </a>
             {% if themeSettings.enableQuickView and model.productType != themeSettings.familyProductType %}
@@ -33,7 +34,8 @@
                         <div class="mz-brand"> {{ brandName.values|first|prop("value") }} </div>
                     {% endif %}
             {% endwith %}
-            <a class="mz-productlisting-title" href='{% make_url "product" model %}'>{{model.content.productName|safe}}</a>
+            <a class="mz-productlisting-title product-link" data-mz-produrl='{% make_url "product" model %}' href='{% make_url "product" model %}' data-mz-prodcode="{{model.productCode}}" data-mz-cat="{{ model.categories.0.content.name }}" data-mz-prodname="{{model.content.productName}}" data-mz-prodbrand='{% with model|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}' data-mz-price='{% if model.hasPriceRange %}{% if model.priceRange.lower.onSale %}{{ model.priceRange.lower.salePrice|floatformat(2) }}{% else %}{{ model.priceRange.lower.price|floatformat(2) }}{% endif %}{% else %}{% if model.price.onSale %}{{model.price.salePrice|floatformat(2)}}{% else%}{{model.price.price|floatformat(2)}}{% endif %}{% endif %}' data-mz-position="{{ forloop.counter }}">{{model.content.productName|safe}}</a>
+
             {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
             <p class="mz-productlisting-shortdesc">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</p>
             {% endif %}

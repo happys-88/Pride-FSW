@@ -12,9 +12,10 @@ define([
         "modules/views-productimages",
         "elevatezoom",
         "modules/color-swatches",
-        'modules/common-functions'
+        'modules/common-functions',
+        'gtm'
     ],
-    function($, _, Hypr, hyprlivecontext, ProductModels, CartMonitor, api, Backbone, blockUiLoader, bxslider, ProductImageViews, elevatezoom, colorSwatch, CommonFunctions) {
+    function($, _, Hypr, hyprlivecontext, ProductModels, CartMonitor, api, Backbone, blockUiLoader, bxslider, ProductImageViews, elevatezoom, colorSwatch, CommonFunctions, gtm) {
 
         var sitecontext = hyprlivecontext.locals.siteContext;
         var cdn = sitecontext.cdnPrefix;
@@ -231,9 +232,9 @@ define([
                             if (window.quickviewProduct.attributes.inventoryInfo.onlineStockAvailable >= newQty || window.quickviewProduct.attributes.inventoryInfo.outOfStockBehavior == "AllowBackOrder") {
                                 window.quickviewProduct.apiAddToCart({
                                     quantity: newQty
-                                }).then(function() {
+                                }).then(function(res) {
                                     CartMonitor.addToCount(newQty);
-                                    me.pushGoogleData(newQty, window.quickviewProduct);
+                                    me.pushGoogleData(newQty, res);
                                     $('[data-mz-validationmessage-for="quantity"]').text("");
                                     blockUiLoader.unblockUi();
                                     slider.closeQuickviewSlider();
@@ -276,9 +277,9 @@ define([
                     } else {
                         window.quickviewProduct.apiAddToCart({
                             quantity: newQty
-                        }).then(function() {
+                        }).then(function(res) {
                             CartMonitor.addToCount(newQty);
-                            me.pushGoogleData(newQty, window.quickviewProduct);
+                            me.pushGoogleData(newQty, res);
                         });
                         $('[data-mz-validationmessage-for="quantity"]').text("");
                         blockUiLoader.unblockUi();
@@ -293,12 +294,18 @@ define([
                     return;
                 }
             },
-            pushGoogleData: function(newQty, quickviewProduct) {
-                var dataLayer = window.dataLayer;
+            pushGoogleData: function(newQty, cartitem) {
+                var optionsData = cartitem.data.product.options;
+                var options = '';
+                _.each(optionsData, function(optionVal, index){
+                    options = options + optionVal.stringValue;
+                    if(index + 1 < optionsData.length) {
+                        options = options+",";
+                    }
+                });
+                var quickviewProduct = window.quickviewProduct;
                 var content = quickviewProduct.get("content");
                 var productName = content.get("productName");
-                var productCode = quickviewProduct.get("productCode");
-                var price = quickviewProduct.get("price");
                 var categories = quickviewProduct.get("categories");
                 var properties = quickviewProduct.get("properties");
                 var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
@@ -306,23 +313,11 @@ define([
                 if(brandAttr.length) {
                     brand = brandAttr[0].values[0].value;
                 }
-                dataLayer.push({
-                  'event': 'addToCart',
-                  'ecommerce': {
-                    'currencyCode': hyprlivecontext.locals.siteContext.currencyInfo.currencyCode,
-                    'add': { 
-                      'products': [{      
-                        'name': productName,
-                        'id': productCode,
-                        'price': price.get("price"),
-                        'brand': brand,
-                        'category': categories[0].content.name,
-                        'variant': 'Gray',
-                        'quantity': newQty
-                       }]
-                    }
-                  }
-                });
+                var cartItemData = cartitem.data;
+                var pCode = cartItemData.product.variationProductCode ? cartItemData.product.variationProductCode : cartItemData.product.productCode;
+                var pricevalue = cartItemData.unitPrice.saleAmount ? cartItemData.unitPrice.saleAmount : cartItemData.unitPrice.listAmount;
+                var data = {name: productName, code: pCode, price: pricevalue, brand: brand, cat: categories[0].content.name, options:options, quantity: newQty};
+                gtm.productAddToCart(data);
             },
             selectSwatch: function(e) {
                 this.isColorClicked = true;
@@ -573,6 +568,29 @@ define([
 
                 window.quickviewProduct = product;
                 this.currentProductCode = qvProductCode;
+                var pricee = '';
+                if(product.get("hasPriceRange") === true) {
+                    if(product.get("priceRange").get("lower").get("onSale") === true) {
+                        pricee = product.get("priceRange").get("lower").get("salePrice");
+                    } else {
+                        pricee = product.get("priceRange").get("lower").get("price");
+                    }
+                } else {
+                    if(product.get("price").get("onSale") === true) {
+                        pricee = product.get("price").get("salePrice");
+                    } else {
+                        pricee = product.get("price").get("price");
+                    }
+                }
+                var properties = product.get("properties");
+                var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+                var brand = '';
+                if(brandAttr.length) {
+                    brand = brandAttr[0].values[0].value;
+                }
+                var data = {name: product.get("content").get("productName"), code: qvProductCode, price: pricee, brand: brand, cat: product.get("categories")[0].content.name, variant: ''};
+                gtm.productDetail(data);
+
 //                product.apiGet().then(function(_r) {
                     var options_pro = product.attributes.options;
                     var availableColors = [];

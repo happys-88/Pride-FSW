@@ -5,8 +5,9 @@ define(['modules/api',
         'modules/models-orders',
         'hyprlivecontext',
         'hyprlive',
-        'modules/preserve-element-through-render'],
-        function (api, Backbone, _, $, OrderModels, HyprLiveContext, Hypr, preserveElement) {
+        'modules/preserve-element-through-render',
+        'gtm'],
+        function (api, Backbone, _, $, OrderModels, HyprLiveContext, Hypr, preserveElement, gtm) {
           /*
           Our Order Confirmation page doesn't involve too much logic, but our
           order model doesn't include enough details about pickup locations.
@@ -130,6 +131,94 @@ define(['modules/api',
             view.render();
             
             var confModel = ConfirmationModel.fromCurrent();
+            var items = confModel.get("items").models;
+            var str = "";
+            for (var i = 0; i < items.length; i++) {
+              var product = items[i].get("product");
+              if (i == items.length - 1) {
+                  str += "productCode eq "+ "'" + product.get("productCode") + "'";
+              } else {
+                  str += "productCode eq "+ "'" + product.get("productCode") + "'"+ " or ";
+              }
+              
+            }
+            var products = [];
+
+            api.request("GET", "/api/commerce/catalog/storefront/products/?filter=(" + str + ")&pageSize="+items.length ).then(function(response){
+              var itemsArr = response.items;
+              for (var i = 0; i < items.length; i++) {
+                  var product = items[i].get("product");
+                  var pCode = product.get("variationProductCode") ? product.get("variationProductCode") : product.get("productCode");
+                  var pricevalue = items[i].get("unitPrice").saleAmount ? items[i].get("unitPrice").saleAmount : items[i].get("unitPrice").listAmount;
+                  var properties = product.get("properties");
+                  var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+                  var brand = '';
+                  if(brandAttr.length) {
+                      brand = brandAttr[0].values[0].value;
+                  }
+                  var optionsData = product.get("options").models;
+                  var options = '';
+                  if (optionsData) {
+                    for (var j = 0; j < optionsData.length; j++) {
+                        options = options + optionsData[j].get("stringValue");
+                        if(j + 1 < optionsData.length) {
+                            options = options + ",";
+                        }
+                    }
+                  }
+                  var productDiscounts = items[i].get("productDiscounts");
+                  var couponCodes = [];
+                  var count = 0;
+                  count = parseFloat(count);
+                  if (productDiscounts && productDiscounts.length > 0) {
+                    for (var k = 0; k < productDiscounts.length; k++) {
+                      var productDiscount = productDiscounts[k];
+                      if (productDiscount.couponCode) {
+                        couponCodes[count] = productDiscount.couponCode;
+                        count++;
+                      }
+                    }
+                  }
+                  var coupon = '';
+                  if (couponCodes && couponCodes.length) {
+                    for (var l = 0; l < couponCodes.length; l++) {
+                      var coupon = coupon + couponCodes[l];
+                      if (l + 1 < couponCodes.length) {
+                        coupon = coupon + ",";
+                      }
+                    }
+                  }
+                  var prodObj = findElement(itemsArr, product.get("productCode"));
+                  var data = {name: product.get("name"), id: pCode, price: pricevalue, brand: brand, category: prodObj.categories[0].content.name, variant: options, quantity: items[i].get("quantity"), coupon: coupon};
+                  products.push(data);
+              }
+              var transactionId = '';
+              var billingInfo = confModel.get("billingInfo");
+              if (billingInfo.card) {
+                transactionId = billingInfo.card.paymentServiceCardId;
+              }
+              var shippingDiscounts = confModel.get("shippingDiscounts");
+              var orderCoupon = '';
+              for (var m = 0; m < shippingDiscounts.length; m++) {
+                var shippingDiscount = shippingDiscounts[m];
+                if (shippingDiscount.discount && shippingDiscount.discount.couponCode) {
+                  orderCoupon = orderCoupon + shippingDiscount.discount.couponCode + ",";
+                }
+              }
+              var orderDiscounts = confModel.get("orderDiscounts");
+              for (var m = 0; m < orderDiscounts.length; m++) {
+                var orderDiscount = orderDiscounts[m];
+                if (orderDiscount.couponCode) {
+                  orderCoupon = orderCoupon + orderDiscount.couponCode + ",";
+                }
+              }
+
+              if (orderCoupon && orderCoupon.length > 0) {
+                orderCoupon = orderCoupon.substring(0, orderCoupon.length - 1);
+              }
+              var orderData = {id:transactionId, total: confModel.get("total"), tax: confModel.get("taxTotal"), shipping: confModel.get("shippingTotal"), coupon: orderCoupon};
+              gtm.onOrderConfirmation(orderData, products);
+          });
             confModel.getLocationData().then(function(response){
               confModel.set('locationDetails', response.data.items);
 
@@ -141,4 +230,10 @@ define(['modules/api',
               });
 
             });
+            function findElement (arr, element) {
+                var product = _.find(arr, function(el) {
+                    return el.productCode == element; 
+                });
+                return product;
+            }
         });

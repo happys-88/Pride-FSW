@@ -61,18 +61,17 @@
     </div>
     <div data-mz-productlist class="mz-l-paginatedlist-list">
         {% include "modules/product/product-list-tiled" %}
-        {% dump model.items %}
         <script>
         dataLayer.push({
           'ecommerce': {
-            'currencyCode': 'US dollar',
+            'currencyCode': '{{siteContext.currencyInfo.currencyCode}}',
             'impressions': [
             {% for prod in model.items %}
                 {% if forloop.last %}
                     {
                        'name': '{{ prod.content.productName }}',
                        'id': '{{ prod.productCode }}',
-                       'price': '{% if prod.productType == "Family Product" %}{% else %}{% if prod.hasPriceRange %}{{ prod.priceRange.lower.price|floatformat }}{% else %}{% if prod.price.onSale %}{{prod.price.price|floatformat}}{% else%}{{prod.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
+                       'price': '{% if prod.hasPriceRange %}{% if prod.priceRange.lower.onSale %}{{ prod.priceRange.lower.salePrice|floatformat(2) }}{% else %}{{ prod.priceRange.lower.price|floatformat(2) }}{% endif %}{% else %}{% if prod.price.onSale %}{{prod.price.salePrice|floatformat(2)}}{% else%}{{prod.price.price|floatformat(2)}}{% endif %}{% endif %}',
                        'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                        'category': '{{ prod.categories.0.content.name }}',
                        'variant': '',
@@ -83,7 +82,7 @@
                     {
                        'name': '{{ prod.content.productName }}',
                        'id': '{{ prod.productCode }}',
-                       'price': '{% if prod.productType == "Family Product" %}{% else %}{% if prod.hasPriceRange %}{{ prod.priceRange.lower.price|floatformat}}{% else %}{% if prod.price.onSale %}{{prod.price.price|floatformat}}{% else%}{{prod.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
+                       'price': '{% if prod.hasPriceRange %}{% if prod.priceRange.lower.onSale %}{{ prod.priceRange.lower.salePrice|floatformat(2) }}{% else %}{{ prod.priceRange.lower.price|floatformat(2) }}{% endif %}{% else %}{% if prod.price.onSale %}{{prod.price.salePrice|floatformat(2)}}{% else%}{{prod.price.price|floatformat(2)}}{% endif %}{% endif %}',
                        'brand': '{% with prod|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                        'category': '{{ prod.categories.0.content.name }}',
                        'variant': '',

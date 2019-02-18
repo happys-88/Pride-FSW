@@ -13,8 +13,9 @@ require([
     "hyprlivecontext",
     "pages/family",
     "modules/api",
-    "async"
-], function($, _, bxslider, elevatezoom, blockUiLoader, Hypr, Backbone, CartMonitor, ProductModels, ProductImageViews, HyprLiveContext, FamilyItemView, api, async) {
+    "async",
+    "gtm"
+], function($, _, bxslider, elevatezoom, blockUiLoader, Hypr, Backbone, CartMonitor, ProductModels, ProductImageViews, HyprLiveContext, FamilyItemView, api, async, gtm) {
     var sitecontext = HyprLiveContext.locals.siteContext;
     var cdn = sitecontext.cdnPrefix;
     var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
@@ -368,6 +369,7 @@ require([
             }
         },
         addToCart: _.debounce(function() {
+            var familyAddedProds = [];
             var me = this;  
             me.model.messages.reset();
             //If Family Products            
@@ -376,11 +378,40 @@ require([
                 /* jshint ignore:start */
                 var promises = [];
                 var productsAdded = [];
+                var len = this.model.get('family').models.length;
                 for (var i = 0; i < this.model.get('family').models.length; i++) {
                     promises.push((function(callback) {
                         var familyItem = me.model.get('family').models[this.index];
+                        var c = this.index;
                         var productCode = familyItem.get('productCode');
                             familyItem.addToCart().then(function(e) {
+                                var quantity = familyItem.get("quantity");
+                                var productName = e.get("content").get("productName");
+                                var pCode = e.get("variationProductCode") ? e.get("variationProductCode") : e.get("productCode");
+                                var pricev = e.get("price");
+                                var pricevalue = '';
+                                if(pricev.get("salePrice") >= 0) {
+                                    pricevalue = pricev.get("salePrice");
+                                } else {
+                                    pricevalue = pricev.get("price");
+                                }
+                                var properties = e.get("properties");
+                                var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+                                var brand = '';
+                                if(brandAttr.length) {
+                                    brand = brandAttr[0].values[0].value;
+                                }
+                                var optionsData = e.get("options").models;
+                                var options = '';
+                                if (optionsData) {
+                                    for (var j = 0; j < optionsData.length; j++) {
+                                        options = options + optionsData[j].get("value");
+                                        if(j + 1 < optionsData.length) {
+                                            options = options + ",";
+                                        }
+                                    }
+                                }
+                                var categories = familyItem.get("categories");
                                 //Clear options and set Qty to 0
                                 for (var j = 0; j < window.family.length; j++) {
                                     if (window.family[j].model.get('productCode') === productCode) {
@@ -393,14 +424,28 @@ require([
                                         window.family[j].model.set('addedtocart', true);
                                     }
                                 }
+
+                                var data = {name: productName, code: pCode, price: pricevalue, brand: brand, cat: categories[0].content.name, options:options, quantity: quantity};
+                                familyAddedProds.push(data);
+                                if (c === len - 1) {
+                                    if (familyAddedProds.length > 0) {
+                                        gtm.familyProdAddToCart(familyAddedProds);
+                                    }
+                                }
                                 productsAdded.push(e);
                                 callback(null, e);
                             }, function(e) {
+                                if (c === len - 1) {
+                                    if (familyAddedProds.length > 0) {
+                                        gtm.familyProdAddToCart(familyAddedProds);
+                                    }
+                                }
                                 callback(null, e);
                             });
                         //}
                     }).bind({ index: i }))
                 }
+
                 var errors = { "items": [] };
                 async.series(promises, function(err, results) {
                     console.log(err);
@@ -703,9 +748,6 @@ require([
           
         if ($('.mz-product-detail-tabs ul.tabs li').length === 0)
             $('.mz-product-detail-tabs').remove();
-        
-        console.log("Price : "+JSON.stringify(product));
-
         var product = ProductModels.Product.fromCurrent();
         var content = product.get("content");
         var productName = content.get("productName");
@@ -717,41 +759,6 @@ require([
         if(brandAttr.length) {
             brand = brandAttr[0].values[0].value;
         }
-
-        var priceVal = '';
-        if(product.attributes.family.length > 0) {
-            priceVal = '';
-        } else {
-            if(product.attributes.hasPriceRange > 0) {
-                priceVal = product.get('priceRange').get('lower').get('price');
-            } else {
-                var pricee = product.attributes.price;
-                if(pricee.get("onSale")){
-                    priceVal = pricee.get('salePrice');
-                } else {
-                    priceVal = pricee.get('price');
-                }
-            }
-        }
-
-        var dataLayer = window.dataLayer;
-        dataLayer.push({
-            'event': 'productClick',
-            'ecommerce': {
-              'click': {
-                'actionField': {'list': ''},      // Optional list property.
-                'products': [{
-                  'name': productName,                      // Name or ID is required.
-                  'id': productCode,
-                  'price': priceVal.toString(),
-                  'brand': brand,
-                  'category': categories[0].content.name,
-                  'variant': '',
-                  'position': 1
-                 }]
-               }
-             }
-          });
         product.on('addedtocart', function(cartitem) {
             if (cartitem && cartitem.prop('id')) {
 
@@ -759,31 +766,16 @@ require([
                 var options = '';
                 _.each(optionsData, function(optionVal, index){
                     options = options + optionVal.stringValue;
-                    if(index+1 < optionsData.length) {
+                    if(index + 1 < optionsData.length) {
                         options = options+",";
                     }
                 });
 
                 var cartItemData = cartitem.data;
-
+                var pCode = cartItemData.product.variationProductCode ? cartItemData.product.variationProductCode : cartItemData.product.productCode;
                 var pricevalue = cartItemData.unitPrice.saleAmount ? cartItemData.unitPrice.saleAmount : cartItemData.unitPrice.listAmount;
-                dataLayer.push({
-                  'event': 'addToCart',
-                  'ecommerce': {
-                    'currencyCode': 'usd',
-                    'add': {                                // 'add' actionFieldObject measures.
-                      'products': [{                        //  adding a product to a shopping cart.
-                        'name': productName,
-                        'id': cartItemData.product.variationProductCode ? cartItemData.product.variationProductCode : cartItemData.product.productCode,
-                        'price': pricevalue.toString(),
-                        'brand': brand,
-                        'category': categories[0].content.name,
-                        'variant': options,
-                        'quantity': product.get('quantity')
-                       }]
-                    }
-                  }
-                });
+                var data = {name: productName, code: pCode, price: pricevalue, brand: brand, cat: categories[0].content.name, options:options, quantity: product.get('quantity')};
+                gtm.productAddToCart(data);
                 //product.isLoading(true);
                 CartMonitor.addToCount(product.get('quantity'));
                 $('html,body').animate({

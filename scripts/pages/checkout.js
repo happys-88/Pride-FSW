@@ -7,8 +7,11 @@ require(["modules/jquery-mozu",
     'hyprlivecontext', 
     'modules/editable-view', 
     'modules/preserve-element-through-render',
-    'modules/xpress-paypal'], 
-    function ($, _, Hypr, Backbone, CheckoutModels, messageViewFactory, CartMonitor, HyprLiveContext, EditableView, preserveElements,PayPal) {
+    'modules/xpress-paypal',
+    'gtm',
+    "modules/api"], 
+    
+    function ($, _, Hypr, Backbone, CheckoutModels, messageViewFactory, CartMonitor, HyprLiveContext, EditableView, preserveElements,PayPal, gtm, api) {
 
 
     var CheckoutStepView = EditableView.extend({
@@ -622,7 +625,46 @@ require(["modules/jquery-mozu",
                     model: checkoutModel.messages
                 })
             };
+        var products = [];
+        var str = "";
 
+        var items = checkoutModel.get("items");
+        for (var i = 0; i < items.length; i++) {
+            if (i == items.length - 1) {
+                str += "productCode eq "+ "'" + items[i].product.productCode + "'";
+            } else {
+                str += "productCode eq "+ "'" + items[i].product.productCode + "'"+ " or ";
+            }
+        }
+        api.request("GET", "/api/commerce/catalog/storefront/products/?filter=(" + str + ")&pageSize="+items.length ).then(function(response){
+            var itemsArr = response.items;
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var pCode = item.product.variationProductCode ? item.product.variationProductCode : item.product.productCode;
+                var pricevalue = item.unitPrice.saleAmount ? item.unitPrice.saleAmount : item.unitPrice.listAmount;
+                var properties = item.product.properties;
+                var brandAttr = _.filter(properties, function(prop) { return prop.attributeFQN == 'tenant~brand' ;  });
+                var brand = '';
+                if(brandAttr.length) {
+                    brand = brandAttr[0].values[0].value;
+                }
+                var optionsData = item.product.options;
+                var options = '';
+                if (optionsData) {
+                    for (var j = 0; j < optionsData.length; j++) {
+                        options = options + optionsData[j].stringValue;
+                        if(j + 1 < optionsData.length) {
+                            options = options + ",";
+                        }
+                    }
+                }
+                
+                var prodObj = findElement(itemsArr, item.product.productCode);
+                var data = {name: item.product.name, id: pCode, price: pricevalue, brand: brand, category: prodObj.categories[0].content.name, variant: options, quantity: item.quantity};
+                products.push(data);
+            }
+            gtm.onCheckout(products);
+        });
         window.checkoutViews = checkoutViews;
 
         checkoutModel.on('complete', function() {
@@ -642,4 +684,10 @@ require(["modules/jquery-mozu",
         $checkoutView.noFlickerFadeIn();
 
     });
+    function findElement (arr, element) {
+        var product = _.find(arr, function(el) {
+            return el.productCode == element; 
+        });
+        return product;
+    }
 });

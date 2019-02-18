@@ -50,7 +50,7 @@
                                   'products': [{
                                     'name': '{{ model.content.productName }}',
                                     'id': '{{ model.productCode }}',
-                                    'price': '{%if model.productType == "Family Product" %}{% else %}{% if model.hasPriceRange %}{{ model.priceRange.lower.price|floatformat }}{% else %}{% if model.price.onSale %}{{model.price.price|floatformat}}{% else%}{{model.price.salePrice|floatformat}}{% endif %}{% endif %}{% endif %}',
+                                    'price': '{% if model.hasPriceRange %}{% if model.priceRange.lower.onSale %}{{ model.priceRange.lower.salePrice|floatformat(2) }}{% else %}{{ model.priceRange.lower.price|floatformat(2) }}{% endif %}{% else %}{% if model.price.onSale %}{{model.price.salePrice|floatformat(2)}}{% else%}{{model.price.price|floatformat(2)}}{% endif %}{% endif %}',
                                     'brand': '{% with model|get_product_attribute("tenant~brand") as brandAttr %}{% if brandAttr %}{{brandAttr.values.0.value}}{% endif %}{% endwith %}',
                                     'category': '{{model.categories.0.content.name}}',
                                     'variant': ''
