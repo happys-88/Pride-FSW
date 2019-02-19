@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/Pride-FSW",
     "baseThemeVersion": {
-      "commit": "aebff0cb5a1b77ac10e7a022699486ffa9ded871"
+      "commit": "2b8da812bd7992941edcaa968cf9146aac4fd536"
     },
     "baseThemeChannel": "stable"
   },
@@ -482,7 +482,7 @@
   "settings": {
     "oneSizeAttributeName": "tenant~ONESIZE",
     "oneSizeProductType": "Single Variant",
-    "prop65-link": "http://www.google.com", 
+    "prop65-link": "http://www.google.com",
     "maxRecentlyViewedItems": 5,
     "allProductsCategoryId": 0,
     "pdpMainImageNameSwatch": "{0}_{1}_v{2}.jpg",
@@ -2583,6 +2583,12 @@
           "fieldLabel": "Choose Shop By Brand",
           "name": "shopByBrand",
           "xtype": "mz-input-categorymulti"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "shopAllBrands",
+          "fieldLabel": "Enter url for shop all brands"
         }
       ],
       "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
