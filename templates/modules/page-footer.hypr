@@ -14,7 +14,7 @@
 			<div class="col-xs-12 col-sm-4 pull-right mz-signup-social">
 				<h4><i class="fa fa-envelope"></i> Sign up for Emails &amp; Exclusive Offers</h4>  
 				<div>
-					<form class="form form-footer-cont">
+					<form class="form form-footer-cont" onsubmit="return false">
 					  <div class="form-group">
 					  	<div class="input-group"> 	
 					  		{% comment %}				  	
