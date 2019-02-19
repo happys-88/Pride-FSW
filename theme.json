@@ -2585,9 +2585,15 @@
           "xtype": "mz-input-categorymulti"
         },
         {
+          "anchor": "50%",
+          "fieldLabel": "Add button text value",
+          "name": "shopAllBrandsButton",
+          "xtype": "mz-input-text"
+        },
+        {
           "anchor": "100%",
           "xtype": "mz-input-text",
-          "name": "shopAllBrands",
+          "name": "shopAllBrandsUrl",
           "fieldLabel": "Enter url for shop all brands"
         }
       ],
