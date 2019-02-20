@@ -11,45 +11,47 @@
                     {% include "modules/common/message-bar" with model=model.messages %} 
                     <div class="col-sm-9 col-xs-12 pull-right mz-content">   
                         <h3 class="mz-l-stack-sectiontitle">{{ labels.orderStatus }}</h3>
-                        <form method="post" class="mz-loginform-page mz-order-track" name="mz-anonymousorder">
-                            <input type="hidden" name="order-returnUrl" value="{{ model.returnUrl }}"/>
-                            <div class="mz-l-formfieldgroup">
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-xs-12">
-                                        <label for="ordernum">{{ labels.orderNumber }}<span class="is-required"> *</span></label>
+                        <div class="mz-order-track">
+                            <form method="post" class="mz-loginform-page" name="mz-anonymousorder">
+                                <input type="hidden" name="order-returnUrl" value="{{ model.returnUrl }}"/>
+                                <div class="mz-l-formfieldgroup">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-xs-12">
+                                            <label for="ordernum">{{ labels.orderNumber }}<span class="is-required"> *</span></label>
+                                        </div>
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input name="ordernum" class="form-control" value="" type="text" data-mz-order-number />
+                                        </div>
                                     </div>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <input name="ordernum" class="form-control" value="" type="text" data-mz-order-number />
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-xs-12">
+                                            <label for="verifywith">{{ labels.verifyWith }}<span class="is-required"> *</span></label>
+                                        </div>
+                                        <div class="col-sm-8 col-xs-12">
+                                            <select data-mz-verify-with class="form-control">
+                                                {% if themeSettings.zipCodeEnabled %}<option value="zipCode">{{ labels.billingPostalCode }}</option>{% endif %}
+                                                {% if themeSettings.phoneNumberEnabled %}<option value="phoneNumber">{{ labels.billingPhoneNumber }}</option>{% endif %}
+                                                {% if themeSettings.billingEmailEnabled %}<option value="email">{{ labels.billingEmail }}</option>{% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-xs-12">
+                                            <label for="verification">{{ labels.verification }}<span class="is-required"> *</span></label>
+                                        </div>
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input name="verification" class="form-control" value="" type="text" data-mz-verification />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-8 col-sm-offset-4 text-right">
+                                            <section data-mz-role="popover-message" class="mz-popover-message"></section>
+                                            <button class="mz-button mz-login-button" data-mz-action="anonymousorder-submit">{{ labels.submit }}</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-xs-12">
-                                        <label for="verifywith">{{ labels.verifyWith }}<span class="is-required"> *</span></label>
-                                    </div>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <select data-mz-verify-with class="form-control">
-                                            {% if themeSettings.zipCodeEnabled %}<option value="zipCode">{{ labels.billingPostalCode }}</option>{% endif %}
-                                            {% if themeSettings.phoneNumberEnabled %}<option value="phoneNumber">{{ labels.billingPhoneNumber }}</option>{% endif %}
-                                            {% if themeSettings.billingEmailEnabled %}<option value="email">{{ labels.billingEmail }}</option>{% endif %}
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-xs-12">
-                                        <label for="verification">{{ labels.verification }}<span class="is-required"> *</span></label>
-                                    </div>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <input name="verification" class="form-control" value="" type="text" data-mz-verification />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-8 col-sm-offset-4 text-right">
-                                        <section data-mz-role="popover-message" class="mz-popover-message"></section>
-                                        <button class="mz-button mz-login-button" data-mz-action="anonymousorder-submit">{{ labels.submit }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                     <div class="col-sm-3 col-xs-12 mz-content-left-nav">        
                         <div class="mz-l-sidebar">
