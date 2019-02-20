@@ -30,7 +30,7 @@ define(['modules/api',
                 var selectedTopic = self.model.get('selectedTopic');
                 var message = self.model.get('message');
                 if (!self.model.validate()) {
-                    var mail= "mailto:test@gmail.com?subject="+ selectedTopic + "&amp;body="+ message;
+                    var mail= "mailto:test@gmail.com?subject="+ selectedTopic + "&body="+ message;
                     window.open( mail,'_blank', 'height=400,width=400,resizable=yes,scrollbars=yes,status=no,titlebar=no');
                     $("#firstname").val('');
                     $("#lastname").val(''); 
