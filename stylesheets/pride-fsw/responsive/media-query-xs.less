@@ -261,7 +261,8 @@
             padding: 0;
              .mz-pricestack-price-upper{
                 &::before{    
-                    left: -13px; 
+                    left: -15px;
+                    top: 23px; 
                 }
              }
         }
@@ -651,7 +652,7 @@
             .mz-productlisting-info{
                 .mz-pricestack{
                     .mz-pricestack-price-lower{
-                        margin: 0 10px 0 0;
+                        margin: 0 8px 0 0;
                     }
                 }
             }
@@ -696,7 +697,8 @@
     .mz-pricestack{
         .mz-pricestack-price-upper{
             &:before{
-            left: -10px; 
+            left: -10px;
+            top: 17px; 
             }
         }
     }
@@ -708,6 +710,17 @@
     button#add-to-cart {
     width: 100%;
     margin: 0;
+    }
+    .mz-productlist{
+        .mz-productlist-list{
+            .mz-productlisting-info{
+                .mz-pricestack{
+                    >span{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -1028,7 +1041,7 @@
             #product-detail {
                 .mz-l-stack-section {
                     .mz-price { 
-                        font-size: 20px;
+                        font-size: 15px;
                         font-weight: 600;
                         &.is-saleprice{
                             display: block; 
@@ -1037,6 +1050,12 @@
                 }
             }
         }
+    }
+    .prod_info {
+    padding: 0;
+    }
+    .sorting_info {
+    padding: 0;
     }
 
 }

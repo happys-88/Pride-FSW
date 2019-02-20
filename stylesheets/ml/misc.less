@@ -1485,8 +1485,8 @@ ul.tabs {
                                     top: -23px
                                 }
                                 &.bx-prev {
-                                    //top: 311px;
-                                    //left: 24px;
+                                    top: 311px;
+                                    left: 24px;
                                 }
                             }
                         }
@@ -1664,7 +1664,7 @@ ul.tabs {
                                 }
                                 .mz-price {
                                     display: block;
-                                    font-size: 21px;
+                                    
                                     width: 100%;
                                     line-height: 14px;
                                     text-align: right;
@@ -1684,14 +1684,14 @@ ul.tabs {
                                 }
                                 .mz-pricestack-price-upper {
                                     &::before {
-                                        top: 2px;
-                                        left: -22px;
+                                        top: 23px;
+                                        left: -17px;
                                     }
                                 }
                             }
                             .mz-price-discountname {
                                 display: block;
-                                margin-top: -10px;
+                                margin-top: -10px; 
                             }
                         }
                     }
@@ -1990,7 +1990,7 @@ ul.tabs {
                     display: block;
                 }
                 .is-crossedout {
-                    //color: #c8c8c8;                    
+                    color: #c8c8c8;                    
                     display: block;
                 }
             }
@@ -2262,7 +2262,7 @@ ul.tabs {
         display: inline-block;
     }
     .mz-price {
-        font-size: @fontSize+4;
+        /*font-size: @fontSize+4;*/
         line-height: 1.83;
         color: @colorGray;
         display: block;
@@ -2272,7 +2272,7 @@ ul.tabs {
         float: right;
     }
     .is-crossedout {
-        color: @colorLighterGray;
+        color: @colorLighterGray !important;
         .fontRegular();
     }
     .mz-all-review-container {
@@ -2528,7 +2528,7 @@ ul.tabs {
 }
 
 .mz-price {
-    display: inline-block;
+    display: block;
 }
 
 .mz-productdetail,
@@ -3252,6 +3252,7 @@ ul.tabs {
         }
     }
 }
+
 
 @media (min-width: 768px) and (max-width: 1024px){
     footer{
