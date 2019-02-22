@@ -24,7 +24,7 @@
             {% if model.content.productFullDescription %}
                 <li class="visible-xs" role="presentation"><a href="#longDescription" aria-controls="longDescription" role="tab" data-toggle="tab">Product Details</a></li> 
                 <div role="tabpanel" class="tab-pane" id="longDescription"> 
-                    <ul>
+                    <ul style="display:none;"> 
                         {{ model.content.productFullDescription|safe }}  
                     </ul>      
                 </div>
@@ -32,7 +32,7 @@
             {% if (model|get_product_attribute_value("tenant~product-specifications")) %}   
                 <li class="visible-xs" role="presentation"><a href="#prodSpecifications" aria-controls="prodSpecifications" role="tab" data-toggle="tab">Specifications</a></li>
                 <div role="tabpanel" class="tab-pane" id="prodSpecifications">
-                    <ul>
+                    <ul style="display:none;"> 
                         {{ model|get_product_attribute_value("tenant~product-specifications")|safe }}
                     </ul>      
                 </div>

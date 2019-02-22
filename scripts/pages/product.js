@@ -786,9 +786,6 @@
     });
 
     $(document).ready(function () {
-        $("#longDescription ul").html($("#longDescription ul").text()).show();
-        $("#prodSpecifications ul").html($("#prodSpecifications ul").text()).show();
-
         if ($('.mz-product-detail-tabs ul.tabs li').length === 0)
             $('.mz-product-detail-tabs').remove();
         var product = ProductModels.Product.fromCurrent();
@@ -966,8 +963,13 @@
         }
         return json;
     }
+
     $('body').on('click', '#mz-close-button', function (e) {
         e.preventDefault();
         blockUiLoader.unblockUi();
     });
+
+    // PDP Tabs - li content issue
+    $("#longDescription ul").html($("#longDescription ul").text()).show();
+    $("#prodSpecifications ul").html($("#prodSpecifications ul").text()).show();  
 });
