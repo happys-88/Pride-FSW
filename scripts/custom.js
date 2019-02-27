@@ -127,9 +127,10 @@ define([
 	    	$("#back-to-top").fadeOut(); 
 	    }
 	  }); 
-		$("#back-to-top").click(function(){
+		$("#back-to-top, #toTop").click(function(){
 	    scrollToTop();  
 		});
+
     $('.nav-tabs li:eq(0) a').tab('show');
     $(".mz-mobile-tabs").find(".active").prev().addClass("active");
     $(document).on('click', '.mz-mobile-tabs li', function () {

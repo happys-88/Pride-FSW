@@ -87,7 +87,7 @@
                 $('ul#productmobile-Carousel li img').removeClass('active');
             },
             startSlide: id ? id : 0,
-            infiniteLoop: false,
+            infiniteLoop: false
             // hideControlOnEnd: true,
             //pagerCustom: '#productCarousel-pager'
         });

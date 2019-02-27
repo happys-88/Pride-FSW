@@ -80,19 +80,19 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                             $('.mz-recently-viewed-products .mz-productlist-list').slick({
                                 infinite: false,
                                 slidesToShow: 6,
+                                dots: true,
+                                arrows: false,
                                 prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
                                 nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
                                 responsive: [{
                                         breakpoint: 1024,
                                         settings: {
-                                            arrows: true,
                                             slidesToShow: 5
                                         }
                                     },
                                     {
                                         breakpoint: 992,
                                         settings: {
-                                            arrows: true,
                                             slidesToShow: 4
                                         }
                                     },
@@ -100,6 +100,7 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                                         breakpoint: 768,
                                         settings: {
                                             arrows: true,
+                                            dots: false,
                                             slidesToShow: 3
                                         }
                                     },
@@ -107,6 +108,7 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                                         breakpoint: 460,
                                         settings: {
                                             arrows: true,
+                                            dots: false,
                                             slidesToShow: 2
                                         }
                                     }
