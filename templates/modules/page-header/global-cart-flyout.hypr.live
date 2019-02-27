@@ -69,7 +69,7 @@
 							</h5>
 							{% if items.product.options %}
 								{% for option in items.product.options %}
-								<div class="mz-options"><span>{{ option.name }}</span> <span>{% if option.stringname %}{{ option.stringname }}{% else %}{{ option.value }}{% endif %}</span></div>
+								<div class="mz-options"><span>{{ option.name }}</span> <span>{{ option.stringValue|default(option.value) }}</span></div>
 								{% endfor %}
 							{% endif %}	
 							<div class="quantity-info"><span>{{ labels.qty }} </span>  <span>{{ items.quantity }}</span></div>
