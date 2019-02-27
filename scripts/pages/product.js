@@ -58,10 +58,11 @@
             minSlides: 1,
             maxSlides: 1,
             moveSlides: 1,
-            preloadImages: 'all',
+            pager: true,
+            controls: false,
             onSliderLoad: function (currentIndex) {
                 $('ul#productmobile-Carousel li').eq(currentIndex).find('img').addClass("active");
-                $("#productmobile-Carousel,#productCarousel-pager").css("visibility", "visible");
+               // $("#productmobile-Carousel,#productCarousel-pager").css("visibility", "visible");
             },
             onSlideAfter: function ($slideElement, oldIndex, newIndex) {
                 $('.zoomContainer').remove();
@@ -86,12 +87,9 @@
                 $('ul#productmobile-Carousel li img').removeClass('active');
             },
             startSlide: id ? id : 0,
-            nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
-            prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
             infiniteLoop: false,
             // hideControlOnEnd: true,
-            pager: true,
-            pagerCustom: '#productCarousel-pager'
+            //pagerCustom: '#productCarousel-pager'
         });
     }
 
