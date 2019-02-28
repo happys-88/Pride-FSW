@@ -7,7 +7,7 @@
 			{% if productDiscount.discount.freeShipping %}
 				<span class="mz-item-discountamt">{{ labels.freeShipping }}</span>
 			{% else %}
-				<span class="mz-item-discountamt"> -{{ productDiscount.impact|currency }}</span>
+				{% comment %} <span class="mz-item-discountamt"> -{{ productDiscount.impact|currency }}</span> {% endcomment %}
 			{% endif %}
 			</div>
 		{% endfor %}
