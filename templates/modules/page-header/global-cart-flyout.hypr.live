@@ -20,9 +20,9 @@
 					<h5 class="bold-text">item</h5>
 				</div>
 				<div class="media-body">
-					<div class="col-xs-6">															
+					<div class="col-xs-7">															
 					</div>
-					<div class="col-xs-6 price-label">
+					<div class="col-xs-5 price-label">
 						<div class="row">
 							<div class="col-xs-6 price-each-col"><h5 class="bold-text">price each</h5></div>
 							<div class="col-xs-6 price-col"><h5 class="bold-text">price</h5></div>			
@@ -55,7 +55,7 @@
 						</a>
 					</div>
 					<div class="media-body">
-						<div class="col-xs-5 global-cart-padding">
+						<div class="col-xs-6 global-cart-padding">
 						{% with items.product|get_product_attribute("tenant~brand") as brandName %}
 						
 							<div class="mz-brand">
@@ -69,12 +69,12 @@
 							</h5>
 							{% if items.product.options %}
 								{% for option in items.product.options %}
-								<div class="mz-options"><span>{{ option.name }}</span> <span>{{ option.stringValue|default(option.value) }}</span></div>
+								<div class="mz-options"><span>{{ option.name }}:</span> <span>{{ option.stringValue|default(option.value) }}</span></div>
 								{% endfor %}
 							{% endif %}	
-							<div class="quantity-info"><span>{{ labels.qty }} </span>  <span>{{ items.quantity }}</span></div>
+							<div class="quantity-info"><span>{{ labels.qty }}:</span>  <span>{{ items.quantity }}</span></div>
 						</div>
-						<div class="col-xs-7">
+						<div class="col-xs-6">
 							<div class="row">
 								<div class="col-xs-7 global-cart-padding"  >
 								{% include "modules/common/item-price" with item=items %}
@@ -88,7 +88,7 @@
 	</ul>
 	<div class="row total-amount-row">
 	    <div class="col-xs-12 text-right total-info">
-	    	<span>Subtotal: </span>
+	    	<span>Merchandise Subtotal: </span>
 	    	<span>{{ model.subtotal|currency }}</span>
 	    </div>
   	    {% if model.orderDiscounts %}
@@ -105,7 +105,7 @@
 	    </div>
 	    {% endif%}
 	    <div class="{% if model.items.length > themeSettings.globalCartMaxItemCount %}col-xs-6{% else %}col-xs-12{% endif %} text-right total-info">
-	    	<span>Total: </span>
+	    	<span>Subtotal: </span>
 	    	<span>{{ model.total|currency }}</span>
 	    </div>	    
 	</div>
