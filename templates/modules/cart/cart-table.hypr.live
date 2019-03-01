@@ -1,7 +1,10 @@
 {% with model.discountThresholdMessages|first as ThresholdMessage  %}
-    {{ ThresholdMessage.message }}
- {% endwith %}
- {% if not model.isEmpty %} 
+    <div class="col-xs-12 cart-threshold"> 
+        {{ ThresholdMessage.message }}
+    </div>
+{% endwith %}
+
+{% if not model.isEmpty %} 
 <div class="col-md-6 pull-right col-sm-6 col-xs-12 col-xs-12 text-right hidden-xs mz-button-checkout-cart-top">
     {% if user.isAnonymous %}
         <button type="button" id="cart-checkout" aria-label="{{ labels.cartCheckout }}" class="mz-button mz-button-large{% if model.isLoading %} button_disabled{% endif %}"  {% if model.isLoading or model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="checkoutGuest">{{ labels.proceedToCheckout }}</button>
