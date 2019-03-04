@@ -127,7 +127,7 @@ define([
 	    	$("#back-to-top").fadeOut(); 
 	    }
 	  }); 
-		$("#back-to-top, #toTop").click(function(){
+		$("#back-to-top").click(function(){
 	    scrollToTop();  
 		});
 

@@ -79,7 +79,7 @@ define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mo
                            
                             $('.mz-recently-viewed-products .mz-productlist-list').slick({
                                 infinite: false,
-                                slidesToShow: 6,
+                                slidesToShow: 7,
                                 dots: true,
                                 arrows: false,
                                 prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
