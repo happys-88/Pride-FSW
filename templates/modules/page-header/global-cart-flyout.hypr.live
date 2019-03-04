@@ -89,7 +89,7 @@
 	<div class="row total-amount-row">
 	    <div class="col-xs-12 text-right total-info">
 	    	<span>Merchandise Subtotal: </span>
-	    	<span>{{ model.subtotal|currency }}</span>
+	    	<span>{{ model.discountedSubtotal|currency }}</span>
 	    </div>
   	    {% if model.orderDiscounts %}
 	  	    {% for orderDiscount in model.orderDiscounts  %}
@@ -106,7 +106,7 @@
 	    {% endif%}
 	    <div class="{% if model.items.length > themeSettings.globalCartMaxItemCount %}col-xs-6{% else %}col-xs-12{% endif %} text-right total-info">
 	    	<span>Subtotal: </span>
-	    	<span>{{ model.total|currency }}</span>
+	    	<span>{{ model.discountedTotal|currency }}</span>
 	    </div>	    
 	</div>
 	<div class="mz-cart-section clearfix {% if not user.isAnonymous %}mz-user-login{% endif%}">
