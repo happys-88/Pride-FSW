@@ -26,11 +26,24 @@
                                     <div class="tab_container">
                                         <div id="overview-tab" class="tab_content">
                                             <div class="mz-product-top-content">
+                                                {% with model|get_product_attribute("tenant~brand") as brandName %}
+                                                    <div class="mz-brand">
+                                                    {% for brandcategory in model.categories %}
+                                                        {% if  brandcategory.content.name == brandName.values|first|prop("value") %}
+                                                                {% if brandcategory.parentCategoryId=="100" %}
+                                                                    <a href='{% make_url "category" brandcategory %}'>{{   brandName.values|first|prop("value") }}</a>
+                                                                {% endif %}
+                                                            {% endif %}
+                                                    {% endfor %}
+                                                    {% if not model.brandexist %}<span>{{ brandName.values|first|prop("value") }}</span>{% endif %}
+                                                    </div >
+                                                    {% endwith %}
                                                 <h1 class="mz-pagetitle" itemprop="name">{{ model.content.productName|safe }}</h1>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12">
                                                     <h4 class="mz-productcodes-productcode p-3" itemprop="sku">Item # {{ model.productCode }}</h4>
                                                     </div>
+                                                     
                                                 </div>
                                                 <div class="mz-all-review-container">
                                                    {% comment %} <span class="mz-reviews-pdp-stars">

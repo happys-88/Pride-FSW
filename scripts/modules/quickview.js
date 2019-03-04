@@ -588,6 +588,16 @@ define([
                 if(brandAttr.length) {
                     brand = brandAttr[0].values[0].value;
                 }
+                 var brandExist = _.findWhere(product.get('properties'), {
+                     attributeFQN: "tenant~brand"
+                 });
+                 var cat = _.find(product.get('categories'), function (cat) {
+                     return cat.parentCategoryId == "100";
+                 });
+                 if (typeof brandExist !== "undefined" && brandExist.attributeFQN == "tenant~brand" && typeof cat !== "undefined" && cat.parentCategoryId == "100") {
+                     product.attributes.brandexist = true;
+                 }
+                
                 var data = {name: product.get("content").get("productName"), code: qvProductCode, price: pricee, brand: brand, cat: product.get("categories")[0].content.name, variant: ''};
                 gtm.productDetail(data);
 
