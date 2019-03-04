@@ -65,7 +65,7 @@
                                             {% if option.name == "OTHER" %}
                                                 OPTION
                                             {% else %}
-                                                {{ option.name }}
+                                                {{option.name}}
                                             {% endif %}
                                         </dt> 
                                         <dd>
