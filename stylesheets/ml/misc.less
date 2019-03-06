@@ -1663,9 +1663,8 @@ ul.tabs {
                                     }
                                 }
                                 .mz-price {
-                                    display: block;
-                                    
-                                    width: 100%;
+                                    display: inline;
+                                    // width: 100%;
                                     line-height: 14px;
                                     text-align: right;
                                     font-weight: bold;
@@ -1675,12 +1674,13 @@ ul.tabs {
                                 }
                                 .mz-pricestack-price-upper,
                                 .mz-pricestack-price-lower {
-                                    display: inline-block;
-                                    vertical-align: top;
+                                    display: block;
+                                   // vertical-align: top;
                                     margin-left: 8px;
                                 }
                                 .mz-pricestack-price-lower {
-                                    margin: 0 15px 0 0;
+                                   // margin: 0 15px 0 0;
+                                   margin: 0;
                                 }
                                 .mz-pricestack-price-upper {
                                     &::before {
@@ -1987,7 +1987,7 @@ ul.tabs {
                 }
                 .is-saleprice {
                     color: #990000;
-                    display: block;
+                   // display: block;
                 }
                 .is-crossedout {
                     color: #c8c8c8;                    
@@ -2269,7 +2269,7 @@ ul.tabs {
         text-align: right;
     }
     .is-saleprice {
-        float: right;
+       // float: right;
     }
     .is-crossedout {
         color: @colorLighterGray !important;
@@ -2327,9 +2327,9 @@ ul.tabs {
                 }
             }
             .mz-price {
-                font-size: @fontSize+10;
+                //font-size: @fontSize+10;
                 text-align: right;
-                width: auto; 
+               // width: auto; 
                 .mz-price-discountname {
                     font-size: @fontSize;
                     color: @secondaryColor;
@@ -2515,8 +2515,8 @@ ul.tabs {
 .mz-productdetail {
     .mz-pricestack-price-lower,
     .mz-pricestack-price-upper {
-        display: inline-block;
-        vertical-align: top;
+        display: block;
+        // vertical-align: top;
     }
     .mz-pricestack-price-upper {
         margin-left: 20px;
@@ -2528,7 +2528,7 @@ ul.tabs {
 }
 
 .mz-price {
-    display: block;
+  //  display: block;
 }
 
 .mz-productdetail,
@@ -2547,7 +2547,7 @@ ul.tabs {
             float: none;
         }
         .is-ranged {
-            display: none;
+           // display: none;
         }
         .is-not-ranged {
             margin-right: 10px;
@@ -3079,7 +3079,7 @@ ul.tabs {
                             float: none;
                         }
                         .is-ranged {
-                            display: none;
+                            // display: none;
                         }
                         .is-not-ranged {
                             margin-right: 10px;
